@@ -25,6 +25,7 @@
           };
         };
       };
+      linx-client = (callPackage ./linx-client.nix {});
       ncmpcppWithVisualizer = super.ncmpcpp.override { visualizerSupport = true; };
       zr = (callPackage ./zr.nix {});
     };

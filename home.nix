@@ -51,6 +51,7 @@
     age
     minisign
     gnupg
+    hazel.linx-client
   ];
 
   home.stateVersion = "20.03";
