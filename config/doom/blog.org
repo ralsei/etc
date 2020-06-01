@@ -1,0 +1,191 @@
+#+TITLE:   The Blag
+#+AUTHOR:  Hazel Levine
+#+EMAIL:   rose.hazel@protonmail.ch
+#+STARTUP: nofold
+
+This is the source code powering my blog, available at [[https://blog.qtp2t.club][blog.qtp2t.club]]. It sure
+does exist. More info can be found on the blog itself [[https://blog.qtp2t.club/2020-01-13-blorgging.html][here]], but basically this
+uses pure Org mode with no external dependencies.
+
+* Global variables
+These are defined for later configuration and to avoid repetition, as well as to
+modularize things such that if I ever change my home directory structure it
+doesn't break everything.
+
+We define where we want to store the files:
+#+BEGIN_SRC emacs-lisp
+(setq blog/site-project-path "/home/hazel/usr/doc/blog/")
+#+END_SRC
+
+Where we want the exported HTML to go:
+#+BEGIN_SRC emacs-lisp
+(setq blog/site-publish-path (concat blog/site-project-path "build/"))
+#+END_SRC
+
+As well as extra content to put in the header and footer. Note that setting
+these as variables means =blog.el= has to be reloaded whenever you change the
+contents of these files, which has bitten me in the butt /multiple/ times.
+#+BEGIN_SRC emacs-lisp
+(setq blog/site-extra-head-file (concat blog/site-project-path "templates/headext.html"))
+(setq blog/site-header-file (concat blog/site-project-path "templates/header.html"))
+(setq blog/site-footer-file (concat blog/site-project-path "templates/footer.html"))
+#+END_SRC
+
+Finally, we host MathJax locally, to avoid using CDNs, as well as the fact that
+Org doesn't tango nice with MathJax 3.x for some reason. We use the Neo-Euler
+font because I think it looks cool. Note that when deploying this, you probably
+don't want to =scp= MathJax; it'll take forever.
+#+BEGIN_SRC emacs-lisp
+(setq blog/mathjax-options
+      '((path "./static/mj/MathJax.js?config=TeX-AMS-MML_HTMLorMML")
+        (scale "100") (align "left") (indent "2em") (tagside "right")
+        (mathml nil) (font "Neo-Euler")))
+#+END_SRC
+* Functions
+We define a means to add HTML files as part of a file, such that we can add our
+custom headers and footers:
+#+BEGIN_SRC emacs-lisp
+(defun blog/add-html-file (arg)
+  (with-temp-buffer
+    (insert-file-contents arg)
+    (buffer-string)))
+#+END_SRC
+
+We then take our previous variables defining the header and footer of the site
+and convert them into raw strings for usage in Org's exporter:
+#+BEGIN_SRC emacs-lisp
+(setq blog/site-extra-head-raw (blog/add-html-file blog/site-extra-head-file))
+(setq blog/site-header-raw (blog/add-html-file blog/site-header-file))
+(setq blog/site-footer-raw (blog/add-html-file blog/site-footer-file))
+#+END_SRC
+
+Additionally, we define a way to format a site entry in our table of contents:
+#+BEGIN_SRC emacs-lisp
+(defun blog/site-format-entry (entry style project)
+    (format "[[file:%s][%s]] --- %s"
+            entry
+            (org-publish-find-title entry project)
+            (format-time-string "%Y-%m-%d" (org-publish-find-date entry project))))
+#+END_SRC
+* Org-publish
+This is the meat of it; what tells Org that we're actually looking to make a
+website out of miscalleneous files scattered in my documents folder. It's one
+giant call to =setq=.
+
+We tell Org that the site is a concatenation of all of its components, that we
+want to export HTML, and to look recursively. We also tell Org to put stuff in
+that's defined later.
+#+BEGIN_SRC emacs-lisp :noweb yes
+(setq org-publish-project-alist
+      `(("site"
+         :components ("site-static", "site-images", "site-articles", "site-dl", "site-rss"))
+
+         <<static>>
+         <<rss>>
+         <<html1>>
+         <<html2>>
+         <<html3>>
+
+         :publishing-function org-html-publish-to-html
+         :recursive t)))
+#+END_SRC
+** Static
+Static resources, such as MathJax and CSS, should be copied directly to their
+respective folders. This also applies for images and public files (=dl=). We
+send these files to =blog/site-project-path=. The built-in publishing function
+=org-publish-attachment= copies the file directly, and we also tell Org to
+search recursively in case there are any subfolders.
+#+NAME: static
+#+BEGIN_SRC emacs-lisp :tangle no
+("site-static"
+ :base-directory ,(concat blog/site-project-path "static/")
+ :base-extension ".*"
+ :publishing-directory ,(concat blog/site-publish-path "static/")
+ :publishing-function org-publish-attachment
+ :recursive t)
+
+("site-images"
+ :base-directory ,(concat blog/site-project-path "img")
+ :base-extension ".*"
+ :publishing-directory ,(concat blog/site-publish-path "img/")
+ :publishing-function org-publish-attachment
+ :recursive t)
+
+("site-dl"
+ :base-directory ,(concat blog/site-project-path "dl")
+ :base-extension ".*"
+ :publishing-directory ,(concat blog/site-publish-path "dl/")
+ :publishing-function org-publish-attachment
+ :recursive t)
+#+END_SRC
+** RSS
+I still like RSS. Also, one person asked for it, so I'm happy to oblige. For
+some reason, Org likes to repeat the XML header three times (???) at the
+beginning of the resulting XML file, so I go back and manually delete it every
+time.
+
+We tell it to look over all the articles, tell it where the blog is, and tell it
+to look over =index.org= (which is our table of contents) and nothing else. We
+also use =org-rss-publish-to-rss=, which pretty much does what it says it does.
+#+NAME: rss
+#+BEGIN_SRC emacs-lisp :tangle no
+("site-rss"
+ :base-directory ,(concat blog/site-project-path "articles/")
+ :base-extension "org"
+ :publishing-directory ,blog/site-publish-path
+ :publishing-function org-rss-publish-to-rss
+
+ :html-link-home "https://blog.qtp2t.club"
+ :html-link-use-abs-url t
+
+ :title "Ziodyne"
+ :section-numbers nil
+ :exclude ".*"
+ :include ("index.org")
+ :table-of-contents nil)
+#+END_SRC
+** Articles (HTML)
+We tell Org to look over our articles directory, only search through Org files,
+and put everything in the site's publish path:
+#+NAME: html1
+#+BEGIN_SRC emacs-lisp :tangle no
+("site-articles"
+ :base-directory ,(concat blog/site-project-path "articles/")
+ :base-extension "org"
+ :publishing-directory ,blog/site-publish-path
+#+END_SRC
+
+We tell it that we're using HTML5, to include the extra headers, preamble, and
+postamble, and that we're operating on the root of the subdomain, as well as
+define MathJax to be itself:
+#+NAME: html2
+#+BEGIN_SRC emacs-lisp :tangle no
+ :html-doctype "html5"
+ :html-link-home "/"
+ :html-head nil
+ :html-head-extra ,blog/site-extra-head-raw
+ :html-head-include-default-style nil
+ :html-head-include-scripts nil
+ :html-home/up-format ""
+
+ :html-preamble ,blog/site-header-raw
+ :html-postamble ,blog/site-footer-raw
+
+ :html-mathjax-options ,blog/mathjax-options
+#+END_SRC
+
+We generate the sitemap, tell it to save the result to =index.org=, and to list
+anti-chronologically. We also use the previously defined function
+=blog/site-format-entry= to... format entries.
+#+NAME: html3
+#+BEGIN_SRC emacs-lisp :tangle no
+ :makeindex nil
+ :auto-sitemap t
+ :sitemap-filename "index.org"
+ :sitemap-title "Ramblings"
+ :sitemap-style list
+ :sitemap-sort-files anti-chronologically
+ :sitemap-format-entry blog/site-format-entry
+ :with-toc nil
+ :section-numbers nil
+#+END_SRC

@@ -1,0 +1,51 @@
+[icons]
+name = "awesome"
+
+[theme]
+name = "solarized-dark"
+[theme.overrides]
+idle_bg = "#cc241d"
+idle_fg = "#fbf1c7"
+info_bg = "#fbf1c7"
+info_fg = "#3c3836"
+good_bg = "#79740e"
+good_fg = "#fbf1c7"
+warning_bg = "#b57614"
+warning_fg = "#fbf1c7"
+critical_bg = "#9d0006"
+critical_fg = "#fbf1c7"
+separator = ""
+
+#[[block]]
+#block = "music"
+#buttons = ["play", "next"]
+
+[[block]]
+block = "battery"
+
+[[block]]
+block = "maildir"
+interval = 180
+inboxes = ["/home/hazel/var/mail/INBOX"]
+threshold_warning = 1
+threshold_critical = 10
+display_type = "new"
+
+[[block]]
+block = "net"
+device = "wg0"
+speed_up = false
+speed_down = false
+
+[[block]]
+block = "net"
+device = "wlp1s0"
+ssid = true
+signal_strength = true
+ip = false
+speed_up = false
+speed_down = false
+
+[[block]]
+block = "time"
+format = "%Y-%m-%d %I:%M"

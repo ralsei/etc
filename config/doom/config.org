@@ -1,0 +1,306 @@
+#+TITLE:   Hazel's DOOM Emacs configuration
+#+AUTHOR:  Hazel Levine
+#+EMAIL:   rose.hazel@protonmail.ch
+#+STARTUP: nofold
+
+Whee, literate programming, whoo. I get to type words here. These are words on a
+screen. Typing. With /haaaaaaands/.
+
+In this file, we tangle the following:
+#+BEGIN_SRC emacs-lisp
+;;; config.el -*- lexical-binding: t -*-
+#+END_SRC
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+;;; packages.el -*- lexical-binding: t -*-
+#+END_SRC
+
+Any calls to =package!= generally get tangled to =packages.el=, whereas
+everything else goes to =config.el=.
+
+* Introduction
+** =whoami=
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Hazel Levine"
+      user-mail-address "me@qtp2t.club")
+#+END_SRC
+** Custom Elisp
+Load up where Void installs the =maxima-emacs= package, for later:
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "/usr/share/emacs/site-lisp")
+#+END_SRC
+
+Additionally, load the source code powering
+[[https://blog.qtp2t.club][my blog.]]
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file (concat doom-private-dir "blog.org"))
+#+END_SRC
+* UI
+** Fonts
+I've had font rendering issues with Emacs for /years/, ever since I picked it
+up. Namely, Emacs' font always looked just different enough from that of
+whatever terminal emulator I'm using to be annoying. Thankfully, [[https://github.com/rocx/.emacs.d][rocx's emacs
+config]] held the solution by forcing Emacs to use XFT (which is what =urxvt=, my
+terminal emulator, also uses).
+
+I first define a function to create an XFT font string from whatever font, size,
+and options I want:
+#+BEGIN_SRC emacs-lisp
+(defun hzl/xft-font-string (name size &optional properties)
+  ;; https://keithp.com/~keithp/render/Xft.tutorial
+  (concat (format "%s-%d" name size)
+          (when properties
+            (apply #'concat (mapcar (lambda (prop)
+                                      (format ":%s=%s" (car prop) (cdr prop)))
+                                    properties)))))
+#+END_SRC
+
+Across my system, I use [[https://github.com/NerdyPepper/curie][curie]] for anything "system-related" (notifications,
+bars, etc...), [[https://github.com/tonsky/FiraCode][Fira Code]] for monospace (read: programming) font with [[https://www.nerdfonts.com/][Nerd Fonts]]
+patches, and [[https://fonts.adobe.com/fonts/source-sans][Source Sans Pro]] everywhere else. Size 9 seems to be readable on
+both my 1920x1080 external monitor and 1600x900 ThinkPad.
+#+BEGIN_SRC emacs-lisp
+(defvar hzl/monospace-font
+  (hzl/xft-font-string "FiraCode" 10
+                       '((hintstyle . 3)
+                         (hinting . true)
+                         (lcdfilter . 3)
+                         (antialias . true))))
+(defvar hzl/variable-pitch-font
+  (hzl/xft-font-string "Source Sans Pro" 10
+                       '((hintstyle . 3)
+                         (autohint . true)
+                         (lcdfilter . 3)
+                         (antialias . true))))
+
+(setq doom-font hzl/monospace-font)
+(setq doom-variable-pitch-font hzl/variable-pitch-font)
+#+END_SRC
+** Colorscheme
+I use [[http://sourcerer.xero.nu/][xero's sourcerer]] because it's readable, easy on the eyes, and plays well
+with a lot of wallpapers (spoken like a true ricer).
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'doom-gruvbox-light)
+#+END_SRC
+** Everything else
+Enable line numbers, because those are nice, and make 'em relative:
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type 'relative)
+#+END_SRC
+
+Set the startup screen image to something comfy:
+#+BEGIN_SRC emacs-lisp
+(setq fancy-splash-image (concat doom-private-dir "nice.png"))
+#+END_SRC
+* Functionality
+For the most part, DOOM Emacs handles 99% of the things I want to do in a text
+editor and more, which is why this section is pretty brief.
+Pretty much all of the functions I write end up under the "namespace"
+=hzl/whatever=, on the merit that I want to avoid any clashes anywhere.
+** Void package templates
+Void packages are written in a single shell script, so bind that mode to any
+file with the name =template=.
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("/template\\'" . sh-mode))
+#+END_SRC
+** MPDel music player
+I usually use =ncmpcpp= for music, but sometimes when I'm working I use this.
+It's all MPD, so it's not like they conflict.
+
+We grab both MPDel and its Ivy interface:
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! mpdel)
+(package! ivy-mpdel)
+#+END_SRC
+
+We also disable evil in MPDel because its keybindings are contingent on doing
+so.
+#+BEGIN_SRC emacs-lisp
+(use-package! mpdel
+  :config
+  (mpdel-mode)
+  (set-evil-initial-state! '(mpdel-playlist-mode
+                             mpdel-browser-mode
+                             mpdel-song-mode
+                             mpdel-tablist-mode)
+    'emacs))
+#+END_SRC
+* Productivity, papers, etc
+For the boring stuff that's not /quite/ programming.
+** TeXcount
+This is a binding to a Perl script installed via =tlmgr= that... counts words.
+Considering most of the papers I write have hard minimum/maximum limits, this
+comes in pretty useful pretty often.
+#+BEGIN_SRC emacs-lisp
+(defun hzl/texcount ()
+  ;; Counts words in a TeX file.
+  (interactive)
+  (let*
+      ((this-file (buffer-file-name))
+       (enc-str (symbol-name buffer-file-coding-system))
+       (enc-opt
+        (cond
+         ((string-match "utf-8" enc-str) "-utf8")
+         ((string-match "latin" enc-str) "-latin1")
+         ("-encoding=guess")))
+       (word-count
+        (with-output-to-string
+          (with-current-buffer standard-output
+            (call-process "texcount" nil t nil "-0" enc-opt this-file)))))
+    (message word-count)))
+#+END_SRC
+
+...and then, actually bind it to =C-c w= in LaTeX mode.
+#+BEGIN_SRC emacs-lisp
+(add-hook 'LaTeX-mode-hook (lambda () (define-key LaTeX-mode-map "\C-cw" 'hzl/texcount)))
+#+END_SRC
+** AucTeX =latexmk=
+I use =latexmk= to build my LaTeX work because I use external files for my
+bibliographies.
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! auctex-latexmk)
+#+END_SRC
+
+We tell it to run the auto-setup function and use PDFs:
+#+BEGIN_SRC emacs-lisp
+(use-package! auctex-latexmk
+  :config
+  (auctex-latexmk-setup)
+  (setq auctex-latexmk-inherit-TeX-pdf-mode t))
+#+END_SRC
+** Maxima
+I use this CAS in conjunction with Org to take notes in my physics class, as
+well as to take notes on personal projects. It also automatically renders to
+LaTeX, and has a really clean Emacs interface. This isn't installed via
+=use-package!=, it's the =maxima-emacs= package on Void, which is why it's a
+series of autoloads.
+#+BEGIN_SRC emacs-lisp
+(autoload 'maxima-mode "maxima" "Maxima mode" t)
+(autoload 'imaxima "imaxima" "Frontend for maxima with image support" t)
+(autoload 'maxima "maxima" "Maxima interaction" t)
+(autoload 'imath-mode "imath" "Imath mode for math formula input" t)
+#+END_SRC
+
+Bind =M-x imaxima= to use =maxima-mode=:
+#+BEGIN_SRC emacs-lisp
+(setq imaxima-use-maxima-mode-flag t)
+#+END_SRC
+
+And bind the right file extensions:
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
+#+END_SRC
+** =mu4e=
+Since ProtonMail offers an IMAP/SMTP bridge now on Linux, I can use this.
+
+Tell =mu4e= to use =mbsync=. =offlineimap= was the only piece of software on my
+machine binding me to Python 2.
+#+BEGIN_SRC emacs-lisp
+(setq +mu4e-backend 'mbsync)
+#+END_SRC
+
+Tell it where I save my mail:
+#+BEGIN_SRC emacs-lisp
+(setq mu4e-maildir "/home/hazel/var/mail/protonmail"
+      mu4e-attachment-dir "/home/hazel/var/mail/protonmail/attachments")
+#+END_SRC
+
+We tell it how I save my email, too:
+#+BEGIN_SRC emacs-lisp
+(set-email-account! "ProtonMail"
+                    '((mu4e-sent-folder      . "/Sent")
+                      (mu4e-drafts-folder    . "/Drafts")
+                      (mu4e-trash-folder     . "/Trash")
+                      (mu4e-refile-folder    . "/All Mail")
+                      (smtpmail-smtp-user    . "me@qtp2t.club")
+                      (smtpmail-smtp-service . 1025)
+                      (user-mail-address     . "me@qtp2t.club"))
+                    t)
+#+END_SRC
+
+This took me forever to figure out. In order to let Emacs send mail from the
+ProtonMail Bridge's SMTP server, you have to allow its self-signed certificate.
+To get this certificate, you can execute the command:
+#+BEGIN_SRC sh :tangle no
+openssl s_client -connect 127.0.0.1:1025 -starttls smtp 2>/dev/null </dev/null | \
+    sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > out.pem
+#+END_SRC
+Then copy the resulting file =out.pem= to wherever you want, and:
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'gnutls-trustfiles "/home/hazel/var/certs/protonmail_bridge.pem")
+#+END_SRC
+** Org-mode
+Set the bullets to pretty stuff:
+#+BEGIN_SRC emacs-lisp
+(setq org-bullets-bullet-list '("☯" "☰" "☱" "☲" "☳" "☴" "☵" "☶" "☷"))
+(setq org-ellipsis "↝")
+#+END_SRC
+
+Make sure that Org doesn't try to clutter my home directory, and put stuff where
+it's supposed to be:
+#+BEGIN_SRC emacs-lisp
+(setq org-directory "~/usr/doc/org/")
+#+END_SRC
+
+Set DOOM's scratch buffer, available at any point with =SPC x=, to Org, which I
+find useful for taking quick notes:
+#+BEGIN_SRC emacs-lisp
+(setq doom-scratch-buffer-major-mode 'org-mode)
+#+END_SRC
+** PDF Tools
+Not sure if I'll stick to this over Zathura, but it's nice to have everything in
+Emacs. This is bundled with DOOM, so I just tell AucTeX to open stuff up in it.
+#+BEGIN_SRC emacs-lisp
+(setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+#+END_SRC
+* Programming languages
+The cool stuff. Unless it's Java.
+** FRC Mode
+This is a =gradlew= wrapper I hacked together really fast while sitting in my
+physics class not paying attention. The officially sanctioned IDE for FIRST
+Robotics is Visual Studio Code, which I hate with a burning passion for numerous
+reasons.
+
+We grab it directly from my Git, since it's not in ELPA (and probably never will
+be):
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! frc-mode
+  :recipe (:host nil :repo "https://git.qtp2t.club/hazel/frc-mode"))
+#+END_SRC
+
+And tell it to run with all Java files. I'd never willingly write Java outside
+of FRC, so it's fine.
+#+BEGIN_SRC emacs-lisp
+(use-package! frc-mode
+  :hook (java-mode . frc-mode))
+#+END_SRC
+** =rust-analyzer=
+Iunno, man. Sure. Why not. Racer and RLS keep giving me issues.
+#+BEGIN_SRC emacs-lisp
+(setq rustic-lsp-server 'rust-analyzer)
+#+END_SRC
+** vimrc mode
+Hey. HEY. CHILL. The irony is not lost on me. This is actually for editing my
+[[https://tridactyl.xyz][Tridactyl]] config.
+#+BEGIN_SRC emacs-lisp
+(define-generic-mode 'vimrc-generic-mode
+    '()
+    '()
+    '(("^[\t ]*:?\\(!\\|ab\\|map\\|unmap\\)[^\r\n\"]*\"[^\r\n\"]*\\(\"[^\r\n\"]*\"[^\r\n\"]*\\)*$"
+       (0 font-lock-warning-face))
+      ("\\(^\\|[\t ]\\)\\(\".*\\)$")
+      (2 font-lock-comment-face)
+      ("\"\\([^\n\r\"\\]\\|\\.\\)*\""
+       (0 font-lock-string-face)))
+    '("/vimrc\\'" "\\.vim\\(rc\\)?\\'")
+    '((lambda ()
+        (modify-syntax-entry ?\" ".")))
+    "Generic mode for Vim configuration files.")
+#+END_SRC
+** Shen
+A really cool experimental, portable, and typed Lisp. I like it a lot, but I
+don't know much about it on the merit that it's locked behind a paywall of a
+book that I can't afford nor pirate.
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! shen-mode)
+#+END_SRC

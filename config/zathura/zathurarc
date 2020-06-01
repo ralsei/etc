@@ -1,0 +1,31 @@
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+
+set font "FiraCode 9"
+
+set completion-bg "#fbf1c7"
+set completion-fg "#3c3836"
+set completion-group-bg "#fbf1c7"
+set completion-group-fg "#8f6f8f"
+set completion-highlight-bg "#3c3836"
+set completion-highlight-fg "#fbf1c7"
+set recolor-lightcolor "#fbf1c7"
+set recolor-darkcolor "#3c3836"
+set default-bg "#fbf1c7"
+set inputbar-bg "#fbf1c7"
+set inputbar-fg "#3c3836"
+set notification-bg "#fbf1c7"
+set notification-fg "#3c3836"
+set notification-error-bg "aa4450"
+set notification-error-fg "#3c3836"
+set notification-warning-bg "aa4450"
+set notification-warning-fg "#3c3836"
+set statusbar-bg "#fbf1c7"
+set statusbar-fg "#3c3836"
+set index-bg "#fbf1c7"
+set index-fg "#3c3836"
+set index-active-bg "#3c3836"
+set index-active-fg "#fbf1c7"
+set render-loading-bg "#fbf1c7"
+set render-loading-fg "#3c3836"
