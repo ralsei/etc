@@ -23,6 +23,18 @@
         "url": "https://github.com/atotto/clipboard/archive/579379fa8ff8a6d3fa979cec107f8f6d7f8fde90.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "geometry": {
+        "branch": "main",
+        "description": "geometry is a minimal, fully customizable and composable zsh prompt theme",
+        "homepage": "",
+        "owner": "geometry-zsh",
+        "repo": "geometry",
+        "rev": "b02956f9a7ba5c07727c764bdf6c67999a8ecd0d",
+        "sha256": "0k3y3pryi8zz3sz2p0sf0knvi3559dif22byy7bxdj19cwg61nn9",
+        "type": "tarball",
+        "url": "https://github.com/geometry-zsh/geometry/archive/b02956f9a7ba5c07727c764bdf6c67999a8ecd0d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "golinx": {
         "branch": "master",
         "description": "A client for linx-server written in Go",
@@ -93,6 +105,18 @@
         "sha256": "179q0nk7wdxqyrffkda25az83yfvy5kaqasmjg4lkjnrwd522057",
         "type": "tarball",
         "url": "https://github.com/jedahan/zr/archive/d55419d0c310d76c564608bd8c45e0e5a5a04840.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "zsh-syntax-highlighting": {
+        "branch": "master",
+        "description": "Fish shell like syntax highlighting for Zsh.",
+        "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
+        "rev": "00c0c765509538de207173fc787d364eedd48d6b",
+        "sha256": "07carys84ap0s4l7klvnnqaqjfabr281fsbx760hfm6w2x0y1bvm",
+        "type": "tarball",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/00c0c765509538de207173fc787d364eedd48d6b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

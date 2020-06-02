@@ -9,4 +9,6 @@
     # the good shit
     racket
   ];
+
+  programs.zsh.shellAliases = { "sbcl" = "rlwrap sbcl"; };
 }

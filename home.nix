@@ -43,7 +43,6 @@
     # fetchin'
     neofetch
     tokei
-    toilet # heehee hoohoo
 
     # encryptin'
     bitwarden-cli

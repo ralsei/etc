@@ -7,4 +7,9 @@
     cmake
     llvmPackages.libcxx
   ];
+
+  programs.zsh.sessionVariables = {
+    "CC" = "clang";
+    "CXX" = "clang++";
+  };
 }

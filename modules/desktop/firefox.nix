@@ -10,7 +10,7 @@
         isDefault = true;
         id = 0;
         settings = {
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = "true";
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
         userChrome = (builtins.readFile ../../config/firefox/userChrome.css);
       };
@@ -19,7 +19,7 @@
 
   xdg.configFile."tridactyl/tridactylrc".source = ../../config/tridactyl/tridactylrc;
 
-  home.packages = with pkgs; [
-    tridactyl-native
-  ];
+  programs.zsh.sessionVariables = { "BROWSER" = "firefox"; };
+
+  home.packages = with pkgs; [ tridactyl-native ];
 }

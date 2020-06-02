@@ -52,6 +52,7 @@
 
   # the client
   home.file.".ncmpcpp/config".source = ../../config/ncmpcpp/config;
+  programs.zsh.shellAliases = { "m" = "ncmpcpp"; };
 
   home.packages = with pkgs; [
     hazel.ncmpcppWithVisualizer

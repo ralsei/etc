@@ -20,6 +20,13 @@ with import <nixpkgs> {
   # run the emacs daemon
   services.emacs.enable = true;
 
+  programs.zsh = let
+    emacsCmd = "emacsclient -c";
+  in {
+    shellAliases = { "e" = emacsCmd; };
+    sessionVariables = { "EDITOR" = emacsCmd; "VISUAL" = emacsCmd; };
+  };
+
   home.packages = with pkgs; [
     (ripgrep.override { withPCRE2 = true; })
     gnutls
