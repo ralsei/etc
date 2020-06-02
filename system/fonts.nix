@@ -1,17 +1,15 @@
 { config, pkgs, lib, ... }:
 let
   basefonts = (with pkgs; [
-    fira-code
     corefonts
-    font-awesome_4
+    source-code-pro
     source-sans-pro
+    font-awesome_4
   ]);
 
   extrafonts = (with pkgs; [
-    fira-code-symbol
     dejavu_fonts
     noto-fonts
-    powerline-fonts
     roboto
     roboto-slab
     source-code-pro
