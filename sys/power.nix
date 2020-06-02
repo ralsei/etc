@@ -30,4 +30,6 @@
   services.tlp.enable = true;
   powerManagement.powertop.enable = true;
   services.upower.enable = true;
+
+  environment.systemPackages = with pkgs; [ powertop ];
 }

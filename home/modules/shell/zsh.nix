@@ -2,13 +2,13 @@
 {
   programs.zsh = {
     enable = true;
-    initExtra = (builtins.readFile ../../config/zsh/zshrc);
-    profileExtra = (builtins.readFile ../../config/zsh/zprofile);
+    initExtra = (builtins.readFile /etc/nixos/config/zsh/zshrc);
+    profileExtra = (builtins.readFile /etc/nixos/config/zsh/zprofile);
 
     defaultKeymap = "viins";
 
     plugins = let
-      sources = import ../../nix/sources.nix; # pull from niv
+      sources = import /etc/nixos/nix/sources.nix; # pull from niv
     in [
       { name = "zsh-syntax-highlighting";
         src = sources.zsh-syntax-highlighting; }
@@ -57,7 +57,7 @@
     defaultCommand = "fd --type f";
   };
 
-  xdg.configFile."bat/config".source = ../../config/bat/config;
+  xdg.configFile."bat/config".source = /etc/nixos/config/bat/config;
 
   home.packages = with pkgs; [
     nix-zsh-completions

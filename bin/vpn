@@ -1,0 +1,8 @@
+#!/bin/sh
+case $1 in
+    upi) sudo systemctl start wireguard-wg0.path && swaymsg reload ;; # stupid
+    up) sudo systemctl start wireguard-wg0.path ;;
+    down) sudo systemctl stop wireguard-wg0.path ;;
+    status) ip link | rg -q wg0 ;;
+    *) echo "usage: vpn [upi|up|down|status]" ;;
+esac

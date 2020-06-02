@@ -2,11 +2,8 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
-      ./desktop.nix
-      ./fonts.nix
-      ./networking.nix
-      ./power.nix
+      <home-manager/nixos>
+      ./sys
     ];
 
   # systemd-boot
@@ -29,6 +26,7 @@
 
   time.timeZone = "America/Indiana/Indianapolis";
 
+  nixpkgs.overlays = import ./packages;
   nixpkgs.config.allowUnfree = true; # sorry, Stallman
 
   # the bare minimum
@@ -63,6 +61,10 @@
     shell = pkgs.zsh;
   };
 
+  # enable home-manager for my user
+  home-manager.useUserPackages = true; # nixos-rebuild build-vm
+  home-manager.useGlobalPkgs = true;
+  home-manager.users.hazel = import ./home;
+
   system.stateVersion = "20.03";
 }
-

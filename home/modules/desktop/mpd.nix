@@ -29,7 +29,7 @@
 
   # load the mpdscribble config. this is private.
   xdg.configFile."mpdscribble/mpdscribble.conf".source =
-    ../../config/mpdscribble/mpdscribble.conf;
+    /etc/nixos/config/mpdscribble/mpdscribble.conf;
 
   # create a systemd service for mpdscribble
   # https://github.com/MusicPlayerDaemon/mpdscribble/blob/master/systemd/user/mpdscribble.service.in
@@ -51,7 +51,7 @@
   };
 
   # the client
-  home.file.".ncmpcpp/config".source = ../../config/ncmpcpp/config;
+  home.file.".ncmpcpp/config".source = /etc/nixos/config/ncmpcpp/config;
   programs.zsh.shellAliases = { "m" = "ncmpcpp"; };
 
   home.packages = with pkgs; [

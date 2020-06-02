@@ -1,0 +1,228 @@
+#!/bin/sh
+#
+# Name: wl-clipboard-x11
+# Description: A wrapper to use wl-clipboard as a drop-in replacement to X11 clipboard tools
+# Author: Ian Brunelli <ian@brunelli.me>
+# Source: https://github.com/brunelli/wl-clipboard-x11
+# License: GNU General Public License v3+
+
+WL_COPY=$(command -v wl-copy) || exit 1
+WL_PASTE=$(command -v wl-paste) || exit 1
+
+CLIPBOARD_BACKEND="WL_CLIPBOARD"
+CLIPBOARD_COMMAND="${WL_COPY}"
+VERSION=5
+
+calc() { awk "BEGIN{print $*}"; }
+
+parse_xclip_opt() {
+    OPTS="-in -out -filter -rmlastnl -loops -target -display -help -selection -version -silent -quiet -verbose -noutf8"
+    SEL=""
+    for OPT in $OPTS
+    do
+        printf '%s\n' "$OPT" | grep -q "^$1" &&
+        {
+            if [ -z "$SEL" ]
+            then
+                SEL="$OPT"
+            else
+                printf '%s' "$1"
+                return 1
+            fi
+        }
+    done
+    printf '%s' "$SEL"
+}
+
+show_help() {
+    cat << EOF
+Usage:
+    $(basename "$0") [argument...]
+
+A wrapper to use wl-clipboard as a drop-in replacement to X11 clipboard tools.
+
+See wl-clipboard-x11(1) for more details.
+EOF
+}
+
+show_version() {
+    cat << EOF
+wl-clipboard-x11 ${VERSION}
+Copyright (C) 2019 Ian Brunelli
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+===============================================================================
+EOF
+    ${CLIPBOARD_COMMAND} --version
+}
+
+case "$(basename "$0")" in
+    xclip) CLIPBOARD_BACKEND="XCLIP";;
+    xsel) CLIPBOARD_BACKEND="XSEL";;
+esac
+
+APPEND=0
+FOLLOW=0
+TIMEOUT=0
+TIMEOUT_COMMAND=""
+: $((COUNT = $#))
+set -- "${@}" --
+
+if [ "$CLIPBOARD_BACKEND" = "XCLIP" ]
+then
+    while [ $COUNT -ne 0 ]
+    do
+        CMD=$(parse_xclip_opt "$1")
+        case "$CMD" in
+            -in) CLIPBOARD_COMMAND="${WL_COPY}";;
+            -out)
+                CLIPBOARD_COMMAND="${WL_PASTE}"
+                set -- "${@}" "--no-newline"
+                ;;
+            -filter) true;;
+            -rmlastnl) set -- "${@}" "--trim-newline";;
+            -loops)
+                [ $(($2)) -gt 0 ] && set -- "${@}" "--paste-once"
+                : $((COUNT = COUNT - 1))
+                shift 1
+                ;;
+            -target) set -- "${@}" "--type";;
+            -display)
+                : $((COUNT = COUNT -1 ))
+                shift 1
+                ;;
+            -help)
+                show_help
+                exit 0
+                ;;
+            -selection)
+                case "$(printf '%s\n' "$2" | tr '[:upper:]' '[:lower:]')" in
+                    p*) set -- "${@}" "--primary";;
+                    s*) true;;
+                    c*) true;;
+                    *) set -- "${@}" "$2"
+                esac
+                : $((COUNT = COUNT - 1))
+                shift 1
+                ;;
+            -version)
+                show_version
+                exit 0
+                ;;
+            -silent) shift;;
+            -quiet) set -- "${@}" "--foreground";;
+            -verbose) true;;
+            -noutf8) true;;
+            *) set -- "${@}" "$1";;
+        esac
+        : $((COUNT = COUNT - 1))
+        shift 1
+    done
+elif [ "$CLIPBOARD_BACKEND" = "XSEL" ]
+then
+    if [ $COUNT -eq 0 ]
+    then
+        ${WL_PASTE} --primary --no-newline
+        exit
+    fi
+    while [ $COUNT -ne 0 ]
+    do
+        case "$1" in
+            -a|--append) APPEND=1;;
+            -f|--follow) FOLLOW=1;;
+            -i|--input) CLIPBOARD_COMMAND="${WL_COPY}";;
+            -o|--output)
+                CLIPBOARD_COMMAND="${WL_PASTE}"
+                set -- "${@}" "--no-newline"
+                ;;
+            -c|--clear) set -- "${@}" "$1";;
+            -d|--delete) set -- "${@}" "--clear";;
+            -p|--primary) set -- "${@}" "$1";;
+            -s|--secondary) true;;
+            -b|--clipboard) true;;
+            -k|--keep) true;;
+            -x|--exchange) true;;
+            --display)
+                : $((COUNT = COUNT - 1))
+                shift 1
+                ;;
+            -t|--selectionTimeout)
+                TIMEOUT=$(calc "$2/1000")
+                : $((COUNT = COUNT - 1))
+                shift 1
+                ;;
+            -l|--logfile)
+                : $((COUNT = COUNT - 1))
+                shift 1
+                ;;
+            -n|--nodetach) set -- "${@}" "--foreground";;
+            -h|--help)
+                show_help
+                exit 0
+                ;;
+            -[v]*|--verbose) true;;
+            --version)
+                show_version
+                exit 0
+                ;;
+            *) set -- "${@}" "$1";;
+        esac
+        : $((COUNT = COUNT - 1))
+        shift 1
+    done
+else
+    while [ $COUNT -ne 0 ]
+    do
+        case "$1" in
+            -h|--help)
+                show_help
+                exit 0
+                ;;
+            -v|--version)
+                show_version
+                exit 0
+                ;;
+            *) set -- "${@}" "$1";;
+        esac
+        : $((COUNT = COUNT - 1))
+        shift 1
+    done
+fi
+
+shift
+[ "$TIMEOUT" -ne 0 ] && TIMEOUT_COMMAND="timeout $TIMEOUT"
+
+if [ $((FOLLOW)) -ne 0 ]
+then
+    TEMP=$(mktemp -t ${CLIPBOARD_BACKEND}-buffer-XXXXXX)
+
+    trap 'rm -f ${TEMP}; exit' EXIT
+    trap '' INT
+
+    if [ "$TIMEOUT_COMMAND" ]
+    then
+        sleep "${TIMEOUT}"; kill $$ &
+    fi
+
+    while dd count=1 of="${TEMP}" status=none
+    do
+        {
+            [ $((APPEND)) -ne 0 ] && ${WL_PASTE} -n 2> /dev/null
+            cat "${TEMP}"
+        } |
+            ${WL_COPY} "${@}"
+
+        [ -s "${TEMP}" ] || break
+        APPEND=1
+    done
+elif [ $((APPEND)) -ne 0 ]
+then
+    {
+        ${WL_PASTE} -n 2> /dev/null
+        cat
+    } |
+        ${TIMEOUT_COMMAND} "${WL_COPY}" "${@}"
+else
+    ${TIMEOUT_COMMAND} "${CLIPBOARD_COMMAND}" "${@}"
+fi

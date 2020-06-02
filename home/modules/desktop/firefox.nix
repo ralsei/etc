@@ -12,12 +12,12 @@
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
-        userChrome = (builtins.readFile ../../config/firefox/userChrome.css);
+        userChrome = (builtins.readFile /etc/nixos/config/firefox/userChrome.css);
       };
     };
   };
 
-  xdg.configFile."tridactyl/tridactylrc".source = ../../config/tridactyl/tridactylrc;
+  xdg.configFile."tridactyl/tridactylrc".source = /etc/nixos/config/tridactyl/tridactylrc;
 
   programs.zsh.sessionVariables = { "BROWSER" = "firefox"; };
 

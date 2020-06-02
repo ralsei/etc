@@ -5,4 +5,3 @@ config/doom/packages.el
 *.elc
 system/wg-privkey
 config/mpdscribble/*
-

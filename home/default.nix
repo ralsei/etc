@@ -9,16 +9,6 @@
   # let home-manager manage itself
   programs.home-manager.enable = true;
 
-  nixpkgs.overlays = import ./packages;
-  nixpkgs.config = {
-    allowUnfree = true; # sorry, Stallman
-    packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-      };
-    };
-  };
-
   # run the gpg agent
   services.gpg-agent.enable = true;
 

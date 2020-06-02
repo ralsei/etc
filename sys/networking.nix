@@ -18,7 +18,7 @@
       # client ip
       ips = [ "10.66.66.2/24" "fd42:42:42::2/64" ];
 
-      privateKeyFile = "/etc/nixos/wg-privkey"; # go away
+      privateKeyFile = "/etc/wg-privkey"; # go away
 
       peers = [
         {

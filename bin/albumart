@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: $(basename $0) music_file.mp3"
+  exit 1
+fi
+
+FILE="$1"
+
+ALBUM="$( id3v2 --list "$FILE" |sed -n 's/TALB[^:]*: *//p' )"
+ARTIST="$( id3v2 --list "$FILE" |sed -n 's/TPE1[^:]*: *//p' )"
+
+glyrc cover --artist "$ARTIST" --album "$ALBUM" --write 'cover.:format:' --callback 'sxiv :path:'

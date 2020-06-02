@@ -29,5 +29,7 @@
       ncmpcppWithVisualizer = super.ncmpcpp.override { visualizerSupport = true; };
       zr = (callPackage ./zr.nix {});
     };
+
+    unstable = import <nixos-unstable> { inherit config; };
   })
 ]
