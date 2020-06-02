@@ -2,7 +2,7 @@ set window-title-home-tilde true
 set statusbar-basename true
 set selection-clipboard clipboard
 
-set font "FiraCode 9"
+set font "Source Code Pro 9"
 
 set completion-bg "#fbf1c7"
 set completion-fg "#3c3836"

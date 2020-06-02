@@ -1,6 +1,8 @@
 ## ^ THE ABOVE IS AUTO-GENERATED!
 ## hazel's zsh config
 
+. ~/.zprivate
+
 ## CHRIST
 [[ "$TERM" == "dumb" ]] && unsetopt zle && PS1='fuck you $ ' && return
 

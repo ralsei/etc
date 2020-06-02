@@ -60,7 +60,7 @@ patches, and [[https://fonts.adobe.com/fonts/source-sans][Source Sans Pro]] ever
 both my 1920x1080 external monitor and 1600x900 ThinkPad.
 #+BEGIN_SRC emacs-lisp
 (defvar hzl/monospace-font
-  (hzl/xft-font-string "FiraCode" 10
+  (hzl/xft-font-string "Source Code Pro" 10
                        '((hintstyle . 3)
                          (hinting . true)
                          (lcdfilter . 3)

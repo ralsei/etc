@@ -1,16 +1,13 @@
-{ pkgs, stdenv, fetchFromGitHub, rustPlatform }:
+{ sources ? import ../nix/sources.nix
+, pkgs, stdenv, fetchFromGitHub, rustPlatform }:
 rustPlatform.buildRustPackage rec {
   pname = "zr";
   version = "0.9.0";
 
-  src = fetchFromGitHub {
-    owner = "jedahan";
-    repo = pname;
-    rev = version;
-    sha256 = "15jcvasmm60mdhzrxw6dlbxjijh09n297h7wjbf3d3cdk4my2lgd";
-  };
+  src = sources.zr;
 
-  cargoSha256 = "0cp4gpikrr51hif14h4gdrrsxxcrpzl6mg7k5sz7lfpw8mq4f8kc";
+  # not managed by niv
+  cargoSha256 = "0hk7d4m3qjbcjv6b158acxwq9p6k4qa2mnjg8i2gpb8ccvgqdxki";
 
   buildInputs = with pkgs; [ pkgconfig openssl ];
 

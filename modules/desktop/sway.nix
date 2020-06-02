@@ -173,7 +173,7 @@ in
         smartGaps = true;
       };
 
-      fonts = [ "FiraCode 9" ];
+      fonts = [ "Source Code Pro 9" ];
       colors = {
         focused = {
           background = colors.hl;
@@ -203,7 +203,7 @@ in
 
       bars = [{
         position = "top";
-        fonts = [ "FontAwesome" "FiraCode 9" ];
+        fonts = [ "FontAwesome" "Source Code Pro 9" ];
         workspaceNumbers = false;
         trayOutput = "none";
         statusCommand = "i3status-rs ~/etc/config/i3status-rust/status.toml";

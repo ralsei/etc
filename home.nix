@@ -1,4 +1,6 @@
-{ config, pkgs, ... }:
+{ sources ? import ./nix/sources.nix
+, pkgs ? import sources.nixpkgs {}
+, config, ... }:
 {  
   imports = [
     ./modules
@@ -33,8 +35,7 @@
     mpv
 
     # chattin'
-    profanity    # xmpp
-    dino         # also xmpp
+    dino         # xmpp
     riot-desktop # may tricks
     tdesktop     # dash dash dot
     discord      # garbage
@@ -51,7 +52,9 @@
     age
     minisign
     gnupg
+
     hazel.linx-client
+    ghidra-bin # eyes emoji
   ];
 
   home.stateVersion = "20.03";

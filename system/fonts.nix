@@ -8,6 +8,7 @@ let
   ]);
 
   extrafonts = (with pkgs; [
+    fira-code-symbol
     dejavu_fonts
     noto-fonts
     powerline-fonts

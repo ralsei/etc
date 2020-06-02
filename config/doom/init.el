@@ -17,7 +17,6 @@
        nav-flash
        ophints
        (popup +all +defaults)
-       (pretty-code +fira)
        treemacs
        vc-gutter
        vi-tilde-fringe

@@ -3,7 +3,7 @@
   programs.mako = {
     enable = true;
 
-    font = "FiraCode 9";
+    font = "Source Code Pro 9";
 
     backgroundColor = "#cc241d";
     textColor = "#fbf1c7";
