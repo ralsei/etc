@@ -28,10 +28,10 @@
     };
     
     shellAliases = {
-      "ls" = "exa --group-directories-first --git --extended -h";
-      "la" = "exa --group-directories-first --git --extended -a";
-      "l" = "exa --group-directories-first --grid --git --extended -lh";
-      "ll" = "exa --group-directories-first --grid --git --extended -lah";
+      "ls" = "exa --git --extended -h";
+      "la" = "exa --git --extended -a";
+      "l" = "exa --grid --git --extended -lh";
+      "ll" = "exa --grid --git --extended -lah";
       "cat" = "bat";
       "rm" = "rm -ir"; # saved my ass so many times
 

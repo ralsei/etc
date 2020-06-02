@@ -6,6 +6,16 @@
       ./sys
     ];
 
+  # clean up the nix store periodically
+  nix = {
+    autoOptimiseStore = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 10d";
+    };
+  };
+
   # systemd-boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -16,6 +26,8 @@
   # enable ZFS support
   boot.supportedFilesystems = [ "zfs" ];
   services.zfs.trim.enable = true;
+  services.zfs.autoScrub.enable = true;
+  services.zfs.autoSnapshot.enable = true; # enabled on all but /nix
 
   # unfortunately, I live here
   i18n.defaultLocale = "en_US.UTF-8";
@@ -37,9 +49,7 @@
     unzip
     wget 
     vim
-    cryptsetup
     gnumake
-    ripgrep
     mesa
   ];
 

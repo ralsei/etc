@@ -3,7 +3,10 @@
 , config, ... }:
 {  
   imports = [
-    ./modules
+    ./desktop
+    ./lang
+    ./shell
+    ./tools
   ];
 
   # let home-manager manage itself

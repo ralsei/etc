@@ -6,7 +6,13 @@
   
   # it works I guess
   networking.networkmanager.enable = true;
+  networking.resolvconf.enable = true;
 
+  # opennic: https://www.opennic.org
+  networking.nameservers = [ "172.98.193.42" "66.70.228.164"
+                             "128.31.0.72" "147.135.113.37" ];
+
+  # disable global DHCP, but enable it on all my interfaces
   networking.useDHCP = false;
   networking.interfaces.enp3s0f0.useDHCP = true;
   networking.interfaces.enp4s0.useDHCP = true;
