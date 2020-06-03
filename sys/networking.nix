@@ -19,19 +19,19 @@
   networking.interfaces.wlp1s0.useDHCP = true;
 
   # wireguard vpn
-  networking.wireguard.interfaces = {
+  networking.wg-quick.interfaces = {
     wg0 = {
       # client ip
-      ips = [ "10.66.66.2/24" "fd42:42:42::2/64" ];
+      address = [ "10.66.66.2/24" "fd42:42:42::2/64" ];
 
       privateKeyFile = "/etc/wg-privkey"; # go away
 
       peers = [
         {
           # server's public key
-          publicKey = "uPBpljWQp7cuKZ5sOiksuhf+sR/v/mdIjLA00Vluc2Q=";
+          publicKey = "JvRPh0i1JhSh+yBnj5gef5QExK99FpSzf0QTJg4Usk0=";
 
-          # server IP, and forward all traffic through VPN
+          # server IP
           allowedIPs = [ "10.66.66.1/32" "fd42:42:42::1/128"
                          "0.0.0.0/0" "::/0" ];
 

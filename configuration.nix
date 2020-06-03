@@ -57,11 +57,11 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # the true keyboard layout
-  services.interception-tools.enable = true;
-
   # firm ware up daet
   services.fwupd.enable = true;
+
+  # swap caps lock to dual esc+ctrl (!!)
+  services.interception-tools.enable = true;
 
   # unfortunately for everyone, it's me
   users.users.hazel = {

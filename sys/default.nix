@@ -3,7 +3,7 @@
   imports = [
     ./desktop.nix
     ./fonts.nix
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./networking.nix
     ./power.nix
   ];
