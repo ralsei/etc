@@ -64,6 +64,7 @@
   services.interception-tools.enable = true;
 
   # unfortunately for everyone, it's me
+  users.mutableUsers = false; # build-vm
   users.users.hazel = {
     isNormalUser = true;
     uid = 1000;
@@ -72,7 +73,7 @@
   };
 
   # enable home-manager for my user
-  home-manager.useUserPackages = true; # nixos-rebuild build-vm
+  home-manager.useUserPackages = true; # build-vm
   home-manager.useGlobalPkgs = true;
   home-manager.users.hazel = import ./home;
 

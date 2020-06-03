@@ -6,5 +6,6 @@
     ./hardware.nix
     ./networking.nix
     ./power.nix
+    ./private.nix
   ];
 }
