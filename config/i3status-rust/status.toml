@@ -39,7 +39,7 @@ speed_down = false
 
 [[block]]
 block = "net"
-device = "wlp1s0"
+device = "wlan0"
 ssid = true
 signal_strength = true
 ip = false

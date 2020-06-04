@@ -3,9 +3,11 @@
   # hostname and hostid (for zfs)
   networking.hostName = "hyacinth";
   networking.hostId = "3ae0d799";
-  
-  # it works I guess
-  networking.networkmanager.enable = true;
+
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
   networking.resolvconf.enable = true;
 
   # opennic: https://www.opennic.org
@@ -16,7 +18,7 @@
   networking.useDHCP = false;
   networking.interfaces.enp3s0f0.useDHCP = true;
   networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.wlp1s0.useDHCP = true;
+  networking.interfaces.wlan0.useDHCP = true;
 
   # wireguard vpn
   networking.wg-quick.interfaces = {

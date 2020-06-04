@@ -8,7 +8,7 @@
     llvmPackages.libcxx
   ];
 
-  programs.zsh.sessionVariables = {
+  home.sessionVariables = {
     "CC" = "clang";
     "CXX" = "clang++";
   };

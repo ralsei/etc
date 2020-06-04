@@ -1,6 +1,6 @@
-{ sources ? import ./nix/sources.nix
+{ sources ? import /etc/nixos/nix/sources.nix
 , pkgs ? import sources.nixpkgs {}
-, config, ... }:
+, config, lib, ... }:
 {  
   imports = [
     ./desktop

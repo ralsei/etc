@@ -10,7 +10,7 @@
   '';
 
   # install stuff as user
-  programs.zsh.sessionVariables = {
+  home.sessionVariables = {
     "TEXMFHOME" = "~/.texmf";
     "TEXMFVAR" = "~/.texmf-var";
     "TEXMFCONFIG" = "~/.texmf-config";

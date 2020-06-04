@@ -19,7 +19,7 @@
 
   xdg.configFile."tridactyl/tridactylrc".source = /etc/nixos/config/tridactyl/tridactylrc;
 
-  programs.zsh.sessionVariables = { "BROWSER" = "firefox"; };
+  home.sessionVariables = { "BROWSER" = "firefox"; };
 
   home.packages = with pkgs; [ tridactyl-native ];
 }

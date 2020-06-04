@@ -55,7 +55,7 @@ in
 
       output = {
         eDP-1 = {
-          bg = "~/usr/img/papes/desktop/5e497b8f7007061f.png fill";
+          bg = "~/usr/img/papes/desktop/pipes.png fill";
           res = "1920x1080";
           pos = "1920 0";
         };
@@ -206,7 +206,7 @@ in
         fonts = [ "FontAwesome" "Source Code Pro 9" ];
         workspaceNumbers = false;
         trayOutput = "none";
-        statusCommand = "i3status-rs ~/etc/config/i3status-rust/status.toml";
+        statusCommand = "i3status-rs ~/.config/i3status-rs.toml";
         extraConfig = "height 20";
 
         colors = {
@@ -244,6 +244,9 @@ in
       seat * hide_cursor 1500
     '';
   };
+
+  # manage i3status-rs with nix
+  xdg.configFile."i3status-rs.toml".source = /etc/nixos/config/i3status-rust/status.toml;
 
   home.packages = with pkgs; [
     swaylock         # lockscreen
