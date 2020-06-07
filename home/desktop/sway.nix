@@ -62,7 +62,11 @@ with lib; {
       wrapperFeatures.gtk = true; # force wayland
 
       config = {
-        startup = [
+        startup = let
+          mako = config.hazel.mako.enable;
+          mpris = config.hazel.mpd.mpris;
+          proton = config.hazel.mail.enable;
+        in [
           { command = "xrdb -load ~/etc/config/X/Xresources"; always = true; }
           { command = ''
             swayidle -w \
@@ -71,10 +75,16 @@ with lib; {
                    resume 'swaymsg "output * dpms on"' \
               before-sleep 'swaylock -f -c 000000'
           ''; }
-          { command = "mako"; }
-          { command = "mpDris2"; }
-          { command = "protonmail-bridge --no-window"; }
-        ];
+        ] ++
+        (if mako then
+          [ { command = "mako"; } ]
+         else []) ++
+        (if mpris then
+          [ { command = "mpDris2"; } ]
+         else []) ++
+        (if proton then
+          [ { command = "protonmail-bridge --no-window"; }]
+         else []);
 
         output = cfg.outputs;
 

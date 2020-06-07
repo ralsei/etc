@@ -1,7 +1,24 @@
 { config, lib, pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    rustup
-    hazel.crate2nix
-  ];
+let
+  cfg = config.hazel.lang.rust;
+in
+with lib; {
+  options = {
+    hazel.lang.rust = {
+      enable = mkOption {
+        default = false;
+        type = with types; bool;
+        description = ''
+          Support for the Rust programming language.
+        '';
+      };
+    };
+  };
+
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      rustup
+      carnix
+    ];
+  };
 }

@@ -29,5 +29,7 @@
       mpris = true;
       scrobbling = true;
     };
+
+    langSupport.enable = true;
   };
 }

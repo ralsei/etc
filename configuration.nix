@@ -50,16 +50,8 @@
   users.users.hazel = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "audio" "video" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
     shell = pkgs.zsh;
-  };
-
-  # laptop power adjustments
-  hazel.laptopPower = {
-    enable = true;
-    sensors = ''
-      hwmon /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon1/temp1_input
-    '';
   };
 
   # enable home-manager for my user

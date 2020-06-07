@@ -33,5 +33,20 @@ with lib; {
       mako.enable = true;
       sway.enable = true;
     };
+
+    home.packages = with pkgs; [
+      pavucontrol
+      pcmanfm
+      networkmanagerapplet
+      imv
+      mpv
+
+      dino
+      riot-desktop
+      tdesktop
+      discord
+
+      ghidra-bin
+    ];
   };
 }

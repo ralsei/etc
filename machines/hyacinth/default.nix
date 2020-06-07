@@ -29,6 +29,14 @@
   networking.interfaces.enp4s0.useDHCP = true;
   networking.interfaces.wlan0.useDHCP = true;
 
+  # laptop power adjustments
+  hazel.laptopPower = {
+    enable = true;
+    sensors = ''
+      hwmon /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon2/temp1_input
+    '';
+  };
+
   # wireguard vpn ip
   networking.wg-quick.interfaces.wg0.address =
     [ "10.66.66.2/24" "fd42:42:42::2/64" ];
@@ -41,6 +49,7 @@
 
   # sigh
   virtualisation.docker.enable = true;
+  users.users.hazel.extraGroups = [ "docker" ];
 
   # enable home-manager system-specific settings
   home-manager.users.hazel = import ./home.nix;
