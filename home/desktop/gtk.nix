@@ -1,16 +1,33 @@
 { config, lib, pkgs, ... }:
-{
-  gtk.enable = true;
-  gtk.font = {
-    package = pkgs.source-sans-pro;
-    name = "Source Sans Pro 10";
+let
+  cfg = config.hazel.gtkTheme;
+in
+with lib; {
+  options = {
+    hazel.gtkTheme = {
+      enable = mkOption {
+        default = false;
+        type = with types; bool;
+        description = ''
+          Enable GTK+, and my themes.
+        '';
+      };
+    };
   };
-  gtk.iconTheme = {
-    package = pkgs.papirus-icon-theme;
-    name = "Papirus";
-  };
-  gtk.theme = {
-    package = pkgs.ant-theme;
-    name = "Ant";
+
+  config = mkIf cfg.enable {
+    gtk.enable = true;
+    gtk.font = {
+      package = pkgs.source-sans-pro;
+      name = "Source Sans Pro 10";
+    };
+    gtk.iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus";
+    };
+    gtk.theme = {
+      package = pkgs.ant-theme;
+      name = "Ant";
+    };
   };
 }

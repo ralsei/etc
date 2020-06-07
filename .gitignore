@@ -6,3 +6,4 @@ config/doom/packages.el
 system/wg-privkey
 config/mpdscribble/*
 sys/private.nix
+machines/current

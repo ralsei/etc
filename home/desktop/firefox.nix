@@ -1,25 +1,43 @@
 { config, pkgs, lib, ...}:
-{
-  # sipp ramm
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox-wayland;
-
-    profiles = {
-      default = {
-        isDefault = true;
-        id = 0;
-        settings = {
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        };
-        userChrome = (builtins.readFile /etc/nixos/config/firefox/userChrome.css);
+let
+  cfg = config.hazel.firefox;
+in
+with lib; {
+  options = {
+    hazel.firefox = {
+      enable = mkOption {
+        default = false;
+        type = with types; bool;
+        description = ''
+          Enable the Firefox web browser.
+        '';
       };
     };
   };
 
-  xdg.configFile."tridactyl/tridactylrc".source = /etc/nixos/config/tridactyl/tridactylrc;
+  config = {
+    # sipp ramm
+    programs.firefox = {
+      enable = true;
+      package = pkgs.firefox-wayland;
 
-  home.sessionVariables = { "BROWSER" = "firefox"; };
+      profiles = {
+        default = {
+          isDefault = true;
+          id = 0;
+          settings = {
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          };
+          userChrome = (builtins.readFile /etc/nixos/config/firefox/userChrome.css);
+        };
+      };
+    };
 
-  home.packages = with pkgs; [ tridactyl-native ];
+    xdg.configFile."tridactyl/tridactylrc".source =
+      /etc/nixos/config/tridactyl/tridactylrc;
+
+    home.sessionVariables = { "BROWSER" = "firefox"; };
+
+    home.packages = with pkgs; [ tridactyl-native ];
+  };
 }

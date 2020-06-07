@@ -1,10 +1,11 @@
-{ config, pkgs, lib, ... }:
+# configuration.nix -- the glue
+{ config, lib, pkgs, ... }:
 {
-  imports =
-    [
-      <home-manager/nixos>
-      ./sys
-    ];
+  imports = [
+    <home-manager/nixos>
+    ./machines/current
+    ./sys
+  ];
 
   # clean up the nix store periodically
   nix = {
@@ -16,19 +17,6 @@
     };
   };
 
-  # systemd-boot
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # clear /tmp on reboot
-  boot.cleanTmpDir = true;
-
-  # enable ZFS support
-  boot.supportedFilesystems = [ "zfs" ];
-  services.zfs.trim.enable = true;
-  services.zfs.autoScrub.enable = true;
-  services.zfs.autoSnapshot.enable = true; # enabled on all but /nix
-
   # unfortunately, I live here
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -38,7 +26,7 @@
 
   time.timeZone = "America/Indiana/Indianapolis";
 
-  nixpkgs.overlays = import ./packages;
+  nixpkgs.overlays = import /etc/nixos/packages;
   nixpkgs.config.allowUnfree = true; # sorry, Stallman
 
   # the bare minimum
@@ -47,7 +35,7 @@
     git
     killall
     unzip
-    wget 
+    wget
     vim
     gnumake
     mesa
@@ -57,25 +45,26 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # firm ware up daet
-  services.fwupd.enable = true;
-
-  # swap caps lock to dual esc+ctrl (!!)
-  services.interception-tools.enable = true;
-
   # unfortunately for everyone, it's me
   users.mutableUsers = false; # build-vm
   users.users.hazel = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "video" "networkmanager" "docker" ];
     shell = pkgs.zsh;
+  };
+
+  # laptop power adjustments
+  hazel.laptopPower = {
+    enable = true;
+    sensors = ''
+      hwmon /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon1/temp1_input
+    '';
   };
 
   # enable home-manager for my user
   home-manager.useUserPackages = true; # build-vm
   home-manager.useGlobalPkgs = true;
-  home-manager.users.hazel = import ./home;
 
   system.stateVersion = "20.03";
 }

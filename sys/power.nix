@@ -1,20 +1,42 @@
 { config, pkgs, lib, ... }:
-{
-  # fan control modules
-  boot.extraModprobeConfig = ''
-    options thinkpad_acpi fan_control=1 experimental=1
-  '';
+let
+  cfg = config.hazel.laptopPower;
+in
+with lib; {
+  options = {
+    hazel.laptopPower = {
+      enable = mkOption {
+        default = false;
+        type = with types; bool;
+        description = ''
+          Enable power adjustments for laptops.
+        '';
+      };
 
-  # thinkfan fan controller
-  services.thinkfan = {
-    enable = true;
+      sensors = mkOption {
+        default = "";
+        type = with types; str;
+        description = ''
+          The Thinkfan sensors array. Varies based on machine.
+        '';
+      };
+    };
+  };
 
-    # i don't know what these mean but only the first one works
-    sensors = ''
-      tp_thermal /proc/acpi/ibm/thermal (0, 0, 0, 0, 0, 0, 0, 0)
+  config = mkIf cfg.enable {
+    # fan control modules
+    boot.extraModprobeConfig = ''
+      options thinkpad_acpi fan_control=1 experimental=1
     '';
 
-    levels = ''
+    # thinkfan fan controller
+    services.thinkfan = {
+      enable = true;
+
+      # i don't know what these mean but only the first one works
+      sensors = cfg.sensors;
+
+      levels = ''
       (0,     0,      42)
       (1,     40,     47)
       (2,     45,     52)
@@ -24,12 +46,13 @@
       (7,     73,     93)
       (127,   85,     32767)
     '';
+    };
+
+    # battery optimizations
+    services.tlp.enable = true;
+    powerManagement.powertop.enable = true;
+    services.upower.enable = true;
+
+    environment.systemPackages = with pkgs; [ powertop ];
   };
-
-  # battery optimizations
-  services.tlp.enable = true;
-  powerManagement.powertop.enable = true;
-  services.upower.enable = true;
-
-  environment.systemPackages = with pkgs; [ powertop ];
 }

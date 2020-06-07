@@ -1,9 +1,5 @@
 { config, pkgs, lib, ... }:
 {
-  # hostname and hostid (for zfs)
-  networking.hostName = "hyacinth";
-  networking.hostId = "3ae0d799";
-
   networking.networkmanager = {
     enable = true;
     wifi.backend = "iwd";
@@ -14,36 +10,25 @@
   networking.nameservers = [ "172.98.193.42" "66.70.228.164"
                              "128.31.0.72" "147.135.113.37" ];
 
-  # disable global DHCP, but enable it on all my interfaces
-  networking.useDHCP = false;
-  networking.interfaces.enp3s0f0.useDHCP = true;
-  networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.wlan0.useDHCP = true;
+  # wireguard vpn, all but the client IP
+  networking.wg-quick.interfaces.wg0 = {
+    privateKeyFile = "/etc/wg-privkey"; # go away
 
-  # wireguard vpn
-  networking.wg-quick.interfaces = {
-    wg0 = {
-      # client ip
-      address = [ "10.66.66.2/24" "fd42:42:42::2/64" ];
+    peers = [
+      {
+        # server's public key
+        publicKey = "JvRPh0i1JhSh+yBnj5gef5QExK99FpSzf0QTJg4Usk0=";
 
-      privateKeyFile = "/etc/wg-privkey"; # go away
+        # server IP
+        allowedIPs = [ "10.66.66.1/32" "fd42:42:42::1/128"
+                       "0.0.0.0/0" "::/0" ];
 
-      peers = [
-        {
-          # server's public key
-          publicKey = "JvRPh0i1JhSh+yBnj5gef5QExK99FpSzf0QTJg4Usk0=";
+        # the server
+        endpoint = "45.79.140.85:51820";
 
-          # server IP
-          allowedIPs = [ "10.66.66.1/32" "fd42:42:42::1/128"
-                         "0.0.0.0/0" "::/0" ];
-
-          # the server
-          endpoint = "45.79.140.85:51820";
-
-          # keep the NAT alive
-          persistentKeepalive = 25;
-        }
-      ];
-    };
+        # keep the NAT alive
+        persistentKeepalive = 25;
+      }
+    ];
   };
 }
