@@ -1,4 +1,4 @@
-# hyacinth -- lenovo thinkpad t495
+# virtual -- hyacinth clone
 { config, lib, pkgs, ... }:
 
 {

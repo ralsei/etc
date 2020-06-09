@@ -29,11 +29,17 @@
   networking.interfaces.enp4s0.useDHCP = true;
   networking.interfaces.wlan0.useDHCP = true;
 
+  # automount USB devices
+  hazel.autoMount.enable = true;
+
+  # enable sway (also need to enable it with home-manager)
+  hazel.graphicalSession.enable = true;
+
   # laptop power adjustments
   hazel.laptopPower = {
     enable = true;
     sensors = ''
-      hwmon /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon2/temp1_input
+      hwmon /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon3/temp1_input
     '';
   };
 

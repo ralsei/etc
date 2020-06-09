@@ -3,12 +3,10 @@ let
   cfg = config.hazel.graphicalSession;
 in
 with lib; {
-  imports = [ <home-manager/nixos> ];
-
   options = {
     hazel.graphicalSession = {
       enable = mkOption {
-        default = home-manager.users.hazel.config.hazel.sway.enable;
+        default = false;
         type = with types; bool;
         description = ''
           Who cares?

@@ -8,6 +8,7 @@ with lib; {
     ./dirs.nix
     ./firefox.nix
     ./gtk.nix
+    ./i3status-rust.nix
     ./mako.nix
     ./sway.nix
     ./zathura.nix
@@ -30,6 +31,7 @@ with lib; {
       alacritty.enable = true;
       firefox.enable = true;
       gtkTheme.enable = true;
+      i3status-rust.enable = true;
       mako.enable = true;
       sway.enable = true;
     };

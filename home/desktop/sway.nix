@@ -228,7 +228,7 @@ with lib; {
           fonts = [ "FontAwesome" "Source Code Pro 9" ];
           workspaceNumbers = false;
           trayOutput = "none";
-          statusCommand = "i3status-rs ~/.config/i3status-rs.toml";
+          statusCommand = "i3status-rs ~/.config/i3status-rust/status.toml";
           extraConfig = "height 20";
 
           colors = {
