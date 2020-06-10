@@ -42,6 +42,7 @@ with lib; {
       networkmanagerapplet
       imv
       mpv
+      nextcloud-client
 
       dino
       riot-desktop
@@ -50,5 +51,7 @@ with lib; {
 
       ghidra-bin
     ];
+
+    services.nextcloud-client.enable = true;
   };
 }

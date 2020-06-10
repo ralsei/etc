@@ -56,7 +56,19 @@
   services.fwupd.enable = true;
 
   # swap caps lock to dual esc+ctrl (!!)
-  services.interception-tools.enable = true;
+  services.interception-tools = {
+    enable = true;
+
+    # sudo uinput -p -d /dev/input/event0
+    # only works on laptop keyboard, since i need esc on hhkb
+    udevmonConfig = ''
+      - JOB: "intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
+        DEVICE:
+          NAME: AT Translated Set 2 keyboard
+          EVENTS:
+            EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+    '';
+  };
 
   # sigh
   virtualisation.docker.enable = true;
