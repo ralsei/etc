@@ -11,6 +11,18 @@
         "url": "https://github.com/tudurom/bw-git-helper/archive/d68a8db52a38061a0c9a60b3f29d81413d2e4425.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "cachix": {
+        "branch": "master",
+        "description": "Command line client for Nix binary cache hosting:",
+        "homepage": "https://cachix.org",
+        "owner": "cachix",
+        "repo": "cachix",
+        "rev": "ce05456f22c217b580cd1292879b6143ddebe9e2",
+        "sha256": "1ibhgk9c3pq167amn4963s6i1s2zaba6mc23xzxqwjv3agp36wk8",
+        "type": "tarball",
+        "url": "https://github.com/cachix/cachix/archive/ce05456f22c217b580cd1292879b6143ddebe9e2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "clipboard": {
         "branch": "master",
         "description": "clipboard for golang",
@@ -21,6 +33,18 @@
         "sha256": "0rsz70hqk8abk8isidvm7in9smhiazywjvx4f1q91annl2glav2g",
         "type": "tarball",
         "url": "https://github.com/atotto/clipboard/archive/579379fa8ff8a6d3fa979cec107f8f6d7f8fde90.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "emacs-overlay": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "0235952af988745af417aeec2789550abb761c2b",
+        "sha256": "04gjpkl17ifhv2kfspd5qas6d79zgplz49vj4xigvnx1zi8cs6ck",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/0235952af988745af417aeec2789550abb761c2b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "geometry": {

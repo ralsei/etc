@@ -1,9 +1,15 @@
 { config, lib, pkgs, ... }:
-with import <nixpkgs> {
+with import <nixos-unstable> {
   # grab the emacs overlay
   overlays = [
-    (import (builtins.fetchTarball {
-      url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+    (let
+      sources = import /etc/nixos/nix/sources.nix;
+      fetchGitHubArchive = { owner, repo, rev, sha256 }: builtins.fetchTarball {
+        url = "https://github.com/${owner}/${repo}/archive/${rev}.tar.gz";
+        inherit sha256;
+      };
+    in import (fetchGitHubArchive {
+      inherit (sources.emacs-overlay) owner repo rev sha256;
     }))
   ];
 };
@@ -36,9 +42,9 @@ with lib; {
     programs.emacs = {
       enable = true;
       extraPackages = epkgs: [
-        epkgs.emacs-libvterm   # doom vterm module
+        epkgs.emacs-libvterm # doom vterm module
       ];
-      package = emacsUnstable; # emacs 27.0.91
+      package = emacsGcc;
     };
 
     # run the emacs daemon
@@ -61,6 +67,7 @@ with lib; {
       aspellDicts.en-computers
       aspellDicts.en-science
       sqlite
+      unstable.libgccjit
     ];
   };
 }

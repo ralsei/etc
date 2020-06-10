@@ -8,12 +8,16 @@
     enabled=True
   '';
 
-  xdg.userDirs.desktop = "\$HOME/.cache/junk";
+  xdg.userDirs.desktop = "/home/hazel/.cache/junk";
   xdg.userDirs.documents = "$\HOME/usr/doc";
-  xdg.userDirs.download = "\$HOME/tmp";
-  xdg.userDirs.music = "\$HOME/usr/music";
-  xdg.userDirs.pictures = "\$HOME/usr/img";
-  xdg.userDirs.publicShare = "\$HOME/.cache/junk/pub";
-  xdg.userDirs.templates = "\$HOME/.cache/junk/tmp";
-  xdg.userDirs.videos = "\$HOME/usr/video";
+  xdg.userDirs.download = "/home/hazel/tmp";
+  xdg.userDirs.music = "/home/hazel/usr/music";
+  xdg.userDirs.pictures = "/home/hazel/usr/img";
+  xdg.userDirs.publicShare = "/home/hazel/.cache/junk/pub";
+  xdg.userDirs.templates = "/home/hazel/.cache/junk/tmp";
+  xdg.userDirs.videos = "/home/hazel/usr/video";
+
+  home.packages = with pkgs; [
+    xdg_utils
+  ];
 }

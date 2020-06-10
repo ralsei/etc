@@ -1,3 +1,6 @@
+let
+  sources = import ../nix/sources.nix;
+in
 [
   (self: super: with super; {
     hazel = {
@@ -5,10 +8,7 @@
       linx-client = (callPackage ./linx-client.nix {});
       zr = (callPackage ./zr.nix {});
 
-      crate2nix =
-        (callPackage
-          (builtins.fetchTarball
-            "https://github.com/kolloch/crate2nix/tarball/0.8.0") {});
+      cachix = import sources.cachix;
 
       jupyterWithBatteries = super.jupyter.override {
         definitions = {
