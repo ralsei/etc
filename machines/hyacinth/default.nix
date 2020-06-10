@@ -44,8 +44,13 @@
   };
 
   # wireguard vpn ip
-  networking.wg-quick.interfaces.wg0.address =
-    [ "10.66.66.2/24" "fd42:42:42::2/64" ];
+  hazel.wireguard = {
+    enable = true;
+    addresses = [ "10.66.66.2/24" "fd42:42:42::2/64" ];
+  };
+
+  # enable hackthebox vpns
+  hazel.hackTheBox.enable = true;
 
   # firm ware up daet
   services.fwupd.enable = true;
