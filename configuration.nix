@@ -3,6 +3,8 @@
 {
   imports = [
     <home-manager/nixos>
+    ./cachix.nix
+
     ./machines/current
     ./sys
   ];
@@ -15,6 +17,7 @@
       dates = "weekly";
       options = "--delete-older-than 10d";
     };
+    trustedUsers = [ "root" "hazel" ];
   };
 
   # unfortunately, I live here
@@ -39,6 +42,7 @@
     vim
     gnumake
     mesa
+    hazel.cachix
   ];
 
   # beep boop? boop beep.
