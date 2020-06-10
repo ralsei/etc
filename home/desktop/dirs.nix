@@ -3,13 +3,8 @@
   xdg.enable = true;
   xdg.userDirs.enable = true;
 
-  # don't know why I have to do this
-  xdg.configFile."user-dirs.conf".text = lib.mkForce ''
-    enabled=True
-  '';
-
   xdg.userDirs.desktop = "/home/hazel/.cache/junk";
-  xdg.userDirs.documents = "$\HOME/usr/doc";
+  xdg.userDirs.documents = "/home/hazel/usr/doc";
   xdg.userDirs.download = "/home/hazel/tmp";
   xdg.userDirs.music = "/home/hazel/usr/music";
   xdg.userDirs.pictures = "/home/hazel/usr/img";

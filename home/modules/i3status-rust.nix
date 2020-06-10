@@ -111,9 +111,12 @@ in {
   config = mkIf cfg.enable {
     home.packages = [ pkgs.i3status-rust ];
 
-    xdg.configFile."i3status-rust/status.toml".text = concatStringsSep "\n"
-      ([ (formatSetting "icons" cfg.icons.name cfg.icons.overrides)
-         (formatSetting "theme" cfg.theme.name cfg.theme.overrides)]
-      ++ map formatBlock cfg.blocks);
+    xdg.configFile."i3status-rust/status.toml" = {
+      text = concatStringsSep "\n"
+        ([ (formatSetting "icons" cfg.icons.name cfg.icons.overrides)
+           (formatSetting "theme" cfg.theme.name cfg.theme.overrides) ]
+         ++ map formatBlock cfg.blocks);
+      onChange = "swaymsg reload";
+    };
   };
 }
