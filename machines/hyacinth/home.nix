@@ -15,7 +15,7 @@
         pos = "1920 0";
       };
       HDMI-A-1 = {
-        bg = "~/usr/img/papes/desktop/0bb88c9800785d9b.jpg fill";
+        bg = "~/usr/img/papes/desktop/5e497b8f7007061f.png fill";
         res = "1920x1080";
         pos = "0 0";
       };

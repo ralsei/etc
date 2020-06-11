@@ -11,6 +11,18 @@
         "url": "https://github.com/tudurom/bw-git-helper/archive/d68a8db52a38061a0c9a60b3f29d81413d2e4425.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "cached-nix-shell": {
+        "branch": "master",
+        "description": "Instant startup time for nix-shell",
+        "homepage": "",
+        "owner": "xzfc",
+        "repo": "cached-nix-shell",
+        "rev": "4db8af0c653620e192c59d7d8ed227e4ffd8f54c",
+        "sha256": "1ni671wr2lrvyz6myaz3v4llrjvq4jc1ygw1m7rvnadzyf3va3lw",
+        "type": "tarball",
+        "url": "https://github.com/xzfc/cached-nix-shell/archive/4db8af0c653620e192c59d7d8ed227e4ffd8f54c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "cachix": {
         "branch": "master",
         "description": "Command line client for Nix binary cache hosting:",

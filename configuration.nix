@@ -41,8 +41,9 @@
     wget
     vim
     gnumake
-    mesa
+
     hazel.cachix
+    hazel.cached-nix-shell
   ];
 
   # beep boop? boop beep.
