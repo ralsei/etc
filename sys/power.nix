@@ -13,40 +13,40 @@ with lib; {
         '';
       };
 
-      sensors = mkOption {
-        default = "";
-        type = with types; str;
-        description = ''
-          The Thinkfan sensors array. Varies based on machine.
-        '';
-      };
+      # sensors = mkOption {
+      #   default = "";
+      #   type = with types; str;
+      #   description = ''
+      #     The Thinkfan sensors array. Varies based on machine.
+      #   '';
+      # };
     };
   };
 
   config = mkIf cfg.enable {
     # fan control modules
-    boot.extraModprobeConfig = ''
-      options thinkpad_acpi fan_control=1 experimental=1
-    '';
+    # boot.extraModprobeConfig = ''
+    #   options thinkpad_acpi fan_control=1 experimental=1
+    # '';
 
-    # thinkfan fan controller
-    services.thinkfan = {
-      enable = true;
+    # # thinkfan fan controller
+    # services.thinkfan = {
+    #   enable = true;
 
-      # i don't know what these mean but only the first one works
-      sensors = cfg.sensors;
+    #   # i don't know what these mean but only the first one works
+    #   sensors = cfg.sensors;
 
-      levels = ''
-      (0,     0,      42)
-      (1,     40,     47)
-      (2,     45,     52)
-      (3,     50,     57)
-      (4,     55,     62)
-      (5,     60,     77)
-      (7,     73,     93)
-      (127,   85,     32767)
-    '';
-    };
+    #   levels = ''
+    #   (0,     0,      42)
+    #   (1,     40,     47)
+    #   (2,     45,     52)
+    #   (3,     50,     57)
+    #   (4,     55,     62)
+    #   (5,     60,     77)
+    #   (7,     73,     93)
+    #   (127,   85,     32767)
+    # '';
+    # };
 
     # battery optimizations
     services.tlp.enable = true;

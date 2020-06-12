@@ -24,8 +24,26 @@ setopt HIST_IGNORE_ALL_DUPS
 # remove path separator from WORDCHARS
 WORDCHARS=${WORDCHARS//[\/]}
 
-## PLUGINS
-GEOMETRY_PROMPT=(geometry_status geometry_path)
+## PROMPT
+geometry_status_with_nix() {
+    local root; [[ $UID = 0 || $EUID = 0 ]] && root=true || root=false
+    local error; (( $GEOMETRY[LAST_STATUS] )) && error=true || error=false
+    local nix; [[ ! -z "$IN_NIX_SHELL" ]] && nix=true || nix=false
+
+    local color=${GEOMETRY_STATUS_COLOR:-default}
+
+    if ( $error ); then
+        color=${GEOMETRY_STATUS_COLOR_ERROR:-red};
+    fi
+
+    ( $nix ) && ansi $color ${GEOMETRY_STATUS_SYMBOL_NIX:=◆} && return
+    ( $root && $error ) && ansi $color ${GEOMETRY_STATUS_SYMBOL_ROOT_ERROR:=▽} && return
+    ( $root ) && ansi $color ${GEOMETRY_STATUS_SYMBOL_ROOT:-▼} && return
+    ( $error ) && ansi $color ${GEOMETRY_STATUS_SYMBOL_ERROR:-△} && return
+    ansi $color ${GEOMETRY_STATUS_SYMBOL:-▲}
+}
+
+GEOMETRY_PROMPT=(geometry_status_with_nix geometry_path)
 GEOMETRY_RPROMPT=(geometry_exitcode geometry_git)
 
 ## ENVIRONMENT
@@ -55,7 +73,7 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 ## FUNCTIONS
-function man() {
+man() {
     env \
         LESS_TERMCAP_md=$(tput bold; tput setaf 4) \
         LESS_TERMCAP_me=$(tput sgr0) \

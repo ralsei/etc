@@ -274,11 +274,6 @@ of FRC, so it's fine.
 (use-package! frc-mode
   :hook (java-mode . frc-mode))
 #+END_SRC
-** =rust-analyzer=
-Iunno, man. Sure. Why not. Racer and RLS keep giving me issues.
-#+BEGIN_SRC emacs-lisp
-(setq rustic-lsp-server 'rust-analyzer)
-#+END_SRC
 ** vimrc mode
 Hey. HEY. CHILL. The irony is not lost on me. This is actually for editing my
 [[https://tridactyl.xyz][Tridactyl]] config.

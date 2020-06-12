@@ -48,7 +48,9 @@ with lib; {
       riot-desktop
       tdesktop
       discord
+      mumble
 
+      gimp
       ghidra-bin
     ];
 
