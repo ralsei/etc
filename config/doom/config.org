@@ -204,6 +204,14 @@ Tell it where I save my mail:
       mu4e-attachment-dir "/home/hazel/var/mail/protonmail/attachments")
 #+END_SRC
 
+Set a few QoL fixes, because mu4e's default viewer kinda sucks:
+#+BEGIN_SRC emacs-lisp
+(setq mu4e-view-use-gnus t)
+
+(when (fboundp 'imagemagick-register-types)
+  (imagemagick-register-types))
+#+END_SRC
+
 We tell it how I save my email, too:
 #+BEGIN_SRC emacs-lisp
 (set-email-account! "ProtonMail"
@@ -213,20 +221,9 @@ We tell it how I save my email, too:
                       (mu4e-refile-folder    . "/All Mail")
                       (smtpmail-smtp-user    . "me@qtp2t.club")
                       (smtpmail-smtp-service . 1025)
+                      (smtpmail-stream-type  . nil)
                       (user-mail-address     . "me@qtp2t.club"))
                     t)
-#+END_SRC
-
-This took me forever to figure out. In order to let Emacs send mail from the
-ProtonMail Bridge's SMTP server, you have to allow its self-signed certificate.
-To get this certificate, you can execute the command:
-#+BEGIN_SRC sh :tangle no
-openssl s_client -connect 127.0.0.1:1025 -starttls smtp 2>/dev/null </dev/null | \
-    sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > out.pem
-#+END_SRC
-Then copy the resulting file =out.pem= to wherever you want, and:
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'gnutls-trustfiles "/home/hazel/var/certs/protonmail_bridge.pem")
 #+END_SRC
 ** Org-mode
 Set the bullets to pretty stuff:

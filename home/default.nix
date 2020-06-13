@@ -21,8 +21,11 @@
     pass-wayland
     age
     minisign
+    gnupg
     hazel.linx-client
   ];
+
+  systemd.user.startServices = true; # yes I want them to run
 
   home.stateVersion = "20.03";
 }

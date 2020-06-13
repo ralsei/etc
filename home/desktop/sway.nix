@@ -64,8 +64,6 @@ with lib; {
       config = {
         startup = let
           mako = config.hazel.mako.enable;
-          mpris = config.hazel.mpd.mpris;
-          proton = config.hazel.mail.enable;
         in [
           { command = "xrdb -load ~/etc/config/X/Xresources"; always = true; }
           { command = ''
@@ -78,12 +76,6 @@ with lib; {
         ] ++
         (if mako then
           [ { command = "mako"; } ]
-         else []) ++
-        (if mpris then
-          [ { command = "mpDris2"; } ]
-         else []) ++
-        (if proton then
-          [ { command = "protonmail-bridge --no-window"; }]
          else []);
 
         output = cfg.outputs;
