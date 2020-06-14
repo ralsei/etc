@@ -20,6 +20,7 @@ with lib; {
       clang
       bear
       gdb
+      pwndbg
       cmake
       llvmPackages.libcxx
     ];

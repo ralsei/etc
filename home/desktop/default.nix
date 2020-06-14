@@ -34,6 +34,7 @@ with lib; {
       i3status-rust.enable = true;
       mako.enable = true;
       sway.enable = true;
+      zathura.enable = true;
     };
 
     home.packages = with pkgs; [

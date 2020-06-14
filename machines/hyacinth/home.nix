@@ -32,4 +32,6 @@
 
     langSupport.enable = true;
   };
+
+  home.packages = with pkgs; [ steam-run ];
 }
