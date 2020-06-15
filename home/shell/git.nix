@@ -9,6 +9,8 @@
         helper = "!bw-git-helper $@";
         useHttpPath = true;
       };
+     
+      init.templateDir = "~/.config/git/template";
     };
   };
 

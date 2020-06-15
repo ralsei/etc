@@ -12,12 +12,12 @@
       eDP-1 = {
         bg = "~/usr/img/papes/desktop/NES.jpg fill";
         res = "1920x1080";
-        pos = "1920 0";
+        # pos = "1920 0";
       };
       HDMI-A-1 = {
         bg = "~/usr/img/papes/desktop/pipes.png fill";
         res = "1920x1080";
-        pos = "0 0";
+        # pos = "0 0";
       };
     };
 
@@ -33,5 +33,8 @@
     langSupport.enable = true;
   };
 
-  home.packages = with pkgs; [ steam-run ];
+  # gamer
+  home.packages = with pkgs; [ 
+    steam-run
+  ];
 }
