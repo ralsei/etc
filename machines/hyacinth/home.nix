@@ -36,5 +36,6 @@
   # gamer
   home.packages = with pkgs; [ 
     steam-run
+    minecraft
   ];
 }

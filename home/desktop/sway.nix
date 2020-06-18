@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  cfg = config.hazel.sway;
-in
+  cfg = config.hazel.sway; in
 with lib; {
   options = {
     hazel.sway = {
@@ -30,6 +29,7 @@ with lib; {
         bg = "#fbf1c7";
         fg = "#3c3837";
         hl = "#cc241d";
+        mut = "#d5c4a1";
         blk = "#3c3836";
         urg = "#d79921";
         nil = "#000000";
@@ -49,6 +49,12 @@ with lib; {
       systemMode = "system: (x) exit (l) lock (h) suspend (r) reboot (s) shutdown (i) reload";
       launchMode = "launch: (b) firefox (e) emacs (f) files (m) ncmpcpp";
 
+      locker = ''swaylock -S -f --clock --font "Source Code Pro" \
+                   --effect-blur 5x5 --timestr "%I:%M" \
+                   --text-color "${colors.fg}" --ring-color "${colors.mut}" \
+                   --inside-color "${colors.bg}" --line-color "${colors.fg}" \
+                   --key-hl-color "${colors.hl}" --bs-hl-color "${colors.urg}"'';
+
       # create a workspace bind from one workspace
       genWSBind = with builtins; (ws: let
         modifier = config.wayland.windowManager.sway.config.modifier;
@@ -64,18 +70,22 @@ with lib; {
       config = {
         startup = let
           mako = config.hazel.mako.enable;
+          mpris = config.hazel.mpd.mpris;
         in [
           { command = "xrdb -load ~/etc/config/X/Xresources"; always = true; }
           { command = ''
             swayidle -w \
-              timeout 300 'swaylock -f -c 000000' \
+              timeout 300 '${locker}' \
               timeout 600 'swaymsg "output * dpms off"' \
                    resume 'swaymsg "output * dpms on"' \
-              before-sleep 'swaylock -f -c 000000'
+              before-sleep '${locker}'
           ''; }
         ] ++
         (if mako then
           [ { command = "mako"; } ]
+         else []) ++
+        (if mpris then
+          [ { command = "mpDris2"; } ] # required because mako doesn't load...
          else []);
 
         output = cfg.outputs;
@@ -83,7 +93,7 @@ with lib; {
         # ACKSHUALLY, these are useless, but I'm putting them here anyway
         modifier = "Mod4";
         terminal = "alacritty";
-        menu = "berun"; # script
+        menu = "wofi -S drun"; # script
 
         # not doing mkOptionDefault because eh. too much is custom.
         # execs are in PATH, so I shouldn't have to specify ${pkgs.package}...
@@ -110,7 +120,7 @@ with lib; {
           "${modifier}+Shift+Print" = "exec scrot fullup";
 
           # important
-          "${modifier}+Space"   = "exec j4-dmenu-desktop --dmenu=${menu}";
+          "${modifier}+Space"   = "exec ${menu}";
           "${modifier}+Return"  = "exec ${term}";
           "${modifier}+q"       = "kill";
           "${modifier}+Shift+r" = "reload";
@@ -162,14 +172,14 @@ with lib; {
             "b" = ''exec firefox; mode "default"'';
             "e" = ''exec emacsclient -c; mode "default"'';
             "m" = ''exec alacritty -e ncmpcpp; mode "default"'';
-            "f" = ''exec pcmanfm; mode "default"'';
+            "f" = ''exec caja; mode "default"'';
 
             "Return" = ''mode "default"'';
             "Escape" = ''mode "default"'';
           };
 
           "${systemMode}" = {
-            "l" = ''exec swaylock -f -c 000000; mode "default";'';
+            "l" = ''exec ${locker}; mode "default";'';
             "h" = "exec systemctl suspend";
             "r" = "exec systemctl reboot";
             "s" = "exec systemctl shutdown";
@@ -259,27 +269,21 @@ with lib; {
       '';
     };
 
-    # manage i3status-rs with nix
-    xdg.configFile."i3status-rs.toml".source = /etc/nixos/config/i3status-rust/status.toml;
-
     home.packages = with pkgs; [
-      swaylock         # lockscreen
-      swayidle         # locker
-      xwayland         # xorg compatibility
+      unstable.swaylock-effects # lockscreen
+      swayidle                  # locker
+      xwayland                  # xorg compatibility
+      i3status-rust             # bar
 
-      grim             # screenshots
-      slurp            # screenshot select
-      wl-clipboard     # control c control v
+      grim                      # screenshots
+      slurp                     # screenshot select
+      wl-clipboard              # control c control v
 
-      bemenu           # app launcher
-      j4-dmenu-desktop # app launcher, for real
-      i3status-rust    # bar
-
-      jq               # processing sway's data
-      ponymix          # volume scripts
-      brightnessctl    # take a wild guess
-      xorg.xrdb        # xresources
-      xrq              # for a script
+      jq                        # processing sway's data
+      ponymix                   # volume scripts
+      brightnessctl             # take a wild guess
+      xorg.xrdb                 # xresources
+      xrq                       # for a script
     ];
   };
 }

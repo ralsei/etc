@@ -13,23 +13,23 @@ with lib; {
         '';
       };
 
-      # sensors = mkOption {
-      #   default = "";
-      #   type = with types; str;
-      #   description = ''
-      #     The Thinkfan sensors array. Varies based on machine.
-      #   '';
-      # };
+      sensors = mkOption {
+        default = "";
+        type = with types; str;
+        description = ''
+          The Thinkfan sensors array. Varies based on machine.
+        '';
+      };
     };
   };
 
   config = mkIf cfg.enable {
     # fan control modules
-    # boot.extraModprobeConfig = ''
-    #   options thinkpad_acpi fan_control=1 experimental=1
-    # '';
+    boot.extraModprobeConfig = ''
+      options thinkpad_acpi fan_control=1 experimental=1
+    '';
 
-    # # thinkfan fan controller
+    # thinkfan fan controller
     # services.thinkfan = {
     #   enable = true;
 

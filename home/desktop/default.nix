@@ -11,6 +11,7 @@ with lib; {
     ./i3status-rust.nix
     ./mako.nix
     ./sway.nix
+    ./wofi.nix
     ./zathura.nix
   ];
 
@@ -39,7 +40,7 @@ with lib; {
 
     home.packages = with pkgs; [
       pavucontrol
-      pcmanfm
+      mate.caja
       networkmanagerapplet
       imv
       mpv
@@ -55,6 +56,7 @@ with lib; {
       ghidra-bin
     ];
 
+    services.gnome-keyring.enable = true;
     services.nextcloud-client.enable = true;
   };
 }

@@ -34,10 +34,7 @@ with lib; {
           port = 1143;
           tls.enable = false;
         };
-        mbsync = {
-          enable = true;
-          create = "both";
-        };
+        offlineimap.enable = true;
 
         smtp = {
           host = "127.0.0.1";
@@ -47,12 +44,7 @@ with lib; {
       };
     };
 
-    services.mbsync = {
-      enable = true;
-      frequency = "*-*-* *:0,30:00";
-    };
-
-    programs.mbsync.enable = true;
+    programs.offlineimap.enable = true;
 
     systemd.user.services.hydroxide = {
       Unit = {

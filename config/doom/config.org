@@ -190,12 +190,9 @@ And bind the right file extensions:
 (add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
 #+END_SRC
 ** =mu4e=
-Since ProtonMail offers an IMAP/SMTP bridge now on Linux, I can use this.
-
-Tell =mu4e= to use =mbsync=. =offlineimap= was the only piece of software on my
-machine binding me to Python 2.
+Tell =mu4e= to use =offlineimap=. =mbsync= doesn't behave with Hydroxide.
 #+BEGIN_SRC emacs-lisp
-(setq +mu4e-backend 'mbsync)
+(setq +mu4e-backend 'offlineimap)
 #+END_SRC
 
 Tell it where I save my mail:
@@ -246,7 +243,7 @@ find useful for taking quick notes:
 ** PDF Tools
 Not sure if I'll stick to this over Zathura, but it's nice to have everything in
 Emacs. This is bundled with DOOM, so I just tell AucTeX to open stuff up in it.
-#+BEGIN_SRC emacs-lisp
+j#+BEGIN_SRC emacs-lisp
 (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 #+END_SRC

@@ -36,7 +36,12 @@
   hazel.graphicalSession.enable = true;
 
   # laptop power adjustments
-  hazel.laptopPower.enable = true;
+  hazel.laptopPower = {
+    enable = true;
+    sensors = ''
+      hwmon /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon3/temp1_input
+    '';
+  };
 
   # wireguard vpn ip
   hazel.wireguard = {
