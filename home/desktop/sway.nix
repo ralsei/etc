@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let
-  cfg = config.hazel.sway; in
+  cfg = config.hazel.sway;
+in
 with lib; {
   options = {
     hazel.sway = {
@@ -17,6 +18,13 @@ with lib; {
         type = with types; attrsOf (attrsOf str);
         description = ''
           The attribute set defining the outputs.
+        '';
+      };
+
+      lockBg = mkOption {
+        type = with types; str;
+        description = ''
+          The background for the lockscreen.
         '';
       };
     };
@@ -49,7 +57,7 @@ with lib; {
       systemMode = "system: (x) exit (l) lock (h) suspend (r) reboot (s) shutdown (i) reload";
       launchMode = "launch: (b) firefox (e) emacs (f) files (m) ncmpcpp";
 
-      locker = ''swaylock -S -f --clock --font "Source Code Pro" \
+      locker = ''swaylock -f --clock --font "Source Code Pro" -i "${cfg.lockBg}" \
                    --effect-blur 5x5 --timestr "%I:%M" \
                    --text-color "${colors.fg}" --ring-color "${colors.mut}" \
                    --inside-color "${colors.bg}" --line-color "${colors.fg}" \

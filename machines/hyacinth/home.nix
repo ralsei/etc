@@ -8,17 +8,20 @@
   hazel = {
     # graphical session
     graphicalSession.enable = true;
-    sway.outputs = {
-      eDP-1 = {
-        bg = "~/usr/img/papes/desktop/NES.jpg fill";
-        res = "1920x1080";
-        # pos = "1920 0";
+    sway = {
+      outputs = {
+        eDP-1 = {
+          bg = "~/usr/img/papes/desktop/NES.jpg fill";
+          res = "1920x1080";
+          # pos = "1920 0";
+        };
+        HDMI-A-1 = {
+          bg = "~/usr/img/papes/desktop/pipes.png fill";
+          res = "1920x1080";
+          # pos = "0 0";
+        };
       };
-      HDMI-A-1 = {
-        bg = "~/usr/img/papes/desktop/pipes.png fill";
-        res = "1920x1080";
-        # pos = "0 0";
-      };
+      lockBg = "~/usr/img/papes/desktop/NES.jpg";
     };
 
     # tools
