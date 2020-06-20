@@ -23,6 +23,7 @@
     minisign
     gnupg
     hazel.linx-client
+    mosh
   ];
 
   home.stateVersion = "20.03";

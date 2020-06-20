@@ -12,6 +12,6 @@
 
   # TODO figure this out
   #networking.extraHosts = ''
-  #  10.66.66.3 qtp2t.club aster.qtp2t.club blog.qtp2t.club cloud.qtp2t.club git.qtp2t.club p.qtp2t.club vault.qtp2t.club
+  #  192.168.1.102 qtp2t.club aster.qtp2t.club blog.qtp2t.club cloud.qtp2t.club git.qtp2t.club p.qtp2t.club vault.qtp2t.club
   #'';
 }
