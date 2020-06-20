@@ -9,8 +9,16 @@ in
       go-rice = callPackage ./go-rice.nix {};
       linx-client = callPackage ./linx-client.nix {};
       linx-server = callPackage ./linx-server.nix {};
-      perihelion = callPackage (import sources.perihelion) {};
       zr = callPackage ./zr.nix {};
+
+      perihelion = callPackage (import sources.perihelion) {};
+      ziodyne-blog = callPackage (import (super.fetchgit {
+        url = "https://git.qtp2t.club/hazel/blog";
+        rev = "1d0e0d2890bd57b832b2f0547c87ca7c770fd2d7";
+        sha256 = "1n9k4pz2yb0gn7dvr9x5jw9fd0l00a2z8q4vip9rcykzj34kh0nb";
+        fetchSubmodules = true;
+      })) {};
+
 
       # other peoples' packages, from source
       cachix = import sources.cachix;

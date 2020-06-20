@@ -27,6 +27,12 @@
   networking.interfaces.enp1s0.useDHCP = true;
   networking.interfaces.enp2s0.useDHCP = true;
 
+  # this computer IS the server...
+  # TODO: iterate over nginx vhosts?
+  networking.extraHosts = ''
+    127.0.0.1 qtp2t.club www.qtp2t.club blog.qtp2t.club cloud.qtp2t.club git.qtp2t.club lemniscation.qtp2t.club ring.qtp2t.club p.qtp2t.club vault.qtp2t.club
+  '';
+
   # wireguard vpn
   hazel.wireguard = {
     enable = true;

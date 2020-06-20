@@ -20,6 +20,8 @@ with lib; {
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [ 80 443 ];
 
+    environment.systemPackages = with pkgs; [ hazel.ziodyne-blog ];
+
     security.acme = {
       email = "me@qtp2t.club";
       acceptTerms = true;
@@ -30,6 +32,8 @@ with lib; {
 
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
 
       # stupid quote memery
       commonHttpConfig = with builtins; let
@@ -98,7 +102,7 @@ with lib; {
             };
           };
         };
-      } // (mkVHost "blog.qtp2t.club" "/var/www/blog")
+      } // (mkVHost "blog.qtp2t.club" "${pkgs.hazel.ziodyne-blog}")
         // (mkVHost "lemniscation.qtp2t.club" "/var/www/lemniscation");
     };
   };
