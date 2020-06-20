@@ -39,8 +39,9 @@
   # automount USB devices
   hazel.autoMount.enable = true;
 
-  # enable sway (also need to enable it with home-manager)
+  # the pointing with the mouse and stuff
   hazel.graphicalSession.enable = true;
+  hazel.fonts.enable = true;
 
   # laptop power adjustments
   hazel.laptopPower = {
@@ -54,6 +55,7 @@
   hazel.wireguard = {
     enable = true;
     addresses = [ "10.66.66.2/24" "fd42:42:42::2/64" ];
+    routeAll = true;
   };
 
   # enable hackthebox vpns

@@ -45,6 +45,13 @@ geometry_status_with_nix() {
     ansi $color ${GEOMETRY_STATUS_SYMBOL:-▲}
 }
 
+GEOMETRY_SEPARATOR=" "
+GEOMETRY_STATUS_SYMBOL="λ"
+GEOMETRY_STATUS_SYMBOL_ERROR="λ"
+GEOMETRY_STATUS_SYMBOL_NIX="η"
+GEOMETRY_PATH_COLOR="green"
+GEOMETRY_HOST_COLORS=({1..7})
+
 GEOMETRY_PROMPT=(geometry_status_with_nix geometry_path)
 GEOMETRY_RPROMPT=(geometry_exitcode geometry_git)
 

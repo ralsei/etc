@@ -17,14 +17,6 @@
     ];
 
     sessionVariables = {
-      "GEOMETRY_SEPARATOR" = " ";
-      "GEOMETRY_STATUS_SYMBOL" = "λ";
-      "GEOMETRY_STATUS_COLOR" = "11";
-      "GEOMETRY_STATUS_SYMBOL_ERROR" = "λ";
-      "GEOMETRY_STATUS_SYMBOL_NIX" = "η";
-      "GEOMETRY_STATUS_COLOR_ERROR" = "red";
-      "GEOMETRY_PATH_COLOR" = "green";
-
       "PAGER" = "less";
     };
     

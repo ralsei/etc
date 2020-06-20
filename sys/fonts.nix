@@ -15,13 +15,26 @@ let
     source-code-pro
     emacs-all-the-icons-fonts
   ]);
-in
-{
-  # rock 'n roll
-  # fonts.fonts = basefonts ++ [];
 
-  fonts.fonts =
-    basefonts ++
-    extrafonts ++
-    [];
+  cfg = config.hazel.fonts;
+in
+with lib; {
+  options = {
+    hazel.fonts = {
+      enable = mkOption {
+        default = false;
+        type = with types; bool;
+      };
+    };
+  };
+
+  config = mkIf cfg.enable {
+    # rock 'n roll
+    # fonts.fonts = basefonts ++ [];
+
+    fonts.fonts =
+      basefonts ++
+      extrafonts ++
+      [];
+  };
 }
