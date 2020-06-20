@@ -5,13 +5,16 @@ in
   (self: super: with super; {
     hazel = {
       # my packages
-      bw-git-helper = (callPackage ./bw-git-helper.nix {});
-      linx-client = (callPackage ./linx-client.nix {});
-      zr = (callPackage ./zr.nix {});
+      bw-git-helper = callPackage ./bw-git-helper.nix {};
+      go-rice = callPackage ./go-rice.nix {};
+      linx-client = callPackage ./linx-client.nix {};
+      linx-server = callPackage ./linx-server.nix {};
+      perihelion = callPackage (import sources.perihelion) {};
+      zr = callPackage ./zr.nix {};
 
       # other peoples' packages, from source
       cachix = import sources.cachix;
-      cached-nix-shell = (callPackage (import sources.cached-nix-shell) {});
+      cached-nix-shell = callPackage (import sources.cached-nix-shell) {};
 
       # overridden packages
       jupyterWithBatteries = super.jupyter.override {

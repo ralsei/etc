@@ -27,6 +27,13 @@
   # swap caps lock to dual esc+ctrl (!!)
   services.interception-tools.enable = true;
 
+  # audio
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  # wifi
+  hazel.networking.wifi = true;
+
   # enable home-manager system-specific settings
   home-manager.users.hazel = import ./home.nix;
 }

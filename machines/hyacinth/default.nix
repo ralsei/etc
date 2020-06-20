@@ -29,6 +29,13 @@
   networking.interfaces.enp4s0.useDHCP = true;
   networking.interfaces.wlan0.useDHCP = true;
 
+  # audio
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  # wifi
+  hazel.networking.wifi = true;
+
   # automount USB devices
   hazel.autoMount.enable = true;
 

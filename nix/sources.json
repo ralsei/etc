@@ -71,6 +71,19 @@
         "url": "https://github.com/geometry-zsh/geometry/archive/b02956f9a7ba5c07727c764bdf6c67999a8ecd0d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "go-rice": {
+        "branch": "master",
+        "description": "go.rice is a Go package that makes working with resources such as html,js,css,images,templates, etc very easy.",
+        "homepage": "",
+        "owner": "GeertJohan",
+        "repo": "go.rice",
+        "rev": "d954009f7238df62c766980934c8ea7f161d0e59",
+        "sha256": "19lca5hcw9milgmjv6vlcg8vq4mz9a9sp5bpihxvyza0da6pklmf",
+        "type": "tarball",
+        "url": "https://github.com/GeertJohan/go.rice/archive/d954009f7238df62c766980934c8ea7f161d0e59.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz",
+        "version": "1.0.0"
+    },
     "golinx": {
         "branch": "master",
         "description": "A client for linx-server written in Go",
@@ -95,6 +108,13 @@
         "url": "https://github.com/andreimarcu/linx-client/archive/11d4fecadbbc1c4efd29a8345a3dff8cb3b9a3c3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "linx-server": {
+        "sha256": "1spkax77dvydsnrmavzbgismr0ihxd1hvmvrq68fxz08j1kpq1bg",
+        "type": "tarball",
+        "url": "https://github.com/andreimarcu/linx-server/archive/v2.3.5.tar.gz",
+        "url_template": "https://github.com/andreimarcu/linx-server/archive/v2.3.5.tar.gz",
+        "version": "2.3.5"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",
@@ -118,6 +138,13 @@
         "type": "tarball",
         "url": "https://github.com/NixOS/nixpkgs-channels/archive/e7752db2fb6c5e05f1de2b275535dbde07d30090.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "perihelion": {
+        "sha256": "0rjcajr3mai5fq8apl5k04xmf133q8a1c5m82bm3k3srrlb8kpv7",
+        "type": "tarball",
+        "url": "https://git.qtp2t.club/hazel/perihelion/archive/0.1.0.tar.gz",
+        "url_template": "https://git.qtp2t.club/hazel/perihelion/archive/0.1.0.tar.gz",
+        "version": "0.1.0"
     },
     "sha256-simd": {
         "branch": "master",
