@@ -50,7 +50,8 @@ GEOMETRY_STATUS_SYMBOL="λ"
 GEOMETRY_STATUS_SYMBOL_ERROR="λ"
 GEOMETRY_STATUS_SYMBOL_NIX="η"
 GEOMETRY_PATH_COLOR="green"
-GEOMETRY_HOST_COLORS=({1..7})
+GEOMETRY_HOST_COLORS=({1..6})
+GEOMETRY_STATUS_COLOR=$(geometry::hostcolor)
 
 GEOMETRY_PROMPT=(geometry_status_with_nix geometry_path)
 GEOMETRY_RPROMPT=(geometry_exitcode geometry_git)
