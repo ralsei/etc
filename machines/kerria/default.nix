@@ -35,17 +35,12 @@
   };
   networking.firewall.allowedUDPPorts = [ 51820 ];
 
-  hazel.services.sshd = {
-    enable = true;
-    mosh = true;
-  };
-
   # servin'
   hazel.services = {
     sshd = {
       enable = true;
       mosh = true;
-    }
+    };
     nginx = {
       enable = true;
       ssl = true;
