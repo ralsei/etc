@@ -15,7 +15,7 @@ with lib; {
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     # sway is managed by home-manager, BUT without this things break...
     programs.sway.enable = true;
 

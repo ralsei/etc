@@ -46,10 +46,6 @@
     hazel.cached-nix-shell
   ];
 
-  # beep boop? boop beep.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # unfortunately for everyone, it's me
   users.mutableUsers = false; # build-vm
   users.users.hazel = {

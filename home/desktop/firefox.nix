@@ -15,7 +15,7 @@ with lib; {
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     # sipp ramm
     programs.firefox = {
       enable = true;

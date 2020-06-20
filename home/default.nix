@@ -22,6 +22,7 @@
     age
     minisign
     gnupg
+    ripgrep
     hazel.linx-client
   ];
 
