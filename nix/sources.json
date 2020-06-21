@@ -158,6 +158,12 @@
         "url": "https://github.com/minio/sha256-simd/archive/f675151bb5e19dc10d7430bd9d4ef5e7d1b5521f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "ziodyne-blog": {
+        "ref": "canon",
+        "repo": "https://git.qtp2t.club/hazel/blog",
+        "rev": "17c485899f63a45b1d42d506eefdb4e8f62bdcff",
+        "type": "git"
+    },
     "zr": {
         "branch": "main",
         "description": "zsh plugin manager written in rust",
