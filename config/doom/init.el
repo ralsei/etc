@@ -79,7 +79,7 @@
        latex
        markdown
        nix
-       (org +dragndrop +pandoc +present)
+       (org +dragndrop +hugo +pandoc +present)
        python
        racket
        (rust +lsp)
