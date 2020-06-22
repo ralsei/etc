@@ -38,7 +38,7 @@
 
   # gamer
   home.packages = with pkgs; [ 
-    steam-run
+    appimage-run
     minecraft
   ];
 }

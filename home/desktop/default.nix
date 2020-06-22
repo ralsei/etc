@@ -49,7 +49,7 @@ with lib; {
       dino
       riot-desktop
       tdesktop
-      discord
+      # (trying to get rid of) discord
       mumble
 
       gimp
