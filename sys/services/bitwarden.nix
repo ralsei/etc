@@ -20,7 +20,7 @@ with lib; {
     services.bitwarden_rs = {
       enable = true;
       config = {
-        domain = "https://vault.qtp2t.club";
+        domain = "https://vault.knightsofthelambdacalcul.us";
         signupsAllowed = false;
         rocketPort = 8080;
         rocketLog = "critical";
@@ -28,10 +28,11 @@ with lib; {
       dbBackend = "sqlite";
     };
 
-    services.nginx.virtualHosts."vault.qtp2t.club" =
+    services.nginx.virtualHosts."vault.knightsofthelambdacalcul.us" =
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;
+        serverAliases = [ "vault.qtp2t.club" ];
 
         locations = {
           "/" = {

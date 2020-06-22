@@ -140,11 +140,10 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "perihelion": {
-        "sha256": "0rjcajr3mai5fq8apl5k04xmf133q8a1c5m82bm3k3srrlb8kpv7",
-        "type": "tarball",
-        "url": "https://git.qtp2t.club/hazel/perihelion/archive/0.1.0.tar.gz",
-        "url_template": "https://git.qtp2t.club/hazel/perihelion/archive/0.1.0.tar.gz",
-        "version": "0.1.0"
+        "ref": "canon",
+        "repo": "https://git.qtp2t.club/hazel/perihelion",
+        "rev": "e02e2483bd5b508af77b032dfbda8e6574d40a72",
+        "type": "git"
     },
     "sha256-simd": {
         "branch": "master",
@@ -161,7 +160,7 @@
     "ziodyne-blog": {
         "ref": "canon",
         "repo": "https://git.qtp2t.club/hazel/blog",
-        "rev": "17c485899f63a45b1d42d506eefdb4e8f62bdcff",
+        "rev": "25987dc333cd78c36c8b95e10bf826f5d974f775",
         "type": "git"
     },
     "zr": {

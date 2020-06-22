@@ -23,7 +23,7 @@ with lib; {
       repositoryRoot = "/var/lib/gitea/git"; # hold-over from alpine
 
       appName = "very good git repositories";
-      domain = "git.qtp2t.club";
+      domain = "git.knightsofthelambdacalcul.us";
 
       database = {
         type = "sqlite3";
@@ -34,7 +34,7 @@ with lib; {
 
       extraConfig = ''
         [server]
-        SSH_DOMAIN       = qtp2t.club
+        SSH_DOMAIN       = knightsofthelambdacalcul.us
         SSH_PORT         = 2222
         START_SSH_SERVER = true
 
@@ -49,10 +49,12 @@ with lib; {
       '';
     };
 
-    services.nginx.virtualHosts."git.qtp2t.club" =
+    services.nginx.virtualHosts."git.knightsofthelambdacalcul.us" =
       if nginxCfg.enable then {
         enableACME = nginxCfg.ssl;
         forceSSL = nginxCfg.ssl;
+        serverAliases = [ "git.qtp2t.club" ];
+
         locations."/" = {
           proxyPass = "http://127.0.0.1:3000";
           proxyWebsockets = true;

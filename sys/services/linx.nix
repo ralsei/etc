@@ -24,7 +24,7 @@ with lib; {
       bind = 0.0.0.0:6730
 
       sitename = "qtp2paste"
-      siteurl = "http://p.qtp2t.club"
+      siteurl = "http://p.knightsofthelambdacalcul.us"
 
       filespath = /var/www/linx/files/
       metapath = /var/www/linx/meta/
@@ -53,10 +53,11 @@ with lib; {
       extraGroups = [ "linx" ];
     };
 
-    services.nginx.virtualHosts."p.qtp2t.club" =
+    services.nginx.virtualHosts."p.knightsofthelambdacalcul.us" =
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;
+        serverAliases = [ "p.qtp2t.club" ];
 
         locations."/" = {
           extraConfig = ''

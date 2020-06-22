@@ -19,12 +19,11 @@ with lib; {
     ];
 
     environment.etc."perihelion/users.txt".text = ''
-      hazel https://qtp2t.club/
+      hazel https://knightsofthelambdacalcul.us/
       if https://tilde.club/~if/
       haskal https://tilde.town/~haskal/
       alicja https://spinlock.icu/
       5225225 https://5snb.club/
-      syrinsaya https://tilde.club/~syrinsaya/
     '';
 
     systemd.services.perihelion = {
@@ -33,7 +32,7 @@ with lib; {
 
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.hazel.perihelion}/bin/perihelion /etc/perihelion/users.txt";
+        ExecStart = "${pkgs.hazel.perihelion}/bin/perihelion ${pkgs.hazel.perihelion}/static /etc/perihelion/users.txt";
         Restart = "on-failure";
       };
 
@@ -41,10 +40,11 @@ with lib; {
       wantedBy = [ "network.target" ];
     };
 
-    services.nginx.virtualHosts."ring.qtp2t.club" =
+    services.nginx.virtualHosts."ring.knightsofthelambdacalcul.us" =
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;
+        serverAliases = [ "ring.qtp2t.club" ];
 
         locations."/" = {
           proxyPass = "http://localhost:5020";

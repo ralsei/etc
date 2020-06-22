@@ -16,7 +16,7 @@ with lib; {
   config = mkIf cfg.enable {
     services.nextcloud = {
       enable = true;
-      hostName = "cloud.qtp2t.club";
+      hostName = "cloud.knightsofthelambdacalcul.us";
 
       nginx.enable = nginxCfg.enable;
       https = nginxCfg.ssl;
@@ -49,10 +49,11 @@ with lib; {
       after = [ "postgresql.service" ];
     };
 
-    services.nginx.virtualHosts."cloud.qtp2t.club" = 
+    services.nginx.virtualHosts."cloud.knightsofthelambdacalcul.us" = 
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl; 
+        serverAliases = [ "cloud.qtp2t.club" ];
       } else {};
   };
 }

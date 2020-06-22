@@ -61,49 +61,49 @@ with lib; {
       '';
 
       virtualHosts = let
-        mkVHost = uri: dir: { "${uri}" = {
+        mkVHost = serverAliases: root: locations: {
+          inherit locations root serverAliases;
+
           forceSSL = cfg.ssl;
           enableACME = cfg.ssl;
-          root = dir;
-        }; };
-      in {
-        "qtp2t.club" = {
-          forceSSL = cfg.ssl;
-          enableACME = cfg.ssl;
-          root = "/var/www/html";
-
-          locations = let
-            subText = "IF_YOURE_READING_THIS_EMAIL_ME_I_MESSED_UP_THIS_IS_NOT_A_JOKE";
-          in {
-            "/" = {
-              extraConfig = ''
-                ssi on;
-                if ($http_user_agent ~* (curl|wget)) {
-                  return 301 http://$host/hrl.7;
-                }
-
-                sub_filter ${subText} $rnd_text;
-              '';
-              tryFiles = "$uri $uri/ =404";
-            };
-
-            "/index.html" = {
-              extraConfig = ''
-                ssi on;
-                sub_filter ${subText} $rnd_text;
-              '';
-            };
-
-            "/hrl.7" = {
-              extraConfig = ''
-                sub_filter_types *;
-                sub_filter ${subText} $rnd_text;
-              '';
-            };
-          };
         };
-      } // (mkVHost "blog.qtp2t.club" "${pkgs.hazel.ziodyne-blog}")
-        // (mkVHost "lemniscation.qtp2t.club" "/var/www/lemniscation");
+      in {
+        "knightsofthelambdacalcul.us" = 
+          (mkVHost [ "www.knightsofthelambdacalcul.us" "qtp2t.club" "www.qtp2t.club" ] "/var/www/html"
+            (let
+              subText = "IF_YOURE_READING_THIS_EMAIL_ME_I_MESSED_UP_THIS_IS_NOT_A_JOKE";
+            in {
+              "/" = {
+               extraConfig = ''
+                 ssi on;
+                 if ($http_user_agent ~* (curl|wget)) {
+                   return 301 http://$host/hrl.7;
+                 }
+
+                 sub_filter ${subText} $rnd_text;
+               '';
+               tryFiles = "$uri $uri/ =404";
+             };
+
+             "/index.html" = {
+               extraConfig = ''
+                 ssi on;
+                 sub_filter ${subText} $rnd_text;
+               '';
+             };
+
+             "/hrl.7" = {
+               extraConfig = ''
+                 sub_filter_types *;
+                 sub_filter ${subText} $rnd_text;
+               '';
+             };
+           }));
+        "blog.knightsofthelambdacalcul.us" = 
+          (mkVHost [ "blog.qtp2t.club" ] "${pkgs.hazel.ziodyne-blog}" {});
+        "lemniscation.knightsofthelambdacalcul.us" =
+          (mkVHost [ "lemniscation.qtp2t.club" ] "/var/www/lemniscation" {});
+      };
     };
   };
 }
