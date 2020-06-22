@@ -29,11 +29,6 @@ Load up where Void installs the =maxima-emacs= package, for later:
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 #+END_SRC
 
-Additionally, load the source code powering
-[[https://blog.qtp2t.club][my blog.]]
-#+BEGIN_SRC emacs-lisp
-(org-babel-load-file (concat doom-private-dir "blog.org"))
-#+END_SRC
 * UI
 ** Fonts
 I've had font rendering issues with Emacs for /years/, ever since I picked it
