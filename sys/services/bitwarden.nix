@@ -32,7 +32,6 @@ with lib; {
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;
-        serverAliases = [ "vault.qtp2t.club" ];
 
         locations = {
           "/" = {

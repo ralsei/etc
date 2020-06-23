@@ -67,9 +67,17 @@ with lib; {
           forceSSL = cfg.ssl;
           enableACME = cfg.ssl;
         };
+
+        mkRedirect = subdomain: {
+          forceSSL = cfg.ssl;
+          enableACME = cfg.ssl;
+          locations."/" = {
+            return = "301 http://${subdomain}.knightsofthelambdacalcul.us$request_uri";
+          };
+        };
       in {
         "knightsofthelambdacalcul.us" = 
-          (mkVHost [ "www.knightsofthelambdacalcul.us" "qtp2t.club" "www.qtp2t.club" ] "/var/www/html"
+          (mkVHost [ "www.knightsofthelambdacalcul.us" ] "/var/www/html"
             (let
               subText = "IF_YOURE_READING_THIS_EMAIL_ME_I_MESSED_UP_THIS_IS_NOT_A_JOKE";
             in {
@@ -100,11 +108,27 @@ with lib; {
              };
            }));
         "blog.knightsofthelambdacalcul.us" = 
-          (mkVHost [ "blog.qtp2t.club" ] "${pkgs.hazel.ziodyne-blog}" {});
+          (mkVHost [] "${pkgs.hazel.ziodyne-blog}" {});
         "lemniscation.knightsofthelambdacalcul.us" =
-          (mkVHost [ "lemniscation.qtp2t.club" ] "/var/www/lemniscation" {});
+          (mkVHost [] "/var/www/lemniscation" {});
         "mail.knightsofthelambdacalcul.us" =
           (mkVHost [] "/var/www/notawebsite" {});
+
+        "qtp2t.club" = {
+          forceSSL = cfg.ssl;
+          enableACME = cfg.ssl;
+          locations."/" = {
+            return = "301 http://knightsofthelambdacalcul.us$request_uri";
+          };
+          serverAliases = [ "www.qtp2t.club" ];
+        };
+        "blog.qtp2t.club" = (mkRedirect "blog");
+        "cloud.qtp2t.club" = (mkRedirect "cloud");
+        "git.qtp2t.club" = (mkRedirect "git");
+        "lemniscation.qtp2t.club" = (mkRedirect "lemniscation");
+        "p.qtp2t.club" = (mkRedirect "p");
+        "ring.qtp2t.club" = (mkRedirect "ring");
+        "vault.qtp2t.club" = (mkRedirect "vault");
       };
     };
   };

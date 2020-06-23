@@ -57,7 +57,6 @@ with lib; {
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;
-        serverAliases = [ "p.qtp2t.club" ];
 
         locations."/" = {
           extraConfig = ''
