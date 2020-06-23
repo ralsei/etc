@@ -103,6 +103,8 @@ with lib; {
           (mkVHost [ "blog.qtp2t.club" ] "${pkgs.hazel.ziodyne-blog}" {});
         "lemniscation.knightsofthelambdacalcul.us" =
           (mkVHost [ "lemniscation.qtp2t.club" ] "/var/www/lemniscation" {});
+        "mail.knightsofthelambdacalcul.us" =
+          (mkVHost [] "/var/www/notawebsite" {});
       };
     };
   };

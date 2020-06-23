@@ -54,10 +54,12 @@
     };
 
     mailserver.enable = true;
+
     gitea.enable = true;
-    nextcloud.enable = true;
-    linx.enable = true;
     bitwarden.enable = true;
+    nextcloud.enable = true;
+
+    linx.enable = true; # broken
     perihelion.enable = true;
   };
 
