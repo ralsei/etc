@@ -40,5 +40,6 @@
   home.packages = with pkgs; [ 
     appimage-run
     minecraft
+    hazel.rofi-wayland
   ];
 }

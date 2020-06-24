@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 let
   cfg = config.hazel.sway;
+  rofiCfg = config.hazel.rofi;
+  wofiCfg = config.hazel.wofi;
 in
 with lib; {
   options = {
@@ -101,7 +103,11 @@ with lib; {
         # ACKSHUALLY, these are useless, but I'm putting them here anyway
         modifier = "Mod4";
         terminal = "alacritty";
-        menu = "wofi -S drun"; # script
+        menu = if wofiCfg.enable then
+                 "wofi -S drun"
+               else if rofiCfg.enable then
+                 "rofi -show drun"
+               else throw "At least one menu must be enabled";
 
         # not doing mkOptionDefault because eh. too much is custom.
         # execs are in PATH, so I shouldn't have to specify ${pkgs.package}...
@@ -291,7 +297,6 @@ with lib; {
       ponymix                   # volume scripts
       brightnessctl             # take a wild guess
       xorg.xrdb                 # xresources
-      xrq                       # for a script
     ];
   };
 }

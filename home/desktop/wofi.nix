@@ -1,7 +1,19 @@
 { config, lib, pkgs, ... }:
+let
+  cfg = config.hazel.wofi;
+in
 with lib; {
+  options = {
+    hazel.wofi = {
+      enable = mkOption {
+        default = false;
+        type = with types; bool;
+      };
+    };
+  };
+
   # this is pretty much mandatory if I'm using sway
-  config = mkIf config.hazel.sway.enable {
+  config = mkIf cfg.enable {
     xdg.configFile."wofi/config".text = ''
       width=400px
       term=alacritty

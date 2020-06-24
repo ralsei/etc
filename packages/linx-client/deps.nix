@@ -1,5 +1,5 @@
 let
-  sources = import ../nix/sources.nix;
+  sources = import /etc/nixos/nix/sources.nix;
 in
 [
   {

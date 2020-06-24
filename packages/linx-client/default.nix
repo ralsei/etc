@@ -1,4 +1,4 @@
-{ sources ? import ../nix/sources.nix
+{ sources ? import /etc/nixos/nix/sources.nix
 , stdenv, buildGoPackage, fetchFromGitHub }:
 buildGoPackage rec {
   pname = "linx-client";
@@ -8,7 +8,7 @@ buildGoPackage rec {
 
   src = sources.linx-client;
 
-  goDeps = ./linx-client-deps.nix;
+  goDeps = ./deps.nix;
 
   buildFlags = [];
 }

@@ -192,8 +192,8 @@ Tell =mu4e= to use =offlineimap=. =mbsync= doesn't behave with Hydroxide.
 
 Tell it where I save my mail:
 #+BEGIN_SRC emacs-lisp
-(setq mu4e-maildir "/home/hazel/var/mail/protonmail"
-      mu4e-attachment-dir "/home/hazel/var/mail/protonmail/attachments")
+(setq mu4e-maildir "/home/hazel/var/mail/"
+      mu4e-attachment-dir "/home/hazel/var/mail/attachments")
 #+END_SRC
 
 Set a few QoL fixes, because mu4e's default viewer kinda sucks:
@@ -206,11 +206,19 @@ Set a few QoL fixes, because mu4e's default viewer kinda sucks:
 
 We tell it how I save my email, too:
 #+BEGIN_SRC emacs-lisp
+(set-email-account! "Knights of the Lambda Calculus"
+                    '((mu4e-sent-folder      . "/lambdamail/Sent")
+                      (mu4e-drafts-folder    . "/lambdamail/Drafts")
+                      (mu4e-trash-folder     . "/lambdamail/Junk")
+                      (mu4e-refile-folder    . "/lambdamail/All Mail")
+                      (smtpmail-smtp-user    . "hazel@knightsofthelambdacalcul.us")
+                      (user-mail-address     . "hazel@knightsofthelambdacalcul.us"))
+                    t)
 (set-email-account! "ProtonMail"
-                    '((mu4e-sent-folder      . "/Sent")
-                      (mu4e-drafts-folder    . "/Drafts")
-                      (mu4e-trash-folder     . "/Trash")
-                      (mu4e-refile-folder    . "/All Mail")
+                    '((mu4e-sent-folder      . "/protonmail/Sent")
+                      (mu4e-drafts-folder    . "/protonmail/Drafts")
+                      (mu4e-trash-folder     . "/protonmail/Trash")
+                      (mu4e-refile-folder    . "/protonmail/All Mail")
                       (smtpmail-smtp-user    . "me@qtp2t.club")
                       (smtpmail-smtp-service . 1025)
                       (smtpmail-stream-type  . nil)
@@ -287,4 +295,10 @@ don't know much about it on the merit that it's locked behind a paywall of a
 book that I can't afford nor pirate.
 #+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
 (package! shen-mode)
+#+END_SRC
+
+Also load the mode for Qi, Shen's predecessor that I actually have the book
+for:
+#+BEGIN_SRC emacs-lisp
+(load-file (concat (getenv "XDG_CONFIG_HOME") "/doom/lisp/qi-mode.el"))
 #+END_SRC

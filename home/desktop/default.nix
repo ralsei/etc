@@ -10,6 +10,7 @@ with lib; {
     ./gtk.nix
     ./i3status-rust.nix
     ./mako.nix
+    ./rofi.nix
     ./sway.nix
     ./wofi.nix
     ./zathura.nix
@@ -29,16 +30,22 @@ with lib; {
 
   config = mkIf cfg.enable {
     hazel = {
-      alacritty.enable = true;
-      firefox.enable = true;
-      gtkTheme.enable = true;
+      sway.enable = true;
       i3status-rust.enable = true;
       mako.enable = true;
-      sway.enable = true;
+
+      rofi.enable = true;
+      # wofi.enable = true;
+
+      gtkTheme.enable = true;
+
+      alacritty.enable = true;
+      firefox.enable = true;
       zathura.enable = true;
     };
 
     home.packages = with pkgs; [
+      thunderbird
       pavucontrol
       mate.caja
       networkmanagerapplet

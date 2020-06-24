@@ -19,8 +19,23 @@ with lib; {
     accounts.email = {
       maildirBasePath = "var/mail";
 
-      accounts.protonmail = {
+      accounts.lambdamail = {
         primary = true;
+        address = "hazel@knightsofthelambdacalcul.us";
+        userName = config.accounts.email.accounts.lambdamail.address;
+        realName = "Hazel Levine";
+        passwordCommand = "${pkgs.gnupg}/bin/gpg --decrypt /home/hazel/.config/lambdamail-pass.gpg";
+
+        imap = {
+          host = "knightsofthelambdacalcul.us";
+          tls.enable = false;
+        };
+        offlineimap.enable = true;
+
+        smtp.host = "knightsofthelambdacalcul.us";
+      };
+
+      accounts.protonmail = {
         address = "me@qtp2t.club";
         userName = config.accounts.email.accounts.protonmail.address;
         realName = "Hazel Levine";
