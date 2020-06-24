@@ -55,13 +55,13 @@ patches, and [[https://fonts.adobe.com/fonts/source-sans][Source Sans Pro]] ever
 both my 1920x1080 external monitor and 1600x900 ThinkPad.
 #+BEGIN_SRC emacs-lisp
 (defvar hzl/monospace-font
-  (hzl/xft-font-string "Source Code Pro" 10
+  (hzl/xft-font-string "IBM Plex Mono" 10
                        '((hintstyle . 3)
                          (hinting . true)
                          (lcdfilter . 3)
                          (antialias . true))))
 (defvar hzl/variable-pitch-font
-  (hzl/xft-font-string "Source Sans Pro" 10
+  (hzl/xft-font-string "IBM Plex Sans" 10
                        '((hintstyle . 3)
                          (autohint . true)
                          (lcdfilter . 3)

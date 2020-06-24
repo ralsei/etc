@@ -9,7 +9,7 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" "cp210x" ];
+  boot.kernelModules = [ "kvm-amd" "cp210x" "v4l2loopback" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =

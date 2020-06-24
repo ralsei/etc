@@ -17,7 +17,7 @@ with lib; {
     programs.rofi = {
       enable = true;
 
-      font = "Source Code Pro 10";
+      font = "IBM Plex Mono 10";
       scrollbar = false;
       terminal = "\${pkgs.alacritty}/bin/alacritty";
       borderWidth = 2;

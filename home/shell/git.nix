@@ -77,7 +77,7 @@
     [*github.com*]
     target=7734c9e1-8174-4796-846b-feefe5f88d2c
    
-    [*qtp2t.club*]
+    [*knightsofthelambdacalcul.us*]
     target=a268d28a-12f2-487e-8333-c3ddbd834e76
 
     [config]

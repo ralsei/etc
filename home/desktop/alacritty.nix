@@ -27,7 +27,7 @@ with lib; {
 
         font = let
           fontSetting = {
-            family = "Source Code Pro";
+            family = "IBM Plex Mono";
             style = "Regular"; # not a fan of bold fonts in term.
           };
         in {

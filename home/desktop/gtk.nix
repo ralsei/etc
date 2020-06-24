@@ -19,7 +19,7 @@ with lib; {
     gtk.enable = true;
     gtk.font = {
       package = pkgs.source-sans-pro;
-      name = "Source Sans Pro 10";
+      name = "IBM Plex Sans 10";
     };
     gtk.iconTheme = {
       package = pkgs.papirus-icon-theme;

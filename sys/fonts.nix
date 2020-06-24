@@ -1,10 +1,18 @@
 { config, pkgs, lib, ... }:
 let
+  plex = pkgs.runCommand "ibm-plex" {
+    src = pkgs.fetchzip {
+      url = "https://github.com/IBM/plex/releases/download/v5.0.0/TrueType.zip";
+      sha256 = "sha256-KKw9pk5YmWpaMKnYKhjwHynHxx8c0F8U/fgoU9qimHY=";
+    };
+  } "mkdir -p $out/share/fonts/truetype; cp $src/**/*.ttf $out/share/fonts/truetype";
+
   basefonts = (with pkgs; [
     corefonts
     source-code-pro
     source-sans-pro
     font-awesome_4
+    plex
   ]);
 
   extrafonts = (with pkgs; [
@@ -29,12 +37,17 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    # rock 'n roll
-    # fonts.fonts = basefonts ++ [];
+    fonts = {
+      fonts = basefonts ++ extrafonts ++ [];
 
-    fonts.fonts =
-      basefonts ++
-      extrafonts ++
-      [];
+      fontconfig = {
+        enable = true;
+        defaultFonts = {
+          monospace = [ "IBM Plex Mono 10" ];
+          sansSerif = [ "IBM Plex Sans 10" ];
+          serif = [ "IBM Plex Serif 10" ];
+        };
+      };
+    };
   };
 }

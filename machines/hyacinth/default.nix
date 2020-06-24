@@ -14,6 +14,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # AAAAAAAA
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+
   # clear /tmp on reboot
   boot.cleanTmpDir = true;
 
