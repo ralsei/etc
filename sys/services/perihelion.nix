@@ -44,7 +44,6 @@ with lib; {
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;
-        serverAliases = [ "ring.qtp2t.club" ];
 
         locations."/" = {
           proxyPass = "http://localhost:5020";

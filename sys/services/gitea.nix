@@ -53,7 +53,6 @@ with lib; {
       if nginxCfg.enable then {
         enableACME = nginxCfg.ssl;
         forceSSL = nginxCfg.ssl;
-        serverAliases = [ "git.qtp2t.club" ];
 
         locations."/" = {
           proxyPass = "http://127.0.0.1:3000";

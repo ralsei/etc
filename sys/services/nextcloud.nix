@@ -52,8 +52,7 @@ with lib; {
     services.nginx.virtualHosts."cloud.knightsofthelambdacalcul.us" = 
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
-        enableACME = nginxCfg.ssl; 
-        serverAliases = [ "cloud.qtp2t.club" ];
+        enableACME = nginxCfg.ssl;
       } else {};
   };
 }
