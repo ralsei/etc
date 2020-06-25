@@ -1,10 +1,6 @@
 # hyacinth -- home configuration
 { config, lib, pkgs, ... }:
 {
-  imports = [
-    /etc/nixos/home
-  ];
-
   hazel = {
     # graphical session
     graphicalSession.enable = true;

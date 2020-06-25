@@ -1,12 +1,12 @@
 # configuration.nix -- the glue
-{ config, lib, pkgs, ... }:
+{ options, config, lib, pkgs, ... }:
 {
   imports = [
     <home-manager/nixos>
     ./cachix.nix
 
+    ./modules
     ./machines/current
-    ./sys
   ];
 
   # clean up the nix store periodically
@@ -58,6 +58,7 @@
   # enable home-manager for my user
   home-manager.useUserPackages = true; # build-vm
   home-manager.useGlobalPkgs = true;
+  home-manager.users.hazel = lib.mkAliasDefinitions options.hazel.home;
 
   system.stateVersion = "20.03";
 }
