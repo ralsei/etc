@@ -19,23 +19,17 @@ everything else goes to =config.el=.
 
 * Introduction
 ** =whoami=
+I'm a bunny.
 #+BEGIN_SRC emacs-lisp
 (setq user-full-name "Hazel Levine"
-      user-mail-address "me@qtp2t.club")
+      user-mail-address "hazel@knightsofthelambdacalcul.us")
 #+END_SRC
-** Custom Elisp
-Load up where Void installs the =maxima-emacs= package, for later:
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'load-path "/usr/share/emacs/site-lisp")
-#+END_SRC
-
 * UI
 ** Fonts
 I've had font rendering issues with Emacs for /years/, ever since I picked it
 up. Namely, Emacs' font always looked just different enough from that of
 whatever terminal emulator I'm using to be annoying. Thankfully, [[https://github.com/rocx/.emacs.d][rocx's emacs
-config]] held the solution by forcing Emacs to use XFT (which is what =urxvt=, my
-terminal emulator, also uses).
+config]] held the solution by forcing Emacs to use XFT.
 
 I first define a function to create an XFT font string from whatever font, size,
 and options I want:
@@ -49,10 +43,8 @@ and options I want:
                                     properties)))))
 #+END_SRC
 
-Across my system, I use [[https://github.com/NerdyPepper/curie][curie]] for anything "system-related" (notifications,
-bars, etc...), [[https://github.com/tonsky/FiraCode][Fira Code]] for monospace (read: programming) font with [[https://www.nerdfonts.com/][Nerd Fonts]]
-patches, and [[https://fonts.adobe.com/fonts/source-sans][Source Sans Pro]] everywhere else. Size 9 seems to be readable on
-both my 1920x1080 external monitor and 1600x900 ThinkPad.
+I'm playing with the [[https://www.ibm.com/plex/][IBM Plex]] font right now. I like it a lot, but my font of
+choice has been known to change.
 #+BEGIN_SRC emacs-lisp
 (defvar hzl/monospace-font
   (hzl/xft-font-string "IBM Plex Mono" 10
@@ -71,8 +63,11 @@ both my 1920x1080 external monitor and 1600x900 ThinkPad.
 (setq doom-variable-pitch-font hzl/variable-pitch-font)
 #+END_SRC
 ** Colorscheme
-I use [[http://sourcerer.xero.nu/][xero's sourcerer]] because it's readable, easy on the eyes, and plays well
-with a lot of wallpapers (spoken like a true ricer).
+I've been using [[https://github.com/morhetz/gruvbox][Gruvbox]] Light recently. After years and years of dark themes, I
+came to the realization that:
++ Anti-aliasing algorithms were better with black text on a white background
++ I can read light themes without glasses
++ "Burning your eyes" is not a thing that actually happens
 #+BEGIN_SRC emacs-lisp
 (setq doom-theme 'doom-gruvbox-light)
 #+END_SRC
@@ -91,12 +86,6 @@ For the most part, DOOM Emacs handles 99% of the things I want to do in a text
 editor and more, which is why this section is pretty brief.
 Pretty much all of the functions I write end up under the "namespace"
 =hzl/whatever=, on the merit that I want to avoid any clashes anywhere.
-** Void package templates
-Void packages are written in a single shell script, so bind that mode to any
-file with the name =template=.
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'auto-mode-alist '("/template\\'" . sh-mode))
-#+END_SRC
 ** MPDel music player
 I usually use =ncmpcpp= for music, but sometimes when I'm working I use this.
 It's all MPD, so it's not like they conflict.
@@ -162,30 +151,13 @@ We tell it to run the auto-setup function and use PDFs:
   (auctex-latexmk-setup)
   (setq auctex-latexmk-inherit-TeX-pdf-mode t))
 #+END_SRC
-** Maxima
-I use this CAS in conjunction with Org to take notes in my physics class, as
-well as to take notes on personal projects. It also automatically renders to
-LaTeX, and has a really clean Emacs interface. This isn't installed via
-=use-package!=, it's the =maxima-emacs= package on Void, which is why it's a
-series of autoloads.
-#+BEGIN_SRC emacs-lisp
-(autoload 'maxima-mode "maxima" "Maxima mode" t)
-(autoload 'imaxima "imaxima" "Frontend for maxima with image support" t)
-(autoload 'maxima "maxima" "Maxima interaction" t)
-(autoload 'imath-mode "imath" "Imath mode for math formula input" t)
-#+END_SRC
-
-Bind =M-x imaxima= to use =maxima-mode=:
-#+BEGIN_SRC emacs-lisp
-(setq imaxima-use-maxima-mode-flag t)
-#+END_SRC
-
-And bind the right file extensions:
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'auto-mode-alist '("\\.ma[cx]" . maxima-mode))
-#+END_SRC
 ** =mu4e=
-Tell =mu4e= to use =offlineimap=. =mbsync= doesn't behave with Hydroxide.
+/NOTE: This is not working right now and I am using Thunderbird./
+
+I have two email accounts: my ProtonMail account (linked to my deadname) and my
+personal mailserver.
+
+Tell =mu4e= to use =offlineimap=. =mbsync= doesn't behave with [[https://github.com/emersion/hydroxide/][Hydroxide]].
 #+BEGIN_SRC emacs-lisp
 (setq +mu4e-backend 'offlineimap)
 #+END_SRC
@@ -244,8 +216,8 @@ find useful for taking quick notes:
 (setq doom-scratch-buffer-major-mode 'org-mode)
 #+END_SRC
 ** PDF Tools
-Not sure if I'll stick to this over Zathura, but it's nice to have everything in
-Emacs. This is bundled with DOOM, so I just tell AucTeX to open stuff up in it.
+While editing LaTeX documents, this is my PDF viewer of choice. Otherwise, I use
+Zathura.
 #+BEGIN_SRC emacs-lisp
 (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
@@ -258,11 +230,14 @@ physics class not paying attention. The officially sanctioned IDE for FIRST
 Robotics is Visual Studio Code, which I hate with a burning passion for numerous
 reasons.
 
+Note that I'm no longer a FRC student, so if this ever goes out of date, sucks.
+I'm planning on mentoring though, so it probably won't.
+
 We grab it directly from my Git, since it's not in ELPA (and probably never will
 be):
 #+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
 (package! frc-mode
-  :recipe (:host nil :repo "https://git.qtp2t.club/hazel/frc-mode"))
+  :recipe (:host nil :repo "https://git.knightsofthelambdacalcul.us/hazel/frc-mode"))
 #+END_SRC
 
 And tell it to run with all Java files. I'd never willingly write Java outside
@@ -271,23 +246,13 @@ of FRC, so it's fine.
 (use-package! frc-mode
   :hook (java-mode . frc-mode))
 #+END_SRC
-** vimrc mode
-Hey. HEY. CHILL. The irony is not lost on me. This is actually for editing my
-[[https://tridactyl.xyz][Tridactyl]] config.
+** =rust-analyzer=
+I have tons of issues with RLS -- it just does NOT behave. While I have to pull
+=rust-analyzer= from unstable nixpkgs, and it's marked as unstable all over the
+place, it's /still/ miles ahead of RLS.
 #+BEGIN_SRC emacs-lisp
-(define-generic-mode 'vimrc-generic-mode
-    '()
-    '()
-    '(("^[\t ]*:?\\(!\\|ab\\|map\\|unmap\\)[^\r\n\"]*\"[^\r\n\"]*\\(\"[^\r\n\"]*\"[^\r\n\"]*\\)*$"
-       (0 font-lock-warning-face))
-      ("\\(^\\|[\t ]\\)\\(\".*\\)$")
-      (2 font-lock-comment-face)
-      ("\"\\([^\n\r\"\\]\\|\\.\\)*\""
-       (0 font-lock-string-face)))
-    '("/vimrc\\'" "\\.vim\\(rc\\)?\\'")
-    '((lambda ()
-        (modify-syntax-entry ?\" ".")))
-    "Generic mode for Vim configuration files.")
+(after! rustic
+  (setq rustic-lsp-server 'rust-analyzer))
 #+END_SRC
 ** Shen
 A really cool experimental, portable, and typed Lisp. I like it a lot, but I

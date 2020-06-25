@@ -61,6 +61,7 @@ with lib; {
 
       gimp
       ghidra-bin
+      soulseekqt
     ];
 
     services.gnome-keyring.enable = true;

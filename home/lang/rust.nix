@@ -19,6 +19,7 @@ with lib; {
     home.packages = with pkgs; [
       rustup
       carnix
+      unstable.rust-analyzer
     ];
   };
 }
