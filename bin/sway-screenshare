@@ -1,5 +1,5 @@
 #!/usr/bin/env cached-nix-shell
-#!nix-shell -i bash -p wf-recorder ffmpeg
+#!nix-shell -i bash -p wf-recorder ffmpeg-full
 set -x 
 if ! lsmod | grep v4l2loopback > /dev/null; then
 	echo "Adding v42loopback module to kernel"

@@ -113,6 +113,9 @@ with lib; {
 
           output = cfg.outputs;
 
+          # required due to mouse binds that I don't override
+          modifier = modifier;
+
           # not doing mkOptionDefault because eh. too much is custom.
           # execs are in PATH, so I shouldn't have to specify ${pkgs.package}...
           keybindings = {
@@ -244,7 +247,7 @@ with lib; {
             workspaceNumbers = false;
             trayOutput = "none";
             statusCommand = "i3status-rs ~/.config/i3status-rust/status.toml";
-            extraConfig = "height 20";
+            extraConfig = "height 25";
 
             colors = rec {
               separator = colors.fg;

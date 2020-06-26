@@ -47,7 +47,7 @@
   hazel.desktop.sway = {
     outputs = {
       eDP-1 = {
-        bg = "~/usr/img/papes/desktop/NES.jpg fill";
+        bg = "~/usr/img/papes/desktop/lol_furries.png fill";
         res = "1920x1080";
         # pos = "1920 0";
       };
@@ -57,7 +57,7 @@
         # pos = "0 0";
       };
     };
-    lockBg = "~/usr/img/papes/desktop/NES.jpg";
+    lockBg = "~/usr/img/papes/desktop/lol_furries.png";
   };
 
   # various tools
