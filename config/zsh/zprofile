@@ -16,7 +16,7 @@ path=(
     /opt/texlive/2020/bin/x86_64-linux
 )
 
-## AUTOSTART SWAY
+# AUTOSTART SWAY
 if [[ ! $WAYLAND_DISPLAY && "$(tty)" = "/dev/tty1" ]] ; then
     # env vars, force wayland
     ## mozilla
