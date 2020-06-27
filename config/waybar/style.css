@@ -1,0 +1,39 @@
+* {
+    border:        none;
+    border-radius: 0;
+    font-family:   'IBM Plex Mono', 'FontAwesome';
+    font-size:     14px;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0.1s;
+    min-height: 25px;
+}
+
+#mode {
+    font-style: oblique;
+}
+
+window {
+    color:      #ebdbb2;
+    background: rgba(34, 34, 34, 0.00); /* #222222 */
+}
+
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail {
+    margin:     0px 6px 0px 10px;
+    min-width:  25px;
+}
+
+#battery {
+    border-top:    2px solid rgba(0, 0, 0, 0);
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+#battery.charging {
+    border-top:    2px solid #98971a;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+#clock {
+    margin:     0px 16px 0px 10px;
+    min-width:  120px;
+}

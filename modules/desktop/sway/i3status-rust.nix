@@ -4,7 +4,7 @@ let
 in
 with lib; {
   imports = [
-    ../custom/i3status-rust.nix
+    /etc/nixos/modules/custom/i3status-rust.nix
   ];
 
   options = {

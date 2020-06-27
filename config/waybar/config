@@ -1,0 +1,37 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": ["battery", "network", "network#vpn"],
+    "modules-center": ["mpd"],
+    "modules-right": ["clock"],
+    "sway/window": {
+        "max-length": 50
+    },
+    "battery": {
+        "full-at": 95,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}%",
+        "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "interface": "wlan0",
+        "format-wifi": "{essid} ({signalStrength}%)",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "network#vpn": {
+        "interface": "wg0",
+        "format": "VPN",
+        "format-disconnected": "no VPN"
+    },
+    "clock": {
+        "format": "{:%I:%M}",
+        "format-alt": "{:%Y-%m-%d %I:%M}"
+    }
+}

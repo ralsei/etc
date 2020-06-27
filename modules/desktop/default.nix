@@ -4,15 +4,16 @@ let
 in
 with lib; {
   imports = [
+    ./sway
+    ./hikari
+
     ./alacritty.nix
     ./dirs.nix
     ./firefox.nix
     ./fonts.nix
     ./gtk.nix
-    ./i3status-rust.nix
     ./mako.nix
     ./rofi.nix
-    ./sway.nix
     ./wofi.nix
     ./zathura.nix
   ];
@@ -26,17 +27,26 @@ with lib; {
           Enable a Wayland-based graphical session, and related apps.
         '';
       };
+
+      desktop = mkOption {
+        default = "sway";
+        type = with types; enum [ "sway" "hikari" ];
+      };
+
+      menu = mkOption {
+        default = "rofi";
+        type = with types; enum [ "rofi" "wofi" ];
+      };
     };
   };
 
   config = mkIf cfg.enable {
     hazel.desktop = {
-      sway.enable = true;
-      i3status-rust.enable = true;
-      mako.enable = true;
+      sway.enable = cfg.desktop == "sway";
+      hikari.enable = cfg.desktop == "hikari";
 
+      mako.enable = true;
       rofi.enable = true;
-      # wofi.enable = true;
 
       fonts.enable = true;
       gtkTheme.enable = true;
@@ -65,6 +75,14 @@ with lib; {
         gimp
         ghidra-bin
         soulseekqt
+
+        grim
+        slurp
+        wl-clipboard
+        jq
+        ponymix
+        brightnessctl
+        xorg.xrdb
       ];
 
       services.gnome-keyring.enable = true;
