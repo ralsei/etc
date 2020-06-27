@@ -15,6 +15,8 @@ let
          else throw "At least one menu must be enabled";
 in
 with lib; {
+  imports = [ ./i3status-rust.nix ];
+
   options = {
     hazel.desktop.sway = {
       enable = mkOption {
@@ -48,6 +50,9 @@ with lib; {
 
     # make swaylock function
     security.pam.services.swaylock.text = "auth include login";
+
+    # the bar
+    hazel.desktop.i3status-rust.enable = true;
 
     hazel.home = {
       # compositor of choice
@@ -287,16 +292,6 @@ with lib; {
         unstable.swaylock-effects # lockscreen
         swayidle                  # locker
         xwayland                  # xorg compatibility
-        i3status-rust             # bar
-
-        grim                      # screenshots
-        slurp                     # screenshot select
-        wl-clipboard              # control c control v
-
-        jq                        # processing sway's data
-        ponymix                   # volume scripts
-        brightnessctl             # take a wild guess
-        xorg.xrdb                 # xresources
       ];
     };
   };
