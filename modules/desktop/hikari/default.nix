@@ -45,7 +45,7 @@ in {
         ui = {
           border = 2;
           gap = 5;
-          step = 100;
+          step = 40;
           font = "IBM Plex Mono 10";
 
           colorscheme = rec {
