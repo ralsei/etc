@@ -44,8 +44,6 @@ with lib; {
       enablePop3Ssl = false;
 
       enableManageSieve = true;
-
-      virusScanning = true; # misewell, I have 2GB of RAM
     };
   };
 }
