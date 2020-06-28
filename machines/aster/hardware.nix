@@ -1,29 +1,28 @@
-# kerria -- pcengines apu2e0
+# aster -- raspberry pi 4
 { config, lib, pkgs, ... }:
 {
   imports =
-    [ <nixos-hardware/pcengines/apu>
-      <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ehci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
+  boot.initrd.availableKernelModules = [ ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/368840fc-02f0-41be-8756-b216a0423ca0";
+    { device = "/dev/disk/by-label/NIXOS_SD";
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/nextcloud" =
-    { device = "/dev/disk/by-uuid/681b0ebd-cd75-4c0d-b22f-9b091be719e0";
-      fsType = "ext4";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-label/FIRMWARE";
+      fsType = "vfat";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/5edbc64b-53da-4071-b2ae-ecdfd228550a"; }
-    ];
+  # if you're here, I fucked up
+  swapDevices = [ { device = "/swapfile"; size = 1024; } ];
 
   nix.maxJobs = lib.mkDefault 4;
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
