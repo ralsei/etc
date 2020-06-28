@@ -202,8 +202,8 @@ in {
             "L+s" = "mode-enter-sheet-assign";
             "L+g" = "mode-enter-group-assign";
             "L+m" = "mode-enter-mark-assign";
-            "L+acute" = "mode-enter-mark-select";
-            "LS+acute" = "mode-enter-mark-switch-select";
+            "L+grave" = "mode-enter-mark-select";
+            "LS+grave" = "mode-enter-mark-switch-select";
             "LCA+g" = "mode-enter-input-grab";
 
             "LS+Backspace" = "lock";
