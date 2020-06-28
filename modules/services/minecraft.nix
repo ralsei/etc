@@ -32,6 +32,7 @@ with lib; {
       whitelist = {
         hazelisdumb = "f43bd8ef-c8d2-4457-bf94-d07ad1dcb89d";
         MadelineRose = "93085a13-b1fd-40fb-8e86-b32970d0914e";
+        132ikl = "bc71a7e3-cfbb-48c3-ae8f-887eb2abda52";
       };
     };
   };
