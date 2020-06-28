@@ -85,6 +85,8 @@
       pinentry=pinentry-gtk-2
     '';
 
-    home.packages = with pkgs; [ hazel.bw-git-helper ];
+    home.packages = with pkgs; if builtins.currentSystem != "aarch64-linux" then
+      [ hazel.bw-git-helper ]
+    else [];
   };
 }

@@ -6,6 +6,7 @@
     ./gpg.nix
     ./linx.nix
     ./mail.nix
+    ./minecraft.nix
     ./mpd.nix
     ./nextcloud.nix
     ./nginx.nix
