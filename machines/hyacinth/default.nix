@@ -14,6 +14,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # AAAAAAAA
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+
   # clear /tmp on reboot
   boot.cleanTmpDir = true;
 
@@ -40,16 +43,38 @@
   hazel.autoMount.enable = true;
 
   # the pointing with the mouse and stuff
-  hazel.graphicalSession.enable = true;
-  hazel.fonts.enable = true;
+  hazel.graphicalSession = {
+    enable = true;
+    desktop = "hikari";
+  };
+  # hazel.desktop.sway = {
+  #   outputs = {
+  #     eDP-1 = {
+  #       bg = "~/usr/img/papes/desktop/lol_furries.png fill";
+  #       res = "1920x1080";
+  #       # pos = "1920 0";
+  #     };
+  #     HDMI-A-1 = {
+  #       bg = "~/usr/img/papes/desktop/pipes.png fill";
+  #       res = "1920x1080";
+  #       # pos = "0 0";
+  #     };
+  #   };
+  #   lockBg = "~/usr/img/papes/desktop/lol_furries.png";
+  # };
+
+  # various tools
+  hazel.emacs.enable = true;
+  hazel.mail.enable = true;
+  hazel.langSupport.enable = true;
+  hazel.services.mpd = {
+    enable = true;
+    mpris = true;
+    scrobbling = true;
+  };
 
   # laptop power adjustments
-  hazel.laptopPower = {
-    enable = true;
-    sensors = ''
-      hwmon /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon3/temp1_input
-    '';
-  };
+  hazel.laptopPower.enable = true;
 
   # wireguard vpn ip
   hazel.wireguard = {
@@ -83,6 +108,9 @@
   virtualisation.docker.enable = true;
   users.users.hazel.extraGroups = [ "docker" ];
 
-  # enable home-manager system-specific settings
-  home-manager.users.hazel = import ./home.nix;
+  # gamer
+  hazel.home.home.packages = with pkgs; [
+    appimage-run
+    minecraft
+  ];
 }

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 send_notification() {
-    volume=$(ponymix --sink get-volume | awk '{print int($1 / 2.9)}')
+    volume=$(ponymix --sink get-volume | awk '{print int($1 / 3.4)}')
     # Make the bar with the special character ─ (it's not dash -)
     # https://en.wikipedia.org/wiki/Box-drawing_character
     bar=$(seq -s "─" "$volume" | sed 's/[0-9]//g')

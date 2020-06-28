@@ -3,6 +3,7 @@ config/doom/config.el
 config/doom/blog.el
 config/doom/packages.el
 *.elc
+modules/system/private.nix
 system/wg-privkey
 config/mpdscribble/*
 sys/private.nix

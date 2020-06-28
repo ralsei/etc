@@ -69,7 +69,4 @@
   # sigh
   virtualisation.docker.enable = true;
   users.users.hazel.extraGroups = [ "docker" ];
-
-  # enable home-manager system-specific settings
-  home-manager.users.hazel = import ./home.nix;
 }

@@ -2,18 +2,18 @@ let
   sources = import ../nix/sources.nix;
 in
 [
-  (self: super: with super; {
+  (self: super: with super; rec {
     hazel = {
       # my packages
       bw-git-helper = callPackage ./bw-git-helper.nix {};
       go-rice = callPackage ./go-rice.nix {};
-      linx-client = callPackage ./linx-client.nix {};
+      linx-client = callPackage ./linx-client {};
       linx-server = callPackage ./linx-server.nix {};
+      rofi-wayland = callPackage ./rofi-wayland/wrapper.nix {};
       zr = callPackage ./zr.nix {};
 
       perihelion = callPackage (import sources.perihelion) {};
       ziodyne-blog = import sources.ziodyne-blog;
-
 
       # other peoples' packages, from source
       cachix = import sources.cachix;
@@ -53,5 +53,9 @@ in
     # are mu/mu4e (my mua) and emacs feature/native-comp, which depends on
     # unstable/libgccjit.
     unstable = import <nixos-unstable> { inherit config; };
+
+    # HACK: the release-20.03 branch of home-manager does not support the option
+    # `programs.rofi.package`
+    rofi = hazel.rofi-wayland;
   })
 ]
