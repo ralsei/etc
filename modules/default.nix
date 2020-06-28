@@ -22,18 +22,20 @@
 
       # graphical applications go in desktop/default.nix
       home.packages = with pkgs; [
-        nix-index # for file searchin'
         neofetch
-        tokei
-        bitwarden-cli
         pass-wayland
         age
         minisign
         gnupg
         ripgrep
-        hazel.linx-client
         mosh
-      ];
+      ] ++ (if builtins.currentSystem != "aarch64-linux" then [
+        # these apps take forever to compile
+        bitwarden-cli
+        hazel.linx-client
+        tokei
+        nix-index
+      ] else []);
 
       home.stateVersion = "20.03";
     };

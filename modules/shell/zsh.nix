@@ -47,7 +47,7 @@
     };
 
     programs.skim = {
-      enable = true;
+      enable = builtins.currentSystem != "aarch64-linux";
       defaultCommand = "fd --type f";
     };
 

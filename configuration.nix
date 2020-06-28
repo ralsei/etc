@@ -41,10 +41,11 @@
     wget
     vim
     gnumake
-
+  ] ++ (if builtins.currentSystem != "aarch64-linux" then [
+    # avoid building from source
     hazel.cachix
     hazel.cached-nix-shell
-  ];
+  ] else []);
 
   # unfortunately for everyone, it's me
   users.mutableUsers = false; # build-vm
