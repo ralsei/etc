@@ -32,8 +32,6 @@ with lib; {
         "rcon.password" = (builtins.readFile /etc/mc-rcon-password);
 
         view-distance = 6;
-        use-faster-eigencraft-redstone = true;
-        prevent-moving-into-unloaded-chunks = true;
       };
 
       # if you want to be here, email me
