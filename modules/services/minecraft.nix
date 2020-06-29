@@ -19,15 +19,21 @@ with lib; {
       enable = true;
       eula = true;
       declarative = true;
-      jvmOpts = "-Xms1536M -Xmx1536M"; # 2GB Raspberry Pi 4
+
+      # https://aikar.co/2018/07/02/tuning-the-jvm-g1gc-garbage-collector-flags-for-minecraft/
+      jvmOpts = "-Xms6000M -Xmx6000M -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
 
       serverProperties = {
         motd = "too gay for quay";
-        max-players = 8;
+        max-players = 4;
         white-list = true;
         gamemode = 0;
         enable-rcon = true;
         "rcon.password" = (builtins.readFile /etc/mc-rcon-password);
+
+        view-distance = 6;
+        use-faster-eigencraft-redstone = true;
+        prevent-moving-into-unloaded-chunks = true;
       };
 
       # if you want to be here, email me
