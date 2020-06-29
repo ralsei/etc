@@ -14,6 +14,8 @@ with lib; {
     networking.firewall.allowedUDPPorts = [ 25565 25575 ];
 
     services.minecraft-server = {
+      package = pkgs.hazel.papermc;
+
       enable = true;
       eula = true;
       declarative = true;

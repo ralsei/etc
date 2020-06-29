@@ -9,6 +9,7 @@ in
       go-rice = callPackage ./go-rice.nix {};
       linx-client = callPackage ./linx-client {};
       linx-server = callPackage ./linx-server.nix {};
+      papermc = callPackage ./papermc.nix {};
       rofi-wayland = callPackage ./rofi-wayland/wrapper.nix {};
       zr = callPackage ./zr.nix {};
 

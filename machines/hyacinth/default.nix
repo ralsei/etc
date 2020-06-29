@@ -45,23 +45,23 @@
   # the pointing with the mouse and stuff
   hazel.graphicalSession = {
     enable = true;
-    desktop = "hikari";
+    desktop = "sway";
   };
-  # hazel.desktop.sway = {
-  #   outputs = {
-  #     eDP-1 = {
-  #       bg = "~/usr/img/papes/desktop/lol_furries.png fill";
-  #       res = "1920x1080";
-  #       # pos = "1920 0";
-  #     };
-  #     HDMI-A-1 = {
-  #       bg = "~/usr/img/papes/desktop/pipes.png fill";
-  #       res = "1920x1080";
-  #       # pos = "0 0";
-  #     };
-  #   };
-  #   lockBg = "~/usr/img/papes/desktop/lol_furries.png";
-  # };
+  hazel.desktop.sway = {
+    outputs = {
+      eDP-1 = {
+        bg = "~/usr/img/papes/desktop/lol_furries.png fill";
+        res = "1920x1080";
+        # pos = "1920 0";
+      };
+      HDMI-A-1 = {
+        bg = "~/usr/img/papes/desktop/pipes.png fill";
+        res = "1920x1080";
+        # pos = "0 0";
+      };
+    };
+    lockBg = "~/usr/img/papes/desktop/lol_furries.png";
+  };
 
   # various tools
   hazel.emacs.enable = true;
@@ -112,5 +112,6 @@
   hazel.home.home.packages = with pkgs; [
     appimage-run
     minecraft
+    mcrcon
   ];
 }
