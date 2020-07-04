@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.hazel.services.nginx;
+  policyFile = pkgs.writeText "wks-policy" "";
 in
 with lib; {
   options = {
@@ -13,6 +14,20 @@ with lib; {
       ssl = mkOption {
         default = false;
         type = with types; bool;
+      };
+
+      wkd = mkOption {
+        type = types.submodule {
+          options = {
+            enable = mkEnableOption "web key directory";
+            directory = mkOption {
+              type = lib.types.path;
+              description = ''
+                Which directory to use for Web Key Directory.
+              '';
+            };
+          };
+        };
       };
     };
   };
@@ -84,10 +99,6 @@ with lib; {
               "/" = {
                extraConfig = ''
                  ssi on;
-                 if ($http_user_agent ~* (curl|wget)) {
-                   return 301 http://$host/hrl.7;
-                 }
-
                  sub_filter ${subText} $rnd_text;
                '';
                tryFiles = "$uri $uri/ =404";
@@ -100,14 +111,20 @@ with lib; {
                '';
              };
 
-             "/hrl.7" = {
+             "=/.well-known/openpgpkey/policy" = mkIf cfg.wkd.enable {
+               alias = policyFile;
                extraConfig = ''
-                 sub_filter_types *;
-                 sub_filter ${subText} $rnd_text;
+                 add_header 'Access-Control-Allow-Origin' '*';
+               '';
+             };
+             "/.well-known/openpgpkey/" = mkIf cfg.wkd.enable {
+               alias = "${cfg.wkd.directory + "/knightsofthelambdacalcul.us"}/";
+               extraConfig = ''
+                 add_header 'Access-Control-Allow-Origin' '*';
                '';
              };
            }));
-        "blog.knightsofthelambdacalcul.us" = 
+        "blog.knightsofthelambdacalcul.us" =
           (mkVHost [] "${pkgs.hazel.ziodyne-blog}" {});
         "lemniscation.knightsofthelambdacalcul.us" =
           (mkVHost [] "/var/www/lemniscation" {});
