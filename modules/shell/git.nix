@@ -3,15 +3,22 @@
   hazel.home = {
     programs.git = {
       enable = true;
+      package = pkgs.gitAndTools.gitFull;
+
       userName = "hazel levine";
-      userEmail = "rose.hazel@protonmail.ch";
+      userEmail = "hazel@knightsofthelambdacalcul.us";
+      signing = {
+        key = "ACD06C41138C76BE807CCCFD7578CDCDED2B28E9";
+        signByDefault = true;
+      };
+
       extraConfig = {
         credential = {
           helper = "!bw-git-helper $@";
           useHttpPath = true;
         };
 
-        init.templateDir = "~/.config/git/template";
+        init.templateDir = "~/.config/git/template"; # canonify
       };
     };
 

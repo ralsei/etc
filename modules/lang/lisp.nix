@@ -23,6 +23,10 @@ with lib; {
         lispPackages.quicklisp
         rlwrap # for sbcl
 
+        chez
+        chicken
+        guile
+
         # the good shit
         racket
       ];

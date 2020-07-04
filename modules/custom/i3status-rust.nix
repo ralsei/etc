@@ -5,12 +5,14 @@ with lib; let
   mapAttrsToList = f: l:
     attrValues (mapAttrs f l);
 
+  # your i3status-rust nix expression doesn't seem to like lists.
+  # It's generating `buttons = [""", "play"", "next"]` for `settings.buttons = [ "play" "next" ];`
   formatLine = n: v:
     let
       # AAAAAAAAAAAAAA
       formatValue = v:
         if isList v then
-          "[${foldl' (x: y: ''"${toString x}", '' + ''"${toString y}"'' ) '''' v}]"
+          "[${concatStringsSep ", " (map (x: ''"${x}"'') v)}]"
         else if isBool v then
           (if v then "true" else "false")
         else if isString v then

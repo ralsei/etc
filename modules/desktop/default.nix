@@ -58,6 +58,7 @@ with lib; {
 
     hazel.home = {
       home.packages = with pkgs; [
+        unstable.ungoogled-chromium # just in case
         thunderbird
         pavucontrol
         mate.caja
@@ -69,7 +70,6 @@ with lib; {
         dino
         riot-desktop
         tdesktop
-        # (trying to get rid of) discord
         mumble
 
         gimp

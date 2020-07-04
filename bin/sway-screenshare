@@ -6,13 +6,13 @@ if ! lsmod | grep v4l2loopback > /dev/null; then
 	sudo modprobe v4l2loopback
 fi
 
-geometry(){
-	windowGeometries=$(
+geometry() {
+	window_geometries=$(
 		# `height - 1` is there because of: https://github.com/ammen99/wf-recorder/pull/56 (I could remove it if it's merged, maybe)
 		swaymsg -t get_workspaces -r | jq -r '.[] | select(.focused) | .rect | "\(.x),\(.y) \(.width)x\(.height - 1)"'; \
 		swaymsg -t get_outputs -r | jq -r '.[] | select(.active) | .rect | "\(.x),\(.y) \(.width)x\(.height)"'
 	)
-	geometry=$(slurp -b "#45858820" -c "#45858880" -w 3 -d <<< "$windowGeometries") || exit $?
+	geometry=$(slurp -b "#45858820" -c "#45858880" -w 3 -d <<< "$window_geometries") || exit $?
 	echo $geometry
 }
 
@@ -29,13 +29,13 @@ then
 else
 	if ! pgrep wf-recorder > /dev/null; then
 		geometry=$(geometry) || exit $?
-		wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video2 --geometry="$geometry" &
+		wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video0 --geometry="$geometry" &
 	fi
 	if ! pgrep ffplay; then
 		swaymsg assign [class=ffplay] workspace 11
 
 		unset SDL_VIDEODRIVER
-		ffplay /dev/video2 -fflags nobuffer &
+		ffplay /dev/video0 -fflags nobuffer &
 		sleep 0.5
 		# a hack so FPS is not dropping
 		swaymsg [class=ffplay] floating enable
@@ -44,4 +44,4 @@ else
 	fi
 	notify-send -t 2000 "Wayland recording has been started"
 fi
-} > ~/.wayland-share-screen.log 2>&1
+} > ~/.cache/wayland-share-screen.log 2>&1

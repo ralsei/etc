@@ -13,8 +13,6 @@
       in [
         { name = "zsh-syntax-highlighting";
           src = sources.zsh-syntax-highlighting; }
-        { name = "geometry";
-          src = sources.geometry; }
       ];
 
       sessionVariables = {
@@ -38,6 +36,18 @@
         "rnt" = "toilet --gay -f term";
 
         "bitch" = "sudo";
+      };
+    };
+
+    programs.starship = {
+      enable = true;
+      settings = {
+        add_newline = false;
+        character = {
+          symbol = "λ";
+          style_success = "bold yellow";
+          style_failure = "bold red";
+        };
       };
     };
 

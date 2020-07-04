@@ -29,10 +29,10 @@
         "homepage": "https://cachix.org",
         "owner": "cachix",
         "repo": "cachix",
-        "rev": "8a8f9c20df9fbe0cc409152aa115fc07bafee18e",
-        "sha256": "178ksl2vd54h0q4xg661cx3jll7xg4ha79zk3fszi23nj9hji0fg",
+        "rev": "09e87f97c506d6213bcb426324b0d5f40cd8a06d",
+        "sha256": "18c1k9smphvwpv2hzq2y7r4risri1rzgfzplcf9wnsg2n1v6x68b",
         "type": "tarball",
-        "url": "https://github.com/cachix/cachix/archive/8a8f9c20df9fbe0cc409152aa115fc07bafee18e.tar.gz",
+        "url": "https://github.com/cachix/cachix/archive/09e87f97c506d6213bcb426324b0d5f40cd8a06d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "clipboard": {
@@ -53,10 +53,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "a87e43630858d5808c660691f170897a9bcb9ec4",
-        "sha256": "1136dv5139dkqrgc4vlnxn2bm8wjxiyw72lianhqvrnp8nr4ap0s",
+        "rev": "195d00333cb58ff13898c38f78e555645a71191d",
+        "sha256": "0wzv6wabhi5fqd7b5696x07vssg9n3w1bxv2yd64l3fgk6fi43ds",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/a87e43630858d5808c660691f170897a9bcb9ec4.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/195d00333cb58ff13898c38f78e555645a71191d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "geometry": {
@@ -169,10 +169,10 @@
         "homepage": null,
         "owner": "jedahan",
         "repo": "zr",
-        "rev": "d55419d0c310d76c564608bd8c45e0e5a5a04840",
-        "sha256": "179q0nk7wdxqyrffkda25az83yfvy5kaqasmjg4lkjnrwd522057",
+        "rev": "f682c59f5be93d19ffbee9cf5947596529b1ddf8",
+        "sha256": "1vmgzs4irmjrfs4hpb22wcxsabys28f31fpcfjijm6wdzg8lzv7n",
         "type": "tarball",
-        "url": "https://github.com/jedahan/zr/archive/d55419d0c310d76c564608bd8c45e0e5a5a04840.tar.gz",
+        "url": "https://github.com/jedahan/zr/archive/f682c59f5be93d19ffbee9cf5947596529b1ddf8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zsh-syntax-highlighting": {
