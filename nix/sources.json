@@ -53,22 +53,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "195d00333cb58ff13898c38f78e555645a71191d",
-        "sha256": "0wzv6wabhi5fqd7b5696x07vssg9n3w1bxv2yd64l3fgk6fi43ds",
+        "rev": "03ed9ef76e7d3dd4e5d3e5108475dbbcb8a0c66e",
+        "sha256": "1zm4ira3rd1x9j2d1khzwm570fy63mqn9rsx5ghdn7151p8pffn3",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/195d00333cb58ff13898c38f78e555645a71191d.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "geometry": {
-        "branch": "main",
-        "description": "geometry is a minimal, fully customizable and composable zsh prompt theme",
-        "homepage": "",
-        "owner": "geometry-zsh",
-        "repo": "geometry",
-        "rev": "e75e1e0253dd8b1168aed0c44cb464f93644612c",
-        "sha256": "14mdv26cpmmap4ljwbwgy5ah00zai13l72s3asqh5m6x4d5qab25",
-        "type": "tarball",
-        "url": "https://github.com/geometry-zsh/geometry/archive/e75e1e0253dd8b1168aed0c44cb464f93644612c.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/03ed9ef76e7d3dd4e5d3e5108475dbbcb8a0c66e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "go-rice": {
@@ -181,10 +169,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "91d2eeaf23c47341e8dc7ad66dbf85e38c2674de",
-        "sha256": "1160bbhpd2p6qlw1b5k86z243iv0yhv6x7pf414sr8q4cm59x2h0",
+        "rev": "fb929edc30192407a9298aad64f55ca1b19a464e",
+        "sha256": "0l6130bly44zssq68wa8hyj0liyhr86avqlwg7vhkhcdhmy7h6pj",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/91d2eeaf23c47341e8dc7ad66dbf85e38c2674de.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/fb929edc30192407a9298aad64f55ca1b19a464e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

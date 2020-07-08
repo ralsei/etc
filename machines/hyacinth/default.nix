@@ -65,7 +65,6 @@
 
   # various tools
   hazel.emacs.enable = true;
-  hazel.mail.enable = true;
   hazel.langSupport.enable = true;
   hazel.services.mpd = {
     enable = true;
@@ -106,7 +105,8 @@
 
   # sigh
   virtualisation.docker.enable = true;
-  users.users.hazel.extraGroups = [ "docker" ];
+  programs.adb.enable = true;
+  users.users.hazel.extraGroups = [ "docker" "adbusers" ];
 
   # gamer
   hazel.home.home.packages = with pkgs; [
