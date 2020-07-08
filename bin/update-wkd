@@ -1,0 +1,8 @@
+#!/usr/bin/env cached-nix-shell
+#!nix-shell -i bash -p gnupg
+set -xu
+[ -z "$1" ] && exit 1
+DIR="$(pwd)"
+
+install -m 0711 -d "$DIR/wkd"
+gpg --list-options show-only-fpr-mbox -k "@$1" | gpg-wks-server -v -C "$DIR/wkd" --install-key

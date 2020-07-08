@@ -51,6 +51,10 @@
     nginx = {
       enable = true;
       ssl = true;
+      wkd = {
+        enable = true;
+        directory = /var/www/wkd;
+      };
     };
 
     mailserver.enable = true;
