@@ -3,7 +3,6 @@
   imports = [
     ./bitwarden.nix
     ./gitea.nix
-    ./gpg.nix
     ./linx.nix
     ./mail.nix
     ./minecraft.nix

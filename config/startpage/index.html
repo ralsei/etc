@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- new tab override ext -->
+    <style>
+:root {
+    --font: "IBM Plex Mono";
+    --background: #fbf1c7;
+    --foreground: #3c3836;
+    --aqua: #689d6a;
+    --yellow: #d79921;
+    --green: #98971a;
+    --red: #cc241d;
+    --branch: 1px solid #928374;
+}
+
+html {
+    font-size: 18px;
+}
+
+body {
+    background: var(--background);
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.prompt {
+    font-family: var(--font);
+    color: var(--foreground);
+}
+
+.prompt~.prompt {
+    padding: 1.3rem 0 0.3125rem;
+}
+
+span {
+    color: var(--yellow);
+}
+
+.hostname {
+    color: var(--green);
+}
+
+.dir {
+    color: var(--aqua);
+}
+
+h1 {
+    display: inline;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--aqua);
+}
+
+.tree > ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding-left: 2.5rem;
+}
+
+li {
+    position: relative;
+}
+
+li::before, li::after {
+    content: "";
+    position: absolute;
+    left: -0.75rem;
+}
+
+li::before {
+    border-top: var(--branch);
+    top: 0.75rem;
+    width: 0.5rem;
+}
+
+li::after {
+    border-left: var(--branch);
+    height: 100%;
+    top: 0.25rem;
+}
+
+li:last-child::after {
+    height: 0.5rem;
+}
+
+a {
+    font-family: var(--font);
+    font-size: 1rem;
+    color: var(--foreground);
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover {
+    color: var(--background);
+    background: var(--red);
+}
+
+form h1 {
+    padding-left: 0.125rem;
+}
+
+input {
+    font-family: var(--font);
+    font-size: 1rem;
+    color: var(--foreground);
+    background-color: var(--background);
+    border: none;
+}
+    </style>
+    <title>~</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="prompt"><span>hazel</span> on <span class="hostname">hyacinth</span> in <span class="dir">~</span>
+                          <br>
+                          <span>λ</span> tree</div>
+      <div class="tree">
+        <h1>.</h1>
+        <ul>
+          <li>
+            <h1>school</h1>
+            <ul>
+              <li><a href="https://one.iu.edu">oneiu</a></li>
+              <li><a href="https://iu.instructure.com">canvas</a></li>
+              <li><a href="https://sci-hub.se">sci-hub</a></li>
+            </ul>
+          </li>
+          <li>
+            <h1>social</h1>
+            <ul>
+              <li><a href="https://is.nota.live">mastodon</a></li>
+              <li><a href="https://discord.com/channels/@me">gamersite</a></li>
+              <li><a href="https://lobste.rs">lobsters</a></li>
+              <li><a href="https://beta.protonmail.com">protonmail</a></li>
+            </ul>
+          </li>
+          <li>
+            <h1>code</h1>
+            <ul>
+              <li><a href="https://git.knightsofthelambdacalcul.us">gitea</a></li>
+              <li><a href="https://github.com">github</a></li>
+              <li><a href="https://nixos.org/nixos/options.html">options</a></li>
+              <li><a href="https://hackthebox.eu">htb</a></li>
+            </ul>
+          </li>
+          <li>
+            <h1>misc</h1>
+            <ul>
+              <li><a href="https://cloud.knightsofthelambdacalcul.us">nextcloud</a></li>
+              <li><a href="https://youtube.com">timewaster</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="prompt"><span>hazel</span> on <span class="hostname">hyacinth</span> in <span class="dir">~</span>
+                          <br>
+                          <span>λ</span> ddg</div>
+      <form action="https://duckduckgo.com/" method="GET">
+        <h1>search: </h1>
+        <input type="text" name="q" autofocus="autofocus">
+      </form>
+    </div>
+  </body>
+</html>

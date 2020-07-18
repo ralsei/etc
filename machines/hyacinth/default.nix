@@ -42,6 +42,9 @@
   # automount USB devices
   hazel.autoMount.enable = true;
 
+  # boppin
+  hazel.yubikey.enable = true;
+
   # the pointing with the mouse and stuff
   hazel.graphicalSession = {
     enable = true;
@@ -82,8 +85,9 @@
     routeAll = true;
   };
 
-  # enable hackthebox vpns
+  # eyes emoji
   hazel.hackTheBox.enable = true;
+  hazel.ctfTools.enable = true;
 
   # firm ware up daet
   services.fwupd.enable = true;
@@ -104,9 +108,8 @@
   };
 
   # sigh
-  virtualisation.docker.enable = true;
   programs.adb.enable = true;
-  users.users.hazel.extraGroups = [ "docker" "adbusers" ];
+  users.users.hazel.extraGroups = [ "adbusers" ];
 
   # gamer
   hazel.home.home.packages = with pkgs; [

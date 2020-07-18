@@ -29,6 +29,7 @@
         gnupg
         ripgrep
         mosh
+        pb_cli
       ] ++ (if builtins.currentSystem != "aarch64-linux" then [
         # these apps take forever to compile
         bitwarden-cli

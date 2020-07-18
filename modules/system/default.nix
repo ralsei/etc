@@ -7,5 +7,6 @@
     ./power.nix
     ./private.nix
     ./wireguard.nix
+    ./yubikey.nix
   ];
 }

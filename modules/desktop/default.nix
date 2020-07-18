@@ -73,8 +73,8 @@ with lib; {
         mumble
 
         gimp
-        ghidra-bin
         soulseekqt
+        qbittorrent
 
         grim
         slurp
