@@ -8,7 +8,7 @@
       userName = "hazel levine";
       userEmail = "hazel@knightsofthelambdacalcul.us";
       signing = {
-        key = "ACD06C41138C76BE807CCCFD7578CDCDED2B28E9";
+        key = "593067D35E5CA280959CEC3735C1205716621182";
         signByDefault = true;
       };
 

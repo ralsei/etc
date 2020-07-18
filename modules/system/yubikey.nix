@@ -4,7 +4,13 @@ let
   desktopEnabled = config.hazel.graphicalSession.enable;
 in
 with lib; {
-  options.hazel.yubikey.enable = mkEnableOption "yubikey";
+  options.hazel.yubikey = {
+    enable = mkEnableOption "yubikey";
+    login = mkOption {
+      default = false;
+      type = with types; bool;
+    };
+  };
 
   config = mkIf cfg.enable {
     services.udev.packages = with pkgs; [
@@ -31,12 +37,29 @@ with lib; {
                                  ++ (if desktopEnabled then [ pkgs.pinentry-gtk2 ]
                                      else [ pkgs.pinentry-curses ]);
 
-    hazel.home.xdg.configFile."gnupg/gpg-agent.conf" = {
+    hazel.home.home.packages = with pkgs; [
+      yubikey-manager
+      yubikey-personalization
+    ] ++ (if desktopEnabled then with pkgs; [
+      yubikey-manager-qt
+      yubikey-personalization-gui
+    ] else []);
+
+    hazel.home.home.file.".gnupg/gpg-agent.conf" = {
       text = if desktopEnabled then ''
         pinentry-program ${pkgs.pinentry-gtk2}/bin/pinentry
       '' else ''
         pinentry-program ${pkgs.pinentry-curses}/bin/pinentry
       '';
     };
+
+    security.pam.yubico = {
+      enable = cfg.login;
+      id = "56284";
+      control = "sufficient";
+    };
+
+    security.pam.services.swaylock.yubicoAuth = cfg.login;
+    security.pam.services.hikari-unlocker.yubicoAuth = cfg.login;
   };
 }

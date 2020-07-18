@@ -43,7 +43,10 @@
   hazel.autoMount.enable = true;
 
   # boppin
-  hazel.yubikey.enable = true;
+  hazel.yubikey = {
+    enable = true;
+    login = true;
+  };
 
   # the pointing with the mouse and stuff
   hazel.graphicalSession = {

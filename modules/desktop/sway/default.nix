@@ -49,7 +49,7 @@ with lib; {
     programs.sway.enable = true;
 
     # make swaylock function
-    security.pam.services.swaylock.text = "auth include login";
+    # security.pam.services.swaylock.text = "auth include login";
 
     # the bar
     hazel.desktop.i3status-rust.enable = true;
