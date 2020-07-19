@@ -6,6 +6,9 @@
     ./hardware.nix
   ];
 
+  networking.firewall.allowedTCPPorts = [ 5555 5556 ];
+  networking.firewall.allowedUDPPorts = [ 5555 5556 ];
+
   # hostname and hostid (for zfs)
   networking.hostName = "hyacinth";
   networking.hostId = "3ae0d799";
@@ -56,8 +59,9 @@
   hazel.desktop.sway = {
     outputs = {
       eDP-1 = {
-        bg = "~/usr/img/papes/desktop/lol_furries.png fill";
-        res = "1920x1080";
+        disable = "";
+        # bg = "~/usr/img/papes/desktop/lol_furries.png fill";
+        # res = "1920x1080";
         # pos = "1920 0";
       };
       HDMI-A-1 = {

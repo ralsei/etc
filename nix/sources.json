@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "xzfc",
         "repo": "cached-nix-shell",
-        "rev": "4db8af0c653620e192c59d7d8ed227e4ffd8f54c",
-        "sha256": "1ni671wr2lrvyz6myaz3v4llrjvq4jc1ygw1m7rvnadzyf3va3lw",
+        "rev": "a0a7ca18f1f3bb30a704ea01a6030ae107197c09",
+        "sha256": "0viqcaiykvbh11bq4zjq66r7nnfd4zkxcfki59hsz8p2nyrc24fs",
         "type": "tarball",
-        "url": "https://github.com/xzfc/cached-nix-shell/archive/4db8af0c653620e192c59d7d8ed227e4ffd8f54c.tar.gz",
+        "url": "https://github.com/xzfc/cached-nix-shell/archive/a0a7ca18f1f3bb30a704ea01a6030ae107197c09.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "cachix": {
@@ -29,10 +29,10 @@
         "homepage": "https://cachix.org",
         "owner": "cachix",
         "repo": "cachix",
-        "rev": "09e87f97c506d6213bcb426324b0d5f40cd8a06d",
-        "sha256": "18c1k9smphvwpv2hzq2y7r4risri1rzgfzplcf9wnsg2n1v6x68b",
+        "rev": "b9c6d4f472d2c26a6969542e8167d565f8ad1802",
+        "sha256": "0qrbv5hcigiixpx68rs3wbfy4l1r13y4girrn9pzyn5hf0qnsmf8",
         "type": "tarball",
-        "url": "https://github.com/cachix/cachix/archive/09e87f97c506d6213bcb426324b0d5f40cd8a06d.tar.gz",
+        "url": "https://github.com/cachix/cachix/archive/b9c6d4f472d2c26a6969542e8167d565f8ad1802.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "clipboard": {
@@ -53,10 +53,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "03ed9ef76e7d3dd4e5d3e5108475dbbcb8a0c66e",
-        "sha256": "1zm4ira3rd1x9j2d1khzwm570fy63mqn9rsx5ghdn7151p8pffn3",
+        "rev": "3fbbc3e8c03f4ba2461d18b353b503ddd2beb45c",
+        "sha256": "196nwxffb58rrlzp15j01zv6xm7aghh02spibrr0gmdnw1yg8lnc",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/03ed9ef76e7d3dd4e5d3e5108475dbbcb8a0c66e.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/3fbbc3e8c03f4ba2461d18b353b503ddd2beb45c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "go-rice": {
@@ -169,10 +169,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "fb929edc30192407a9298aad64f55ca1b19a464e",
-        "sha256": "0l6130bly44zssq68wa8hyj0liyhr86avqlwg7vhkhcdhmy7h6pj",
+        "rev": "2d60a47cc407117815a1d7b331ef226aa400a344",
+        "sha256": "1pnxr39cayhsvggxihsfa3rqys8rr2pag3ddil01w96kw84z4id2",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/fb929edc30192407a9298aad64f55ca1b19a464e.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/2d60a47cc407117815a1d7b331ef226aa400a344.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
