@@ -42,14 +42,9 @@ with lib; {
       };
 
       blocks = [
-        { name = "battery"; }
-        { name = "maildir";
+        { name = "battery";
           settings = {
-            interval = 180;
-            inboxes = [ "/home/hazel/var/mail/protonmail/INBOX" ];
-            threshold_warning = 1;
-            threshold_critical = 10;
-            display_type = "new";
+            driver = "upower";
           };
         }
         { name = "net";
