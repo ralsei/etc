@@ -55,8 +55,8 @@ with lib; {
 
     security.pam.yubico = {
       enable = cfg.login;
-      id = "56284";
-      control = "sufficient";
+      mode = "challenge-response";
+      control = "required"; # oh boy.
     };
 
     security.pam.services.swaylock.yubicoAuth = cfg.login;

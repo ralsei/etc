@@ -9,12 +9,10 @@ with lib; {
 
   options = {
     hazel.desktop.i3status-rust = {
-      enable = mkOption {
-        default = false;
-        type = with types; bool;
-        description = ''
-          Enable the i3status-rust statusbar.
-        '';
+      enable = mkEnableOption "i3status-rust";
+      batteries = mkOption {
+        default = [ "BAT0" ];
+        type = with types; (listOf str);
       };
     };
   };
@@ -41,17 +39,12 @@ with lib; {
         };
       };
 
-      blocks = [
-        { name = "battery"; }
-        { name = "maildir";
-          settings = {
-            interval = 180;
-            inboxes = [ "/home/hazel/var/mail/protonmail/INBOX" ];
-            threshold_warning = 1;
-            threshold_critical = 10;
-            display_type = "new";
-          };
-        }
+      blocks = let
+        mkBattery = x: {
+          name = "battery";
+          settings = { device = x; };
+        };
+      in (map mkBattery cfg.batteries) ++ [
         { name = "net";
           settings = {
             device = "wg0";
