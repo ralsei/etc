@@ -26,14 +26,14 @@ with lib; {
         };
 
         font = let
-          fontSetting = {
+          mkFontSetting = x: {
             family = "IBM Plex Mono";
-            style = "Regular"; # not a fan of bold fonts in term.
+            style = x;
           };
         in {
-          normal = fontSetting;
-          bold = fontSetting;
-          italic = fontSetting;
+          normal = mkFontSetting "Regular";
+          bold = mkFontSetting "Bold";
+          italic = mkFontSetting "Italic";
 
           size = 10.0;
         };

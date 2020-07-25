@@ -75,6 +75,7 @@ with lib; {
         gimp
         soulseekqt
         qbittorrent
+        hazel.butt
 
         grim
         slurp

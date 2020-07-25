@@ -6,6 +6,7 @@ in
     hazel = {
       # my packages
       burpsuite = callPackage ./burpsuite.nix {};
+      butt = callPackage ./butt.nix {};
       bw-git-helper = callPackage ./bw-git-helper.nix {};
       go-rice = callPackage ./go-rice.nix {};
       linx-client = callPackage ./linx-client {};
