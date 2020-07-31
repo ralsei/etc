@@ -27,7 +27,7 @@ with lib; {
     hazel.home.xdg.configFile."hikari/autostart".executable = true;
 
     hazel.home.home.packages = with pkgs; [
-      unstable.hikari
+      hazel.hikari
       xwayland
       swaybg
     ];

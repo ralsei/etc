@@ -1,21 +1,31 @@
 {
     "layer": "top",
     "position": "bottom",
-    "modules-left": ["battery", "network", "network#vpn"],
+    "modules-left": ["battery", "battery#BAT0", "network"],
     "modules-center": ["mpd"],
     "modules-right": ["clock"],
     "sway/window": {
         "max-length": 50
     },
     "battery": {
+        "bat": "BAT1",
         "full-at": 95,
         "states": {
             "warning": 30,
             "critical": 15
         },
         "format": "{capacity}%",
-        "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-full": "full"
+    },
+    "battery#BAT0": {
+        "bat": "BAT0",
+        "full-at": 95,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}%",
+        "format-full": "full"
     },
     "network": {
         "interface": "wlan0",
@@ -24,11 +34,6 @@
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "network#vpn": {
-        "interface": "wg0",
-        "format": "VPN",
-        "format-disconnected": "no VPN"
     },
     "clock": {
         "format": "{:%I:%M}",

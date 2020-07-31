@@ -53,10 +53,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "3fbbc3e8c03f4ba2461d18b353b503ddd2beb45c",
-        "sha256": "196nwxffb58rrlzp15j01zv6xm7aghh02spibrr0gmdnw1yg8lnc",
+        "rev": "7c51cc921d464d682619c711f72fbfdc715e75ee",
+        "sha256": "0vj4q6w8q9ywy8i2phllp0j0zmg9wz436qidgbyckf1isbv6rg1q",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/3fbbc3e8c03f4ba2461d18b353b503ddd2beb45c.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/7c51cc921d464d682619c711f72fbfdc715e75ee.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "go-rice": {

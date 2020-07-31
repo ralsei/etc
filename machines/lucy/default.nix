@@ -40,18 +40,8 @@
   # the pointing with the mouse and stuff
   hazel.graphicalSession = {
     enable = true;
-    desktop = "sway";
+    desktop = "hikari";
   };
-  hazel.desktop.sway = {
-    outputs = {
-      eDP-1 = {
-        bg = "~/usr/img/papes/desktop/rose.jpg fill";
-        res = "1600x900";
-      };
-    };
-    lockBg = "~/usr/img/papes/desktop/rose.jpg";
-  };
-  hazel.desktop.i3status-rust.batteries = [ "BAT1" "BAT0" ];
 
   # various tools
   hazel.emacs.enable = true;

@@ -68,7 +68,7 @@ with lib; {
         nextcloud-client
 
         dino
-        riot-desktop
+        unstable.element-desktop
         tdesktop
         mumble
 

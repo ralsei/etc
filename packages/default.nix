@@ -9,6 +9,7 @@ in
       butt = callPackage ./butt.nix {};
       bw-git-helper = callPackage ./bw-git-helper.nix {};
       go-rice = callPackage ./go-rice.nix {};
+      hikari = callPackage ./hikari.nix {};
       linx-client = callPackage ./linx-client {};
       linx-server = callPackage ./linx-server.nix {};
       papermc = callPackage ./papermc.nix {};

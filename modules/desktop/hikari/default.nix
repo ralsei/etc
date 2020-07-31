@@ -40,7 +40,8 @@ in {
       autoStart = "#!/bin/sh\n"
                   + (if waybarCfg.enable then "waybar &\n" else "")
                   + (if makoCfg.enable then "mako &\n" else "")
-                  + (if mpdCfg.mpris then "mpDris2 &\n" else "");
+                  + (if mpdCfg.mpris then "mpDris2 &\n" else "")
+                  + "swaybg -i ~/usr/img/papes/desktop/50286a2a4b924135.png &";
       config = {
         ui = {
           border = 2;
@@ -59,12 +60,6 @@ in {
             insert     = 10000154;
             active     = 13378589;
             inactive   = 2631720;
-          };
-        };
-
-        outputs = {
-          "*" = {
-            background = "/home/hazel/usr/img/papes/desktop/lol_furries.png";
           };
         };
 
@@ -236,6 +231,12 @@ in {
           mouse = {
             "L+left" = "mode-enter-move";
             "L+right" = "mode-enter-resize";
+          };
+        };
+
+        inputs = {
+          switches = {
+            "Lid Switch" = "lock";
           };
         };
       };
