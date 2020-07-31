@@ -24,6 +24,8 @@ with lib; {
         signupsAllowed = false;
         rocketPort = 8080;
         rocketLog = "critical";
+        yubicoClientId = 56284;
+        yubicoSecretKey = (builtins.readFile /etc/yubico-secret-key);
       };
       dbBackend = "sqlite";
     };

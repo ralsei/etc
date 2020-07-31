@@ -3,7 +3,7 @@
 {
   imports = [
     <home-manager/nixos>
-    ./cachix.nix
+    # ./cachix.nix
 
     ./modules
     ./machines/current
