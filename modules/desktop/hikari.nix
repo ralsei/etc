@@ -20,7 +20,7 @@ with lib; let
 in {
   imports = [
     /etc/nixos/modules/custom/hikari.nix
-    ./waybar.nix
+    ./core/waybar.nix
   ];
 
   options = {

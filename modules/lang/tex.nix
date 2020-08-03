@@ -18,7 +18,7 @@ with lib; {
   config = mkIf cfg.enable {
     hazel.home = {
       home.packages = with pkgs; [
-        texlive.combined.scheme-medium
+        texlive.combined.scheme-full
       ];
 
       home.file.".latexmkrc".text = ''

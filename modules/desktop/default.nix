@@ -4,18 +4,12 @@ let
 in
 with lib; {
   imports = [
-    ./sway
-    ./hikari
+    ./apps
+    ./core
+    ./settings
 
-    ./alacritty.nix
-    ./dirs.nix
-    ./firefox.nix
-    ./fonts.nix
-    ./gtk.nix
-    ./mako.nix
-    ./rofi.nix
-    ./wofi.nix
-    ./zathura.nix
+    ./sway.nix
+    ./hikari.nix
   ];
 
   options = {
@@ -71,6 +65,7 @@ with lib; {
         unstable.element-desktop
         tdesktop
         mumble
+        zoom-us
 
         gimp
         soulseekqt

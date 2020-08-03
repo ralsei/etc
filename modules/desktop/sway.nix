@@ -1,10 +1,13 @@
 { config, pkgs, lib, ... }:
 let
   cfg = config.hazel.desktop.sway;
+
   makoCfg = config.hazel.desktop.mako;
   mpdCfg = config.hazel.services.mpd;
   rofiCfg = config.hazel.desktop.rofi;
   wofiCfg = config.hazel.desktop.wofi;
+  i3RsCfg = config.hazel.desktop.i3status-rust;
+  waybarCfg = config.hazel.desktop.waybar;
 
   modifier = "Mod4";
   terminal = "alacritty";
@@ -15,7 +18,9 @@ let
          else throw "At least one menu must be enabled";
 in
 with lib; {
-  imports = [ ./i3status-rust.nix ];
+  imports = [
+    ./core/waybar.nix
+  ];
 
   options = {
     hazel.desktop.sway = {
@@ -52,7 +57,7 @@ with lib; {
     # security.pam.services.swaylock.text = "auth include login";
 
     # the bar
-    hazel.desktop.i3status-rust.enable = true;
+    hazel.desktop.waybar.enable = true;
 
     hazel.home = {
       # compositor of choice
@@ -246,7 +251,7 @@ with lib; {
             background = colors.hl;
           };
 
-          bars = [{
+          bars = if i3RsCfg.enable then [{
             position = "top";
             fonts = [ "FontAwesome" "IBM Plex Mono 10" ];
             workspaceNumbers = false;
@@ -280,7 +285,9 @@ with lib; {
                 border = colors.urg;
               };
             };
-          }];
+          }] else if waybarCfg.enable then [{
+            command = "${pkgs.waybar}/bin/waybar";
+          }] else [];
         };
 
         extraConfig = ''

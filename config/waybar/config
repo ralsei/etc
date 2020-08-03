@@ -1,42 +1,61 @@
 {
     "layer": "top",
-    "position": "bottom",
-    "modules-left": ["battery", "battery#BAT0", "network"],
-    "modules-center": ["mpd"],
-    "modules-right": ["clock"],
+    "position": "top",
+    "modules-left": ["mpd"],
+    "modules-right": ["network", "battery", "battery#BAT0", "clock"],
     "sway/window": {
         "max-length": 50
     },
     "battery": {
-        "bat": "BAT1",
-        "full-at": 95,
         "states": {
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}%",
-        "format-full": "full"
+        "bat":"BAT1",
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-discharging": "{icon} {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
     },
     "battery#BAT0": {
-        "bat": "BAT0",
-        "full-at": 95,
         "states": {
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}%",
-        "format-full": "full"
+        "bat":"BAT0",
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-discharging": "{icon} {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "interface": "wlan0",
-        "format-wifi": "{essid} ({signalStrength}%)",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format": "{ifname}",
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "",
+        "tooltip-format-wifi": "{signalStrength}%",
+        "max-length": 20
     },
     "clock": {
         "format": "{:%I:%M}",
         "format-alt": "{:%Y-%m-%d %I:%M}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "format-disconnected": "Disconnected",
+        "format-stopped": "Stopped",
+        "interval": 2,
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
     }
 }

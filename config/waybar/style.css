@@ -1,39 +1,50 @@
 * {
-    border:        none;
-    border-radius: 0;
-    font-family:   'IBM Plex Mono', 'FontAwesome';
-    font-size:     14px;
-    box-shadow:    none;
-    text-shadow:   none;
-    transition-duration: 0.1s;
-    min-height: 25px;
+  font-size: 12px;
+  font-family: "IBM Plex Mono", "FontAwesome";
 }
 
-#mode {
-    font-style: oblique;
-}
-
-window {
-    color:      #ebdbb2;
-    background: rgba(34, 34, 34, 0.00); /* #222222 */
-}
-
-#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail {
-    margin:     0px 6px 0px 10px;
-    min-width:  25px;
+window#waybar {
+    background: rgba(0,0,0,0);
 }
 
 #battery {
-    border-top:    2px solid rgba(0, 0, 0, 0);
-    border-bottom: 2px solid rgba(0, 0, 0, 0);
+  margin: 3px 0px 3px 0px;
+  background: #ebdbb2;
+  padding: 5px;
+  color: #3c3836;
 }
 
-#battery.charging {
-    border-top:    2px solid #98971a;
-    border-bottom: 2px solid rgba(0, 0, 0, 0);
+#battery.BAT0 {
+  margin: 3px 0px 3px 0px;
+  background: #ebdbb2;
+  padding: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #3c3836;
 }
 
 #clock {
-    margin:     0px 16px 0px 10px;
-    min-width:  120px;
+  margin: 3px;
+  color: #FFF;
+  background: #ebdbb2;
+  border-radius: 10px;
+  padding: 5px 7px 5px 7px;
+  color: #3c3836;
+}
+
+#mpd {
+  margin: 3px;
+  padding: 5px 7px 5px 7px;
+  border-radius: 10px;
+  background: #ebdbb2;
+  color: #3c3836;
+}
+
+#network {
+  background: #ebdbb2;
+  color: #3c3836;
+  margin: 3px 0px 3px 0px;
+  padding: 5px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }

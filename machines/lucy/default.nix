@@ -40,8 +40,17 @@
   # the pointing with the mouse and stuff
   hazel.graphicalSession = {
     enable = true;
-    desktop = "hikari";
+    desktop = "sway";
   };
+  hazel.desktop.sway = {
+    outputs = {
+      eDP-1 = {
+        bg = "~/usr/img/papes/desktop/50286a2a4b924135.png fill";
+      };
+    };
+    lockBg = "~/usr/img/papes/desktop/50286a2a4b924135.png";
+  };
+
 
   # various tools
   hazel.emacs.enable = true;

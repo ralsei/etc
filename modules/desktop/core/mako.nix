@@ -26,6 +26,7 @@ with lib; {
         textColor = "#fbf1c7";
         progressColor = "over #fbf1c7";
         borderSize = 0;
+        borderRadius = 10;
 
         margin = "20,20,10";
         padding = "10";
