@@ -60,6 +60,7 @@ with lib; {
         imv
         mpv
         nextcloud-client
+        libreoffice-fresh
 
         dino
         unstable.element-desktop

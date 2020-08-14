@@ -79,6 +79,7 @@
        latex
        markdown
        nix
+       ocaml
        (org +dragndrop +hugo +pandoc +present)
        python
        racket

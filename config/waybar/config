@@ -38,7 +38,7 @@
         "format": "{ifname}",
         "format-wifi": " {essid}",
         "format-ethernet": " {ifname}",
-        "format-disconnected": "",
+        "format-disconnected": "Disconnected",
         "tooltip-format-wifi": "{signalStrength}%",
         "max-length": 20
     },

@@ -61,6 +61,13 @@
     scrobbling = true;
   };
 
+  # wireguard vpn ip (same as hyacinth)
+  hazel.wireguard = {
+    enable = true;
+    addresses = [ "10.66.66.2/24" "fd42:42:42::2/64" ];
+    routeAll = true;
+  };
+
   # laptop power adjustments
   hazel.laptopPower.enable = true;
 
@@ -74,4 +81,11 @@
   # sigh
   programs.adb.enable = true;
   users.users.hazel.extraGroups = [ "adbusers" ];
+
+  # GAMER
+  hazel.home.home.packages = with pkgs; [
+    appimage-run
+    minecraft
+    mcrcon
+  ];
 }

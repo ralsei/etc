@@ -6,6 +6,7 @@ with lib; {
   imports = [
     ./c.nix
     ./lisp.nix
+    ./ocaml.nix
     ./python.nix
     ./rust.nix
     ./scala.nix
@@ -28,6 +29,7 @@ with lib; {
     hazel.languages = {
       c.enable = true;
       lisp.enable = true;
+      ocaml.enable = true;
       python.enable = true;
       rust.enable = true;
       scala.enable = true;
