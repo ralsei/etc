@@ -29,10 +29,10 @@
         "homepage": "https://cachix.org",
         "owner": "cachix",
         "repo": "cachix",
-        "rev": "b9c6d4f472d2c26a6969542e8167d565f8ad1802",
-        "sha256": "0qrbv5hcigiixpx68rs3wbfy4l1r13y4girrn9pzyn5hf0qnsmf8",
+        "rev": "fa5e8cb446cc7e7f7bc870da967651ce9e7936b2",
+        "sha256": "0jwilqypabbc80wi9qrgsw4yz7rkq5xybadrfdj4ikqyvcfx6fpf",
         "type": "tarball",
-        "url": "https://github.com/cachix/cachix/archive/b9c6d4f472d2c26a6969542e8167d565f8ad1802.tar.gz",
+        "url": "https://github.com/cachix/cachix/archive/fa5e8cb446cc7e7f7bc870da967651ce9e7936b2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "clipboard": {
@@ -53,10 +53,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "5aa245a8cc546f7a6a1bc781edcdaa611cb7f900",
-        "sha256": "1jrjwzyic0kwsa9d4akfwacn3jx6bn4bklfrdavyywki7nl15s8v",
+        "rev": "4cce2f051bd0656a3f108ec5e817d8a020223921",
+        "sha256": "0kh4rqj4yc72iqqa37mp3zq5drbnf4p4iag601zans59c0429pab",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/5aa245a8cc546f7a6a1bc781edcdaa611cb7f900.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/4cce2f051bd0656a3f108ec5e817d8a020223921.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "go-rice": {
@@ -169,10 +169,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "2d60a47cc407117815a1d7b331ef226aa400a344",
-        "sha256": "1pnxr39cayhsvggxihsfa3rqys8rr2pag3ddil01w96kw84z4id2",
+        "rev": "4cf464f843902b6e1e2778b85b70f4c098789b6f",
+        "sha256": "0s197576djz1ysk0s5zlmw4v657v0f598mkmqzk32wgs4yvfqabx",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/2d60a47cc407117815a1d7b331ef226aa400a344.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/4cf464f843902b6e1e2778b85b70f4c098789b6f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
