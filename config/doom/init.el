@@ -4,13 +4,6 @@
 ;;  `:_|_;'
 ;;     !
 
-;; gccemacs
-(setq comp-async-env-modifier-form '((setenv "LIBRARY_PATH"
-                                             (concat
-                                              (shell-command-to-string "nix eval --raw '(let pkgs = import <nixos-unstable> {}; in (pkgs.lib.getLib pkgs.libgccjit + /lib/gcc/x86_64-unknown-linux-gnu/9.3.0:))'")
-                                              (shell-command-to-string "nix eval --raw '(let pkgs = import <nixpkgs> {}; in (pkgs.lib.getLib pkgs.stdenv.cc.cc + /lib))'")
-                                              (shell-command-to-string "nix eval --raw '(let pkgs = import <nixpkgs> {}; in (pkgs.lib.getLib pkgs.stdenv.glibc + /lib))'")))))
-
 (doom! :completion
        company
        (ivy +icons +prescient)

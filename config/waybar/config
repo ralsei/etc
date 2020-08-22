@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "modules-left": ["mpd"],
-    "modules-right": ["network", "battery", "battery#BAT0", "clock"],
+    "modules-right": ["network", "custom/vpn", "battery", "battery#BAT0", "clock"],
     "sway/window": {
         "max-length": 50
     },
@@ -57,5 +57,12 @@
         },
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "custom/vpn": {
+        "format": "",
+        "exec": "echo '{\"class\": \"connected\"}'",
+        "exec-if": "$HOME/bin/vpn status",
+        "return-type": "json",
+        "interval": 5
     }
 }

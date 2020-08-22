@@ -64,5 +64,3 @@ man() {
         PAGER="${commands[less]:-$PAGER}" \
         man "$@"
 }
-
-eval "$(opam env)"

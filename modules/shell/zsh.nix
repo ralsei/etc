@@ -36,6 +36,7 @@
         "rnt" = "toilet --gay -f term";
 
         "bitch" = "sudo";
+        "nsw" = "sudo nixos-rebuild switch";
       };
     };
 

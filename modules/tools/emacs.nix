@@ -13,7 +13,6 @@ with import <nixos-unstable> {
     }))
   ];
 };
-
 let
   cfg = config.hazel.emacs;
 in
@@ -45,7 +44,7 @@ with lib; {
         extraPackages = epkgs: [
           epkgs.emacs-libvterm # doom vterm module
         ];
-        package = emacsGcc;
+        package = emacsUnstable;
       };
 
       # run the emacs daemon

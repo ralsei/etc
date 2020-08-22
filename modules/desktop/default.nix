@@ -46,7 +46,7 @@ with lib; {
       gtkTheme.enable = true;
 
       alacritty.enable = true;
-      firefox.enable = true;
+      qutebrowser.enable = true;
       zathura.enable = true;
     };
 
@@ -61,6 +61,7 @@ with lib; {
         mpv
         nextcloud-client
         libreoffice-fresh
+        bitwarden
 
         dino
         unstable.element-desktop

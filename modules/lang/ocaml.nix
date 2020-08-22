@@ -23,10 +23,17 @@ with lib; {
         dune
         m4
 
-        ocamlPackages.utop
+        # any other dependencies in a nix-shell
         ocamlPackages.base
         ocamlPackages.core
+        ocamlPackages.async
+        ocamlPackages.core_extended
+        ocamlPackages.core_bench
+
+        ocamlPackages.utop
+        ocamlPackages.findlib
         ocamlPackages.merlin
+        ocamlPackages.ocp-indent
       ];
     };
   };

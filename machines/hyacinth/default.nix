@@ -6,8 +6,8 @@
     ./hardware.nix
   ];
 
-  networking.firewall.allowedTCPPorts = [ 5555 5556 ];
-  networking.firewall.allowedUDPPorts = [ 5555 5556 ];
+  # networking.firewall.allowedTCPPorts = [ 5555 5556 ];
+  # networking.firewall.allowedUDPPorts = [ 5555 5556 ];
 
   # hostname and hostid (for zfs)
   networking.hostName = "hyacinth";
@@ -59,15 +59,12 @@
   hazel.desktop.sway = {
     outputs = {
       eDP-1 = {
-        disable = "";
-        # bg = "~/usr/img/papes/desktop/lol_furries.png fill";
-        # res = "1920x1080";
-        # pos = "1920 0";
+        bg = "~/usr/img/papes/desktop/lol_furries.png fill";
+        res = "1920x1080";
       };
       HDMI-A-1 = {
         bg = "~/usr/img/papes/desktop/pipes.png fill";
         res = "1920x1080";
-        # pos = "0 0";
       };
     };
     lockBg = "~/usr/img/papes/desktop/lol_furries.png";
@@ -94,7 +91,7 @@
 
   # eyes emoji
   hazel.hackTheBox.enable = true;
-  hazel.ctfTools.enable = true;
+  hazel.ctfTools.enable = false;
 
   # firm ware up daet
   services.fwupd.enable = true;

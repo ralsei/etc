@@ -84,7 +84,7 @@ with lib; {
         ];
 
         systemMode = "system: (x) exit (l) lock (h) suspend (r) reboot (s) shutdown (i) reload";
-        launchMode = "launch: (b) firefox (e) emacs (f) files (m) ncmpcpp";
+        launchMode = "launch: (b) qutebrowser (e) emacs (f) files (m) ncmpcpp";
 
         locker = ''swaylock -f --clock --font "IBM Plex Mono" -i "${cfg.lockBg}" \
                    --effect-blur 5x5 --timestr "%I:%M" \
@@ -196,7 +196,7 @@ with lib; {
             };
 
             "${launchMode}" = {
-              "b" = ''exec firefox; mode "default"'';
+              "b" = ''exec qutebrowser; mode "default"'';
               "e" = ''exec emacsclient -c; mode "default"'';
               "m" = ''exec alacritty -e ncmpcpp; mode "default"'';
               "f" = ''exec caja; mode "default"'';

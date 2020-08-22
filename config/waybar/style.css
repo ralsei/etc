@@ -14,6 +14,13 @@ window#waybar {
   color: #3c3836;
 }
 
+#custom-vpn {
+  margin: 3px 0px 3px 0px;
+  background: #ebdbb2;
+  padding: 5px;
+  color: #3c3836;
+}
+
 #battery.BAT0 {
   margin: 3px 0px 3px 0px;
   background: #ebdbb2;
