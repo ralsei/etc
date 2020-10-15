@@ -53,10 +53,14 @@ in
       ncmpcppWithVisualizer = super.ncmpcpp.override { visualizerSupport = true; };
     };
 
-    # i try to avoid installing packages from unstable -- the two exceptions
-    # are mu/mu4e (my mua) and emacs feature/native-comp, which depends on
-    # unstable/libgccjit.
-    unstable = import <nixos-unstable> { inherit config; };
+    unstable = import <nixos-unstable> {
+      inherit config;
+    };
+
+    # avoid using this if you can...
+    master = import sources.nixpkgs-master {
+      inherit config;
+    };
 
     # HACK: the release-20.03 branch of home-manager does not support the option
     # `programs.rofi.package`

@@ -46,7 +46,8 @@ with lib; {
       gtkTheme.enable = true;
 
       alacritty.enable = true;
-      qutebrowser.enable = true;
+      #qutebrowser.enable = true;
+      firefox.enable = true;
       zathura.enable = true;
     };
 
@@ -62,12 +63,14 @@ with lib; {
         nextcloud-client
         libreoffice-fresh
         bitwarden
+        evince
 
         dino
         unstable.element-desktop
         tdesktop
         mumble
         zoom-us
+        teams
 
         gimp
         soulseekqt

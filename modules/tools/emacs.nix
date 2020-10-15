@@ -44,7 +44,7 @@ with lib; {
         extraPackages = epkgs: [
           epkgs.emacs-libvterm # doom vterm module
         ];
-        package = emacsUnstable;
+        package = pkgs.unstable.emacs;
       };
 
       # run the emacs daemon
