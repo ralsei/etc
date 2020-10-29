@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "modules-left": ["mpd"],
+    "modules-left": ["sway/window"],
     "modules-right": ["network", "custom/vpn", "battery", "battery#BAT0", "clock"],
     "sway/window": {
         "max-length": 50

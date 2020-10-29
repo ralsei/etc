@@ -8,25 +8,6 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    # for linking
-    environment.systemPackages = with pkgs; [
-      haskellPackages.Agda
-      AgdaStdlib
-    ];
-
-    environment.pathsToLink = [ "/share/agda" ];
-
-    hazel.home.home.file = {
-      ".agda/standard-library.agda-lib".text = ''
-        name: standard-library
-        include: /run/current-system/sw/share/agda
-      '';
-      ".agda/libraries".text = ''
-        /home/hazel/.agda/standard-library.agda-lib
-      '';
-      ".agda/defaults".text = ''
-        standard-library
-      '';
-    };
+    hazel.home.home.packages = with pkgs; [ agda agda-pkg ];
   };
 }

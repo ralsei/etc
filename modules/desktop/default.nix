@@ -40,7 +40,8 @@ with lib; {
       hikari.enable = cfg.desktop == "hikari";
 
       mako.enable = true;
-      rofi.enable = true;
+      wofi.enable = true;
+      #rofi.enable = true;
 
       fonts.enable = true;
       gtkTheme.enable = true;
