@@ -32,7 +32,6 @@ with lib; {
         "hazel@knightsofthelambdacalcul.us" = {
           hashedPasswordFile = /etc/snm-hashed-passwd;
           aliases = [ "postmaster@knightsofthelambdacalcul.us" ];
-          catchAll = [ "knightsofthelambdacalcul.us" ];
         };
       };
 

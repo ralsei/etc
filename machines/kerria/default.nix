@@ -56,6 +56,7 @@
         directory = /var/www/wkd;
       };
     };
+    lemniscation.enable = true;
 
     mailserver.enable = true;
 

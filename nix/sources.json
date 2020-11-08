@@ -130,7 +130,7 @@
     "perihelion": {
         "ref": "canon",
         "repo": "https://git.qtp2t.club/hazel/perihelion",
-        "rev": "2945d803b2b411046f01641a8d5687212d4cac4d",
+        "rev": "ff88ce09644addf8610d3a190e8a32f9fd2199fd",
         "type": "git"
     },
     "sha256-simd": {

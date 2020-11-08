@@ -33,7 +33,6 @@
       ] ++ (if builtins.currentSystem != "aarch64-linux" then [
         # these apps take forever to compile
         bitwarden-cli
-        hazel.linx-client
         tokei
         nix-index
       ] else []);
