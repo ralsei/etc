@@ -73,7 +73,11 @@
        markdown
        nix
        ocaml
-       (org +dragndrop +hugo +pandoc +present)
+       (org +dragndrop
+            +hugo
+            +pandoc
+            +present
+            +pretty)
        python
        racket
        (rust +lsp)

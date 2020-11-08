@@ -12,26 +12,26 @@ send_notification() {
 
 case $1 in
     up)
-    # Set the volume on (if it was muted)
-    ponymix --sink unmute
-    # Up the volume (+ 5%)
-    ponymix --sink increase 5
-    send_notification
-    ;;
-    down)
-    ponymix --sink unmute
-    ponymix --sink decrease 5
-    send_notification
-    ;;
-    mute)
-    # Toggle mute
-    ponymix --sink toggle
-    if ponymix --sink is-muted; then
-        makoctl dismiss
-        notify-send -t 1000 "volume muted"
-    else
+        # Set the volume on (if it was muted)
+        ponymix --sink unmute
+        # Up the volume (+ 5%)
+        ponymix --sink increase 5
         send_notification
-    fi
-    ;;
+        ;;
+    down)
+        ponymix --sink unmute
+        ponymix --sink decrease 5
+        send_notification
+        ;;
+    mute)
+        # Toggle mute
+        ponymix --sink toggle
+        if ponymix --sink is-muted; then
+            makoctl dismiss
+            notify-send -t 1000 "volume muted"
+        else
+            send_notification
+        fi
+        ;;
     *) echo "usage: volume [up|down|mute]" ;;
 esac

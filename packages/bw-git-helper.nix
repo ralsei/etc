@@ -13,6 +13,7 @@ buildGoModule rec {
 
   # not managed by niv
   modSha256 = "1ck6bagvf9sjrp79lpx2w7v451ykn6hr3csm9zkqz1rqqd2z0smj";
+  vendorSha256 = "1x7iwd4ndcvcwyx8cxhkcwn5kwwf8nam47ln743wnvcrxi7q2604";
 
   buildInputs = with pkgs; [ bitwarden-cli ];
 

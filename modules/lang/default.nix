@@ -4,6 +4,7 @@ let
 in
 with lib; {
   imports = [
+    ./agda.nix
     ./c.nix
     ./lisp.nix
     ./ocaml.nix
@@ -27,6 +28,7 @@ with lib; {
 
   config = mkIf cfg.enable {
     hazel.languages = {
+      agda.enable = true;
       c.enable = true;
       lisp.enable = true;
       ocaml.enable = true;

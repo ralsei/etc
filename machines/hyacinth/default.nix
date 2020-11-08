@@ -13,12 +13,12 @@
   networking.hostName = "hyacinth";
   networking.hostId = "3ae0d799";
 
+  # quirks
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # systemd-boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # AAAAAAAA
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
   # clear /tmp on reboot
   boot.cleanTmpDir = true;
@@ -33,11 +33,19 @@
   networking.useDHCP = false;
   networking.interfaces.enp3s0f0.useDHCP = true;
   networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.wlan0.useDHCP = true;
+  networking.interfaces.wlp1s0.useDHCP = true;
 
   # audio
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraConfig = ''
+      load-module module-switch-on-connect
+    '';
+  };
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # wifi
   hazel.networking.wifi = true;
@@ -59,12 +67,14 @@
   hazel.desktop.sway = {
     outputs = {
       eDP-1 = {
-        bg = "~/usr/img/papes/desktop/lol_furries.png fill";
+        bg = "~/usr/img/papes/desktop/roses.jpg tile";
         res = "1920x1080";
+        pos = "0 0";
       };
       HDMI-A-1 = {
         bg = "~/usr/img/papes/desktop/pipes.png fill";
         res = "1920x1080";
+        pos = "1920 0";
       };
     };
     lockBg = "~/usr/img/papes/desktop/lol_furries.png";

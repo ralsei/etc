@@ -1,4 +1,4 @@
-#+TITLE:   Hazel's DOOM Emacs configuration
++TITLE:   Hazel's DOOM Emacs configuration
 #+AUTHOR:  Hazel Levine
 #+EMAIL:   rose.hazel@protonmail.ch
 #+STARTUP: nofold
@@ -224,6 +224,49 @@ Zathura.
 #+END_SRC
 * Programming languages
 The cool stuff. Unless it's Java.
+** Agda
+The Doom module is kinda broken.
+
+Grab the executable if we can find the =agda-mode= binary:
+#+BEGIN_SRC emacs-lisp
+(when (executable-find "agda-mode")
+  (load-file
+   (let ((coding-system-for-read 'utf-8))
+     (shell-command-to-string "agda-mode locate"))))
+#+END_SRC
+
+Then copy straight from the Doom Agda module:
+#+BEGIN_SRC emacs-lisp
+(map! :after agda2-mode
+      :map agda2-mode-map
+      :localleader
+      "?"   #'agda2-show-goals
+      "."   #'agda2-goal-and-context-and-inferred
+      ","   #'agda2-goal-and-context
+      "="   #'agda2-show-constraints
+      "SPC" #'agda2-give
+      "a"   #'agda2-auto-maybe-all
+      "b"   #'agda2-previous-goal
+      "c"   #'agda2-make-case
+      "d"   #'agda2-infer-type-maybe-toplevel
+      "e"   #'agda2-show-context
+      "f"   #'agda2-next-goal
+      "gG"  #'agda2-go-back
+      "h"   #'agda2-helper-function-type
+      "l"   #'agda2-load
+      "n"   #'agda2-compute-normalised-maybe-toplevel
+      "p"   #'agda2-module-contents-maybe-toplevel
+      "r"   #'agda2-refine
+      "s"   #'agda2-solveAll
+      "t"   #'agda2-goal-type
+      "w"   #'agda2-why-in-scope-maybe-toplevel
+      (:prefix "x"
+        "c"   #'agda2-compile
+        "d"   #'agda2-remove-annotations
+        "h"   #'agda2-display-implicit-arguments
+        "q"   #'agda2-quit
+        "r"   #'agda2-restart))
+#+END_SRC
 ** FRC Mode
 This is a =gradlew= wrapper I hacked together really fast while sitting in my
 physics class not paying attention. The officially sanctioned IDE for FIRST
@@ -237,7 +280,7 @@ We grab it directly from my Git, since it's not in ELPA (and probably never will
 be):
 #+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
 (package! frc-mode
-  :recipe (:host nil :repo "https://git.knightsofthelambdacalcul.us/hazel/frc-mode"))
+  :recipe (:host nil :repo "https://git.knightsofthelambdacalcul.us/hazel/frc-mode" :branch "canon"))
 #+END_SRC
 
 And tell it to run with all Java files. I'd never willingly write Java outside

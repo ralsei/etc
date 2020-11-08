@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "xzfc",
         "repo": "cached-nix-shell",
-        "rev": "a0a7ca18f1f3bb30a704ea01a6030ae107197c09",
-        "sha256": "0viqcaiykvbh11bq4zjq66r7nnfd4zkxcfki59hsz8p2nyrc24fs",
+        "rev": "48dbef37bec653e23c1801cea3979f053e10654b",
+        "sha256": "0w6khry1ncyqy5h6996xw1f6viw4wdrfji5m8lz9gm487xlq5v0b",
         "type": "tarball",
-        "url": "https://github.com/xzfc/cached-nix-shell/archive/a0a7ca18f1f3bb30a704ea01a6030ae107197c09.tar.gz",
+        "url": "https://github.com/xzfc/cached-nix-shell/archive/48dbef37bec653e23c1801cea3979f053e10654b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "cachix": {
@@ -29,10 +29,10 @@
         "homepage": "https://cachix.org",
         "owner": "cachix",
         "repo": "cachix",
-        "rev": "fa5e8cb446cc7e7f7bc870da967651ce9e7936b2",
-        "sha256": "0jwilqypabbc80wi9qrgsw4yz7rkq5xybadrfdj4ikqyvcfx6fpf",
+        "rev": "1ae3428d52d17fb78b9fe9cbfba81439f725adfe",
+        "sha256": "1m7082vkyr86mzz740m9lmpbg5rx6czk77f0905cf6wihrqijf17",
         "type": "tarball",
-        "url": "https://github.com/cachix/cachix/archive/fa5e8cb446cc7e7f7bc870da967651ce9e7936b2.tar.gz",
+        "url": "https://github.com/cachix/cachix/archive/1ae3428d52d17fb78b9fe9cbfba81439f725adfe.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "clipboard": {
@@ -53,10 +53,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "4cce2f051bd0656a3f108ec5e817d8a020223921",
-        "sha256": "0kh4rqj4yc72iqqa37mp3zq5drbnf4p4iag601zans59c0429pab",
+        "rev": "12f98ef0d91e4b0ac25d3b5a003794cc8a54db6d",
+        "sha256": "03fl4jimgm4glm9szn5kr96qhxx7yl1hlxkbhmcj4c3lr852f1g6",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/4cce2f051bd0656a3f108ec5e817d8a020223921.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/12f98ef0d91e4b0ac25d3b5a003794cc8a54db6d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "go-rice": {
@@ -127,6 +127,18 @@
         "url": "https://github.com/NixOS/nixpkgs-channels/archive/e7752db2fb6c5e05f1de2b275535dbde07d30090.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixpkgs-master": {
+        "branch": "master",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8524c682f65036f5bdc7ec362eefb98abf87c495",
+        "sha256": "1rjv41dihz19gxgkqi55c4wgrwfqsl9dvkq3bcp39c8y9jdq8fqi",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/8524c682f65036f5bdc7ec362eefb98abf87c495.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "perihelion": {
         "ref": "canon",
         "repo": "https://git.qtp2t.club/hazel/perihelion",
@@ -169,10 +181,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "4cf464f843902b6e1e2778b85b70f4c098789b6f",
-        "sha256": "0s197576djz1ysk0s5zlmw4v657v0f598mkmqzk32wgs4yvfqabx",
+        "rev": "62c5575848f1f0a96161243d18497c247c9f52df",
+        "sha256": "0s1cjm8psjwmrg8qdhdg48qyvp8nqk7bdgvqivgc5v9m27m7h5cg",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/4cf464f843902b6e1e2778b85b70f4c098789b6f.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/62c5575848f1f0a96161243d18497c247c9f52df.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

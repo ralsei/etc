@@ -32,6 +32,9 @@ c.tabs.indicator.padding = make_padding(0, 0, 0, 0)
 if 'EDITOR' in os.environ:
     c.editor.command = [os.environ['EDITOR'] + ' "{}"']
 
+# trick some stupid apps
+c.content.headers.user_agent = "Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}"
+
 REDIRECT_MAP = {
     "reddit.com": operator.methodcaller('setHost', 'old.reddit.com'),
     "www.reddit.com": operator.methodcaller('setHost', 'old.reddit.com'),

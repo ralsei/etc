@@ -12,5 +12,3 @@ To install it:
 - Watch as your hardware breaks because you messed up the drivers by installing
   dotfiles that aren't yours
 - Become full of regret
-
-![why are you looking at the alt text](https://p.qtp2t.club/selif/setup.png)

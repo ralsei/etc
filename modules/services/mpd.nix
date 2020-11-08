@@ -56,18 +56,18 @@ with lib; {
 
         # enable pulse and ncmpcpp visualizer
         extraConfig = ''
-        audio_output {
-          type "pulse"
-          name "pulse audio"
-        }
+          audio_output {
+            type "pulse"
+            name "pulse audio"
+          }
 
-        audio_output {
-          type "fifo"
-          name "my_fifo"
-          path "~/.local/share/mpd/fifo"
-          format "44100:16:2"
-        }
-      '';
+          audio_output {
+            type "fifo"
+            name "my_fifo"
+            path "~/.local/share/mpd/fifo"
+            format "44100:16:2"
+          }
+        '';
       };
 
       # the client
