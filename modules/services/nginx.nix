@@ -126,8 +126,6 @@ with lib; {
            }));
         "blog.knightsofthelambdacalcul.us" =
           (mkVHost [] "${pkgs.hazel.ziodyne-blog}" {});
-        "lemniscation.knightsofthelambdacalcul.us" =
-          (mkVHost [] "/var/www/lemniscation" {});
         "mail.knightsofthelambdacalcul.us" =
           (mkVHost [] "/var/www/notawebsite" {});
 
@@ -142,7 +140,6 @@ with lib; {
         "blog.qtp2t.club" = (mkRedirect "blog");
         "cloud.qtp2t.club" = (mkRedirect "cloud");
         "git.qtp2t.club" = (mkRedirect "git");
-        "lemniscation.qtp2t.club" = (mkRedirect "lemniscation");
         "p.qtp2t.club" = (mkRedirect "p");
         "ring.qtp2t.club" = (mkRedirect "ring");
         "vault.qtp2t.club" = (mkRedirect "vault");

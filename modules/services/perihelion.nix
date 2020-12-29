@@ -19,11 +19,12 @@ with lib; {
     ];
 
     environment.etc."perihelion/users.txt".text = ''
-      hazel https://knightsofthelambdacalcul.us/
-      if https://tilde.club/~if/
-      haskal https://tilde.town/~haskal/
-      alicja https://spinlock.icu/
-      5225225 https://5snb.club/
+      hazel|https://knightsofthelambdacalcul.us/
+      if|https://tilde.club/~if/
+      haskal|https://tilde.town/~haskal/
+      not-haskal|https://awoo.systems/
+      5225225|https://5snb.club/
+      cadence|https://cadence.moe/
     '';
 
     systemd.services.perihelion = {
