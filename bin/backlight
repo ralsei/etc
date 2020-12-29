@@ -1,13 +1,13 @@
 #!/bin/sh
 
 send_notification() {
-    backlight=$(brightnessctl -m | cut -d, -f4 | sed 's/%//' | awk '{print int($1 / 3.4)}')
+    backlight=$(brightnessctl -m | cut -d, -f4 | sed 's/%//' | awk '{print int($1 / 3.25)}')
     # Make the bar with the special character ─ (it's not dash -)
     # https://en.wikipedia.org/wiki/Box-drawing_character
     bar=$(seq -s "─" "$backlight" | sed 's/[0-9]//g')
     # Send the notification
     makoctl dismiss
-    notify-send -t 1000 "mon: $bar"
+    notify-send -t 1000 "mon:  $bar"
 }
 
 case $1 in

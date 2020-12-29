@@ -29,6 +29,7 @@ with lib; {
 
         # the good shit
         racket
+        z3 # for rosette
       ];
 
       programs.zsh.shellAliases = { "sbcl" = "rlwrap sbcl"; };

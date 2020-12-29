@@ -13,6 +13,7 @@ let
     source-sans-pro
     font-awesome_4
     plex
+    unstable.julia-mono
   ]);
 
   extrafonts = (with pkgs; [
@@ -60,7 +61,7 @@ with lib; {
       fontconfig = {
         enable = true;
         defaultFonts = {
-          monospace = [ "IBM Plex Mono 10" ];
+          monospace = [ "Julia Mono 10" ];
           sansSerif = [ "IBM Plex Sans 10" ];
           serif = [ "IBM Plex Serif 10" ];
         };

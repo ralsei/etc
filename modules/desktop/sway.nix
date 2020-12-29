@@ -86,7 +86,7 @@ with lib; {
         systemMode = "system: (x) exit (l) lock (h) suspend (r) reboot (s) shutdown (i) reload";
         launchMode = "launch: (b) firefox (e) emacs (f) files (m) ncmpcpp";
 
-        locker = ''swaylock -f --clock --font "IBM Plex Mono" -i "${cfg.lockBg}" \
+        locker = ''swaylock -f --clock --font "Julia Mono" -i "${cfg.lockBg}" \
                    --effect-blur 5x5 --timestr "%I:%M" \
                    --text-color "${colors.fg}" --ring-color "${colors.mut}" \
                    --inside-color "${colors.bg}" --line-color "${colors.fg}" \
@@ -224,7 +224,7 @@ with lib; {
             smartGaps = true;
           };
 
-          fonts = [ "IBM Plex Mono 10" ];
+          fonts = [ "Julia Mono 10" ];
           colors = rec {
             focused = {
               background = colors.hl;
@@ -253,7 +253,7 @@ with lib; {
 
           bars = if i3RsCfg.enable then [{
             position = "top";
-            fonts = [ "FontAwesome" "IBM Plex Mono 10" ];
+            fonts = [ "FontAwesome" "Julia Mono 10" ];
             workspaceNumbers = false;
             trayOutput = "none";
             statusCommand = "i3status-rs ~/.config/i3status-rust/status.toml";

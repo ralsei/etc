@@ -67,17 +67,17 @@
   hazel.desktop.sway = {
     outputs = {
       eDP-1 = {
+        bg = "~/usr/img/papes/desktop/clouds.jpg fill";
+        res = "1920x1080";
+        pos = "1920 0";
+      };
+      HDMI-A-1 = {
         bg = "~/usr/img/papes/desktop/roses.jpg tile";
         res = "1920x1080";
         pos = "0 0";
       };
-      HDMI-A-1 = {
-        bg = "~/usr/img/papes/desktop/pipes.png fill";
-        res = "1920x1080";
-        pos = "1920 0";
-      };
     };
-    lockBg = "~/usr/img/papes/desktop/lol_furries.png";
+    lockBg = "~/usr/img/papes/desktop/clouds.jpg";
   };
 
   # various tools
@@ -125,10 +125,15 @@
   programs.adb.enable = true;
   users.users.hazel.extraGroups = [ "adbusers" ];
 
-  # gamer
   hazel.home.home.packages = with pkgs; [
+    steam-run
     appimage-run
+    xboxdrv
+
     minecraft
     mcrcon
+    unstable.pcsx2
+    kdenlive
+    citrix_workspace
   ];
 }

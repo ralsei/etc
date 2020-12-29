@@ -42,9 +42,9 @@ with lib; {
       programs.emacs = {
         enable = true;
         extraPackages = epkgs: [
-          epkgs.emacs-libvterm # doom vterm module
+          epkgs.emacs # doom vterm module
         ];
-        package = pkgs.unstable.emacs;
+        package = emacsPgtkGcc;
       };
 
       # run the emacs daemon
