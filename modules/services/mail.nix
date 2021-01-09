@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   cfg = config.hazel.services.mailserver;
+  release = "nixos-20.09";
 in 
 with lib; {
   # couldn't get `niv` to work here, but whatev
@@ -8,8 +9,8 @@ with lib; {
     (builtins.fetchTarball {
       # wew
       url = 
-        "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/066dba1b2ffbbe39dab9b1c3c1d759423b7f7b38/nixos-mailserver-066dba1b2ffbbe39dab9b1c3c1d759423b7f7b38.tar.gz";
-      sha256 = "1ypzj3rjvvmpms37dcbxfrnqrn281nlsy56rr989gkqfmm53mxd6";
+        "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/${release}/nixos-mailserver-${release}.tar.gz";
+      sha256 = "0vsvgxxg5cgmzwj98171j7h5l028f1yq784alb3lxgbk8znfk51y";
     })
   ];
 

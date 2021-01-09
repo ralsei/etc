@@ -9,6 +9,11 @@
     ./machines/current
   ];
 
+  # XXX: remove me after rebuilding on 20.09!
+  nixpkgs.config.permittedInsecurePackages = [
+    "nextcloud-18.0.10"
+  ];
+
   # clean up the nix store periodically
   nix = {
     autoOptimiseStore = true;

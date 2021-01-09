@@ -16,9 +16,12 @@ with lib; {
   config = mkIf cfg.enable {
     services.nextcloud = {
       enable = true;
+      package = pkgs.nextcloud20; # murder
+
       hostName = "cloud.knightsofthelambdacalcul.us";
 
-      nginx.enable = nginxCfg.enable;
+      # removed in 20.09
+      # nginx.enable = nginxCfg.enable;
       https = nginxCfg.ssl;
       maxUploadSize = "5G";
 
