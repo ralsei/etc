@@ -27,8 +27,8 @@ with lib; {
         name = "Papirus";
       };
       theme = {
-        package = pkgs.ant-theme;
-        name = "Ant";
+        package = pkgs.arc-theme;
+        name = "Arc";
       };
     };
 

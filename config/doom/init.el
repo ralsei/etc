@@ -1,4 +1,4 @@
-;;; init.el -*- lexical-binding: t; -*-
+;; init.el -*- lexical-binding: t; -*-
 ;;  ,;' `:.   NOTE: THERE ARE TWO BFGS IN HELL
 ;; ::  _  ;;
 ;;  `:_|_;'
@@ -13,6 +13,7 @@
        doom-dashboard
        doom-quit
        hl-todo
+       ligatures
        modeline
        nav-flash
        ophints
@@ -79,11 +80,11 @@
             +present
             +pretty)
        python
-       racket
+       (racket +xp)
        (rust +lsp)
        (scala +lsp)
-       scheme
-       sh
+       ;scheme
+       ;sh
 
        :email
        (mu4e +gmail)

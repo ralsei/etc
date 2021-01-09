@@ -23,7 +23,7 @@ with lib; {
         window {
           background-color: #d5c4a1;
           margin: 10px;
-          font-family: 'IBM Plex Mono';
+          font-family: 'IBM Plex Sans';
           padding: 10px;
           border: 2px solid #cc241d;
         }

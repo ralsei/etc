@@ -27,7 +27,7 @@ with lib; {
 
         font = let
           mkFontSetting = x: {
-            family = "IBM Plex Mono";
+            family = "Julia Mono";
             style = x;
           };
         in {

@@ -20,7 +20,7 @@ with lib; {
       programs.mako = {
         enable = true;
 
-        font = "IBM Plex Mono 10";
+        font = "IBM Plex Sans 10";
 
         backgroundColor = "#cc241d";
         textColor = "#fbf1c7";

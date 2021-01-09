@@ -43,11 +43,16 @@ and options I want:
                                     properties)))))
 #+END_SRC
 
-I'm playing with the [[https://www.ibm.com/plex/][IBM Plex]] font right now. I like it a lot, but my font of
-choice has been known to change.
+As my university education dragged on and I began to do things with formal logic,
+I needed a font with good support for unicode characters. Right now that's [[https://github.com/cormullion/juliamono][Julia
+Mono]]. I use the [[https://www.ibm.com/plex/][IBM Plex]] fonts for variable pitch. I used to use IBM Plex Mono,
+but it doesn't format some things properly...
+
+I've also disabled bold fonts because I cannot get them to render properly in
+Emacs.
 #+BEGIN_SRC emacs-lisp
 (defvar hzl/monospace-font
-  (hzl/xft-font-string "IBM Plex Mono" 10
+  (hzl/xft-font-string "Julia Mono" 10
                        '((hintstyle . 3)
                          (hinting . true)
                          (lcdfilter . 3)
@@ -61,6 +66,7 @@ choice has been known to change.
 
 (setq doom-font hzl/monospace-font)
 (setq doom-variable-pitch-font hzl/variable-pitch-font)
+(setq doom-themes-enable-bold nil)
 #+END_SRC
 ** Colorscheme
 I've been using [[https://github.com/morhetz/gruvbox][Gruvbox]] Light recently. After years and years of dark themes, I
@@ -108,6 +114,23 @@ so.
                              mpdel-tablist-mode)
     'emacs))
 #+END_SRC
+
+** Arbitrary Unicode input
+While I like Agda's input mode for Unicode input, it's not practical everywhere,
+and I occasionally need to put Unicode into non-Agda files (namely Racket when
+writing DSLs using Unicode characters). DrRacket's approach is pretty good, so I
+stole a package to emulate it.
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! dr-racket-like-unicode
+  :recipe (:host github :repo "david-christiansen/dr-racket-like-unicode"))
+#+END_SRC
+
+Bind it to C-\ everywhere, because I haven't found any situation where this
+breaks anything:
+#+BEGIN_SRC emacs-lisp
+(use-package! dr-racket-like-unicode
+  :config (map! :i "C-\\" #'dr-racket-like-unicode-char))
+#+END_SRC
 * Productivity, papers, etc
 For the boring stuff that's not /quite/ programming.
 ** TeXcount
@@ -150,52 +173,6 @@ We tell it to run the auto-setup function and use PDFs:
   :config
   (auctex-latexmk-setup)
   (setq auctex-latexmk-inherit-TeX-pdf-mode t))
-#+END_SRC
-** =mu4e=
-/NOTE: This is not working right now and I am using Thunderbird./
-
-I have two email accounts: my ProtonMail account (linked to my deadname) and my
-personal mailserver.
-
-Tell =mu4e= to use =offlineimap=. =mbsync= doesn't behave with [[https://github.com/emersion/hydroxide/][Hydroxide]].
-#+BEGIN_SRC emacs-lisp
-(setq +mu4e-backend 'offlineimap)
-#+END_SRC
-
-Tell it where I save my mail:
-#+BEGIN_SRC emacs-lisp
-(setq mu4e-maildir "/home/hazel/var/mail/"
-      mu4e-attachment-dir "/home/hazel/var/mail/attachments")
-#+END_SRC
-
-Set a few QoL fixes, because mu4e's default viewer kinda sucks:
-#+BEGIN_SRC emacs-lisp
-(setq mu4e-view-use-gnus t)
-
-(when (fboundp 'imagemagick-register-types)
-  (imagemagick-register-types))
-#+END_SRC
-
-We tell it how I save my email, too:
-#+BEGIN_SRC emacs-lisp
-(set-email-account! "Knights of the Lambda Calculus"
-                    '((mu4e-sent-folder      . "/lambdamail/Sent")
-                      (mu4e-drafts-folder    . "/lambdamail/Drafts")
-                      (mu4e-trash-folder     . "/lambdamail/Junk")
-                      (mu4e-refile-folder    . "/lambdamail/All Mail")
-                      (smtpmail-smtp-user    . "hazel@knightsofthelambdacalcul.us")
-                      (user-mail-address     . "hazel@knightsofthelambdacalcul.us"))
-                    t)
-(set-email-account! "ProtonMail"
-                    '((mu4e-sent-folder      . "/protonmail/Sent")
-                      (mu4e-drafts-folder    . "/protonmail/Drafts")
-                      (mu4e-trash-folder     . "/protonmail/Trash")
-                      (mu4e-refile-folder    . "/protonmail/All Mail")
-                      (smtpmail-smtp-user    . "me@qtp2t.club")
-                      (smtpmail-smtp-service . 1025)
-                      (smtpmail-stream-type  . nil)
-                      (user-mail-address     . "me@qtp2t.club"))
-                    t)
 #+END_SRC
 ** Org-mode
 Set the bullets to pretty stuff:
@@ -296,17 +273,4 @@ place, it's /still/ miles ahead of RLS.
 #+BEGIN_SRC emacs-lisp
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
-#+END_SRC
-** Shen
-A really cool experimental, portable, and typed Lisp. I like it a lot, but I
-don't know much about it on the merit that it's locked behind a paywall of a
-book that I can't afford nor pirate.
-#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
-(package! shen-mode)
-#+END_SRC
-
-Also load the mode for Qi, Shen's predecessor that I actually have the book
-for:
-#+BEGIN_SRC emacs-lisp
-(load-file (concat (getenv "XDG_CONFIG_HOME") "/doom/lisp/qi-mode.el"))
 #+END_SRC
