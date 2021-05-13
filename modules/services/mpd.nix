@@ -86,6 +86,7 @@ with lib; {
 
       home.packages = with pkgs; [
         hazel.ncmpcppWithVisualizer
+        ashuffle
       ] ++
       (if cfg.mpris then [
         mpdris2

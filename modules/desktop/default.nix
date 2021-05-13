@@ -8,6 +8,7 @@ with lib; {
     ./core
     ./settings
 
+    ./gnome.nix
     ./sway.nix
     ./hikari.nix
   ];
@@ -23,8 +24,8 @@ with lib; {
       };
 
       desktop = mkOption {
-        default = "sway";
-        type = with types; enum [ "sway" "hikari" ];
+        default = "gnome";
+        type = with types; enum [ "gnome" "sway" "hikari" ];
       };
 
       menu = mkOption {
@@ -36,25 +37,25 @@ with lib; {
 
   config = mkIf cfg.enable {
     hazel.desktop = {
+      gnome.enable = cfg.desktop == "gnome";
       sway.enable = cfg.desktop == "sway";
       hikari.enable = cfg.desktop == "hikari";
 
-      mako.enable = true;
-      wofi.enable = true;
-      #rofi.enable = true;
+      # mako.enable = true;
+      # wofi.enable = true;
+      # rofi.enable = true;
 
       fonts.enable = true;
       gtkTheme.enable = true;
 
       alacritty.enable = true;
-      #qutebrowser.enable = true;
+      qutebrowser.enable = false;
       firefox.enable = true;
-      zathura.enable = true;
+      zathura.enable = false;
     };
 
     hazel.home = {
       home.packages = with pkgs; [
-        unstable.ungoogled-chromium # just in case
         thunderbird
         pavucontrol
         mate.caja
@@ -72,11 +73,11 @@ with lib; {
         mumble
         zoom-us
         teams
+        ripcord
 
         gimp
         soulseekqt
         qbittorrent
-        hazel.butt
 
         grim
         slurp

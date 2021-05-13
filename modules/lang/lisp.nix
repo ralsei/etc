@@ -28,7 +28,7 @@ with lib; {
         guile
 
         # the good shit
-        racket
+        unstable.racket
         z3 # for rosette
       ];
 

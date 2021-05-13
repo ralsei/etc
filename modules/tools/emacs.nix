@@ -44,7 +44,8 @@ with lib; {
         extraPackages = epkgs: [
           epkgs.emacs # doom vterm module
         ];
-        package = emacsPgtkGcc;
+        # package = emacsPgtkGcc;
+        package = emacsPgtk;
       };
 
       # run the emacs daemon
@@ -67,6 +68,7 @@ with lib; {
         aspellDicts.en-computers
         aspellDicts.en-science
         sqlite
+        parinfer-rust
         unstable.libgccjit
       ];
     };

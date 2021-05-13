@@ -20,9 +20,20 @@ with lib; {
       enable = true;
 
       settings = {
-        window.padding = {
-          x = 10;
-          y = 10;
+        window = {
+          dimensions = {
+            columns = 0;
+            lines = 0;
+          };
+
+          padding = {
+            x = 10;
+            y = 10;
+          };
+
+          dynamic_padding = false;
+
+          decorations = "full";
         };
 
         font = let

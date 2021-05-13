@@ -19,7 +19,7 @@ with lib; {
     hazel.home = {
       home.packages = with pkgs; [
         scala
-        jdk
+        jdk14
 
         sbt
         coursier

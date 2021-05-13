@@ -8,6 +8,8 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.home.home.packages = with pkgs; [ agda agda-pkg ];
+    hazel.home.home.packages = with pkgs; [
+      (agda.withPackages [ agdaPackages.standard-library ])
+    ];
   };
 }

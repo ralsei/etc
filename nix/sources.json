@@ -5,10 +5,10 @@
         "homepage": null,
         "owner": "tudurom",
         "repo": "bw-git-helper",
-        "rev": "d68a8db52a38061a0c9a60b3f29d81413d2e4425",
-        "sha256": "1p7q3k1gfszm9k9sm4gp87464lh8l703w9jk0jrlrqhprj4wn1np",
+        "rev": "eeb6cbad5bf56b3bb8edc4a396f30018332a6f75",
+        "sha256": "02831z657a4danbk3lhzgdi9gvwqkv925mjlv7ck81adksr2ncvn",
         "type": "tarball",
-        "url": "https://github.com/tudurom/bw-git-helper/archive/d68a8db52a38061a0c9a60b3f29d81413d2e4425.tar.gz",
+        "url": "https://github.com/tudurom/bw-git-helper/archive/eeb6cbad5bf56b3bb8edc4a396f30018332a6f75.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "cached-nix-shell": {
@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "xzfc",
         "repo": "cached-nix-shell",
-        "rev": "48dbef37bec653e23c1801cea3979f053e10654b",
-        "sha256": "0w6khry1ncyqy5h6996xw1f6viw4wdrfji5m8lz9gm487xlq5v0b",
+        "rev": "7caf51760622ce7e43d3b9ee5b050ad047cebe81",
+        "sha256": "19kr8i71c9sz9vpilkdzqr1kkgm0lnaw2lz1h6lmw0q54hgsbm2p",
         "type": "tarball",
-        "url": "https://github.com/xzfc/cached-nix-shell/archive/48dbef37bec653e23c1801cea3979f053e10654b.tar.gz",
+        "url": "https://github.com/xzfc/cached-nix-shell/archive/7caf51760622ce7e43d3b9ee5b050ad047cebe81.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "cachix": {
@@ -29,10 +29,10 @@
         "homepage": "https://cachix.org",
         "owner": "cachix",
         "repo": "cachix",
-        "rev": "1ae3428d52d17fb78b9fe9cbfba81439f725adfe",
-        "sha256": "1m7082vkyr86mzz740m9lmpbg5rx6czk77f0905cf6wihrqijf17",
+        "rev": "5f48886d5b3c5d8a3f4904448e50c8fce8818324",
+        "sha256": "0cchaazhsj0pxj4ikda69vzinbdv9hdc0gmdg34gjy9jv567rvbr",
         "type": "tarball",
-        "url": "https://github.com/cachix/cachix/archive/1ae3428d52d17fb78b9fe9cbfba81439f725adfe.tar.gz",
+        "url": "https://github.com/cachix/cachix/archive/5f48886d5b3c5d8a3f4904448e50c8fce8818324.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "clipboard": {
@@ -53,10 +53,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "88d77bca47d0e8e6fc4fe5585df1e368852e640a",
-        "sha256": "14kg9c7ivfa999byrsp8mv01c8f9qn6vkbq0sba2cyd4v0zg6h97",
+        "rev": "b460737079969efff71c5a3d48ea43e3201559df",
+        "sha256": "1ml9fw0161h8arrqijrqbfny1k6dwrkh7zr33wa1mivfigiivd0l",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/88d77bca47d0e8e6fc4fe5585df1e368852e640a.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/96fa7067e80176959eaac3a4f06c66fc87838390.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "go-rice": {
@@ -65,10 +65,10 @@
         "homepage": "",
         "owner": "GeertJohan",
         "repo": "go.rice",
-        "rev": "d954009f7238df62c766980934c8ea7f161d0e59",
-        "sha256": "19lca5hcw9milgmjv6vlcg8vq4mz9a9sp5bpihxvyza0da6pklmf",
+        "rev": "0634379bb7b1af96fb16686afc301ae7ae9ee8b9",
+        "sha256": "11rlkx57rffzcvsv77bi2c64cds6jz3g7i6sv25rv6xzsysjivlc",
         "type": "tarball",
-        "url": "https://github.com/GeertJohan/go.rice/archive/d954009f7238df62c766980934c8ea7f161d0e59.tar.gz",
+        "url": "https://github.com/GeertJohan/go.rice/archive/0634379bb7b1af96fb16686afc301ae7ae9ee8b9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz",
         "version": "1.0.0"
     },
@@ -78,10 +78,10 @@
         "homepage": null,
         "owner": "mutantmonkey",
         "repo": "golinx",
-        "rev": "04d0ad80761f1c0944262436e2426d6ab55aafa9",
-        "sha256": "1hp5ym8556jmam4x75xwvsdfdghggij4k220zc95595w441sv7c3",
+        "rev": "71148ae121ca34969c139ac2723f06c5c728caf5",
+        "sha256": "0h2p8jb5z3p6ymnqqnycgigbm0r6vvc7afp9ga1hwwq67p6rvpj1",
         "type": "tarball",
-        "url": "https://github.com/mutantmonkey/golinx/archive/04d0ad80761f1c0944262436e2426d6ab55aafa9.tar.gz",
+        "url": "https://github.com/mutantmonkey/golinx/archive/71148ae121ca34969c139ac2723f06c5c728caf5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "linx-client": {
@@ -90,10 +90,10 @@
         "homepage": "",
         "owner": "andreimarcu",
         "repo": "linx-client",
-        "rev": "11d4fecadbbc1c4efd29a8345a3dff8cb3b9a3c3",
-        "sha256": "1i89mff4yp3w1g8lqnygybkmjzamvaxbpx7spwf89xvq5wl845cr",
+        "rev": "d259a0c51d56ccfef1906ac0dfcf50ee6819c5eb",
+        "sha256": "16cx7a5vpsd18igpsw6hmy5dxfhcgcf3lb5iry1rhq3vb1k716s2",
         "type": "tarball",
-        "url": "https://github.com/andreimarcu/linx-client/archive/11d4fecadbbc1c4efd29a8345a3dff8cb3b9a3c3.tar.gz",
+        "url": "https://github.com/andreimarcu/linx-client/archive/d259a0c51d56ccfef1906ac0dfcf50ee6819c5eb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "linx-server": {
@@ -109,10 +109,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "f73bf8d584148677b01859677a63191c31911eae",
-        "sha256": "0jlmrx633jvqrqlyhlzpvdrnim128gc81q5psz2lpp2af8p8q9qs",
+        "rev": "3cd7914b2c4cff48927e11c216dadfab7d903fe5",
+        "sha256": "1agq4nvbhrylf2s77kb4xhh9k7xcwdwggq764k4jgsbs70py8cw3",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/f73bf8d584148677b01859677a63191c31911eae.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/3cd7914b2c4cff48927e11c216dadfab7d903fe5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -121,10 +121,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "e7752db2fb6c5e05f1de2b275535dbde07d30090",
-        "sha256": "1lx2wdagigq5c7qp1fcy25ccpfvz5cl5x0b9rhnz1x409vn7icx1",
+        "rev": "929768261a3ede470eafb58d5b819e1a848aa8bf",
+        "sha256": "0zi54vbfi6i6i5hdd4v0l144y1c8rg6hq6818jjbbcnm182ygyfa",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/e7752db2fb6c5e05f1de2b275535dbde07d30090.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/929768261a3ede470eafb58d5b819e1a848aa8bf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-master": {
@@ -133,10 +133,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8524c682f65036f5bdc7ec362eefb98abf87c495",
-        "sha256": "1rjv41dihz19gxgkqi55c4wgrwfqsl9dvkq3bcp39c8y9jdq8fqi",
+        "rev": "31f5dd3f3655fbedac19f64f77844aa5ed79501c",
+        "sha256": "1saaqrf8210w4spvq6kz38a2p85c8c8lx5wc79sdn91rga9d99j3",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/8524c682f65036f5bdc7ec362eefb98abf87c495.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/31f5dd3f3655fbedac19f64f77844aa5ed79501c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "perihelion": {
@@ -160,7 +160,7 @@
     "ziodyne-blog": {
         "ref": "canon",
         "repo": "https://git.qtp2t.club/hazel/blog",
-        "rev": "25987dc333cd78c36c8b95e10bf826f5d974f775",
+        "rev": "b0e7c984a7851145f30946091a93545d801db7ca",
         "type": "git"
     },
     "zr": {
@@ -169,10 +169,10 @@
         "homepage": null,
         "owner": "jedahan",
         "repo": "zr",
-        "rev": "f682c59f5be93d19ffbee9cf5947596529b1ddf8",
-        "sha256": "1vmgzs4irmjrfs4hpb22wcxsabys28f31fpcfjijm6wdzg8lzv7n",
+        "rev": "7480d83f0b6dbcd38a3905d5b7710016369d46a8",
+        "sha256": "1g9sqg6y7ljca9kvrqqhayagbgn8cf4fb3r0q2297fbp9b6fhhp3",
         "type": "tarball",
-        "url": "https://github.com/jedahan/zr/archive/f682c59f5be93d19ffbee9cf5947596529b1ddf8.tar.gz",
+        "url": "https://github.com/jedahan/zr/archive/7480d83f0b6dbcd38a3905d5b7710016369d46a8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "zsh-syntax-highlighting": {
@@ -181,10 +181,10 @@
         "homepage": "github.com/zsh-users/zsh-syntax-highlighting",
         "owner": "zsh-users",
         "repo": "zsh-syntax-highlighting",
-        "rev": "62c5575848f1f0a96161243d18497c247c9f52df",
-        "sha256": "0s1cjm8psjwmrg8qdhdg48qyvp8nqk7bdgvqivgc5v9m27m7h5cg",
+        "rev": "5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0",
+        "sha256": "03vszkmm09smbzpbnk6c5f5sx1y9vh0j91xvgqfv6m4gldxrj37j",
         "type": "tarball",
-        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/62c5575848f1f0a96161243d18497c247c9f52df.tar.gz",
+        "url": "https://github.com/zsh-users/zsh-syntax-highlighting/archive/5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

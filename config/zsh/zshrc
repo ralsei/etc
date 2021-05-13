@@ -8,14 +8,11 @@ fi
 typeset -gU cdpath fpath mailpath path
 
 path=(
-    $path
     ~/bin
     ~/.local/bin
     ~/.emacs.d/bin
-    ~/.cargo/bin
-    ~/.cabal/bin
-    ~/.go/bin
-    /opt/texlive/2020/bin/x86_64-linux
+    ~/src/racket/racket/bin
+    $path
 )
 
 ## HISTORY
@@ -24,6 +21,10 @@ setopt HIST_IGNORE_ALL_DUPS
 ## I/O
 # remove path separator from WORDCHARS
 WORDCHARS=${WORDCHARS//[\/]}
+
+# yubikey garbage
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 
 ## ENVIRONMENT
 ### tex
@@ -63,4 +64,10 @@ man() {
         LESS_TERMCAP_se=$(tput rmso) \
         PAGER="${commands[less]:-$PAGER}" \
         man "$@"
+}
+
+ybk() {
+    export GPG_TTY="$(tty)"
+    gpg-connect-agent /bye
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 }

@@ -19,6 +19,7 @@ with lib; {
     hazel.home = {
       home.packages = with pkgs; [
         texlive.combined.scheme-full
+        pandoc
       ];
 
       home.file.".latexmkrc".text = ''
