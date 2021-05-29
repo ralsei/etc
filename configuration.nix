@@ -3,13 +3,11 @@
 {
   imports = [
     <home-manager/nixos>
-    ./cachix.nix
 
     ./modules
     ./machines/current
   ];
 
-  # clean up the nix store periodically
   nix = {
     autoOptimiseStore = true;
     gc = {
@@ -18,6 +16,11 @@
       options = "--delete-older-than 10d";
     };
     trustedUsers = [ "root" "hazel" ];
+
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   # unfortunately, I live here

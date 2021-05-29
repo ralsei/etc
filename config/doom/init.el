@@ -46,8 +46,8 @@
 
        :checkers
        syntax
-       spell     ; ...is this annoying? yes! do i need it for editing latex papers?
-                                        ; also yes!
+       (spell +flyspell)  ; ...is this annoying? yes! do i need it for editing latex papers?
+                          ; also yes!
 
        :tools
        debugger
@@ -63,17 +63,16 @@
 
        :lang
        cc
-       common-lisp
+       ; common-lisp
        data
        emacs-lisp
-       go
        (haskell +lsp)
        (java +lsp)
        javascript
        latex
        markdown
        nix
-       ;ocaml
+       ; ocaml
        (org +dragndrop
             +hugo
             +pandoc
@@ -83,7 +82,7 @@
        (racket +xp)
        (rust +lsp)
        (scala +lsp)
-       yaml
+       ; yaml
 
        :email
        (mu4e +gmail)

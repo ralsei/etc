@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    <home-manager/nixos>
+    # <home-manager/nixos>
     ./hardware.nix
   ];
 
@@ -191,8 +191,9 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="2a03", ATTRS{idProduct}=="0037", TAG+="uacc
   '';
 
   # sigh
+  virtualisation.docker.enable = true;
   programs.adb.enable = true;
-  users.users.hazel.extraGroups = [ "adbusers" "dialout" ];
+  users.users.hazel.extraGroups = [ "docker" "adbusers" "dialout" ];
 
   hazel.home.home.packages = with pkgs; [
     steam-run

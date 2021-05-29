@@ -62,6 +62,7 @@ with lib; {
         networkmanagerapplet
         imv
         mpv
+        celluloid
         nextcloud-client
         libreoffice-fresh
         bitwarden
