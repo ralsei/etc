@@ -7,6 +7,8 @@
     ./shell
     ./system
     ./tools
+
+    ./agenix.nix
   ];
 
   options = {

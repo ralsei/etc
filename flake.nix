@@ -11,6 +11,10 @@
       url = "github:nix-community/home-manager/release-20.09";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
@@ -29,6 +33,7 @@
                      nixpkgs-unstable,
                      nixos-hardware,
                      home-manager,
+                     agenix,
                      simple-nixos-mailserver, ... }:
     utils.lib.systemFlake {
       inherit self inputs;
@@ -61,35 +66,14 @@
           nixos-hardware.nixosModules.pcengines-apu
 
           simple-nixos-mailserver.nixosModule
-          {
-            mailserver = {
-              enable = true;
-              fqdn = "mail.knightsofthelambdacalcul.us";
-              domains = [ "knightsofthelambdacalcul.us" ];
-
-              loginAccounts = {
-                "hazel@knightsofthelambdacalcul.us" = {
-                  hashedPasswordFile = /etc/snm-hashed-passwd;
-                  aliases = [ "postmaster@knightsofthelambdacalcul.us" ];
-                };
-              };
-
-              certificateScheme = 3; # use letsencrypt
-
-              enableImap = true;
-              enableImapSsl = true;
-              enablePop3 = false;
-              enablePop3Ssl = false;
-
-              enableManageSieve = true;
-            };
-          }
+          ./modules/services/mail.nix
         ];
       };
 
       sharedModules = [
         nixpkgs.nixosModules.notDetected # enable nonfree firmwares
         home-manager.nixosModules.home-manager
+        agenix.nixosModules.age
       ];
 
       # sharedOverlays = import ./packages;

@@ -42,22 +42,12 @@
     cached-nix-shell
   ];
 
-  # agenix
-  # run SSHd, but don't actually allow anything but local
-  # services.openssh = {
-  #   enable = true;
-  #   openFirewall = false;
-  #   passwordAuthentication = false;
-  # };
-  # age.secrets.password.file = ./secrets/password.age;
-
   users.mutableUsers = true;
   users.users.hazel = {
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
     shell = pkgs.zsh;
-    # passwordFile = config.age.secrets.password.path;
   };
 
   # enable home-manager for my user

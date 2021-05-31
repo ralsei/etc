@@ -24,6 +24,9 @@ with lib; {
 
   config = mkIf cfg.enable {
     hazel.desktop.gnome.enable = true;
+    hazel.desktop.fonts.enable = true;
+    hazel.desktop.gtkTheme.enable = true;
+    hazel.desktop.firefox.enable = true;
 
     hazel.home = {
       home.packages = with pkgs; [
