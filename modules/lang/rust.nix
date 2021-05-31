@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 let
   cfg = config.hazel.languages.rust;
 in
@@ -20,7 +20,7 @@ with lib; {
       home.packages = with pkgs; [
         rustup
         carnix
-        unstable.rust-analyzer
+        rust-analyzer
       ];
     };
   };

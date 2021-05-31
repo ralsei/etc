@@ -1,18 +1,4 @@
-{ config, lib, pkgs, ... }:
-with import <nixos-unstable> {
-  # grab the emacs overlay
-  overlays = [
-    (let
-      sources = import /etc/nixos/nix/sources.nix;
-      fetchGitHubArchive = { owner, repo, rev, sha256 }: builtins.fetchTarball {
-        url = "https://github.com/${owner}/${repo}/archive/${rev}.tar.gz";
-        inherit sha256;
-      };
-    in import (fetchGitHubArchive {
-      inherit (sources.emacs-overlay) owner repo rev sha256;
-    }))
-  ];
-};
+{ inputs, config, lib, pkgs, ... }:
 let
   cfg = config.hazel.emacs;
 in
@@ -38,6 +24,8 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
+    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
+
     hazel.home = {
       programs.emacs = {
         enable = true;
@@ -45,7 +33,7 @@ with lib; {
           epkgs.emacs # doom vterm module
         ];
         # package = emacsPgtkGcc;
-        package = emacsPgtk;
+        package = pkgs.emacsPgtk;
       };
 
       # run the emacs daemon
@@ -66,7 +54,6 @@ with lib; {
         (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
         sqlite
         parinfer-rust
-        unstable.libgccjit
       ];
     };
   };

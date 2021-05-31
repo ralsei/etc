@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 let
   cfg = config.hazel.languages.python;
 in
@@ -18,18 +18,16 @@ with lib; {
   config = mkIf cfg.enable {
     hazel.home = {
       home.packages = with pkgs; [
-        python38
-        python38Packages.pip
-        python38Packages.ipython
-        python38Packages.black
-        python38Packages.setuptools
-        python38Packages.pylint
-        python38Packages.poetry
-        python38Packages.pwntools
+        python3
+        python3Packages.pip
+        python3Packages.ipython
+        python3Packages.black
+        python3Packages.setuptools
+        python3Packages.pylint
+        python3Packages.poetry
+        python3Packages.pwntools
 
-
-        unstable.sage
-        # hazel.jupyterWithBatteries
+        sage
       ];
     };
   };

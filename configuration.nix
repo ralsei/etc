@@ -2,10 +2,7 @@
 { options, config, lib, pkgs, ... }:
 {
   imports = [
-    <home-manager/nixos>
-
     ./modules
-    ./machines/current
   ];
 
   nix = {
@@ -32,9 +29,6 @@
 
   time.timeZone = "America/Indiana/Indianapolis";
 
-  nixpkgs.overlays = import /etc/nixos/packages;
-  nixpkgs.config.allowUnfree = true; # sorry, Stallman
-
   # the bare minimum
   environment.systemPackages = with pkgs; [
     coreutils
@@ -48,13 +42,22 @@
     cached-nix-shell
   ];
 
-  # unfortunately for everyone, it's me
-  users.mutableUsers = false;
+  # agenix
+  # run SSHd, but don't actually allow anything but local
+  # services.openssh = {
+  #   enable = true;
+  #   openFirewall = false;
+  #   passwordAuthentication = false;
+  # };
+  # age.secrets.password.file = ./secrets/password.age;
+
+  users.mutableUsers = true;
   users.users.hazel = {
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
     shell = pkgs.zsh;
+    # passwordFile = config.age.secrets.password.path;
   };
 
   # enable home-manager for my user

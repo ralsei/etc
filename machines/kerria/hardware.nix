@@ -1,11 +1,6 @@
 # kerria -- pcengines apu2e0
 { config, lib, pkgs, ... }:
 {
-  imports =
-    [ <nixos-hardware/pcengines/apu>
-      <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    ];
-
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "ehci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];

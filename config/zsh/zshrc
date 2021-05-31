@@ -11,7 +11,7 @@ path=(
     ~/bin
     ~/.local/bin
     ~/.emacs.d/bin
-    ~/src/racket/racket/bin
+    # ~/src/racket/racket/bin
     $path
 )
 

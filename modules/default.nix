@@ -35,7 +35,7 @@
         nix-index
       ];
 
-      home.stateVersion = "20.03";
+      home.stateVersion = "20.09";
     };
   };
 }

@@ -13,7 +13,7 @@ let
     source-sans-pro
     font-awesome_4
     plex
-    unstable.julia-mono
+    julia-mono
   ]);
 
   extrafonts = (with pkgs; [

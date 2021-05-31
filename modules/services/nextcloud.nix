@@ -18,7 +18,7 @@ with lib; {
       enable = true;
       hostName = "cloud.knightsofthelambdacalcul.us";
 
-      nginx.enable = nginxCfg.enable;
+      # nginx.enable = nginxCfg.enable;
       https = nginxCfg.ssl;
       maxUploadSize = "5G";
 

@@ -1,19 +1,18 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 {
   hazel.home = {
     programs.zsh = {
       enable = true;
-      initExtra = (builtins.readFile /etc/nixos/config/zsh/zshrc);
-      profileExtra = (builtins.readFile /etc/nixos/config/zsh/zprofile);
+      initExtra = (builtins.readFile ../../config/zsh/zshrc);
+      profileExtra = (builtins.readFile ../../config/zsh/zprofile);
 
       defaultKeymap = "viins";
 
-      plugins = let
-        sources = import /etc/nixos/nix/sources.nix; # pull from niv
-      in [
-        { name = "zsh-syntax-highlighting";
-          src = sources.zsh-syntax-highlighting; }
-      ];
+      plugins =
+        [
+          { name = "zsh-syntax-highlighting";
+            src = inputs.zsh-syntax-highlighting; }
+        ];
 
       sessionVariables = {
         "PAGER" = "less";
@@ -58,11 +57,11 @@
     };
 
     programs.skim = {
-      enable = builtins.currentSystem != "aarch64-linux";
+      enable = true;
       defaultCommand = "fd --type f";
     };
 
-    xdg.configFile."bat/config".source = /etc/nixos/config/bat/config;
+    xdg.configFile."bat/config".source = ../../config/bat/config;
 
     home.packages = with pkgs; [
       nix-zsh-completions

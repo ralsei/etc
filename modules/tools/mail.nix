@@ -78,12 +78,6 @@ with lib; {
           WantedBy = [ "multi-user.target" ];
         };
       };
-
-      home.packages = with pkgs; [
-        # protonmail-bridge
-        hydroxide
-        unstable.mu
-      ];
     };
   };
 }

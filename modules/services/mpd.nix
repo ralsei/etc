@@ -71,7 +71,7 @@ with lib; {
       };
 
       # the client
-      home.file.".ncmpcpp/config".source = /etc/nixos/config/ncmpcpp/config;
+      home.file.".ncmpcpp/config".source = ../../config/ncmpcpp/config;
       programs.zsh.shellAliases = { "m" = "ncmpcpp"; };
 
       # mpris support
@@ -80,12 +80,8 @@ with lib; {
         notifications = cfg.mpris;
       };
 
-      # load the mpdscribble config. this is private.
-      xdg.configFile."mpdscribble/mpdscribble.conf".source =
-        /etc/nixos/config/mpdscribble/mpdscribble.conf;
-
       home.packages = with pkgs; [
-        hazel.ncmpcppWithVisualizer
+        (ncmpcpp.override { visualizerSupport = true; })
         ashuffle
       ] ++
       (if cfg.mpris then [

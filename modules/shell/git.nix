@@ -11,13 +11,6 @@
         key = "593067D35E5CA280959CEC3735C1205716621182";
         signByDefault = true;
       };
-
-      extraConfig = {
-        credential = {
-          helper = "!bw-git-helper $@";
-          useHttpPath = true;
-        };
-      };
     };
 
     # HOO BOY
@@ -78,20 +71,5 @@
       "gRs" = "git remote set-url";
       "gRu" = "git remote update";
     };
-
-    xdg.configFile."bw-git-helper/config.ini".text = ''
-      [*github.com*]
-      target=7734c9e1-8174-4796-846b-feefe5f88d2c
-   
-      [*knightsofthelambdacalcul.us*]
-      target=a268d28a-12f2-487e-8333-c3ddbd834e76
-
-      [config]
-      pinentry=pinentry-gtk-2
-    '';
-
-    home.packages = with pkgs; if builtins.currentSystem != "aarch64-linux" then
-      [ hazel.bw-git-helper ]
-    else [];
   };
 }
