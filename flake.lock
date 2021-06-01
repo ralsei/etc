@@ -133,14 +133,14 @@
         "type": "indirect"
       }
     },
-    "perhelion": {
+    "perihelion": {
       "flake": false,
       "locked": {
-        "lastModified": 1599088595,
-        "narHash": "sha256-b0oJXG+GuJMubAComrgBOy17wVxSKFEofJ9DcOnDJCI=",
+        "lastModified": 1622557851,
+        "narHash": "sha256-bZW3Yyu45nRnt0ruSgCIHAqFppZoA5d9OkdRKezCleM=",
         "ref": "canon",
-        "rev": "ff88ce09644addf8610d3a190e8a32f9fd2199fd",
-        "revCount": 23,
+        "rev": "9df2f0765b088fe4941dd792e22646e8302c4a33",
+        "revCount": 24,
         "type": "git",
         "url": "https://git.knightsofthelambdacalcul.us/hazel/perihelion"
       },
@@ -158,7 +158,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "perhelion": "perhelion",
+        "perihelion": "perihelion",
         "simple-nixos-mailserver": "simple-nixos-mailserver",
         "utils": "utils_2",
         "ziodyne-blog": "ziodyne-blog",

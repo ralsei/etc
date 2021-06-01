@@ -16,17 +16,9 @@ with lib; {
   config = mkIf cfg.enable {
     services.nextcloud = {
       enable = true;
-<<<<<<< HEAD
-      package = pkgs.nextcloud20; # murder
-
-      hostName = "cloud.knightsofthelambdacalcul.us";
-
-      # removed in 20.09
-=======
       package = pkgs.nextcloud21;
       hostName = "cloud.knightsofthelambdacalcul.us";
 
->>>>>>> refs/remotes/origin/canon
       # nginx.enable = nginxCfg.enable;
       https = nginxCfg.ssl;
       maxUploadSize = "5G";
@@ -36,10 +28,10 @@ with lib; {
         dbuser = "nextcloud";
         dbhost = "/run/postgresql";
         dbname = "nextcloud";
-        dbpassFile = "/etc/nextcloud-db-pass";
+        dbpassFile = toString config.age.secrets.nextcloudDbPass.path;
 
         adminuser = "hazel";
-        adminpassFile = "/etc/nextcloud-pass";
+        adminpassFile = toString config.age.secrets.nextcloudPass.path;
       };
     };
 

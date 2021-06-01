@@ -4,4 +4,7 @@ in
 {
   "snmHashedPassword.age".publicKeys = [ kerriaKey ];
   "wgPrivkey.age".publicKeys = [ kerriaKey ];
+  "nextcloudDbPass.age".publicKeys = [ kerriaKey ];
+  "nextcloudPass.age".publicKeys = [ kerriaKey ];
+  "bitwardenEnv.age".publicKeys = [ kerriaKey ];
 }

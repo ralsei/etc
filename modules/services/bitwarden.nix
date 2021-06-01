@@ -19,15 +19,8 @@ with lib; {
 
     services.bitwarden_rs = {
       enable = true;
-      config = {
-        domain = "https://vault.knightsofthelambdacalcul.us";
-        signupsAllowed = false;
-        rocketPort = 8080;
-        rocketLog = "critical";
-        yubicoClientId = 56284;
-        yubicoSecretKey = (builtins.readFile /etc/yubico-secret-key);
-      };
       dbBackend = "sqlite";
+      environmentFile = config.age.secrets.bitwardenEnv.path;
     };
 
     services.nginx.virtualHosts."vault.knightsofthelambdacalcul.us" =

@@ -7,8 +7,7 @@
 
     loginAccounts = {
       "hazel@knightsofthelambdacalcul.us" = {
-        # TODO: fix
-        hashedPasswordFile = /etc/snm-hashed-passwd;
+        hashedPasswordFile = config.age.secrets.snmHashedPassword.path;
         aliases = [ "postmaster@knightsofthelambdacalcul.us" ];
       };
     };
