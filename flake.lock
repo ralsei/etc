@@ -22,11 +22,11 @@
     },
     "emacs-overlay": {
       "locked": {
-        "lastModified": 1621740021,
-        "narHash": "sha256-uLu8Zgrkbsq8mnl6LjbcMvItFyAaLH45Iik5qMmb9T0=",
+        "lastModified": 1622490648,
+        "narHash": "sha256-SOzqeZDEANEvnTm1d+CpSt+Bi2NEhuVdmO1M9BZn7oo=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "5df3462dda05d8e44669cf374776274e1bc47d0a",
+        "rev": "ca18017fa61a4bb8069d1bba74c4198c3c21c6fc",
         "type": "github"
       },
       "original": {
@@ -57,27 +57,27 @@
         ]
       },
       "locked": {
-        "lastModified": 1622312678,
-        "narHash": "sha256-LsVDvO6TBnSQNNoV+Dt10+jx91eS74k8hf4zIOMAyR0=",
+        "lastModified": 1622312560,
+        "narHash": "sha256-xBWgiwnPaL/iZasPxw3BuvPAee/2jiToiZjKvKLs+PA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "49706878e1580d796cc99b63574310405935113f",
+        "rev": "ab64dc32493996c24607eab2cae6663466ddfb8a",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-20.09",
+        "ref": "release-21.05",
         "repo": "home-manager",
         "type": "github"
       }
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1622405422,
-        "narHash": "sha256-V+nSLJ2CubAhmd8XgRG8GB7MvkGMFl8gUPlIkUk+ueg=",
+        "lastModified": 1622475342,
+        "narHash": "sha256-c08illT/TUfI2oeLlN8YP4kcGtXLsJOcoq9CNzoRQhM=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "3fc630f84c9c4b542844169d3ec17c369b6d242b",
+        "rev": "d38958a6aa5bdbf3239f26a04689f3d9ae7da0c0",
         "type": "github"
       },
       "original": {
@@ -88,16 +88,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1622364474,
-        "narHash": "sha256-bRupByHizbCba3/AgaETL+YySowmfssqWl7+p0jwcPU=",
+        "lastModified": 1622410071,
+        "narHash": "sha256-rxXzlRwbFu9qmmGzSwpJqN630fnwioilo8so0ymEZT0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "eae0cabc124702e04bb2098070ca46d661543d29",
+        "rev": "07ca3a021f05d6ff46bbd03c418b418abb781279",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-20.09",
+        "ref": "nixos-21.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -171,11 +171,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1622405273,
-        "narHash": "sha256-51FSeNllpx/Dd6s1Q/GZzvLPGTovphsNpiAAZEM6BGQ=",
+        "lastModified": 1622448045,
+        "narHash": "sha256-duIjiaBwdkY+JpeVbQSt0SOrYQ4GDH5XoT3xZOz4jPA=",
         "owner": "simple-nixos-mailserver",
         "repo": "nixos-mailserver",
-        "rev": "7109545c582a5e2ee5d23d19428a6a1ac69caa3e",
+        "rev": "6e0690093c24261192ee5c0557f85791a67eec29",
         "type": "gitlab"
       },
       "original": {

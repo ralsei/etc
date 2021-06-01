@@ -44,9 +44,7 @@
       settings = {
         add_newline = false;
         character = {
-          symbol = "λ";
-          style_success = "bold yellow";
-          style_failure = "bold red";
+          success_symbol = "[λ](bold yellow)";
         };
       };
     };
