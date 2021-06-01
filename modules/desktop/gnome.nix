@@ -9,23 +9,23 @@ with lib; {
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;
-      desktopManager.gnome3.enable = true;
+      desktopManager.gnome.enable = true;
     };
 
-    environment.gnome3 = {
+    environment.gnome = {
       excludePackages = with pkgs; [
         gnome-photos
-        gnome3.cheese
-        gnome3.geary
-        gnome3.gnome-maps
-        gnome3.gnome-music
-        # gnome3.gnome-terminal
-        gnome3.totem
+        gnome.cheese
+        gnome.geary
+        gnome.gnome-maps
+        gnome.gnome-music
+        # gnome.gnome-terminal
+        gnome.totem
       ];
     };
 
     hazel.home.home.packages = with pkgs; [
-      gnome3.gnome-tweak-tool
+      gnome.gnome-tweak-tool
 
       gnomeExtensions.paperwm
       gnomeExtensions.dash-to-dock

@@ -13,9 +13,6 @@
   networking.hostName = "hyacinth";
   networking.hostId = "3ae0d799";
 
-  # quirks
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   # systemd-boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

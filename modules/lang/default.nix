@@ -36,7 +36,7 @@ with lib; {
       haskell.enable = true;
       java.enable = true; # I FEEL NOTHING BUT PAIN
       lisp.enable = true;
-      ocaml.enable = true;
+      ocaml.enable = false;
       python.enable = true;
       r.enable = true;    # BORN TO DIE WORLD IS A FUCK
       rust.enable = true;
