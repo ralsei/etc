@@ -6,9 +6,12 @@ with lib; {
   imports = [
     ./agda.nix
     ./c.nix
+    ./haskell.nix
+    ./java.nix
     ./lisp.nix
     ./ocaml.nix
     ./python.nix
+    ./r.nix
     ./rust.nix
     ./scala.nix
     ./tex.nix
@@ -30,11 +33,14 @@ with lib; {
     hazel.languages = {
       agda.enable = true;
       c.enable = true;
+      haskell.enable = true;
+      java.enable = true; # I FEEL NOTHING BUT PAIN
       lisp.enable = true;
       ocaml.enable = true;
       python.enable = true;
+      r.enable = true;    # BORN TO DIE WORLD IS A FUCK
       rust.enable = true;
-      scala.enable = true;
+      scala.enable = false;
       tex.enable = true;
     };
   };

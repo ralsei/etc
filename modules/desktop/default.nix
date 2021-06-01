@@ -1,15 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ unstable, config, lib, pkgs, ... }:
 let
   cfg = config.hazel.graphicalSession;
 in
 with lib; {
   imports = [
     ./apps
-    ./core
     ./settings
 
-    ./sway.nix
-    ./hikari.nix
+    ./gnome.nix
   ];
 
   options = {
@@ -21,53 +19,30 @@ with lib; {
           Enable a Wayland-based graphical session, and related apps.
         '';
       };
-
-      desktop = mkOption {
-        default = "sway";
-        type = with types; enum [ "sway" "hikari" ];
-      };
-
-      menu = mkOption {
-        default = "rofi";
-        type = with types; enum [ "rofi" "wofi" ];
-      };
     };
   };
 
   config = mkIf cfg.enable {
-    hazel.desktop = {
-      sway.enable = cfg.desktop == "sway";
-      hikari.enable = cfg.desktop == "hikari";
-
-      mako.enable = true;
-      wofi.enable = true;
-      #rofi.enable = true;
-
-      fonts.enable = true;
-      gtkTheme.enable = true;
-
-      alacritty.enable = true;
-      #qutebrowser.enable = true;
-      firefox.enable = true;
-      zathura.enable = true;
-    };
+    hazel.desktop.gnome.enable = true;
+    hazel.desktop.fonts.enable = true;
+    hazel.desktop.gtkTheme.enable = true;
+    hazel.desktop.firefox.enable = true;
 
     hazel.home = {
       home.packages = with pkgs; [
-        unstable.ungoogled-chromium # just in case
         thunderbird
         pavucontrol
-        mate.caja
         networkmanagerapplet
         imv
         mpv
+        celluloid
         nextcloud-client
         libreoffice-fresh
         bitwarden
         evince
 
         dino
-        unstable.element-desktop
+        element-desktop
         tdesktop
         mumble
         zoom-us
@@ -76,15 +51,21 @@ with lib; {
         gimp
         soulseekqt
         qbittorrent
-        hazel.butt
 
-        grim
-        slurp
         wl-clipboard
         jq
         ponymix
         brightnessctl
         xorg.xrdb
+
+        steam-run
+        appimage-run
+        xboxdrv
+
+        minecraft
+        mcrcon
+        kdenlive
+        citrix_workspace
       ];
 
       services.gnome-keyring.enable = true;

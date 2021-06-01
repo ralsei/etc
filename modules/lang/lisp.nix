@@ -15,7 +15,44 @@ with lib; {
     };
   };
 
-  config = mkIf cfg.enable {
+  config =
+    let
+      racketBinaries = [
+        "drracket"
+        "gracket"
+        "gracket-text"
+        "mred"
+        "mred-text"
+        "mzc"
+        "mzpp"
+        "mzscheme"
+        "mztext"
+        "pdf-slatex"
+        "plt-games"
+        "plt-help"
+        "plt-r5rs"
+        "plt-r6rs"
+        "plt-web-server"
+        "racket"
+        "raco"
+        "scribble"
+        "setup-plt"
+        "slatex"
+        "slideshow"
+        "swindle"
+      ];
+
+      racketBinPath = "/home/hazel/src/racket/racket/bin/";
+
+      genScript = binName:
+        pkgs.writeScriptBin binName ''
+          #!/bin/sh
+
+          export LD_LIBRARY_PATH=${pkgs.racket.LD_LIBRARY_PATH}
+          exec ${racketBinPath + binName} $@
+        '';
+    in
+    mkIf cfg.enable {
     hazel.home = {
       home.packages = with pkgs; [
         # common lisp
@@ -28,9 +65,9 @@ with lib; {
         guile
 
         # the good shit
-        racket
+        # unstable.racket
         z3 # for rosette
-      ];
+      ] ++ (map genScript racketBinaries);
 
       programs.zsh.shellAliases = { "sbcl" = "rlwrap sbcl"; };
     };

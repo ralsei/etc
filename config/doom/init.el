@@ -30,7 +30,7 @@
        file-templates
        fold
        multiple-cursors
-       parinfer
+       (parinfer +rust)
        rotate-text
        snippets
 
@@ -42,12 +42,12 @@
 
        :term
        eshell
-       vterm
+       ; vterm
 
        :checkers
        syntax
-       spell     ; ...is this annoying? yes! do i need it for editing latex papers?
-                 ; also yes!
+       (spell +flyspell)  ; ...is this annoying? yes! do i need it for editing latex papers?
+                          ; also yes!
 
        :tools
        debugger
@@ -63,17 +63,16 @@
 
        :lang
        cc
-       common-lisp
+       ; common-lisp
        data
        emacs-lisp
-       go
-       (haskell +dante)
+       (haskell +lsp)
        (java +lsp)
        javascript
        latex
        markdown
        nix
-       ocaml
+       ; ocaml
        (org +dragndrop
             +hugo
             +pandoc
@@ -83,8 +82,7 @@
        (racket +xp)
        (rust +lsp)
        (scala +lsp)
-       ;scheme
-       ;sh
+       ; yaml
 
        :email
        (mu4e +gmail)

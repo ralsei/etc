@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 let
   cfg = config.hazel.services.lemniscation;
   nginxCfg = config.hazel.services.nginx;
@@ -23,6 +23,8 @@ with lib; {
 
         serverAliases = [ "www.lemniscation.com" ];
         root = "/var/www/lemniscation";
+
+        extraConfig = "disable_symlinks off;";
       }; 
       "lemniscation.qtp2t.club" = redirect;
       "lemniscation.knightsofthelambdacalcul.us" = redirect;

@@ -2,19 +2,9 @@
 { options, config, lib, pkgs, ... }:
 {
   imports = [
-    <home-manager/nixos>
-    # ./cachix.nix
-
     ./modules
-    ./machines/current
   ];
 
-  # XXX: remove me after rebuilding on 20.09!
-  nixpkgs.config.permittedInsecurePackages = [
-    "nextcloud-18.0.10"
-  ];
-
-  # clean up the nix store periodically
   nix = {
     autoOptimiseStore = true;
     gc = {
@@ -23,6 +13,11 @@
       options = "--delete-older-than 10d";
     };
     trustedUsers = [ "root" "hazel" ];
+
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   # unfortunately, I live here
@@ -34,9 +29,6 @@
 
   time.timeZone = "America/Indiana/Indianapolis";
 
-  nixpkgs.overlays = import /etc/nixos/packages;
-  nixpkgs.config.allowUnfree = true; # sorry, Stallman
-
   # the bare minimum
   environment.systemPackages = with pkgs; [
     coreutils
@@ -46,14 +38,11 @@
     wget
     vim
     gnumake
-  ] ++ (if builtins.currentSystem != "aarch64-linux" then [
-    # avoid building from source
-    hazel.cachix
-    hazel.cached-nix-shell
-  ] else []);
+    cachix
+    cached-nix-shell
+  ];
 
-  # unfortunately for everyone, it's me
-  users.mutableUsers = false; # build-vm
+  users.mutableUsers = true;
   users.users.hazel = {
     isNormalUser = true;
     uid = 1000;
@@ -62,8 +51,6 @@
   };
 
   # enable home-manager for my user
-  home-manager.useUserPackages = true; # build-vm
-  home-manager.useGlobalPkgs = true;
   home-manager.users.hazel = lib.mkAliasDefinitions options.hazel.home;
 
   system.stateVersion = "20.03";

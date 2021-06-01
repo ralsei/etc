@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    <home-manager/nixos>
+    # <home-manager/nixos>
     ./hardware.nix
   ];
 
@@ -40,9 +40,9 @@
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
-    extraConfig = ''
-      load-module module-switch-on-connect
-    '';
+    # extraConfig = ''
+    #  load-module module-switch-on-connect
+    # '';
   };
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
@@ -60,28 +60,13 @@
   };
 
   # the pointing with the mouse and stuff
-  hazel.graphicalSession = {
-    enable = true;
-    desktop = "sway";
-  };
-  hazel.desktop.sway = {
-    outputs = {
-      eDP-1 = {
-        bg = "~/usr/img/papes/desktop/clouds.jpg fill";
-        res = "1920x1080";
-        pos = "1920 0";
-      };
-      HDMI-A-1 = {
-        bg = "~/usr/img/papes/desktop/roses.jpg tile";
-        res = "1920x1080";
-        pos = "0 0";
-      };
-    };
-    lockBg = "~/usr/img/papes/desktop/clouds.jpg";
-  };
+  hazel.graphicalSession.enable = true;
 
   # various tools
-  hazel.emacs.enable = true;
+  hazel.emacs = {
+    enable = true;
+    daemon = false; # eh
+  };
   hazel.langSupport.enable = true;
   hazel.services.mpd = {
     enable = true;
@@ -122,18 +107,7 @@
   };
 
   # sigh
+  virtualisation.docker.enable = true;
   programs.adb.enable = true;
-  users.users.hazel.extraGroups = [ "adbusers" ];
-
-  hazel.home.home.packages = with pkgs; [
-    steam-run
-    appimage-run
-    xboxdrv
-
-    minecraft
-    mcrcon
-    unstable.pcsx2
-    kdenlive
-    citrix_workspace
-  ];
+  users.users.hazel.extraGroups = [ "docker" "adbusers" "dialout" ];
 }

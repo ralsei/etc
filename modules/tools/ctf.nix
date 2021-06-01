@@ -24,7 +24,7 @@ with lib; {
     ] ++ (if desktopEnabled then with pkgs; [
       xorg.xhost # docker container xorg
       ghidra-bin
-      hazel.burpsuite
+      # hazel.burpsuite
     ] else []);
   };
 }

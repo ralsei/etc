@@ -5,7 +5,7 @@
     ./hackthebox.nix
     ./networking.nix
     ./power.nix
-    ./private.nix
+    # ./private.nix
     ./wireguard.nix
     ./yubikey.nix
   ];

@@ -2,7 +2,6 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    <home-manager/nixos>
     ./hardware.nix
   ];
 
@@ -58,13 +57,12 @@
     };
     lemniscation.enable = true;
 
-    mailserver.enable = true;
+    # mailserver.enable = true;
 
     gitea.enable = true;
     bitwarden.enable = true;
     nextcloud.enable = true;
 
-    # linx.enable = true; # broken
     perihelion.enable = true;
   };
 

@@ -29,7 +29,7 @@ with lib; {
 
   config = mkIf cfg.enable {
     networking.wg-quick.interfaces.wg0 = {
-      privateKeyFile = "/etc/wg-privkey"; # go away
+      privateKeyFile = config.age.secrets.wgPrivkey.path;
       address = cfg.addresses;
 
       peers = [{

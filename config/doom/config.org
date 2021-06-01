@@ -66,6 +66,7 @@ Emacs.
 
 (setq doom-font hzl/monospace-font)
 (setq doom-variable-pitch-font hzl/variable-pitch-font)
+(setq doom-unicode-font hzl/monospace-font)
 (setq doom-themes-enable-bold nil)
 #+END_SRC
 ** Colorscheme
@@ -131,6 +132,11 @@ breaks anything:
 (use-package! dr-racket-like-unicode
   :config (map! :i "C-\\" #'dr-racket-like-unicode-char))
 #+END_SRC
+** LSP
+Mostly handled by DOOM modules, but this causes Emacs to not fucking crash:
+#+BEGIN_SRC emacs-lisp
+(after! lsp-mode (setq lsp-enable-file-watchers nil))
+#+END_SRC
 * Productivity, papers, etc
 For the boring stuff that's not /quite/ programming.
 ** TeXcount
@@ -191,6 +197,15 @@ Set DOOM's scratch buffer, available at any point with =SPC x=, to Org, which I
 find useful for taking quick notes:
 #+BEGIN_SRC emacs-lisp
 (setq doom-scratch-buffer-major-mode 'org-mode)
+#+END_SRC
+
+We also grab =emacs-org=dnd=, for my character sheet:
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! ox-dnd
+  :recipe (:host github :repo "xeals/emacs-org-dnd"))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package! ox-dnd)
 #+END_SRC
 ** PDF Tools
 While editing LaTeX documents, this is my PDF viewer of choice. Otherwise, I use
@@ -273,4 +288,22 @@ place, it's /still/ miles ahead of RLS.
 #+BEGIN_SRC emacs-lisp
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
+#+END_SRC
+** Scribble
+The format for Racket documentation. Grab it from GitHub:
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! scribble-mode
+  :recipe (:host github :repo "emacs-pe/scribble-mode"))
+#+END_SRC
+
+Then enable it. It takes care of the file extensions itself.
+#+BEGIN_SRC emacs-lisp
+(use-package! scribble-mode)
+#+END_SRC
+
+** What
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(unpin! racket-mode)
+(package! racket-mode
+  :recipe (:host github :repo "greghendershott/racket-mode" :branch "issue-535"))
 #+END_SRC

@@ -7,6 +7,8 @@
     ./shell
     ./system
     ./tools
+
+    ./agenix.nix
   ];
 
   options = {
@@ -30,14 +32,12 @@
         ripgrep
         mosh
         pb_cli
-      ] ++ (if builtins.currentSystem != "aarch64-linux" then [
-        # these apps take forever to compile
         bitwarden-cli
         tokei
         nix-index
-      ] else []);
+      ];
 
-      home.stateVersion = "20.03";
+      home.stateVersion = "20.09";
     };
   };
 }

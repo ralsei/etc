@@ -3,8 +3,6 @@ let
   cfg = config.hazel.autoMount;
 in
 with lib; {
-  imports = [ <home-manager/nixos> ];
-
   options = {
     hazel.autoMount = {
       enable = mkOption {

@@ -27,8 +27,8 @@ with lib; {
         name = "Papirus";
       };
       theme = {
-        package = pkgs.arc-theme;
-        name = "Arc";
+        package = pkgs.matcha-gtk-theme;
+        name = "Matcha-light-aliz";
       };
     };
 
