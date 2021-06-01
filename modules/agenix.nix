@@ -13,7 +13,7 @@ with lib;
   age = {
     secrets =
       mapAttrs' (n: _: nameValuePair (removeSuffix ".age" n) {
-        file = ./. + "secretsDir/${n}";
+        file = ./. + "${secretsDir}/${n}";
         owner = "hazel";
       }) (import (./. + secretsFile));
     sshKeyPaths = options.age.sshKeyPaths.default ++ (filter pathExists [

@@ -16,6 +16,7 @@ with lib; {
   config = mkIf cfg.enable {
     services.nextcloud = {
       enable = true;
+      package = pkgs.nextcloud21;
       hostName = "cloud.knightsofthelambdacalcul.us";
 
       # nginx.enable = nginxCfg.enable;

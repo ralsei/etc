@@ -133,6 +133,23 @@
         "type": "indirect"
       }
     },
+    "perhelion": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1599088595,
+        "narHash": "sha256-b0oJXG+GuJMubAComrgBOy17wVxSKFEofJ9DcOnDJCI=",
+        "ref": "canon",
+        "rev": "ff88ce09644addf8610d3a190e8a32f9fd2199fd",
+        "revCount": 23,
+        "type": "git",
+        "url": "https://git.knightsofthelambdacalcul.us/hazel/perihelion"
+      },
+      "original": {
+        "ref": "canon",
+        "type": "git",
+        "url": "https://git.knightsofthelambdacalcul.us/hazel/perihelion"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -141,8 +158,10 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "perhelion": "perhelion",
         "simple-nixos-mailserver": "simple-nixos-mailserver",
         "utils": "utils_2",
+        "ziodyne-blog": "ziodyne-blog",
         "zsh-syntax-highlighting": "zsh-syntax-highlighting"
       }
     },
@@ -197,6 +216,23 @@
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
         "type": "github"
+      }
+    },
+    "ziodyne-blog": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1607612691,
+        "narHash": "sha256-TJcoArtj89fR2S+2p75Q9yOY4cosOe2zRC3A519Uap4=",
+        "ref": "canon",
+        "rev": "b0e7c984a7851145f30946091a93545d801db7ca",
+        "revCount": 17,
+        "type": "git",
+        "url": "https://git.knightsofthelambdacalcul.us/hazel/blog"
+      },
+      "original": {
+        "ref": "canon",
+        "type": "git",
+        "url": "https://git.knightsofthelambdacalcul.us/hazel/blog"
       }
     },
     "zsh-syntax-highlighting": {

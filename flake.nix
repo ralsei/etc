@@ -25,6 +25,14 @@
       url = "github:zsh-users/zsh-syntax-highlighting";
       flake = false;
     };
+    perhelion = {
+      url = "git+https://git.knightsofthelambdacalcul.us/hazel/perihelion?ref=canon";
+      flake = false;
+    };
+    ziodyne-blog = {
+      url = "git+https://git.knightsofthelambdacalcul.us/hazel/blog?ref=canon";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self,
@@ -49,6 +57,11 @@
           (final: prev: {
             inherit (channels.unstable)
               element-desktop sage rust-analyzer julia-mono;
+
+            hazel = {
+              perihelion = nixpkgs.callPackage (import inputs.perihelion) {};
+              ziodyne-blog = import inputs.ziodyne-blog;
+            };
           })
         ];
       };
@@ -67,6 +80,21 @@
 
           simple-nixos-mailserver.nixosModule
           ./modules/services/mail.nix
+
+          # FIXME: put this in a better place, lol
+          {
+            users.users.lemniscation = {
+              isNormalUser = true;
+              uid = 1001;
+              shell = nixpkgs.bash;
+            };
+
+            home-manager.users.lemniscation = { pkgs, ... }: {
+              home.packages = with pkgs; [ bundler ];
+              programs.bash.enable = true;
+              programs.zsh.enable = true;
+            };
+          }
         ];
       };
 

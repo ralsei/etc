@@ -20,11 +20,11 @@ with lib; {
 
     environment.etc."perihelion/users.txt".text = ''
       hazel|https://knightsofthelambdacalcul.us/
-      if|https://tilde.club/~if/
       haskal|https://tilde.town/~haskal/
       not-haskal|https://awoo.systems/
       5225225|https://5snb.club/
-      cadence|https://cadence.moe/
+      the-system|https://the-system.eu.org/
+      syntropy|https://unix.lgbt/~kakuko/
     '';
 
     systemd.services.perihelion = {
