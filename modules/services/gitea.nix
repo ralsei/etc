@@ -32,21 +32,24 @@ with lib; {
         passwordFile = "/etc/gitea/db_pass";
       };
 
-      extraConfig = ''
-        [server]
-        SSH_DOMAIN       = knightsofthelambdacalcul.us
-        SSH_PORT         = 2222
-        START_SSH_SERVER = true
-
-        [openid]
-        ENABLE_OPENID_SIGNIN = false
-        ENABLE_OPENID_SIGNUP = false        
-
-        [ui]
-        DEFAULT_THEME = arc-green
-
-        ${builtins.readFile /etc/gitea/private.ini}
-      '';
+      settings = {
+        server = {
+          SSH_DOMAIN = "knightsofthelambdacalcul.us";
+          SSH_PORT = 2222;
+          START_SSH_SERVER = true;
+        };
+        openid = {
+          ENABLE_OPENID_SIGNIN = false;
+          ENABLE_OPENID_SIGNUP = false;
+        };
+        ui = {
+          DEFAULT_THEME = "arc-green";
+        };
+        security = {
+          INSTALL_LOCK = true;
+          PASSWORD_COMPLEXITY = "off";
+        };
+      };
     };
 
     services.nginx.virtualHosts."git.knightsofthelambdacalcul.us" =
