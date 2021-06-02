@@ -87,7 +87,7 @@
             users.users.lemniscation = {
               isNormalUser = true;
               uid = 1001;
-              shell = (import nixpkgs {}).bash;
+              shell = nixpkgs.legacyPackages.x86_64-linux.bash;
             };
 
             home-manager.users.lemniscation = { pkgs, ... }: {

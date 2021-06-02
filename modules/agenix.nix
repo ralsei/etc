@@ -14,7 +14,7 @@ with lib;
     secrets =
       mapAttrs' (n: _: nameValuePair (removeSuffix ".age" n) {
         file = ./. + "${secretsDir}/${n}";
-        owner = "hazel";
+        mode = "0444";
       }) (import (./. + secretsFile));
     sshKeyPaths = options.age.sshKeyPaths.default ++ (filter pathExists [
       /home/hazel/.ssh/id_ed25519 # XXX: requires --impure!
