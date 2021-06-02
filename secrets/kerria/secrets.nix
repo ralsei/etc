@@ -7,4 +7,5 @@ in
   "nextcloudDbPass.age".publicKeys = [ kerriaKey ];
   "nextcloudPass.age".publicKeys = [ kerriaKey ];
   "bitwardenEnv.age".publicKeys = [ kerriaKey ];
+  "giteaDbPass.age".publicKeys = [ kerriaKey ];
 }

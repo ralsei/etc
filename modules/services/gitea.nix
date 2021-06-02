@@ -29,15 +29,14 @@ with lib; {
         type = "sqlite3";
         createDatabase = false; # hold-over from alpine
         user = "hazel";
-        passwordFile = "/etc/gitea/db_pass";
+        passwordFile = toString config.age.secrets.giteaDbPass.path;
+      };
+      ssh = {
+        enable = true;
+        clonePort = 2222;
       };
 
       settings = {
-        server = {
-          SSH_DOMAIN = "knightsofthelambdacalcul.us";
-          SSH_PORT = 2222;
-          START_SSH_SERVER = true;
-        };
         openid = {
           ENABLE_OPENID_SIGNIN = false;
           ENABLE_OPENID_SIGNUP = false;
