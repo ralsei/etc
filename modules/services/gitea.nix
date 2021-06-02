@@ -24,6 +24,7 @@ with lib; {
 
       appName = "very good git repositories";
       domain = "git.knightsofthelambdacalcul.us";
+      rootUrl = "https://git.knightsofthelambdacalcul.us";
 
       database = {
         type = "sqlite3";
@@ -37,6 +38,10 @@ with lib; {
       };
 
       settings = {
+        server = {
+          SSH_DOMAIN = "knightsofthelambdacalcul.us";
+          START_SSH_SERVER = true;
+        };
         openid = {
           ENABLE_OPENID_SIGNIN = false;
           ENABLE_OPENID_SIGNUP = false;
