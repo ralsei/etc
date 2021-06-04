@@ -30,10 +30,9 @@ with lib; {
       programs.emacs = {
         enable = true;
         extraPackages = epkgs: [
-          epkgs.emacs # doom vterm module
+          epkgs.vterm # doom vterm module
         ];
-        # package = emacsPgtkGcc;
-        package = pkgs.emacsPgtk;
+        package = pkgs.emacsPgtkGcc;
       };
 
       # run the emacs daemon
