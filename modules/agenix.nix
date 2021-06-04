@@ -14,12 +14,10 @@ with lib;
     secrets =
       mapAttrs' (n: _: nameValuePair (removeSuffix ".age" n) {
         file = ./. + "${secretsDir}/${n}";
-        owner = "hazel"; # no root secrets
         mode = "0444";
       }) (import (./. + secretsFile));
     sshKeyPaths = options.age.sshKeyPaths.default ++ [
-      "/home/hazel/.ssh/id_ed25519"
-      "/home/hazel/.ssh/id_rsa"
+      "/etc/agenix/id_ed25519"
     ];
   };
 }
