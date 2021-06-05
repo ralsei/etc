@@ -103,6 +103,14 @@
     '';
   };
 
+  # v4l2loopback, for reMarkable webcam
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  environment.systemPackages = with pkgs; [
+    v4l-utils
+  ];
+
   # sigh
   virtualisation.docker.enable = true;
   programs.adb.enable = true;
