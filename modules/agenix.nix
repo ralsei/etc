@@ -16,9 +16,8 @@ with lib;
         file = ./. + "${secretsDir}/${n}";
         mode = "0444";
       }) (import (./. + secretsFile));
-    sshKeyPaths = options.age.sshKeyPaths.default ++ (filter pathExists [
-      /home/hazel/.ssh/id_ed25519 # XXX: requires --impure!
-      /home/hazel/.ssh/id_rsa
-    ]);
+    sshKeyPaths = options.age.sshKeyPaths.default ++ [
+      "/etc/agenix/id_ed25519"
+    ];
   };
 }

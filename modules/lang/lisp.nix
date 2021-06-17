@@ -49,7 +49,7 @@ with lib; {
           #!/bin/sh
 
           export LD_LIBRARY_PATH=${pkgs.racket.LD_LIBRARY_PATH}
-          exec ${racketBinPath + binName} $@
+          exec ${racketBinPath + binName} "$@"
         '';
     in
     mkIf cfg.enable {

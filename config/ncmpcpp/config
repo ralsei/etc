@@ -1,8 +1,3 @@
-#######################################################################
-##   This is configuration file. Copy it to $HOME/.ncmpcpp/config    ##
-##  or $XDG_CONFIG_HOME/ncmpcpp/config and set up your preferences   ##
-#######################################################################
-
 ### directories ###
 
 ncmpcpp_directory = ~/.ncmpcpp
@@ -18,9 +13,9 @@ lyrics_directory = ~/.lyrics
 % egrep -v '^#' .ncmpcpp/config
 
 visualizer_in_stereo = "no"
-visualizer_fifo_path = "~/.local/share/mpd/fifo"
+visualizer_data_source = "~/.local/share/mpd/fifo"
 visualizer_output_name = "my_fifo"
-visualizer_sync_interval = "10"
+#visualizer_sync_interval = "10"
 visualizer_type = "ellipse"
 #visualizer_look = "▋▋"
 visualizer_look = "▀▋"

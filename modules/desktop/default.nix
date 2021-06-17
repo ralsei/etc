@@ -47,6 +47,7 @@ with lib; {
         mumble
         zoom-us
         teams
+        restream
 
         gimp
         soulseekqt
