@@ -69,6 +69,7 @@
        (haskell +lsp)
        (java +lsp)
        javascript
+       julia
        latex
        markdown
        nix

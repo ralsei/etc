@@ -43,5 +43,7 @@ with lib; {
       scala.enable = false;
       tex.enable = true;
     };
+
+    hazel.home.home.packages = with pkgs; [ julia-stable-bin ];
   };
 }

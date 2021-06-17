@@ -35,6 +35,7 @@
         bitwarden-cli
         tokei
         nix-index
+        rmapi
       ];
 
       home.stateVersion = "20.09";

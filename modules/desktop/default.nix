@@ -67,6 +67,7 @@ with lib; {
         mcrcon
         kdenlive
         citrix_workspace
+        rmview
       ];
 
       services.gnome-keyring.enable = true;
