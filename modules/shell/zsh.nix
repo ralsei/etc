@@ -22,8 +22,7 @@
         "ls" = "exa --git --extended -h";
         "la" = "exa --git --extended -a";
         "l" = "exa --grid --git --extended -lh";
-        "ll" = "exa --grid --git --extended -lah";
-        "cat" = "bat";
+        "ll" = "exa --grid --git --extended -lah"; 
         "rm" = "rm -ir"; # saved my ass so many times
 
         "lc" = "linx-client";
@@ -59,12 +58,9 @@
       defaultCommand = "fd --type f";
     };
 
-    xdg.configFile."bat/config".source = ../../config/bat/config;
-
     home.packages = with pkgs; [
       nix-zsh-completions
       exa
-      bat
       fd
       htop
       tree

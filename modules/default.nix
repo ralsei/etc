@@ -36,6 +36,7 @@
         tokei
         nix-index
         rmapi
+        qmk
       ];
 
       home.stateVersion = "20.09";
