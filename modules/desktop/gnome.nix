@@ -28,5 +28,11 @@ with lib; {
       gnome.gnome-tweak-tool
       evince
     ];
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      gtkUsePortal = true;
+    };
   };
 }

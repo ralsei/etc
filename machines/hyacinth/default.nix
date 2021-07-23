@@ -2,7 +2,6 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    # <home-manager/nixos>
     ./hardware.nix
   ];
 
@@ -34,13 +33,7 @@
 
   # audio
   sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-    package = pkgs.pulseaudioFull;
-    # extraConfig = ''
-    #  load-module module-switch-on-connect
-    # '';
-  };
+  hazel.pipewire.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 

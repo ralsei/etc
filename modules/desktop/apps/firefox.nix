@@ -20,7 +20,12 @@ with lib; {
       # sipp ramm
       programs.firefox = {
         enable = true;
-        package = pkgs.firefox-bin;
+        package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+          forceWayland = true;
+          extraPolicies = {
+            ExtensionSettings = {};
+          };
+        };
 
         profiles = {
           default = {
@@ -29,7 +34,6 @@ with lib; {
             settings = {
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             };
-            userChrome = (builtins.readFile ../../../config/firefox/userChrome.css);
           };
         };
       };
