@@ -136,11 +136,11 @@
     "perihelion": {
       "flake": false,
       "locked": {
-        "lastModified": 1622829580,
-        "narHash": "sha256-ekep9WzfLV93SaeP5+FWqb9cUviOdhQt6aqHLwwVwGk=",
+        "lastModified": 1625096849,
+        "narHash": "sha256-n0KksMmJGHHv3gUi8n3MCjvcBGQdAFbEC35if6Ldbj8=",
         "ref": "canon",
-        "rev": "5f0827d989f657fec4523b59e07e9e1aa8aebe69",
-        "revCount": 25,
+        "rev": "8a1b4d510f1c8c346e092c5b4f0b84d73954833e",
+        "revCount": 26,
         "type": "git",
         "url": "https://git.knightsofthelambdacalcul.us/hazel/perihelion"
       },

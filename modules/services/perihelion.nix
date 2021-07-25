@@ -24,7 +24,8 @@ with lib; {
       not-haskal|https://awoo.systems/
       5225225|https://5snb.club/
       the-system|https://the-system.eu.org/
-      syntropy|https://unix.lgbt/~kakuko/
+      syntropy|https://unix.lgbt/~kakuko/sanctuary/
+      Lulu|https://erkin.party/
     '';
 
     systemd.services.perihelion = {
