@@ -4,8 +4,8 @@
     ./automount.nix
     ./hackthebox.nix
     ./networking.nix
+    ./pipewire.nix
     ./power.nix
-    # ./private.nix
     ./wireguard.nix
     ./yubikey.nix
   ];

@@ -29,8 +29,8 @@
        (evil +everywhere)
        file-templates
        fold
+       lispy
        multiple-cursors
-       (parinfer +rust)
        rotate-text
        snippets
 
@@ -47,7 +47,7 @@
        :checkers
        syntax
        (spell +flyspell)  ; ...is this annoying? yes! do i need it for editing latex papers?
-                          ; also yes!
+                                        ; also yes!
 
        :tools
        debugger
@@ -63,16 +63,17 @@
 
        :lang
        cc
-       ; common-lisp
+                                        ; common-lisp
        data
        emacs-lisp
        (haskell +lsp)
        (java +lsp)
        javascript
+       julia
        latex
        markdown
        nix
-       ; ocaml
+                                        ; ocaml
        (org +dragndrop
             +hugo
             +pandoc
@@ -82,7 +83,7 @@
        (racket +xp)
        (rust +lsp)
        (scala +lsp)
-       ; yaml
+                                        ; yaml
 
        :email
        (mu4e +gmail)

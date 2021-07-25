@@ -26,12 +26,13 @@ with lib; {
 
     hazel.home.home.packages = with pkgs; [
       gnome.gnome-tweak-tool
-
-      gnomeExtensions.paperwm
-      gnomeExtensions.dash-to-dock
-      gnomeExtensions.mpris-indicator-button
-
       evince
     ];
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      gtkUsePortal = true;
+    };
   };
 }
