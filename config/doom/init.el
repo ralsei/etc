@@ -6,7 +6,7 @@
 
 (doom! :completion
        company
-       (ivy +icons +prescient)
+       (vertico +icons)
 
        :ui
        doom
