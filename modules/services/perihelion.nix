@@ -26,6 +26,7 @@ with lib; {
       the-system|https://the-system.eu.org/
       syntropy|https://unix.lgbt/~kakuko/sanctuary/
       Lulu|https://erkin.party/
+      zoe-bat|https://zoebat.gay
     '';
 
     systemd.services.perihelion = {
