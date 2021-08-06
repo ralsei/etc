@@ -23,7 +23,7 @@ with lib; {
       environmentFile = config.age.secrets.bitwardenEnv.path;
     };
 
-    services.nginx.virtualHosts."vault.knightsofthelambdacalcul.us" =
+    services.nginx.virtualHosts."vault.bicompact.space" =
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;

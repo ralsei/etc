@@ -23,8 +23,8 @@ with lib; {
       repositoryRoot = "/var/lib/gitea/git"; # hold-over from alpine
 
       appName = "very good git repositories";
-      domain = "git.knightsofthelambdacalcul.us";
-      rootUrl = "https://git.knightsofthelambdacalcul.us";
+      domain = "git.bicompact.space";
+      rootUrl = "https://git.bicompact.space";
 
       database = {
         type = "sqlite3";
@@ -39,7 +39,7 @@ with lib; {
 
       settings = {
         server = {
-          SSH_DOMAIN = "knightsofthelambdacalcul.us";
+          SSH_DOMAIN = "bicompact.space";
           START_SSH_SERVER = true;
         };
         openid = {
@@ -56,7 +56,7 @@ with lib; {
       };
     };
 
-    services.nginx.virtualHosts."git.knightsofthelambdacalcul.us" =
+    services.nginx.virtualHosts."git.bicompact.space" =
       if nginxCfg.enable then {
         enableACME = nginxCfg.ssl;
         forceSSL = nginxCfg.ssl;

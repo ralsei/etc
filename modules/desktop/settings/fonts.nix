@@ -44,7 +44,7 @@ with lib; {
       fontconfig = {
         enable = true;
         defaultFonts = {
-          monospace = [ "IBM Plex Mono 10" ];
+          monospace = [ "Source Code Pro 10" ];
           sansSerif = [ "IBM Plex Sans 10" ];
           serif = [ "IBM Plex Serif 10" ];
         };

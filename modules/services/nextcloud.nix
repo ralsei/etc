@@ -17,7 +17,7 @@ with lib; {
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud21;
-      hostName = "cloud.knightsofthelambdacalcul.us";
+      hostName = "cloud.bicompact.space";
 
       # nginx.enable = nginxCfg.enable;
       https = nginxCfg.ssl;
@@ -50,7 +50,7 @@ with lib; {
       after = [ "postgresql.service" ];
     };
 
-    services.nginx.virtualHosts."cloud.knightsofthelambdacalcul.us" = 
+    services.nginx.virtualHosts."cloud.bicompact.space" = 
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;

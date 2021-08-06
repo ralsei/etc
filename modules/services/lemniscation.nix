@@ -26,8 +26,7 @@ with lib; {
 
         extraConfig = "disable_symlinks off;";
       }; 
-      "lemniscation.qtp2t.club" = redirect;
-      "lemniscation.knightsofthelambdacalcul.us" = redirect;
+      "lemniscation.knightsofthelambdacalcul.us" = redirect; 
     } else {};
   };
 }

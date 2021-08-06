@@ -28,7 +28,7 @@ with lib; {
       };
       theme = {
         package = pkgs.matcha-gtk-theme;
-        name = "Matcha-light-aliz";
+        name = "Matcha-light-azul";
       };
     };
 
