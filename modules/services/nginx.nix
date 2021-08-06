@@ -86,8 +86,11 @@ with lib; {
         mkRedirect = subdomain: {
           forceSSL = cfg.ssl;
           enableACME = cfg.ssl;
-          locations."/" = {
-            return = "301 http://${subdomain}.bicompact.space$request_uri";
+          locations."/" = 
+          let prefix = if cfg.ssl then "https" else "http";
+          in
+          {
+            return = "301 ${prefix}://${subdomain}.bicompact.space$request_uri";
           };
         };
       in {
@@ -99,6 +102,8 @@ with lib; {
               "/" = {
                extraConfig = ''
                  ssi on;
+                 sub_filter_once off;
+                 sub_filter_types *;
                  sub_filter ${subText} $rnd_text;
                '';
                tryFiles = "$uri $uri/ =404";
@@ -107,6 +112,8 @@ with lib; {
              "/index.html" = {
                extraConfig = ''
                  ssi on;
+                 sub_filter_once off;
+                 sub_filter_types *;
                  sub_filter ${subText} $rnd_text;
                '';
              };
@@ -127,10 +134,13 @@ with lib; {
         "blog.bicompact.space" = {
           forceSSL = cfg.ssl;
           enableACME = cfg.ssl;
-          locations."/" = {
-            return = "301 http://bicompact.space$request_uri";
+          locations."/" = 
+          let prefix = if cfg.ssl then "https" else "http";
+          in
+          {
+            return = "301 ${prefix}://bicompact.space$request_uri";
           };
-        }
+        };
         "mail.bicompact.space" =
           (mkVHost [] "/var/www/notawebsite" {});
 
