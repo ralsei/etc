@@ -47,7 +47,7 @@ display_bitrate = "no"
 
 external_editor = "vim"
 
-progressbar_elapsed_color = "white"
+progressbar_elapsed_color = "blue"
 progressbar_color = "black"
 
 #progressbar_look = "▃▃▃"
@@ -58,11 +58,11 @@ header_visibility = "no"
 statusbar_visibility = "yes"
 titles_visibility = "no"
 
-statusbar_color = "white"
+statusbar_color = "black"
 
 enable_window_title = "yes"
 
-now_playing_prefix = "$b$1"
+now_playing_prefix = "$1$b$1"
 now_playing_suffix = "$1$/b"
 
 #now_playing_prefix = "$u$2"
@@ -71,9 +71,9 @@ now_playing_suffix = "$1$/b"
 song_columns_list_format = "(6)[]{} (23)[red]{a} (26)[yellow]{t|f} (40)[green]{b} (4)[blue]{l}"
 
 #song_list_format = " $7%l  $2%t $R$5%a "
-song_list_format = "$1> $2%a$1 - $3%b - $8%t $R $3%l  "
+song_list_format = "$1> $2%a$1 - $3%b - $1%t $R $3%l  "
 
-song_status_format = "$b$7♫ $2%a $1- $3%b $8- $8%t "
+song_status_format = "$1$b$2♫ $2%a $1- $3%b $1- $1%t "
 song_window_title_format = " {%a} - {%t}"
 
 

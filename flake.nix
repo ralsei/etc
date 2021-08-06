@@ -57,7 +57,7 @@
         channels: [
           (final: prev: {
             inherit (channels.unstable)
-              element-desktop sage rust-analyzer julia-mono;
+              thunderbird;
 
             hazel = {
               perihelion = prev.callPackage (import inputs.perihelion) {};

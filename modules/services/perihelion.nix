@@ -19,7 +19,7 @@ with lib; {
     ];
 
     environment.etc."perihelion/users.txt".text = ''
-      hazel|https://knightsofthelambdacalcul.us/
+      hazel|https://bicompact.space/
       haskal|https://tilde.town/~haskal/
       not-haskal|https://awoo.systems/
       5225225|https://5snb.club/
@@ -41,7 +41,7 @@ with lib; {
       wantedBy = [ "network.target" ];
     };
 
-    services.nginx.virtualHosts."ring.knightsofthelambdacalcul.us" =
+    services.nginx.virtualHosts."ring.bicompact.space" =
       if nginxCfg.enable then {
         forceSSL = nginxCfg.ssl;
         enableACME = nginxCfg.ssl;

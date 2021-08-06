@@ -35,10 +35,10 @@ with lib; {
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [ 80 443 ];
 
-    environment.systemPackages = with pkgs; [ hazel.ziodyne-blog ];
+    # environment.systemPackages = with pkgs; [ hazel.ziodyne-blog ];
 
     security.acme = {
-      email = "me@qtp2t.club";
+      email = "hazel@bicompact.space";
       acceptTerms = true;
     };
 
@@ -87,12 +87,12 @@ with lib; {
           forceSSL = cfg.ssl;
           enableACME = cfg.ssl;
           locations."/" = {
-            return = "301 http://${subdomain}.knightsofthelambdacalcul.us$request_uri";
+            return = "301 http://${subdomain}.bicompact.space$request_uri";
           };
         };
       in {
-        "knightsofthelambdacalcul.us" = 
-          (mkVHost [ "www.knightsofthelambdacalcul.us" ] "/var/www/html"
+        "bicompact.space" = 
+          (mkVHost [ "www.bicompact.space" ] "/var/www/html"
             (let
               subText = "IF_YOURE_READING_THIS_EMAIL_ME_I_MESSED_UP_THIS_IS_NOT_A_JOKE";
             in {
@@ -118,31 +118,35 @@ with lib; {
                '';
              };
              "/.well-known/openpgpkey/" = mkIf cfg.wkd.enable {
-               alias = "${cfg.wkd.directory + "/knightsofthelambdacalcul.us"}/";
+               alias = "${cfg.wkd.directory + "/bicompact.space"}/";
                extraConfig = ''
                  add_header 'Access-Control-Allow-Origin' '*';
                '';
              };
            }));
-        "blog.knightsofthelambdacalcul.us" =
-          (mkVHost [] "${pkgs.hazel.ziodyne-blog}" {});
-        "mail.knightsofthelambdacalcul.us" =
-          (mkVHost [] "/var/www/notawebsite" {});
-
-        "qtp2t.club" = {
+        "blog.bicompact.space" = {
           forceSSL = cfg.ssl;
           enableACME = cfg.ssl;
           locations."/" = {
-            return = "301 http://knightsofthelambdacalcul.us$request_uri";
+            return = "301 http://bicompact.space$request_uri";
           };
-          serverAliases = [ "www.qtp2t.club" ];
+        }
+        "mail.bicompact.space" =
+          (mkVHost [] "/var/www/notawebsite" {});
+
+        "knightsofthelambdacalcul.us" = {
+          forceSSL = cfg.ssl;
+          enableACME = cfg.ssl;
+          locations."/" = {
+            return = "301 http://bicompact.space$request_uri";
+          };
+          serverAliases = [ "www.knightsofthelambdacalcul.us" ];
         };
-        "blog.qtp2t.club" = (mkRedirect "blog");
-        "cloud.qtp2t.club" = (mkRedirect "cloud");
-        "git.qtp2t.club" = (mkRedirect "git");
-        "p.qtp2t.club" = (mkRedirect "p");
-        "ring.qtp2t.club" = (mkRedirect "ring");
-        "vault.qtp2t.club" = (mkRedirect "vault");
+        "blog.knightsofthelambdacalcul.us" = (mkRedirect "blog");
+        "cloud.knightsofthelambdacalcul.us" = (mkRedirect "cloud");
+        "git.knightsofthelambdacalcul.us" = (mkRedirect "git");
+        "ring.knightsofthelambdacalcul.us" = (mkRedirect "ring");
+        "vault.knightsofthelambdacalcul.us" = (mkRedirect "vault");
       };
     };
   };

@@ -1,4 +1,4 @@
-+TITLE:   Hazel's DOOM Emacs configuration
+#+TITLE:   Hazel's DOOM Emacs configuration
 #+AUTHOR:  Hazel Levine
 #+EMAIL:   rose.hazel@protonmail.ch
 #+STARTUP: nofold
@@ -52,13 +52,19 @@ I've also disabled bold fonts because I cannot get them to render properly in
 Emacs.
 #+BEGIN_SRC emacs-lisp
 (defvar hzl/monospace-font
-  (hzl/xft-font-string "Julia Mono" 10
+  (hzl/xft-font-string "Source Code Pro" 10
                        '((hintstyle . 3)
                          (hinting . true)
                          (lcdfilter . 3)
                          (antialias . true))))
 (defvar hzl/variable-pitch-font
   (hzl/xft-font-string "IBM Plex Sans" 10
+                       '((hintstyle . 3)
+                         (autohint . true)
+                         (lcdfilter . 3)
+                         (antialias . true))))
+(defvar hzl/unicode-font
+  (hzl/xft-font-string "DejaVu Sans Mono" 10
                        '((hintstyle . 3)
                          (autohint . true)
                          (lcdfilter . 3)
@@ -485,4 +491,17 @@ Then enable it. It takes care of the file extensions itself.
 ** What
 #+BEGIN_SRC emacs-lisp
 (map! "C-;" nil)
+
+(defvar hzl/modeline-green "#c0e8c3")
+(defvar hzl/modeline-red "#ffc8c8")
+
+(custom-set-faces!
+  `(doom-modeline-info :foreground ,hzl/modeline-green)
+  `(doom-modeline-debug :foreground ,hzl/modeline-green)
+  `(doom-modeline-urgent :foreground ,hzl/modeline-red)
+  `(doom-modeline-buffer-minor-mode :foreground ,hzl/modeline-green)
+  `(doom-modeline-evil-motion-state :foreground ,hzl/modeline-green)
+  `(doom-modeline-evil-normal-state :foreground ,hzl/modeline-green)
+  `(doom-modeline-buffer-modified :foreground ,hzl/modeline-red)
+  `(doom-modeline-project-dir :foreground ,hzl/modeline-green))
 #+END_SRC
