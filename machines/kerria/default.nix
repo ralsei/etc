@@ -70,6 +70,6 @@
   hazel.graphicalSession.enable = false;
 
   # sigh
-  # virtualisation.docker.enable = true;
-  # users.users.hazel.extraGroups = [ "docker" ];
+  virtualisation.docker.enable = true;
+  users.users.hazel.extraGroups = [ "docker" ];
 }

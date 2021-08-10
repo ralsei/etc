@@ -75,6 +75,15 @@ with lib; {
         }
       '';
 
+      upstreams = {
+        "ws-backend" = {
+          servers = { "127.0.0.1:8989" = {}; };
+          extraConfig = ''
+            ip_hash;
+          '';
+        };
+      };
+
       virtualHosts = let
         mkVHost = serverAliases: root: locations: {
           inherit locations root serverAliases;
@@ -143,6 +152,28 @@ with lib; {
         };
         "mail.bicompact.space" =
           (mkVHost [] "/var/www/notawebsite" {});
+        # docker run --detach -p 8989:8989 
+        #   -e PORT=8989 
+        #   -e JWT_SECRET_KEY=lolyouthought
+        #   -e STORAGE_URL=https://remarkable.bicompact.space
+        #   -v rmfakecloud-data:/data --restart=unless-stopped
+        #   ddvk/rmfakecloud
+        "remarkable.bicompact.space" = {
+          forceSSL = cfg.ssl;
+          enableACME = cfg.ssl;
+          locations."/" = {
+            extraConfig = ''
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header Host $host;
+
+              proxy_pass http://localhost:8989;
+
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+            '';
+          };
+        };
 
         "knightsofthelambdacalcul.us" = {
           forceSSL = cfg.ssl;
