@@ -40,6 +40,7 @@ with lib; {
         libreoffice-fresh
         bitwarden
         evince
+        zotero
 
         dino
         element-desktop
