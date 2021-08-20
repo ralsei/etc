@@ -48,7 +48,7 @@ with lib; {
         mumble
         zoom-us
         teams
-        restream
+        obs-studio
 
         gimp
         soulseekqt

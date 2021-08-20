@@ -57,7 +57,7 @@
         channels: [
           (final: prev: {
             inherit (channels.unstable)
-              thunderbird;
+              thunderbird obs-studio;
 
             hazel = {
               perihelion = prev.callPackage (import inputs.perihelion) {};
