@@ -19,6 +19,7 @@
        ophints
        (popup +all +defaults)
        treemacs
+       tree-sitter
        vc-gutter
        vi-tilde-fringe
        window-select
@@ -28,9 +29,7 @@
        :editor
        (evil +everywhere)
        file-templates
-       fold
        lispy
-       multiple-cursors
        rotate-text
        snippets
 
@@ -63,7 +62,6 @@
 
        :lang
        cc
-                                        ; common-lisp
        data
        emacs-lisp
        (haskell +lsp)
@@ -73,7 +71,6 @@
        latex
        markdown
        nix
-                                        ; ocaml
        (org +dragndrop
             +hugo
             +pandoc
@@ -83,10 +80,6 @@
        (racket +xp)
        (rust +lsp)
        (scala +lsp)
-                                        ; yaml
-
-       :email
-       (mu4e +gmail)
 
        :app
        irc

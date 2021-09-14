@@ -5,9 +5,6 @@
     ./hardware.nix
   ];
 
-  # networking.firewall.allowedTCPPorts = [ 5555 5556 ];
-  # networking.firewall.allowedUDPPorts = [ 5555 5556 ];
-
   # hostname and hostid (for zfs)
   networking.hostName = "hyacinth";
   networking.hostId = "3ae0d799";
@@ -35,7 +32,6 @@
   sound.enable = true;
   hazel.pipewire.enable = true;
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   # wifi
   hazel.networking.wifi = true;
@@ -95,14 +91,6 @@
             EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
     '';
   };
-
-  # v4l2loopback, for reMarkable webcam
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
-  environment.systemPackages = with pkgs; [
-    v4l-utils
-  ];
 
   # sigh
   virtualisation.docker.enable = true;

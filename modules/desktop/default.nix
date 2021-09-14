@@ -69,6 +69,8 @@ with lib; {
         kdenlive
         citrix_workspace
         rmview
+
+        jetbrains.idea-ultimate # educational license
       ];
 
       services.gnome-keyring.enable = true;
