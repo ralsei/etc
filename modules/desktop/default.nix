@@ -71,6 +71,8 @@ with lib; {
         rmview
 
         jetbrains.idea-ultimate # educational license
+
+        playonlinux # hell
       ];
 
       services.gnome-keyring.enable = true;

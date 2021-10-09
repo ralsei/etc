@@ -92,6 +92,10 @@
     '';
   };
 
+  # ok
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
+
   # sigh
   virtualisation.docker.enable = true;
   programs.adb.enable = true;
