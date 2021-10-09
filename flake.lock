@@ -214,6 +214,7 @@
       },
       "original": {
         "owner": "gytis-ivaskevicius",
+        "ref": "v1.3.0",
         "repo": "flake-utils-plus",
         "type": "github"
       }

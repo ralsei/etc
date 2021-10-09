@@ -5,7 +5,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.0";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-21.05";
@@ -43,7 +43,7 @@
                      home-manager,
                      agenix,
                      simple-nixos-mailserver, ... }:
-    utils.lib.systemFlake {
+    utils.lib.mkFlake {
       inherit self inputs;
 
       supportedSystems = [ "x86_64-linux" ];
