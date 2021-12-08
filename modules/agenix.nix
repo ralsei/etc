@@ -16,11 +16,8 @@ with lib;
         file = ./. + "${secretsDir}/${n}";
         mode = "0444";
       }) (import (./. + secretsFile));
-    sshKeyPaths =
-      (if config.services.openssh.enable then
-          map (e: e.path) (lib.filter (e: e.type == "rsa" || e.type == "ed25519") config.services.openssh.hostKeys)
-       else []) ++ [
-         "/etc/agenix/id_ed25519"
-       ];
+    sshKeyPaths = options.age.sshKeyPaths.default ++ [
+      "/etc/agenix/id_ed25519"
+    ];
   };
 }

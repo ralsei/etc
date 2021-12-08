@@ -90,7 +90,7 @@ I use light themes. After years and years of dark themes, I came to the realizat
 
 Right now I'm using the Leuven theme.
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'leuven)
+(setq doom-theme 'doom-earl-grey)
 #+END_SRC
 ** Everything else
 Enable line numbers, because those are nice, and make 'em relative:
@@ -120,8 +120,13 @@ Copy Tecosaur's splash screen because I'm lazy:
   :template non-default template file
   :file file to use instead of template")
 
+;; (defvar fancy-splash-template-colours
+;;   '(("$colour1" . "#335ea8"))
+;;   "list of colour-replacement alists of the form (\"$placeholder\" . 'theme-colour) which applied the template")
+
+
 (defvar fancy-splash-template-colours
-  '(("$colour1" . "#335ea8"))
+  '(("$colour1" . keywords) ("$colour2" . type) ("$colour3" . base5) ("$colour4" . base8))
   "list of colour-replacement alists of the form (\"$placeholder\" . 'theme-colour) which applied the template")
 
 (unless (file-exists-p (expand-file-name "theme-splashes" doom-cache-dir))
@@ -149,7 +154,7 @@ Copy Tecosaur's splash screen because I'm lazy:
     (dolist (substitution fancy-splash-template-colours)
       (goto-char (point-min))
       (while (re-search-forward (car substitution) nil t)
-        (replace-match (cdr substitution) nil nil)))
+        (replace-match (doom-color (cdr substitution)) nil nil)))
     (write-region nil nil
                   (fancy-splash-filename (symbol-name doom-theme) height) nil nil)))
 
@@ -512,13 +517,13 @@ Then enable it. It takes care of the file extensions itself.
 (defvar hzl/modeline-green "#c0e8c3")
 (defvar hzl/modeline-red "#ffc8c8")
 
-(custom-set-faces!
-  `(doom-modeline-info :foreground ,hzl/modeline-green)
-  `(doom-modeline-debug :foreground ,hzl/modeline-green)
-  `(doom-modeline-urgent :foreground ,hzl/modeline-red)
-  `(doom-modeline-buffer-minor-mode :foreground ,hzl/modeline-green)
-  `(doom-modeline-evil-motion-state :foreground ,hzl/modeline-green)
-  `(doom-modeline-evil-normal-state :foreground ,hzl/modeline-green)
-  `(doom-modeline-buffer-modified :foreground ,hzl/modeline-red)
-  `(doom-modeline-project-dir :foreground ,hzl/modeline-green))
+;; (custom-set-faces!
+;;   `(doom-modeline-info :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-debug :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-urgent :foreground ,hzl/modeline-red)
+;;   `(doom-modeline-buffer-minor-mode :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-evil-motion-state :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-evil-normal-state :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-buffer-modified :foreground ,hzl/modeline-red)
+;;   `(doom-modeline-project-dir :foreground ,hzl/modeline-green))
 #+END_SRC
