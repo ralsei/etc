@@ -26,11 +26,11 @@
       flake = false;
     };
     perihelion = {
-      url = "git+https://git.knightsofthelambdacalcul.us/hazel/perihelion?ref=canon";
+      url = "git+https://git.bicompact.space/hazel/perihelion?ref=canon";
       flake = false;
     };
     ziodyne-blog = {
-      url = "git+https://git.knightsofthelambdacalcul.us/hazel/blog?ref=canon";
+      url = "git+https://git.bicompact.space/hazel/blog?ref=canon";
       flake = false;
     };
   };
