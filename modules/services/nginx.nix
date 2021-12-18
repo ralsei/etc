@@ -161,6 +161,10 @@ with lib; {
         "remarkable.bicompact.space" = {
           forceSSL = cfg.ssl;
           enableACME = cfg.ssl;
+
+          default = true; # weird stuff happens on the rM end if we don't do this
+                          # not like I have unresolved vhosts, so it doesn't matter
+
           locations."/" = {
             extraConfig = ''
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -173,6 +177,10 @@ with lib; {
               proxy_set_header Connection "upgrade";
             '';
           };
+          
+          extraConfig = ''
+            client_max_body_size 200M;
+          '';
         };
 
         "knightsofthelambdacalcul.us" = {
