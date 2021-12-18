@@ -67,7 +67,6 @@ with lib; {
         minecraft
         mcrcon
         kdenlive
-        citrix_workspace
         rmview
 
         jetbrains.idea-ultimate # educational license

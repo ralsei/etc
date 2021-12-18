@@ -15,11 +15,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay/64580e3ac034e2704895a272f341a0729d165b93";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
-    # temporary
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.05";
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11";
 
     zsh-syntax-highlighting = {
       url = "github:zsh-users/zsh-syntax-highlighting";
@@ -57,7 +56,7 @@
         channels: [
           (final: prev: {
             inherit (channels.unstable)
-              thunderbird obs-studio agda;
+              sage;
 
             hazel = {
               perihelion = prev.callPackage (import inputs.perihelion) {};
