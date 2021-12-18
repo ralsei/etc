@@ -16,7 +16,7 @@ with lib;
         file = ./. + "${secretsDir}/${n}";
         mode = "0444";
       }) (import (./. + secretsFile));
-    sshKeyPaths = options.age.sshKeyPaths.default ++ [
+    identityPaths = options.age.identityPaths.default ++ [
       "/etc/agenix/id_ed25519"
     ];
   };

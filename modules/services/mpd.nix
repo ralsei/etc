@@ -77,7 +77,7 @@ with lib; {
       # mpris support
       services.mpdris2 = {
         enable = cfg.mpris;
-        notifications = cfg.mpris;
+        notifications = false;
       };
 
       home.packages = with pkgs; [

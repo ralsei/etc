@@ -11,6 +11,12 @@
         key = "593067D35E5CA280959CEC3735C1205716621182";
         signByDefault = true;
       };
+
+      aliases = {
+        wip = ''!git add --all && git commit --message "WIP - $(date)"'';
+      };
+
+      delta.enable = true;
     };
 
     # HOO BOY

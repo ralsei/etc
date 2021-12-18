@@ -40,6 +40,7 @@ with lib; {
         libreoffice-fresh
         bitwarden
         evince
+        zotero
 
         dino
         element-desktop
@@ -47,7 +48,7 @@ with lib; {
         mumble
         zoom-us
         teams
-        restream
+        obs-studio
 
         gimp
         soulseekqt
@@ -66,8 +67,11 @@ with lib; {
         minecraft
         mcrcon
         kdenlive
-        citrix_workspace
         rmview
+
+        jetbrains.idea-ultimate # educational license
+
+        playonlinux # hell
       ];
 
       services.gnome-keyring.enable = true;

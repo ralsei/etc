@@ -17,7 +17,7 @@ with lib; {
     # not forwarded -- testing only due to HTTPS restrictions
     networking.firewall.allowedTCPPorts = [ 8080 ];
 
-    services.bitwarden_rs = {
+    services.vaultwarden = {
       enable = true;
       dbBackend = "sqlite";
       environmentFile = config.age.secrets.bitwardenEnv.path;

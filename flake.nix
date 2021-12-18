@@ -3,34 +3,33 @@
   description = "maybe you'd have less problems if you weren't on a zoomer distro";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.0";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-21.05";
+      url = "github:nix-community/home-manager/release-21.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay/64580e3ac034e2704895a272f341a0729d165b93";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
-    # temporary
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.05";
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11";
 
     zsh-syntax-highlighting = {
       url = "github:zsh-users/zsh-syntax-highlighting";
       flake = false;
     };
     perihelion = {
-      url = "git+https://git.knightsofthelambdacalcul.us/hazel/perihelion?ref=canon";
+      url = "git+https://git.bicompact.space/hazel/perihelion?ref=canon";
       flake = false;
     };
     ziodyne-blog = {
-      url = "git+https://git.knightsofthelambdacalcul.us/hazel/blog?ref=canon";
+      url = "git+https://git.bicompact.space/hazel/blog?ref=canon";
       flake = false;
     };
   };
@@ -43,7 +42,7 @@
                      home-manager,
                      agenix,
                      simple-nixos-mailserver, ... }:
-    utils.lib.systemFlake {
+    utils.lib.mkFlake {
       inherit self inputs;
 
       supportedSystems = [ "x86_64-linux" ];
@@ -57,7 +56,7 @@
         channels: [
           (final: prev: {
             inherit (channels.unstable)
-              thunderbird;
+              sage;
 
             hazel = {
               perihelion = prev.callPackage (import inputs.perihelion) {};
@@ -73,11 +72,20 @@
           ./configuration.nix
           ./machines/hyacinth
           nixos-hardware.nixosModules.lenovo-thinkpad-t495
+
+          agenix.nixosModules.age
+          home-manager.nixosModules.home-manager
+          nixpkgs.nixosModules.notDetected # enable nonfree firmwares
         ];
         kerria.modules = [
           ./configuration.nix
           ./machines/kerria
           nixos-hardware.nixosModules.pcengines-apu
+
+          agenix.nixosModules.age
+          home-manager.nixosModules.home-manager
+          nixpkgs.nixosModules.notDetected # enable nonfree firmwares
+
 
           simple-nixos-mailserver.nixosModule
           ./modules/services/mail.nix
@@ -100,11 +108,5 @@
           }
         ];
       };
-
-      sharedModules = [
-        nixpkgs.nixosModules.notDetected # enable nonfree firmwares
-        home-manager.nixosModules.home-manager
-        agenix.nixosModules.age
-      ];
     };
 }

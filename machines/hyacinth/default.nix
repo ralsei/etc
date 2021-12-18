@@ -5,9 +5,6 @@
     ./hardware.nix
   ];
 
-  # networking.firewall.allowedTCPPorts = [ 5555 5556 ];
-  # networking.firewall.allowedUDPPorts = [ 5555 5556 ];
-
   # hostname and hostid (for zfs)
   networking.hostName = "hyacinth";
   networking.hostId = "3ae0d799";
@@ -35,7 +32,6 @@
   sound.enable = true;
   hazel.pipewire.enable = true;
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   # wifi
   hazel.networking.wifi = true;
@@ -85,10 +81,11 @@
   services.interception-tools = {
     enable = true;
 
+    plugins = [ pkgs.interception-tools-plugins.caps2esc ];
+
     # sudo uinput -p -d /dev/input/event0
-    # only works on laptop keyboard, since i need esc on hhkb
     udevmonConfig = ''
-      - JOB: "intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
+      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
         DEVICE:
           NAME: AT Translated Set 2 keyboard
           EVENTS:
@@ -96,13 +93,9 @@
     '';
   };
 
-  # v4l2loopback, for reMarkable webcam
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
-  environment.systemPackages = with pkgs; [
-    v4l-utils
-  ];
+  # ok
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
 
   # sigh
   virtualisation.docker.enable = true;

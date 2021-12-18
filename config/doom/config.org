@@ -1,6 +1,6 @@
 #+TITLE:   Hazel's DOOM Emacs configuration
 #+AUTHOR:  Hazel Levine
-#+EMAIL:   rose.hazel@protonmail.ch
+#+EMAIL:   hazel@knightsofthelambdacalcul.us
 #+STARTUP: nofold
 
 Whee, literate programming, whoo. I get to type words here. These are words on a
@@ -44,9 +44,8 @@ and options I want:
 #+END_SRC
 
 As my university education dragged on and I began to do things with formal logic,
-I needed a font with good support for unicode characters. Right now that's [[https://github.com/cormullion/juliamono][Julia
-Mono]]. I use the [[https://www.ibm.com/plex/][IBM Plex]] fonts for variable pitch. I used to use IBM Plex Mono,
-but it doesn't format some things properly...
+I needed a font with good support for unicode characters. I use Source Sans Pro,
+but with a bunch of fallbacks.
 
 I've also disabled bold fonts because I cannot get them to render properly in
 Emacs.
@@ -73,16 +72,25 @@ Emacs.
 (setq doom-font hzl/monospace-font)
 (setq doom-variable-pitch-font hzl/variable-pitch-font)
 (setq doom-unicode-font hzl/monospace-font)
-(setq doom-themes-enable-bold nil)
+#+END_SRC
+
+Set up Unicode fallback fonts, for the weird characters that I can't pick up:
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! unicode-fonts)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package! unicode-fonts
+  :config (unicode-fonts-setup))
 #+END_SRC
 ** Colorscheme
-I've been using [[https://github.com/morhetz/gruvbox][Gruvbox]] Light recently. After years and years of dark themes, I
-came to the realization that:
+I use light themes. After years and years of dark themes, I came to the realization that:
 + Anti-aliasing algorithms were better with black text on a white background
 + I can read light themes without glasses
 + "Burning your eyes" is not a thing that actually happens
+
+Right now I'm using the Leuven theme.
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'leuven)
+(setq doom-theme 'doom-earl-grey)
 #+END_SRC
 ** Everything else
 Enable line numbers, because those are nice, and make 'em relative:
@@ -112,8 +120,13 @@ Copy Tecosaur's splash screen because I'm lazy:
   :template non-default template file
   :file file to use instead of template")
 
+;; (defvar fancy-splash-template-colours
+;;   '(("$colour1" . "#335ea8"))
+;;   "list of colour-replacement alists of the form (\"$placeholder\" . 'theme-colour) which applied the template")
+
+
 (defvar fancy-splash-template-colours
-  '(("$colour1" . "#335ea8"))
+  '(("$colour1" . keywords) ("$colour2" . type) ("$colour3" . base5) ("$colour4" . base8))
   "list of colour-replacement alists of the form (\"$placeholder\" . 'theme-colour) which applied the template")
 
 (unless (file-exists-p (expand-file-name "theme-splashes" doom-cache-dir))
@@ -141,7 +154,7 @@ Copy Tecosaur's splash screen because I'm lazy:
     (dolist (substitution fancy-splash-template-colours)
       (goto-char (point-min))
       (while (re-search-forward (car substitution) nil t)
-        (replace-match (cdr substitution) nil nil)))
+        (replace-match (doom-color (cdr substitution)) nil nil)))
     (write-region nil nil
                   (fancy-splash-filename (symbol-name doom-theme) height) nil nil)))
 
@@ -476,6 +489,15 @@ place, it's /still/ miles ahead of RLS.
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
 #+END_SRC
+** Sage
+The only calculator useful enough for the math classes I'm taking.
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! sage-shell-mode)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package! sage-shell-mode
+  :config (sage-shell:define-alias))
+#+END_SRC
 ** Scribble
 The format for Racket documentation. Grab it from GitHub:
 #+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
@@ -495,13 +517,13 @@ Then enable it. It takes care of the file extensions itself.
 (defvar hzl/modeline-green "#c0e8c3")
 (defvar hzl/modeline-red "#ffc8c8")
 
-(custom-set-faces!
-  `(doom-modeline-info :foreground ,hzl/modeline-green)
-  `(doom-modeline-debug :foreground ,hzl/modeline-green)
-  `(doom-modeline-urgent :foreground ,hzl/modeline-red)
-  `(doom-modeline-buffer-minor-mode :foreground ,hzl/modeline-green)
-  `(doom-modeline-evil-motion-state :foreground ,hzl/modeline-green)
-  `(doom-modeline-evil-normal-state :foreground ,hzl/modeline-green)
-  `(doom-modeline-buffer-modified :foreground ,hzl/modeline-red)
-  `(doom-modeline-project-dir :foreground ,hzl/modeline-green))
+;; (custom-set-faces!
+;;   `(doom-modeline-info :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-debug :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-urgent :foreground ,hzl/modeline-red)
+;;   `(doom-modeline-buffer-minor-mode :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-evil-motion-state :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-evil-normal-state :foreground ,hzl/modeline-green)
+;;   `(doom-modeline-buffer-modified :foreground ,hzl/modeline-red)
+;;   `(doom-modeline-project-dir :foreground ,hzl/modeline-green))
 #+END_SRC

@@ -7,24 +7,6 @@ let
     };
   } "mkdir -p $out/share/fonts/truetype; cp $src/**/*.ttf $out/share/fonts/truetype";
 
-  basefonts = (with pkgs; [
-    corefonts
-    source-code-pro
-    source-sans-pro
-    font-awesome_4
-    plex
-    julia-mono
-  ]);
-
-  extrafonts = (with pkgs; [
-    dejavu_fonts
-    noto-fonts
-    roboto
-    roboto-slab
-    source-code-pro
-    emacs-all-the-icons-fonts
-  ]);
-
   cfg = config.hazel.desktop.fonts;
 in
 with lib; {
@@ -39,7 +21,20 @@ with lib; {
 
   config = mkIf cfg.enable {
     fonts = {
-      fonts = basefonts ++ extrafonts ++ [];
+      fonts = with pkgs; [
+        corefonts
+        source-code-pro
+        source-sans-pro
+        font-awesome_4
+        plex
+        dejavu_fonts
+        symbola
+        julia-mono
+        noto-fonts
+        roboto
+        roboto-slab
+        emacs-all-the-icons-fonts
+      ];
 
       fontconfig = {
         enable = true;

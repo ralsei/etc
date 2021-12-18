@@ -16,6 +16,9 @@
 
       sessionVariables = {
         "PAGER" = "less";
+        "RMAPI_AUTH" = "https://remarkable.bicompact.space";
+        "RMAPI_DOC" = "https://remarkable.bicompact.space";
+        "RMAPI_CONFIG" = "/home/hazel/.rmapi.fake";
       };
 
       shellAliases = {
