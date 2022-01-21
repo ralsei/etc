@@ -68,10 +68,11 @@ with lib; {
         mcrcon
         kdenlive
         rmview
-
-        jetbrains.idea-ultimate # educational license
-
+        dolphin-emu
+        melonDS
         playonlinux # hell
+
+        mathematica
       ];
 
       services.gnome-keyring.enable = true;

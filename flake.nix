@@ -56,7 +56,7 @@
         channels: [
           (final: prev: {
             inherit (channels.unstable)
-              sage;
+              sage mathematica;
 
             hazel = {
               perihelion = prev.callPackage (import inputs.perihelion) {};
