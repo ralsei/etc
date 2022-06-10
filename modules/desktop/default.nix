@@ -28,51 +28,50 @@ with lib; {
     hazel.desktop.gtkTheme.enable = true;
     hazel.desktop.firefox.enable = true;
 
+    programs.evolution = {
+      enable = true;
+      plugins = with pkgs; [ evolution-ews ];
+    };
+    programs.seahorse.enable = true;
+    services.gnome.evolution-data-server.enable = true;
+
     hazel.home = {
       home.packages = with pkgs; [
-        thunderbird
-        pavucontrol
-        networkmanagerapplet
-        imv
-        mpv
-        celluloid
-        nextcloud-client
-        libreoffice-fresh
+        betterdiscordctl
         bitwarden
-        evince
-        zotero
-
-        dino
-        element-desktop
-        tdesktop
-        mumble
-        zoom-us
-        teams
-        obs-studio
-
-        gimp
-        soulseekqt
-        qbittorrent
-
-        wl-clipboard
-        jq
-        ponymix
         brightnessctl
-        xorg.xrdb
-
-        steam-run
-        appimage-run
-        xboxdrv
-
-        minecraft
-        mcrcon
-        kdenlive
-        rmview
+        celluloid
+        dino
+        discord
         dolphin-emu
-        melonDS
-        playonlinux # hell
-
+        element-desktop
+        evince
+        gimp
+        jq
+        kdenlive
+        libreoffice-fresh
         mathematica
+        mcrcon
+        melonDS
+        mpv
+        mumble
+        networkmanagerapplet
+        nextcloud-client
+        obs-studio
+        pavucontrol
+        picard
+        playonlinux # hell
+        polymc
+        ponymix
+        qbittorrent
+        rmview
+        soulseekqt
+        tdesktop
+        wl-clipboard
+        xboxdrv
+        xorg.xrdb
+        zoom-us
+        zotero
       ];
 
       services.gnome-keyring.enable = true;

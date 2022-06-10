@@ -29,7 +29,7 @@
        :editor
        (evil +everywhere)
        file-templates
-       lispy
+       ;; lispy
        rotate-text
        snippets
 

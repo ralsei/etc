@@ -37,7 +37,7 @@
     keyMap = "us";
   };
 
-  time.timeZone = "America/Indiana/Indianapolis";
+  time.timeZone = "America/Chicago";
 
   # the bare minimum
   environment.systemPackages = with pkgs; [

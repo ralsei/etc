@@ -32,7 +32,7 @@ with lib; {
         extraPackages = epkgs: [
           epkgs.vterm # doom vterm module
         ];
-        package = pkgs.emacsPgtkGcc;
+        package = pkgs.emacsPgtkNativeComp;
       };
 
       # run the emacs daemon

@@ -19,8 +19,6 @@ with lib; {
     hazel.home = {
       home.packages = with pkgs; [
         ocaml
-        opam
-        dune
         m4
 
         # any other dependencies in a nix-shell
@@ -35,6 +33,8 @@ with lib; {
         ocamlPackages.merlin
         ocamlPackages.ocp-indent
       ];
+
+      programs.opam.enable = true;
     };
   };
 }

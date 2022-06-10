@@ -3,19 +3,20 @@
   description = "maybe you'd have less problems if you weren't on a zoomer distro";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.0";
+    nixpkgs-for-mathematica.url = "github:nixos/nixpkgs?rev=c82b46413401efa740a0b994f52e9903a4f6dcd5";
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-21.11";
+      url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    emacs-overlay.url = "github:nix-community/emacs-overlay/64580e3ac034e2704895a272f341a0729d165b93";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11";
@@ -28,16 +29,13 @@
       url = "git+https://git.bicompact.space/hazel/perihelion?ref=canon";
       flake = false;
     };
-    ziodyne-blog = {
-      url = "git+https://git.bicompact.space/hazel/blog?ref=canon";
-      flake = false;
-    };
   };
 
   outputs = inputs@{ self,
                      utils,
                      nixpkgs,
                      nixpkgs-unstable,
+                     nixpkgs-for-mathematica,
                      nixos-hardware,
                      home-manager,
                      agenix,
@@ -47,6 +45,7 @@
 
       supportedSystems = [ "x86_64-linux" ];
 
+      channels.just-mathematica.input = nixpkgs-for-mathematica;
       channels.unstable.input = nixpkgs-unstable;
       channels.nixpkgs = {
         input = nixpkgs;
@@ -55,12 +54,11 @@
         overlaysBuilder = 
         channels: [
           (final: prev: {
-            inherit (channels.unstable)
-              sage mathematica;
+            inherit (channels.just-mathematica)
+              mathematica;
 
             hazel = {
               perihelion = prev.callPackage (import inputs.perihelion) {};
-              ziodyne-blog = import inputs.ziodyne-blog;
             };
           })
         ];

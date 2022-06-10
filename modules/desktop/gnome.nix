@@ -19,13 +19,14 @@ with lib; {
         gnome.geary
         gnome.gnome-maps
         gnome.gnome-music
-        # gnome.gnome-terminal
+        gnome-console
         gnome.totem
       ];
     };
 
     hazel.home.home.packages = with pkgs; [
-      gnome.gnome-tweak-tool
+      gnome.gnome-tweaks
+      gnome.gnome-terminal
       evince
     ];
 

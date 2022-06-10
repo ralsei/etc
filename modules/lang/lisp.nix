@@ -42,13 +42,36 @@ with lib; {
         "swindle"
       ];
 
+      libPath = lib.makeLibraryPath (with pkgs; [
+        cairo
+        fontconfig
+        glib
+        gmp
+        gtk3
+        gsettings-desktop-schemas
+        libedit
+        libGL
+        libGLU
+        libjpeg
+        libpng
+        mpfr
+        openssl
+        pango
+        poppler
+        readline
+        sqlite
+
+        # expeditor?
+        ncurses
+      ]);
+
       racketBinPath = "/home/hazel/src/racket/racket/bin/";
 
       genScript = binName:
         pkgs.writeScriptBin binName ''
           #!/bin/sh
 
-          export LD_LIBRARY_PATH=${pkgs.racket.LD_LIBRARY_PATH}
+          export LD_LIBRARY_PATH=${libPath}
           exec ${racketBinPath + binName} "$@"
         '';
     in

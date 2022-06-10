@@ -44,7 +44,7 @@ and options I want:
 #+END_SRC
 
 As my university education dragged on and I began to do things with formal logic,
-I needed a font with good support for unicode characters. I use Source Sans Pro,
+I needed a font with good support for unicode characters. I use Source Code Pro,
 but with a bunch of fallbacks.
 
 I've also disabled bold fonts because I cannot get them to render properly in
@@ -459,6 +459,27 @@ Then copy straight from the Doom Agda module:
         "q"   #'agda2-quit
         "r"   #'agda2-restart))
 #+END_SRC
+** cooltt
+😎
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! cooltt
+  :recipe (:host github
+           :repo "RedPRL/cooltt"
+           :files ("emacs/*.el")))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package! cooltt
+  :config (setq cooltt-command "dune exec cooltt --"))
+
+(add-hook! cooltt-mode
+  (activate-input-method "TeX"))
+
+(map! :after cooltt-mode
+      :map cooltt-mode-map
+      :localleader
+      "l" #'cooltt-compile-buffer
+      "d" #'cooltt-toggle-debug)
+#+END_SRC
 ** FRC Mode
 This is a =gradlew= wrapper I hacked together really fast while sitting in my
 physics class not paying attention. The officially sanctioned IDE for FIRST
@@ -480,6 +501,35 @@ of FRC, so it's fine.
 #+BEGIN_SRC emacs-lisp
 (use-package! frc-mode
   :hook (java-mode . frc-mode))
+#+END_SRC
+** Lisp/symex.el
+I used to use parinfer. I had a lot of issues with it. It stopped working.
+Then, I used paredit, and had similar issues. It also stopped working.
+Parinfer-rust is really broken for me.
+Lisp is good, but when I copy-paste stuff in I have to disable it to re-match parentheses.
+
+This is my final hope.
+#+BEGIN_SRC emacs-lisp :tangle ~/.config/doom/packages.el
+(package! symex)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package! symex
+  :config
+  (setq symex--user-evil-keyspec
+      '(("j" . symex-go-up)
+        ("k" . symex-go-down)
+        ("C-j" . symex-climb-branch)
+        ("C-k" . symex-descend-branch)
+        ("M-j" . symex-goto-highest)
+        ("M-k" . symex-goto-lowest)))
+
+  (symex-initialize)
+
+  (map! :leader
+        :desc "Symex mode"
+        "~" #'symex-mode-interface)
+  :custom
+  (symex-modal-backend 'evil))
 #+END_SRC
 ** =rust-analyzer=
 I have tons of issues with RLS -- it just does NOT behave. While I have to pull
@@ -510,20 +560,8 @@ Then enable it. It takes care of the file extensions itself.
 (use-package! scribble-mode)
 #+END_SRC
 
-** What
+* What
+Misc scraps. Most of these I don't remember the original purpose of.
 #+BEGIN_SRC emacs-lisp
 (map! "C-;" nil)
-
-(defvar hzl/modeline-green "#c0e8c3")
-(defvar hzl/modeline-red "#ffc8c8")
-
-;; (custom-set-faces!
-;;   `(doom-modeline-info :foreground ,hzl/modeline-green)
-;;   `(doom-modeline-debug :foreground ,hzl/modeline-green)
-;;   `(doom-modeline-urgent :foreground ,hzl/modeline-red)
-;;   `(doom-modeline-buffer-minor-mode :foreground ,hzl/modeline-green)
-;;   `(doom-modeline-evil-motion-state :foreground ,hzl/modeline-green)
-;;   `(doom-modeline-evil-normal-state :foreground ,hzl/modeline-green)
-;;   `(doom-modeline-buffer-modified :foreground ,hzl/modeline-red)
-;;   `(doom-modeline-project-dir :foreground ,hzl/modeline-green))
 #+END_SRC

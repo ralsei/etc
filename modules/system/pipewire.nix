@@ -15,7 +15,7 @@ with lib; {
         support32Bit = true;
       };
       pulse.enable = true;
-      media-session.enable = true;
+      # media-session.enable = true;
     };
 
     security.rtkit.enable = true;
