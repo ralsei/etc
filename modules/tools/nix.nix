@@ -6,7 +6,7 @@
     programs.direnv = {
       enable = true;
       enableZshIntegration = true;
-      enableFlakes = true;
+      nix-direnv.enable = true;
     };
 
     home.packages = with pkgs; [

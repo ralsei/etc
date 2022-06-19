@@ -34,7 +34,6 @@
         pb_cli
         bitwarden-cli
         tokei
-        nix-index
         rmapi
         qmk
       ];

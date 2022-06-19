@@ -38,7 +38,7 @@
   };
 
   time.timeZone = "America/Chicago";
-
+  
   # the bare minimum
   environment.systemPackages = with pkgs; [
     coreutils
@@ -49,8 +49,13 @@
     vim
     gnumake
     cachix
-    cached-nix-shell
+    nix-alien
+    nix-index
+    nix-index-update
+    fup-repl
   ];
+
+  programs.nix-ld.enable = true; # the thing that makes it all bearable
 
   users.mutableUsers = true;
   users.users.hazel = {

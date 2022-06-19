@@ -64,7 +64,7 @@ with lib; {
         polymc
         ponymix
         qbittorrent
-        rmview
+        hazel.rmview
         soulseekqt
         tdesktop
         wl-clipboard
@@ -77,5 +77,7 @@ with lib; {
       services.gnome-keyring.enable = true;
       services.nextcloud-client.enable = true;
     };
+
+    networking.firewall.allowedUDPPorts = [ 5901 ];
   };
 }

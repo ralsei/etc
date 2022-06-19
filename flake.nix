@@ -6,8 +6,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-for-mathematica.url = "github:nixos/nixpkgs?rev=c82b46413401efa740a0b994f52e9903a4f6dcd5";
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,9 +16,12 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11";
 
     zsh-syntax-highlighting = {
@@ -36,6 +39,7 @@
                      nixpkgs,
                      nixpkgs-unstable,
                      nixpkgs-for-mathematica,
+                     nix-alien,
                      nixos-hardware,
                      home-manager,
                      agenix,
@@ -53,12 +57,15 @@
         # overrides
         overlaysBuilder = 
         channels: [
+          self.inputs.nix-alien.overlay
+
           (final: prev: {
             inherit (channels.just-mathematica)
               mathematica;
 
             hazel = {
               perihelion = prev.callPackage (import inputs.perihelion) {};
+              rmview = prev.libsForQt5.callPackage ./packages/rmview.nix {};
             };
           })
         ];

@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: emacs-lisp-template
+# --
+
+;;; $1 --- $2 -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;;; Code:
+
+(provide '$1)
+;;; `(file-name-nondirectory (buffer-file-name))` ends here
