@@ -8,6 +8,7 @@
 
 ;; Don't generate the godawful autosave files.
 (setq auto-save-default nil)
+(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
 (setq create-lockfiles nil)
 
 ;; Scroll line-by-line.

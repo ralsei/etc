@@ -1,6 +1,7 @@
-;;; early-init.el --- -*- lexical-binding: t; -*-
+;;; early-init --- -*- lexical-binding: t; -*-
 
-;;; Commentary: Stuff that runs before everything else.
+;;; Commentary:
+;; Stuff that runs before everything else.
 
 ;;; Code:
 ;; Defer garbage collection further back in the startup process.

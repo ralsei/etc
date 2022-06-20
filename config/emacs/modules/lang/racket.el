@@ -1,4 +1,4 @@
-;;; racket.el --- -*- lexical-binding: t; -*-
+;;; lang/racket --- -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; ((λ (λ) (λ λ)) (λ (λ) (λ λ)))
@@ -26,6 +26,9 @@
     "y" '(racket-insert-lambda :wk "insert λ")))
 
 (create-file-template ".*.rkt$" "racket-template" 'racket-mode)
+
+(use-package scribble-mode
+  :straight (:host github :repo "emacs-pe/scribble-mode"))
 
 (provide 'lang/racket)
 ;;; racket.el ends here

@@ -42,5 +42,27 @@
   (auto-insert-mode 1)
   (add-hook 'find-file-hook 'auto-insert))
 
+;; This is used in a few snippets.
+;; I (we?) like to format comments like:
+;; [NOTE: Author, ISODate]: Stuff
+;; and "Author" is queriable via the PluralKit API, so use that
+
+;; Querying the PluralKit API takes a while, and I restart Emacs enough to cache
+;; these
+(defvar *tulips/current-fronts* nil)
+
+(defun tulips/current-pk-fronters ()
+  "Gets the current fronters via PluralKit."
+  (unless *tulips/current-fronts*
+    (setq *tulips/current-fronts*
+          (let ((url-user-agent (format "%s <%s>" user-full-name user-mail-address))
+                (url-request-method "GET")
+                (url-request-extra-headers '(("Content-Type" . "application/json"))))
+            (with-temp-buffer
+              (url-insert-file-contents "https://api.pluralkit.me/v2/systems/wlcue/fronters")
+              (let ((members (alist-get 'members (json-parse-buffer :object-type 'alist))))
+                (mapcar (lambda (m) (capitalize (alist-get 'name m))) members))))))
+  *tulips/current-fronts*)
+
 (provide 'editor/snippets)
 ;;; snippets.el ends here
