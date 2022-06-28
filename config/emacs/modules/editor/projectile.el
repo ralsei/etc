@@ -25,5 +25,7 @@
   (global-definer
     "r" '(rg-menu :wk "rg")))
 
+(global-definer "SPC" '(projectile-find-file-dwim :wk "find file"))
+
 (provide 'editor/projectile)
 ;;; projectile.el ends here

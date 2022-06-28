@@ -2,4 +2,4 @@
 # name: hack
 # key: !hack
 # --
-[HACK: ${1:`(string-join (tulips/current-pk-fronters) ", ")`}; `(format-time-string "%Y-%m-%d")`] $2`(comment-line (point))`
+`(string-trim comment-start)` [HACK: ${1:`(string-join (tulips/current-pk-fronters) ", ")`}; `(format-time-string "%Y-%m-%d")`] `(string-trim comment-end)`

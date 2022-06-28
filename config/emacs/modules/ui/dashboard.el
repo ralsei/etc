@@ -15,7 +15,12 @@
 
   (setq initial-buffer-choice
 	(lambda ()
-	  (get-buffer-create "*dashboard*"))))
+	  (get-buffer-create "*dashboard*")))
+
+  (setq dashboard-set-init-info t)
+  (setq dashboard-set-footer nil)
+  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-center-content t))
 
 (provide 'ui/dashboard)
 ;;; dashboard.el ends here

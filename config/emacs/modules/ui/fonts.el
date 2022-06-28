@@ -16,7 +16,7 @@
                                     properties)))))
 
 (defvar tulips/monospace-font
-  (tulips/xft-font-string "Source Code Pro" 10
+  (tulips/xft-font-string "Pragmata Pro" 11
                        '((hintstyle . 3)
                          (hinting . true)
                          (lcdfilter . 3)
@@ -35,17 +35,17 @@
                          (lcdfilter . 3)
                          (antialias . true))))
 
-(set-face-attribute 'default nil :font tulips/monospace-font)
+;(set-face-attribute 'default nil :font tulips/monospace-font)
 
 ;; Try and get Unicode fallback fonts.
-(set-fontset-font "fontset-default" nil tulips/monospace-font)
-(set-fontset-font "fontset-default" nil tulips/unicode-font nil 'append)
+;(set-fontset-font "fontset-default" nil tulips/monospace-font)
+;(set-fontset-font "fontset-default" nil tulips/unicode-font nil 'append)
 
 ;; Load the Unicode Fonts package as a backup, just in case.
 ;; If we get here, the stuff displayed is ugly.
-(use-package unicode-fonts
-  :straight t
-  :config (unicode-fonts-setup))
+;(use-package unicode-fonts
+;  :straight t
+;  :config (unicode-fonts-setup))
 
 ;; Use all-the-icons.
 (use-package all-the-icons

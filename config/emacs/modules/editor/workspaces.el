@@ -17,6 +17,11 @@
 ;; Set the first tab name.
 (tab-bar-rename-tab "main")
 
+;; Open the dashboard upon loading a new tab.
+(setq tab-bar-new-tab-choice
+      (lambda ()
+        (get-buffer-create "*dashboard*")))
+
 ;; This generates the new workspace name from its index, because
 ;; otherwise it's named to the name of the focused buffer, which gets
 ;; confusing real fast.
@@ -25,7 +30,7 @@
   (interactive)
   (let ((ntabs (length (tab-bar-tabs))))
     (tab-bar-new-tab)
-    (tab-bar-rename-tab (format "%d" i))))
+    (tab-bar-rename-tab (format "%d" (1+ ntabs)))))
 
 ;; Make workspace switcher functions.
 (dotimes (i 9)
@@ -35,7 +40,7 @@
         (interactive)
         (let ((ntabs (length (tab-bar-tabs))))
           (if (<= i ntabs)
-              (tab-select i) 
+              (tab-select i)
             (error "Workspace %d does not exist" i))))
       (format "Switch to workspace %d" i))))
 

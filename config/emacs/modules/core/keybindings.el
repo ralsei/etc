@@ -22,7 +22,7 @@
   :prefix "SPC"
   :non-normal-prefix "C-SPC")
 
-(global-definer "SPC" '(execute-extended-command :wk "execute command"))
+;(global-definer "SPC" '(execute-extended-command :wk "execute command"))
 
 ;; Create a "general" definer for vim motions in normal/visual/motion mode, which are prefixed
 ;; with 'g'.

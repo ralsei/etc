@@ -41,7 +41,7 @@
 
 (setq tab-width 4)
 (setq tab-stop-list (tulips/generate-tab-stops 4))
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Important.
 (defun tulips/insert-shruggie ()

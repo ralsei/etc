@@ -125,5 +125,14 @@
     "t" '(tulips/org-roam-open-todo :wk "open todos")
     "c" '(org-roam-capture :wk "capture")))
 
+(use-package org-roam-ui
+  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+
 (provide 'tools/org)
 ;;; org.el ends here
