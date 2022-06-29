@@ -32,6 +32,10 @@
     (tab-bar-new-tab)
     (tab-bar-rename-tab (format "%d" (1+ ntabs)))))
 
+(defun tulips/current-workspace ()
+  "Queries the current workspace name." 
+  (alist-get 'name (cdr (tab-bar--current-tab))))
+
 ;; Make workspace switcher functions.
 (dotimes (i 9)
   (let ((i (1+ i)))

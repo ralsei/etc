@@ -5,7 +5,11 @@
 
 ;;; Code:
 (require 'use-package)
+(require 'editor/workspaces)
 (require 'ui/theme)
+
+;; Nothing flashes.
+(setq ring-bell-function 'ignore)
 
 (use-package telephone-line
   :straight t
@@ -15,27 +19,33 @@
     "Face used in evil color-coded segments when in Symex state."
     :group 'telephone-line-evil)
 
-  (telephone-line-defsegment* telephone-line-evil-symex-tag-segment ()
-    "Displays current evil mode, or symex mode.
-     Configure the face group telephone-line-evil-symex to change the colors per-mode."
-    (when (bound-and-true-p evil-mode)
-      (let ((tag (cond
-                  ((not (evil-visual-state-p)) (upcase (symbol-name evil-state)))
-                  ((eq evil-visual-selection 'block)
-                   (if telephone-line-evil-use-short-tag "VB" "V-BLOCK"))
-                  ((eq evil-visual-selection 'line)
-                   (if telephone-line-evil-use-short-tag "VL" "V-LINE"))
-                  (t "VISUAL"))))
-        (if telephone-line-evil-use-short-tag
-            (seq-take tag 2)
-          tag))))
+  (telephone-line-defsegment* telephone-line-workspace-segment ()
+    "Gets the current workspace (tab) to display in the modeline."
+    (let ((current-ws-name (tulips/current-workspace))
+          (ntabs (length (tab-bar-tabs))))
+      (cond ((= ntabs 1) "")
+            (t current-ws-name))))
 
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
         telephone-line-primary-right-separator 'telephone-line-cubed-right
         telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
         telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right
 
-        telephone-line-height 24)
+        telephone-line-height 24
+
+        telephone-line-lhs
+        '((evil . (telephone-line-evil-tag-segment))
+          (accent . (telephone-line-vc-segment
+                     telephone-line-process-segment))
+          (nil . (telephone-line-projectile-segment
+                  telephone-line-buffer-segment)))
+
+        telephone-line-rhs
+        '((nil . (telephone-line-flycheck-segment
+                  telephone-line-workspace-segment
+                  telephone-line-misc-info-segment))
+          (accent . (telephone-line-major-mode-segment))
+          (evil . (telephone-line-airline-position-segment) )))
   :config (telephone-line-mode 1))
 
 (provide 'ui/modeline)
