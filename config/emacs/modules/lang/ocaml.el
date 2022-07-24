@@ -76,6 +76,9 @@
   :straight t
   :ensure t
   :after tuareg
+  :init
+  ;; hack
+  (setq merlin-command "~/.opam/4.14.0/bin/ocamlmerlin")
   :config
   (add-hook 'tuareg-mode-hook 'merlin-mode)
   (add-hook 'merlin-mode-hook (lambda () (setq-local evil-lookup-func 'merlin-document)))

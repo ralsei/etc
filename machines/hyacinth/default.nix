@@ -54,11 +54,7 @@
     daemon = false; # eh
   };
   hazel.langSupport.enable = true;
-  hazel.services.mpd = {
-    enable = true;
-    mpris = true;
-    scrobbling = true;
-  };
+  hazel.services.mpd.enable = true;
 
   # laptop power adjustments
   hazel.laptopPower.enable = true;

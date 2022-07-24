@@ -3,6 +3,10 @@ let
   cfg = config.hazel.services.mpd;
 in
 with lib; {
+  imports = [
+    ../custom/mopidy.nix
+  ];
+
   options = {
     hazel.services.mpd = {
       enable = mkOption {
@@ -12,85 +16,90 @@ with lib; {
           Enable the music player daemon.
         '';
       };
-
-      mpris = mkOption {
-        default = false;
-        type = with types; bool;
-        description = ''
-          Enable MPRIS support for MPD.
-        '';
-      };
-
-      scrobbling = mkOption {
-        default = false;
-        type = with types; bool;
-        description = ''
-          Enable the MPDScribble audio scrobbler.
-        '';
-      };
     };
   };
 
 
   config = mkIf cfg.enable {
-    # create a systemd service for mpdscribble
-    # https://github.com/MusicPlayerDaemon/mpdscribble/blob/master/systemd/user/mpdscribble.service.in
-    systemd.user.services.mpdscribble = mkIf cfg.scrobbling {
+    hazel.modules.mopidy = {
       enable = true;
-      description = "Audio scrobbler for MPD";
-      after = [ "mpd.service" ];
+      extensionPackages = with pkgs; [
+        mopidy-mpd
+        mopidy-mpris
+        mopidy-local
+        mopidy-scrobbler
+      ];
 
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.mpdscribble}/bin/mpdscribble --no-daemon --conf /home/hazel/.config/mpdscribble/mpdscribble.conf";
-        Restart = "on-failure";
+      settings = {
+        mpd = {
+          hostname = "::";
+        };
+
+        file = {
+          media_dirs = [
+            "$XDG_MUSIC_DIR|Music"
+          ];
+          follow_symlinks = true;
+          excluded_file_extensions = [
+            ".html"
+            ".zip"
+            ".jpg"
+            ".jpeg"
+            ".png"
+          ];
+        };
+        local = {
+          media_dir = "$XDG_MUSIC_DIR";
+          excluded_file_extensions = [
+            ".html"
+            ".zip"
+            ".jpg"
+            ".jpeg"
+            ".png"
+          ];
+        };
+
+        audio = {
+          output = ''
+              tee name=t ! queue ! autoaudiosink t.
+               ! queue ! audio/x-raw,rate=44100,channels=2,format=S16LE
+               ! udpsink host=localhost port=5555
+            '';
+        };
       };
 
-      wantedBy = [ "multi-user.target" ];
+      extraConfigFiles = [ config.age.secrets.lastFm.path ];
     };
 
     hazel.home = {
-      services.mpd = {
-        enable = true;
-        musicDirectory = /home/hazel/usr/music;
+      # services.mpd = {
+      #   enable = true;
+      #   musicDirectory = /home/hazel/usr/music;
 
-        # enable pulse and ncmpcpp visualizer
-        extraConfig = ''
-          audio_output {
-            type "pulse"
-            name "pulse audio"
-          }
+      #   # enable pulse and ncmpcpp visualizer
+      #   extraConfig = ''
+      #     audio_output {
+      #       type "pulse"
+      #       name "pulse audio"
+      #     }
 
-          audio_output {
-            type "fifo"
-            name "my_fifo"
-            path "~/.local/share/mpd/fifo"
-            format "44100:16:2"
-          }
-        '';
-      };
+      #     audio_output {
+      #       type "fifo"
+      #       name "my_fifo"
+      #       path "~/.local/share/mpd/fifo"
+      #       format "44100:16:2"
+      #     }
+      #   '';
+      # };
 
       # the client
       home.file.".ncmpcpp/config".source = ../../config/ncmpcpp/config;
       programs.zsh.shellAliases = { "m" = "ncmpcpp"; };
 
-      # mpris support
-      services.mpdris2 = {
-        enable = cfg.mpris;
-        notifications = false;
-      };
-
       home.packages = with pkgs; [
         (ncmpcpp.override { visualizerSupport = true; })
         ashuffle
-      ] ++
-      (if cfg.mpris then [
-        mpdris2
-        playerctl
-      ] else []) ++
-      (if cfg.scrobbling then [
-        mpdscribble
-      ] else []);
+      ];
     };
   };
 }

@@ -3,4 +3,5 @@ let
 in
 {
   "wgPrivkey.age".publicKeys = [ hyacinthKey ];
+  "lastFm.age".publicKeys = [ hyacinthKey ];
 }

@@ -45,7 +45,7 @@
                   telephone-line-workspace-segment
                   telephone-line-misc-info-segment))
           (accent . (telephone-line-major-mode-segment))
-          (evil . (telephone-line-airline-position-segment) )))
+          (evil . (telephone-line-airline-position-segment))))
   :config (telephone-line-mode 1))
 
 (provide 'ui/modeline)

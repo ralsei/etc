@@ -3,15 +3,17 @@
   description = "maybe you'd have less problems if you weren't on a zoomer distro";
 
   inputs = {
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-for-mathematica.url = "github:nixos/nixpkgs?rev=c82b46413401efa740a0b994f52e9903a4f6dcd5";
 
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+    }; 
+    
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
