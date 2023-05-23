@@ -50,7 +50,6 @@ with lib; {
         jq
         kdenlive
         libreoffice-fresh
-        mathematica
         mcrcon
         melonDS
         mpv
@@ -61,10 +60,10 @@ with lib; {
         pavucontrol
         picard
         playonlinux # hell
-        polymc
         ponymix
         qbittorrent
-        hazel.rmview
+        rmview
+        steam-run
         soulseekqt
         tdesktop
         wl-clipboard

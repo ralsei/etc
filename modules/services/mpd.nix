@@ -1,12 +1,24 @@
 { config, pkgs, lib, ...}:
 let
   cfg = config.hazel.services.mpd;
+
+  mopidyEnv = pkgs.buildEnv {
+    name = "mopidy-with-extensions-${pkgs.mopidy.version}";
+    paths = lib.closePropagation (with pkgs; [
+      mopidy-mpd
+      mopidy-local
+      mopidy-mpris
+      mopidy-scrobbler
+    ]);
+    pathsToLink = [ "/${pkgs.mopidyPackages.python.sitePackages}" ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      makeWrapper ${pkgs.mopidy}/bin/mopidy $out/bin/mopidy \
+        --prefix PYTHONPATH : $out/${pkgs.mopidyPackages.python.sitePackages}
+    '';
+  };
 in
 with lib; {
-  imports = [
-    ../custom/mopidy.nix
-  ];
-
   options = {
     hazel.services.mpd = {
       enable = mkOption {
@@ -21,57 +33,40 @@ with lib; {
 
 
   config = mkIf cfg.enable {
-    hazel.modules.mopidy = {
-      enable = true;
-      extensionPackages = with pkgs; [
-        mopidy-mpd
-        mopidy-mpris
-        mopidy-local
-        mopidy-scrobbler
-      ];
+    hazel.home = {
+      # [HACK: Snow; 2022-07-24] fixed in HM master, update when 22.11 is out
+      xdg.configFile."mopidy/mopidy.conf".source = config.age.secrets.lastFm.path;
 
-      settings = {
-        mpd = {
-          hostname = "::";
+      systemd.user.services.mopidy = {
+        Unit = {
+          Description = "mopidy music player daemon";
+          Documentation = [ "https://mopidy.com/" ];
+          After = [ "network.target" "sound.target" ];
         };
 
-        file = {
-          media_dirs = [
-            "$XDG_MUSIC_DIR|Music"
-          ];
-          follow_symlinks = true;
-          excluded_file_extensions = [
-            ".html"
-            ".zip"
-            ".jpg"
-            ".jpeg"
-            ".png"
-          ];
-        };
-        local = {
-          media_dir = "$XDG_MUSIC_DIR";
-          excluded_file_extensions = [
-            ".html"
-            ".zip"
-            ".jpg"
-            ".jpeg"
-            ".png"
-          ];
+        Service = {
+          ExecStart = "${mopidyEnv}/bin/mopidy";
         };
 
-        audio = {
-          output = ''
-              tee name=t ! queue ! autoaudiosink t.
-               ! queue ! audio/x-raw,rate=44100,channels=2,format=S16LE
-               ! udpsink host=localhost port=5555
-            '';
-        };
+        Install.WantedBy = [ "default.target" ];
       };
 
-      extraConfigFiles = [ config.age.secrets.lastFm.path ];
-    };
+      systemd.user.services.mopidy-scan = {
+        Unit = {
+          Description = "mopidy local files scanner";
+          Documentation = [ "https://mopidy.com/" ];
+          After = [ "network.target" "sound.target" ];
+        };
 
-    hazel.home = {
+        Service = {
+          ExecStart =
+            "${mopidyEnv}/bin/mopidy local scan";
+          Type = "oneshot";
+        };
+
+        Install.WantedBy = [ "default.target" ];
+      };
+      
       # services.mpd = {
       #   enable = true;
       #   musicDirectory = /home/hazel/usr/music;

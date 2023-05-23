@@ -37,7 +37,7 @@
     keyMap = "us";
   };
 
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/Indiana/Indianapolis";
   
   # the bare minimum
   environment.systemPackages = with pkgs; [
@@ -49,7 +49,7 @@
     vim
     gnumake
     cachix
-    nix-alien
+    # nix-alien
     nix-index
     nix-index-update
     fup-repl

@@ -54,6 +54,7 @@
 (require 'lang/agda)
 (require 'lang/cooltt)
 (require 'lang/emacs-lisp)
+(require 'lang/haskell)
 (require 'lang/nix)
 (require 'lang/latex)
 (require 'lang/ocaml)

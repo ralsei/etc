@@ -5,12 +5,11 @@
   inputs = {
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-for-mathematica.url = "github:nixos/nixpkgs?rev=c82b46413401efa740a0b994f52e9903a4f6dcd5";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
     
@@ -40,7 +39,6 @@
                      utils,
                      nixpkgs,
                      nixpkgs-unstable,
-                     nixpkgs-for-mathematica,
                      nix-alien,
                      nixos-hardware,
                      home-manager,
@@ -51,7 +49,6 @@
 
       supportedSystems = [ "x86_64-linux" ];
 
-      channels.just-mathematica.input = nixpkgs-for-mathematica;
       channels.unstable.input = nixpkgs-unstable;
       channels.nixpkgs = {
         input = nixpkgs;
@@ -62,12 +59,8 @@
           self.inputs.nix-alien.overlay
 
           (final: prev: {
-            inherit (channels.just-mathematica)
-              mathematica;
-
             hazel = {
               perihelion = prev.callPackage (import inputs.perihelion) {};
-              rmview = prev.libsForQt5.callPackage ./packages/rmview.nix {};
             };
           })
         ];
