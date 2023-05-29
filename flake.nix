@@ -3,7 +3,8 @@
   description = "maybe you'd have less problems if you weren't on a zoomer distro";
 
   inputs = {
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    # [HACK: Vera; 2023-05-23] https://github.com/gytis-ivaskevicius/flake-utils-plus/issues/133
+    utils.url = "github:ravensiris/flake-utils-plus/ravensiris/fix-devshell-legacy-packages";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -23,7 +24,7 @@
     };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-21.11";
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.11";
 
     zsh-syntax-highlighting = {
       url = "github:zsh-users/zsh-syntax-highlighting";

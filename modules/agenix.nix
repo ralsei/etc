@@ -7,7 +7,7 @@ in
 with lib;
 {
   environment.systemPackages = [
-    agenix.defaultPackage.x86_64-linux
+    agenix.packages.x86_64-linux.default
   ];
 
   age = {

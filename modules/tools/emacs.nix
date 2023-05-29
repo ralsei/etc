@@ -8,17 +8,11 @@ with lib; {
       enable = mkOption {
         default = false;
         type = with types; bool;
-        description = ''
-          Enable the one true text editor.
-        '';
       };
 
       daemon = mkOption {
         default = cfg.enable;
         type = with types; bool;
-        description = ''
-          Run Emacs in the background.
-        '';
       };
     };
   };
@@ -30,9 +24,11 @@ with lib; {
       programs.emacs = {
         enable = true;
         extraPackages = epkgs: [
-          epkgs.vterm # doom vterm module
+          epkgs.vterm
+          # [HACK: Vera; 2023-05-29] Pro8a8ly remove this if not using Coq.
+          epkgs.proof-general
         ];
-        package = pkgs.emacsPgtkNativeComp;
+        package = pkgs.emacsPgtk;
       };
 
       # run the emacs daemon

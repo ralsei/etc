@@ -6,6 +6,7 @@ with lib; {
   imports = [
     ./agda.nix
     ./c.nix
+    ./coq.nix
     ./haskell.nix
     ./java.nix
     ./lisp.nix
@@ -33,6 +34,7 @@ with lib; {
     hazel.languages = {
       agda.enable = true;
       c.enable = true;
+      coq.enable = true;
       haskell.enable = true;
       java.enable = true; # I FEEL NOTHING BUT PAIN
       lisp.enable = true;
