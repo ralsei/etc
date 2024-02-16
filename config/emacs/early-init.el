@@ -13,7 +13,7 @@
 
       ;; Prevent compiling packages at runtime.
       comp-deferred-compilation nil
-      native-comp-deferred-compilation nil
+      ;; native-comp-deferred-compilation nil
       package-native-compile t
 
       ;; Disable the built-in modeline.

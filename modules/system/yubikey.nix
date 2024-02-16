@@ -34,7 +34,7 @@ with lib; {
       };
     };
 
-    environment.systemPackages = with pkgs; [ yubioath-desktop ]
+    environment.systemPackages = with pkgs; [ yubioath-flutter ]
                                  ++ (if desktopEnabled then [ pkgs.pinentry-gtk2 ]
                                      else [ pkgs.pinentry-curses ]);
 

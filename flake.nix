@@ -4,13 +4,13 @@
 
   inputs = {
     # [HACK: Vera; 2023-05-23] https://github.com/gytis-ivaskevicius/flake-utils-plus/issues/133
-    utils.url = "github:ravensiris/flake-utils-plus/ravensiris/fix-devshell-legacy-packages";
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
     
@@ -24,7 +24,7 @@
     };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.11";
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-23.11";
 
     zsh-syntax-highlighting = {
       url = "github:zsh-users/zsh-syntax-highlighting";
@@ -57,7 +57,7 @@
         # overrides
         overlaysBuilder = 
         channels: [
-          self.inputs.nix-alien.overlay
+          self.inputs.nix-alien.overlays.default
 
           (final: prev: {
             hazel = {

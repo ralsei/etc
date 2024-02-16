@@ -22,10 +22,10 @@
       };
 
       shellAliases = {
-        "ls" = "exa --git --extended -h";
-        "la" = "exa --git --extended -a";
-        "l" = "exa --grid --git --extended -lh";
-        "ll" = "exa --grid --git --extended -lah"; 
+        "ls" = "eza --git --extended -h";
+        "la" = "eza --git --extended -a";
+        "l" = "eza --grid --git --extended -lh";
+        "ll" = "eza --grid --git --extended -lah"; 
         "rm" = "rm -ir"; # saved my ass so many times
 
         "lc" = "linx-client";
@@ -63,7 +63,7 @@
 
     home.packages = with pkgs; [
       nix-zsh-completions
-      exa
+      eza
       fd
       htop
       tree

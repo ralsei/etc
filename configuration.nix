@@ -6,28 +6,30 @@
   ];
 
   nix = {
-    autoOptimiseStore = true;
+    settings = {
+      auto-optimise-store = true;
+      substituters = [
+        "https://cachix.cachix.org"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      trusted-users = [ "root" "hazel" ];
+    };
+
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 10d";
     };
-    trustedUsers = [ "root" "hazel" ];
 
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
       gc-keep-outputs = true
     '';
-
-    binaryCaches = [
-      "https://cachix.cachix.org"
-      "https://nix-community.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
   };
 
   # unfortunately, I live here
@@ -58,6 +60,9 @@
   programs.nix-ld.enable = true; # the thing that makes it all bearable
 
   users.mutableUsers = true;
+
+  programs.zsh.enable = true;
+
   users.users.hazel = {
     isNormalUser = true;
     uid = 1000;

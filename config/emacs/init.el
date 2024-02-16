@@ -12,7 +12,7 @@
 
 ;;; Code:
 ;; Not technically correct but okay.
-(setq user-full-name "Hazel Levine"
+(setq user-full-name "Tulip Amalie"
       user-mail-address "hazel@knightsofthelambdacalcul.us")
 
 ;; Grab all the modules.
@@ -47,12 +47,15 @@
 ;; Set up various non-language tools.
 (require 'tools/direnv)
 (require 'tools/magit)
-(require 'tools/org)
+;; [HACK: Vera; 2023-05-30] 8roken.
+;; (require 'tools/org)
 (require 'tools/pdf)
 
 ;; Set up the programming languages I write.
-(require 'lang/agda)
+;; [HACK: Vera; 2023-05-30] 8roken.
+;; (require 'lang/agda)
 (require 'lang/cooltt)
+(require 'lang/coq)
 (require 'lang/emacs-lisp)
 (require 'lang/haskell)
 (require 'lang/nix)

@@ -19,8 +19,6 @@ with lib; {
     hazel.home = {
       home.packages = with pkgs; [
         rustup
-        carnix
-        rust-analyzer
       ];
     };
   };

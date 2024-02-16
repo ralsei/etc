@@ -39,33 +39,29 @@ with lib; {
       home.packages = with pkgs; [
         betterdiscordctl
         bitwarden
+        blender
         brightnessctl
         celluloid
         dino
-        discord
-        dolphin-emu
-        element-desktop
+        (discord.override { withOpenASAR = true; })
         evince
         gimp
+        godot_4
+        jabref
         jq
         kdenlive
         libreoffice-fresh
-        mcrcon
-        melonDS
+        mullvad-vpn
         mpv
         mumble
-        networkmanagerapplet
-        nextcloud-client
         obs-studio
         pavucontrol
         picard
         playonlinux # hell
-        ponymix
         qbittorrent
-        rmview
         steam-run
         soulseekqt
-        tdesktop
+        spotify
         wl-clipboard
         xboxdrv
         xorg.xrdb
@@ -74,9 +70,9 @@ with lib; {
       ];
 
       services.gnome-keyring.enable = true;
-      services.nextcloud-client.enable = true;
     };
 
-    networking.firewall.allowedUDPPorts = [ 5901 ];
+    services.mullvad-vpn.enable = true;
+    networking.firewall.allowedUDPPorts = [ 5901 8080 ];
   };
 }

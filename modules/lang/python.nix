@@ -24,7 +24,6 @@ with lib; {
         python3Packages.black
         python3Packages.setuptools
         python3Packages.pylint
-        python3Packages.poetry
         python3Packages.pwntools
 
         sage

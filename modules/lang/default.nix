@@ -32,13 +32,13 @@ with lib; {
 
   config = mkIf cfg.enable {
     hazel.languages = {
-      agda.enable = true;
+      agda.enable = false;
       c.enable = true;
-      coq.enable = true;
-      haskell.enable = true;
+      coq.enable = false;
+      haskell.enable = false;
       java.enable = true; # I FEEL NOTHING BUT PAIN
       lisp.enable = true;
-      ocaml.enable = true;
+      ocaml.enable = false;
       python.enable = true;
       r.enable = false;
       rust.enable = true;

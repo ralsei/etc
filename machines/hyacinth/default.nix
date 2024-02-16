@@ -14,7 +14,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # clear /tmp on reboot
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   # enable ZFS support
   boot.supportedFilesystems = [ "zfs" ];
@@ -61,7 +61,7 @@
 
   # wireguard vpn ip
   hazel.wireguard = {
-    enable = true;
+    enable = false;
     addresses = [ "10.66.66.2/24" "fd42:42:42::2/64" ];
     routeAll = true;
   };
