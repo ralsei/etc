@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.languages.java;
+  cfg = config.my.languages.java;
 in
 with lib; {
-  options.hazel.languages.java.enable = mkEnableOption "java";
+  options.my.languages.java.enable = mkEnableOption "java";
 
   config = mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       home.packages = with pkgs; [
         jdk
         gradle

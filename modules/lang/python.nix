@@ -1,10 +1,10 @@
 { inputs, config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.languages.python;
+  cfg = config.my.languages.python;
 in
 with lib; {
   options = {
-    hazel.languages.python = {
+    my.languages.python = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -16,7 +16,7 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       home.packages = with pkgs; [
         python3
         python3Packages.pip

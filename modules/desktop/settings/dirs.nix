@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  hazel.home = {
+  my.home = {
     xdg.enable = true;
     xdg.userDirs.enable = true;
 

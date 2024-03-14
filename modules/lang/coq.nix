@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.languages.coq;
+  cfg = config.my.languages.coq;
 in
 with lib; {
   options = {
-    hazel.languages.coq = {
+    my.languages.coq = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -13,7 +13,7 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       home.packages = with pkgs; [
         coq
       ];

@@ -1,6 +1,6 @@
 { unstable, config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.graphicalSession;
+  cfg = config.my.graphicalSession;
 in
 with lib; {
   imports = [
@@ -11,7 +11,7 @@ with lib; {
   ];
 
   options = {
-    hazel.graphicalSession = {
+    my.graphicalSession = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -23,10 +23,10 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.desktop.gnome.enable = true;
-    hazel.desktop.fonts.enable = true;
-    hazel.desktop.gtkTheme.enable = true;
-    hazel.desktop.firefox.enable = true;
+    my.desktop.gnome.enable = true;
+    my.desktop.fonts.enable = true;
+    my.desktop.gtkTheme.enable = true;
+    my.desktop.firefox.enable = true;
 
     programs.evolution = {
       enable = true;
@@ -35,7 +35,13 @@ with lib; {
     programs.seahorse.enable = true;
     services.gnome.evolution-data-server.enable = true;
 
-    hazel.home = {
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
+
+    my.home = {
       home.packages = with pkgs; [
         betterdiscordctl
         bitwarden

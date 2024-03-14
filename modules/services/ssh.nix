@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.services.sshd;
+  cfg = config.my.services.sshd;
 in
 with lib; {
   options = {
-    hazel.services.sshd = {
+    my.services.sshd = {
       enable = mkOption {
         default = false;
         type = with types; bool;

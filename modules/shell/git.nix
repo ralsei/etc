@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 {
-  hazel.home = {
+  my.home = {
     programs.git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;
 
-      userName = "hazel levine";
-      userEmail = "hazel@knightsofthelambdacalcul.us";
+      userName = "tulip amalie";
+      userEmail = "tulip@bicompact.space";
       signing = {
         key = "593067D35E5CA280959CEC3735C1205716621182";
-        signByDefault = true;
+        signByDefault = false;
       };
 
       aliases = {
@@ -19,8 +19,6 @@
       delta.enable = true;
     };
 
-    # HOO BOY
-    # I have used most of these at least once
     programs.zsh.shellAliases = {
       "g" = "git";
 

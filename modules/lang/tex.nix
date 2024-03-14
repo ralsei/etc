@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.languages.tex;
+  cfg = config.my.languages.tex;
 in
 with lib; {
   options = {
-    hazel.languages.tex = {
+    my.languages.tex = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -16,7 +16,7 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       home.packages = with pkgs; [
         texlive.combined.scheme-full
         pandoc

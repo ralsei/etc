@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  hazel.home.programs.tmux = {
+  my.home.programs.tmux = {
     enable = true;
 
     terminal = "screen-256color";
@@ -9,7 +9,6 @@
     keyMode = "vi";
 
     plugins = with pkgs; [
-      tmuxPlugins.gruvbox
       tmuxPlugins.open
       tmuxPlugins.pain-control
     ];

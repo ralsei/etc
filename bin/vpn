@@ -1,8 +1,0 @@
-#!/bin/sh
-case $1 in
-    upi) sudo systemctl start wg-quick-wg0.service && swaymsg reload ;; # stupid
-    up) sudo systemctl start wg-quick-wg0.service ;;
-    down) sudo systemctl stop wg-quick-wg0.service ;;
-    status) ip link | rg -q wg0 ;;
-    *) echo "usage: vpn [upi|up|down|status]" ;;
-esac

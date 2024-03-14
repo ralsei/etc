@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.langSupport;
+  cfg = config.my.langSupport;
 in
 with lib; {
   imports = [
@@ -19,7 +19,7 @@ with lib; {
   ];
 
   options = {
-    hazel.langSupport = {
+    my.langSupport = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -31,7 +31,7 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.languages = {
+    my.languages = {
       agda.enable = false;
       c.enable = true;
       coq.enable = false;
@@ -45,7 +45,5 @@ with lib; {
       scala.enable = false;
       tex.enable = true;
     };
-
-    hazel.home.home.packages = with pkgs; [ julia-stable-bin ];
   };
 }

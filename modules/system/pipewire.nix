@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.pipewire;
+  cfg = config.my.pipewire;
 in
 with lib; {
-  options.hazel.pipewire.enable = mkEnableOption "pipewire";
+  options.my.pipewire.enable = mkEnableOption "pipewire";
 
   config = mkIf cfg.enable {
     hardware.pulseaudio.enable = false;

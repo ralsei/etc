@@ -1,10 +1,10 @@
 { config, pkgs, lib, ...}:
 let
-  cfg = config.hazel.desktop.firefox;
+  cfg = config.my.desktop.firefox;
 in
 with lib; {
   options = {
-    hazel.desktop.firefox = {
+    my.desktop.firefox = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -16,8 +16,7 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.home = {
-      # sipp ramm
+    my.home = {
       programs.firefox = {
         enable = true;
         package = pkgs.wrapFirefox pkgs.firefox-unwrapped {

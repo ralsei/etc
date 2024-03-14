@@ -12,13 +12,13 @@
   ];
 
   options = {
-    hazel.home = lib.mkOption {
+    my.home = lib.mkOption {
       type = options.home-manager.users.type.functor.wrapped;
     };
   };
 
   config = {
-    hazel.home = {
+    my.home = {
       # let home-manager manage itself
       programs.home-manager.enable = true;
 

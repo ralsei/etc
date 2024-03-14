@@ -1,6 +1,6 @@
 { inputs, config, lib, pkgs, ... }:
 {
-  hazel.home = {
+  my.home = {
     programs.zsh = {
       enable = true;
       initExtra = (builtins.readFile ../../config/zsh/zshrc);
@@ -16,9 +16,6 @@
 
       sessionVariables = {
         "PAGER" = "less";
-        "RMAPI_AUTH" = "https://remarkable.bicompact.space";
-        "RMAPI_DOC" = "https://remarkable.bicompact.space";
-        "RMAPI_CONFIG" = "/home/hazel/.rmapi.fake";
       };
 
       shellAliases = {

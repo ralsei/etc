@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.autoMount;
+  cfg = config.my.autoMount;
 in
 with lib; {
   options = {
-    hazel.autoMount = {
+    my.autoMount = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -20,7 +20,7 @@ with lib; {
     services.udisks2.enable = true;
     services.devmon.enable = true;
 
-    hazel.home = {
+    my.home = {
       services.udiskie = {
         enable = true;
         tray = "never";

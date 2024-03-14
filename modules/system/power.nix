@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 let
-  cfg = config.hazel.laptopPower;
+  cfg = config.my.laptopPower;
 in
 with lib; {
   options = {
-    hazel.laptopPower = {
+    my.laptopPower = {
       enable = mkOption {
         default = false;
         type = with types; bool;

@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.yubikey;
-  desktopEnabled = config.hazel.graphicalSession.enable;
+  cfg = config.my.yubikey;
+  desktopEnabled = config.my.graphicalSession.enable;
 in
 with lib; {
-  options.hazel.yubikey = {
+  options.my.yubikey = {
     enable = mkEnableOption "yubikey";
     login = mkOption {
       default = false;
@@ -38,7 +38,7 @@ with lib; {
                                  ++ (if desktopEnabled then [ pkgs.pinentry-gtk2 ]
                                      else [ pkgs.pinentry-curses ]);
 
-    hazel.home.home.packages = with pkgs; [
+    my.home.home.packages = with pkgs; [
       yubikey-manager
       yubikey-personalization
     ] ++ (if desktopEnabled then with pkgs; [
@@ -46,7 +46,7 @@ with lib; {
       yubikey-personalization-gui
     ] else []);
 
-    hazel.home.home.file.".gnupg/gpg-agent.conf" = {
+    my.home.home.file.".gnupg/gpg-agent.conf" = {
       text = if desktopEnabled then ''
         pinentry-program ${pkgs.pinentry-gtk2}/bin/pinentry
       '' else ''

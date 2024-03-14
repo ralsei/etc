@@ -1,10 +1,10 @@
 { config, pkgs, lib, ...}:
 let
-  cfg = config.hazel.services.mpd;
+  cfg = config.my.services.mpd;
 in
 with lib; {
   options = {
-    hazel.services.mpd = {
+    my.services.mpd = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -17,7 +17,7 @@ with lib; {
 
 
   config = mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       services.mopidy = {
         enable = true;
         extensionPackages = with pkgs; [

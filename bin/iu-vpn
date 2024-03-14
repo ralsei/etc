@@ -1,6 +1,0 @@
-#!/bin/sh
-case $1 in
-    up) sudo openconnect -b --cafile /etc/ssl/certs/ca-certificates.crt --juniper "https://vpn.iu.edu" ;;
-    down) sudo pkill -x openconnect ;;
-    *) echo "usage: iu-vpn [upi|up|down|status]" ;;
-esac

@@ -1,9 +1,8 @@
 # flake.nix: the glue, but even gluier
 {
-  description = "maybe you'd have less problems if you weren't on a zoomer distro";
+  description = "they won't even let me master the [god-killing fist]?";
 
   inputs = {
-    # [HACK: Vera; 2023-05-23] https://github.com/gytis-ivaskevicius/flake-utils-plus/issues/133
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -24,14 +23,9 @@
     };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-23.11";
 
     zsh-syntax-highlighting = {
       url = "github:zsh-users/zsh-syntax-highlighting";
-      flake = false;
-    };
-    perihelion = {
-      url = "git+https://git.bicompact.space/hazel/perihelion?ref=canon";
       flake = false;
     };
   };
@@ -43,8 +37,7 @@
                      nix-alien,
                      nixos-hardware,
                      home-manager,
-                     agenix,
-                     simple-nixos-mailserver, ... }:
+                     agenix, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -57,13 +50,7 @@
         # overrides
         overlaysBuilder = 
         channels: [
-          self.inputs.nix-alien.overlays.default
-
-          (final: prev: {
-            hazel = {
-              perihelion = prev.callPackage (import inputs.perihelion) {};
-            };
-          })
+          self.inputs.nix-alien.overlays.default 
         ];
       };
       channelsConfig = { allowUnfree = true; };
@@ -77,36 +64,6 @@
           agenix.nixosModules.age
           home-manager.nixosModules.home-manager
           nixpkgs.nixosModules.notDetected # enable nonfree firmwares
-        ];
-        kerria.modules = [
-          ./configuration.nix
-          ./machines/kerria
-          nixos-hardware.nixosModules.pcengines-apu
-
-          agenix.nixosModules.age
-          home-manager.nixosModules.home-manager
-          nixpkgs.nixosModules.notDetected # enable nonfree firmwares
-
-
-          simple-nixos-mailserver.nixosModule
-          ./modules/services/mail.nix
-
-          # FIXME: put this in a better place, lol
-          {
-            users.users.lemniscation = {
-              isNormalUser = true;
-              uid = 1001;
-              shell = nixpkgs.legacyPackages.x86_64-linux.bash;
-            };
-
-            home-manager.users.lemniscation = { pkgs, ... }: {
-              home.packages = with pkgs; [ bundler ];
-              programs.bash.enable = true;
-              programs.zsh.enable = true;
-
-              home.stateVersion = "20.09"; # flake's
-            };
-          }
         ];
       };
     };

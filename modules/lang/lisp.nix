@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.languages.lisp;
+  cfg = config.my.languages.lisp;
 in
 with lib; {
   options = {
-    hazel.languages.lisp = {
+    my.languages.lisp = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -65,7 +65,7 @@ with lib; {
         ncurses
       ]);
 
-      racketBinPath = "/home/hazel/src/racket/racket/bin/";
+      racketBinPath = "/home/my/src/racket/racket/bin/";
 
       genScript = binName:
         pkgs.writeScriptBin binName ''
@@ -76,7 +76,7 @@ with lib; {
         '';
     in
     mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       home.packages = with pkgs; [
         # common lisp
         sbcl # THIS IS A STRICTLY STEEL BANK HOUSEHOLD

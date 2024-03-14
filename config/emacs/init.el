@@ -7,13 +7,10 @@
 ;; __|/__   ( \|(__   __(__    __|/__
 ;; \    /     \   /   \   /    \    /
 ;;  \__/       \_/     \_/      \__/
-;;
-;; Tentatively mostly stolen from @TOTBWF.
 
 ;;; Code:
-;; Not technically correct but okay.
 (setq user-full-name "Tulip Amalie"
-      user-mail-address "hazel@knightsofthelambdacalcul.us")
+      user-mail-address "tulip@bicompact.space")
 
 ;; Grab all the modules.
 (add-to-list 'load-path "~/.emacs.d/modules")

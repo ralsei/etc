@@ -1,16 +1,10 @@
 { config, lib, pkgs, ... }:
 {
-  hazel.home = {
-    services.lorri.enable = true;
-
+  my.home = {
     programs.direnv = {
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
     };
-
-    home.packages = with pkgs; [
-      niv
-    ];
   };
 }

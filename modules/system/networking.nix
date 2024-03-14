@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 let
-  cfg = config.hazel.networking;
+  cfg = config.my.networking;
 in
 with lib; {
   options = {
-    hazel.networking = {
+    my.networking = {
       wifi = mkOption {
         default = false;
         type = with types; bool;

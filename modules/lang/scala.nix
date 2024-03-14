@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.languages.scala;
+  cfg = config.my.languages.scala;
 in
 with lib; {
   options = {
-    hazel.languages.scala = {
+    my.languages.scala = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -16,7 +16,7 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       home.packages = with pkgs; [
         scala
         jdk14

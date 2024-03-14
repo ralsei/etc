@@ -1,10 +1,10 @@
 { inputs, config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.emacs;
+  cfg = config.my.emacs;
 in
 with lib; {
   options = {
-    hazel.emacs = {
+    my.emacs = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -20,15 +20,14 @@ with lib; {
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
-    hazel.home = {
+    my.home = {
       programs.emacs = {
         enable = true;
         extraPackages = epkgs: [
           epkgs.vterm
-          # [HACK: Vera; 2023-05-29] Pro8a8ly remove this if not using Coq.
           epkgs.proof-general
         ];
-        package = pkgs.emacsPgtk;
+        package = pkgs.emacs-pgtk;
       };
 
       # run the emacs daemon

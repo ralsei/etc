@@ -7,11 +7,19 @@ let
     };
   } "mkdir -p $out/share/fonts/truetype; cp $src/**/*.ttf $out/share/fonts/truetype";
 
-  cfg = config.hazel.desktop.fonts;
+  go-fonts = pkgs.runCommand "go-fonts" {
+    src = pkgs.fetchzip {
+      url = "https://go.googlesource.com/image/+archive/master/font/gofont/ttfs.tar.gz";
+      sha256 = "sha256-rdzt51wY4b7HEr7W/0Ar/FB0zMyf+nKLsOT+CRSEP3o=";
+      stripRoot = false;
+    };
+  } "mkdir -p $out/share/fonts/truetype; cp $src/*.ttf $out/share/fonts/truetype";
+
+  cfg = config.my.desktop.fonts;
 in
 with lib; {
   options = {
-    hazel.desktop.fonts = {
+    my.desktop.fonts = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -21,7 +29,7 @@ with lib; {
 
   config = mkIf cfg.enable {
     fonts = {
-      fonts = with pkgs; [
+      packages = with pkgs; [
         corefonts
         source-code-pro
         source-sans-pro
@@ -34,12 +42,13 @@ with lib; {
         roboto
         roboto-slab
         emacs-all-the-icons-fonts
+        go-fonts
       ];
 
       fontconfig = {
         enable = true;
         defaultFonts = {
-          monospace = [ "Source Code Pro 10" ];
+          monospace = [ "Go Mono 10" ];
           sansSerif = [ "IBM Plex Sans 10" ];
           serif = [ "IBM Plex Serif 10" ];
         };

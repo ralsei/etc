@@ -71,7 +71,7 @@
   };
 
   # enable home-manager for my user
-  home-manager.users.hazel = lib.mkAliasDefinitions options.hazel.home;
+  home-manager.users.hazel = lib.mkAliasDefinitions options.my.home;
 
   system.stateVersion = "20.03";
 }

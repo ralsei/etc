@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.languages.r;
+  cfg = config.my.languages.r;
 
   rPkgs = with pkgs.rPackages; [
     tidyverse
@@ -28,10 +28,10 @@ let
   ];
 in
 with lib; {
-  options.hazel.languages.r.enable = mkEnableOption "r";
+  options.my.languages.r.enable = mkEnableOption "r";
 
   config = mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       home.packages = with pkgs; [
         (rWrapper.override { packages = rPkgs; })
         (rstudioWrapper.override { packages = rPkgs; })

@@ -1,10 +1,10 @@
 { inputs, config, lib, pkgs, ... }:
 let
-  cfg = config.hazel.languages.rust;
+  cfg = config.my.languages.rust;
 in
 with lib; {
   options = {
-    hazel.languages.rust = {
+    my.languages.rust = {
       enable = mkOption {
         default = false;
         type = with types; bool;
@@ -16,7 +16,7 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    hazel.home = {
+    my.home = {
       home.packages = with pkgs; [
         rustup
       ];
