@@ -1,6 +1,4 @@
 # -*- mode: sh; -*-
-## hazel's zprofile
-
 ## PATH
 ## also in zshrc
 typeset -gU cdpath fpath mailpath path
@@ -13,28 +11,4 @@ path=(
     ~/.cargo/bin
     ~/.cabal/bin
     ~/.go/bin
-    /opt/texlive/2020/bin/x86_64-linux
 )
-
-# AUTOSTART SWAY
-if [[ ! $WAYLAND_DISPLAY && "$(tty)" = "/dev/tty1" ]] ; then
-    # env vars, force wayland
-    ## mozilla
-    export MOZ_ENABLE_WAYLAND=1
-    ## libreoffice
-    export SAL_USE_VCLPLUGIN=gtk3
-    ## qt
-    export QT_QPA_PLATFORM=wayland-egl
-    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-    ## efl
-    export ECORE_EVAS_ENGINE=wayland_egl
-    export ELM_ENGINE=wayland_egl
-    ## sdl
-    export SDL_VIDEODRIVER=wayland
-    ## java is bad
-    export _JAVA_AWT_WM_NONREPARENTING=1
-    ## xdg session
-    export XDG_SESSION_TYPE="wayland"
-
-    exec sway
-fi
